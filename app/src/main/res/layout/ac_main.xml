@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+      <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="0dip"
+        android:background="@null"
+        android:fadingEdge="none"
+        android:divider="@null"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true" />
+      
+      <FrameLayout
+          android:id="@+id/ll_container"
+          android:orientation="vertical"
+          android:background="@color/grey_9c"
+          android:visibility="gone"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"></FrameLayout>
+      
+      <Button 
+          android:id="@+id/btn_conceal"
+          android:background="@drawable/so_white_st_red5"
+          android:layout_height="@dimen/size_80"
+          android:layout_width="@dimen/size_80"
+          android:text="隐藏"
+          android:visibility="gone"
+          android:layout_marginRight="@dimen/size_30"
+          android:layout_marginBottom="@dimen/size_30"
+          android:layout_alignParentRight="true"
+          android:layout_alignParentBottom="true"/>
+    
+
+</RelativeLayout>

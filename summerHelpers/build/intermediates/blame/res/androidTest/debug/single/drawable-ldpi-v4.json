@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\trans.png",
+        "source": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\trans.png"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\bg_toast.9.png",
+        "source": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\bg_toast.9.png"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\so_toast.xml",
+        "source": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\so_toast.xml"
+    }
+]

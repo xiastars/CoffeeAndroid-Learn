@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 基本色 -->
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent_80">#80000000</color>
+
+    <!-- 黄色 -->
+    <color name="yellow_f8">#f8f8ec</color>
+    <color name="yellow_ff">#ffff00</color>
+    <color name="yellow_f5">#f5a623</color>
+    <color name="yellow_94">#ff9406</color>
+    <color name="yellow_78">#ff7800</color>
+    <color name="yellow_fd">#FD603C</color>
+    <color name="yellow_d1">#D15A3F</color>
+
+    <!-- 红色 -->
+    <color name="red_fe">#FEA59F</color>
+    <color name="red_d3">#d34859</color>
+    <color name="red_ee">#EE3048</color>
+    <color name="red_e5">#e51d3c</color>
+    <color name="red_ff">#ff0000</color>
+
+    <!-- 青色 -->
+    <color name="green_53">#53d769</color>
+    <color name="green_66">#66CC66</color>
+    <color name="green_6f">#6fc313</color>
+    <color name="green_6c">#66CC00</color>
+    <color name="green_31">#31ba34</color>
+    <color name="green_29">#29B636</color>
+    <color name="green_4b">#4B9252</color>
+    <color name="green_2b">#2B795D</color>
+    <color name="green_78">#2B785C</color>
+    <color name="green_058">#058EA6</color>
+    <color name="green_05">#059EBE</color>
+
+    <!-- 蓝色 -->
+    <color name="blue_cc">#ccffff</color>
+    <color name="blue_b7">#b7d6fa</color>
+    <color name="blue_85">#85d3ef</color>
+    <color name="blue_7a">#7ac2f3</color>
+    <color name="blue_4c">#4CB9FE</color>
+    <color name="blue_a6">#4CA6DE</color>
+    <color name="blue_2e">#2ea2fc</color>
+    <color name="blue_13">#1380ff</color>
+    <color name="blue_01">#0187ea</color>
+    <color name="blue_04">#0481f1</color>
+    <color name="blue_18">#1891E2</color>
+    <color name="blue_44">#4482bc</color>
+    <color name="blue_07">#076fd4</color>
+    <color name="blue_0a">#0a6ac8</color>
+    <color name="blue_2b">#2b6a9b</color>
+
+    <!-- 灰色 -->
+    <color name="grey_f4">#f4f4f4</color>
+    <color name="grey_f1">#F1F1F1</color>
+    <color name="grey_ee">#eeeae6</color>
+    <color name="grey_e7">#e7e4df</color>
+    <color name="grey_e5">#e5e5e5</color>
+    <color name="grey_dc">#DcDcDc</color>
+    <color name="grey_ca">#cacaca</color>
+    <color name="grey_ba">#bab6b5</color>
+    <color name="grey_b1">#b1b1b1</color>
+    <color name="grey_9c">#9C9C9C</color>
+    <color name="grey_97">#979795</color>
+    <color name="grey_82">#828282</color>
+    <color name="grey_73">#737272</color>
+    <color name="grey_60">#606060</color>
+    <color name="grey_57">#57585c</color>
+    <color name="grey_31">#313235</color>
+
+    <!-- ===================== 紫色  ================== -->
+    <!-- 用于标题色 -->
+    <color name="purple_af">#afacb8</color>
+    <color name="purple_db">#bdb3b4</color>
+    <color name="purple_8d">#8d8684</color>
+    <color name="purple_3d">#3d3551</color>
+    <color name="purple_56">#5602FF</color>
+    <color name="purple_2f">#2f201a</color>
+
+</resources>

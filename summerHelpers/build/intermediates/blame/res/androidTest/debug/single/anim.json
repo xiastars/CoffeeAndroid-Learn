@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\zoom_in.xml",
+        "source": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\bundles\\debug\\res\\anim\\zoom_in.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\scale_with_alpha.xml",
+        "source": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\bundles\\debug\\res\\anim\\scale_with_alpha.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\zoom_out.xml",
+        "source": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\bundles\\debug\\res\\anim\\zoom_out.xml"
+    }
+]
