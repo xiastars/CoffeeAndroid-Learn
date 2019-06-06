@@ -4,12 +4,12 @@
         "source": "C:\\Users\\11028\\.android\\build-cache\\c2a0fa0b2de890f170628295f75b07a21d29512f\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
-        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_loading.xml",
-        "source": "D:\\SummerDemo\\summerHelpers\\src\\main\\res\\layout\\dialog_loading.xml"
-    },
-    {
         "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_loading.xml",
+        "source": "D:\\SummerDemo\\summerHelpers\\src\\main\\res\\layout\\dialog_loading.xml"
     },
     {
         "merged": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
@@ -120,6 +120,10 @@
         "source": "C:\\Users\\11028\\.android\\build-cache\\c2a0fa0b2de890f170628295f75b07a21d29512f\\output\\res\\layout\\abc_screen_content_include.xml"
     },
     {
+        "merged": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\cube_ptr_simple_loading.xml",
+        "source": "C:\\Users\\11028\\.android\\build-cache\\be33512d5b88047bc9a43e2fecc1112d64acc918\\output\\res\\layout\\cube_ptr_simple_loading.xml"
+    },
+    {
         "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\layout\\abc_list_menu_item_radio.xml"
     },
@@ -156,16 +160,16 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\item_menu.xml",
-        "source": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\src\\main\\res\\layout\\item_menu.xml"
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
         "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_tips.xml",
         "source": "D:\\SummerDemo\\summerHelpers\\src\\main\\res\\layout\\dialog_tips.xml"
     },
     {
-        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\layout\\abc_action_menu_layout.xml"
+        "merged": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\item_menu.xml",
+        "source": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\src\\main\\res\\layout\\item_menu.xml"
     },
     {
         "merged": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
@@ -202,6 +206,10 @@
     {
         "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\number_picker.xml",
         "source": "D:\\SummerDemo\\summerHelpers\\src\\main\\res\\layout\\number_picker.xml"
+    },
+    {
+        "merged": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\cube_ptr_classic_default_header.xml",
+        "source": "C:\\Users\\11028\\.android\\build-cache\\be33512d5b88047bc9a43e2fecc1112d64acc918\\output\\res\\layout\\cube_ptr_classic_default_header.xml"
     },
     {
         "merged": "D:\\balanx\\CoffeeAndroid\\CoffeeAndroid-learn\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\layout\\item.xml",

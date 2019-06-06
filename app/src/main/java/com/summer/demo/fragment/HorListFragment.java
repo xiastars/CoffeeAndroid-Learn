@@ -13,7 +13,6 @@ import com.summer.demo.R;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.recycle.MaterialRefreshListener;
 import com.summer.helper.utils.SUtils;
-import com.summer.helper.view.HRecycleView;
 
 /**
  * 横向的ListView示例，刷新状态正在优化中

@@ -97,7 +97,7 @@ public class AcJava extends FragmentActivity implements OnItemClickListener, Vie
     public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
         switch (position) {
             case 0:
-                jump("https://xiastars.gitbooks.io/java/content/f.html");
+                jump("https://github.com/xiastars/CoffeeAndroid-Learn/blob/master/document/java/1.%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1.md");
                 break;
             case 1:
                 jump("https://xiastars.gitbooks.io/java/content/20-%E5%AD%90%E7%B1%BB%E4%B8%8E%E7%88%B6%E7%B1%BB.html");

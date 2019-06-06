@@ -8,21 +8,29 @@ import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorUpdateListener;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.malata.summer.helper.R;
+import com.summer.helper.adapter.SRecycleMoreAdapter;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
+import com.summer.helper.view.CustomerViewPager;
+import com.summer.helper.view.ScrollableLayout;
+
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 
 /**
  * @author https://github.com/android-cjj/Android-MaterialRefreshLayout
@@ -32,23 +40,23 @@ public class MaterialRefreshLayout extends FrameLayout {
 	public static final String Tag = MaterialRefreshLayout.class.getSimpleName();
 	private final static int DEFAULT_WAVE_HEIGHT = 140;
 	private final static int HIGHER_WAVE_HEIGHT = 180;
-	private final static int DEFAULT_HEAD_HEIGHT = 70;
-	private final static int hIGHER_HEAD_HEIGHT = 100;
+	private static int DEFAULT_HEAD_HEIGHT = 70;
+	private final static int HIGHER_HEAD_HEIGHT = 100;
 	/* 默认圈圈大小 */
-	private final static int DEFAULT_PROGRESS_SIZE = 60;
-	private final static int BIG_PROGRESS_SIZE = 60;
+	private static int DEFAULT_PROGRESS_SIZE = 40;
+	private final static int BIG_PROGRESS_SIZE = 15;
 	private final static int PROGRESS_STOKE_WIDTH = 3;
 
 	private MaterialHeaderView mMaterialHeaderView;
 	private MaterialFooterView mMaterialFooterView;
+	private View rlNomoreDataView;
 	private SunLayout mSunLayout;
 	private boolean isOverlay;
 	private int waveType;
 	private int waveColor;
 	protected float mWaveHeight;
 	protected float mHeadHeight;
-	private View mChildView;
-	protected boolean isRefreshing;
+	protected View mChildView;
 	private float mTouchY;
 	private float mCurrentY;
 	private float mTouchX;
@@ -60,7 +68,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 	private int colorsId;
 	private int progressTextColor;
 	private int progressValue, progressMax;
-	private boolean showArrow = true;
+	private boolean showArrow = false;
 	private int textType;
 	private MaterialRefreshListener refreshListener;
 	private boolean showProgressBg;
@@ -68,23 +76,31 @@ public class MaterialRefreshLayout extends FrameLayout {
 	private boolean isShowWave;
 	private int progressSizeType;
 	private int progressSize = 0;
-	private boolean isLoadMoreing;
-	private boolean isLoadMore;
 	private boolean isSunStyle = false;
 	/* 当前是否为横向 */
 	private boolean isHor = false;
+	//下拉刷新
+	private boolean mPullDownRefreshable = true;
+	private boolean mPullDownRefreshing;
+	//上拉刷新
+	private boolean mPullUpRefreshable = true;
+	private boolean mPullUpRefreshing;
 
-	private RecyclerView refreshView;
+	/**
+	 * 当有ViewPager时，优化ViewPager的滑动
+	 */
+	private CustomerViewPager mViewPager;
 
-	ImageView emptyView;
-	protected boolean refreshable = true;
+	View emptyView;
+	private TextView tvHintContent;
+	private String mHintContent;
+	//是否显示空页面
+	boolean showEmptyView = true;
+	//有header的情况有时候不需要空页面，有时候需要
+	boolean showEmptyViewDespiteHeader = false;
 
 	public MaterialRefreshLayout(Context context) {
 		this(context, null, 0);
-	}
-
-	public RecyclerView getRefreshView() {
-		return refreshView;
 	}
 
 	public MaterialRefreshLayout(Context context, AttributeSet attrs) {
@@ -93,8 +109,6 @@ public class MaterialRefreshLayout extends FrameLayout {
 
 	public MaterialRefreshLayout(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		refreshView = new RecyclerView(context);
-		this.addView(refreshView);
 		init(context, attrs, defStyleAttr);
 	}
 
@@ -114,15 +128,16 @@ public class MaterialRefreshLayout extends FrameLayout {
 		isOverlay = t.getBoolean(R.styleable.MaterialRefreshLayout_overlay, false);
 		/** attrs for materialWaveView */
 		waveType = t.getInt(R.styleable.MaterialRefreshLayout_wave_height_type, 0);
+		DEFAULT_HEAD_HEIGHT = SUtils.getDip(context, 45);
 		if (waveType == 0) {
 			headHeight = DEFAULT_HEAD_HEIGHT;
 			waveHeight = DEFAULT_WAVE_HEIGHT;
 			MaterialWaveView.DefaulHeadHeight = DEFAULT_HEAD_HEIGHT;
 			MaterialWaveView.DefaulWaveHeight = DEFAULT_WAVE_HEIGHT;
 		} else {
-			headHeight = hIGHER_HEAD_HEIGHT;
+			headHeight = HIGHER_HEAD_HEIGHT;
 			waveHeight = HIGHER_WAVE_HEIGHT;
-			MaterialWaveView.DefaulHeadHeight = hIGHER_HEAD_HEIGHT;
+			MaterialWaveView.DefaulHeadHeight = HIGHER_HEAD_HEIGHT;
 			MaterialWaveView.DefaulWaveHeight = HIGHER_WAVE_HEIGHT;
 		}
 		waveColor = t.getColor(R.styleable.MaterialRefreshLayout_wave_color, Color.WHITE);
@@ -140,31 +155,58 @@ public class MaterialRefreshLayout extends FrameLayout {
 		progressBg = t.getColor(R.styleable.MaterialRefreshLayout_progress_backgroud_color,
 				CircleProgressBar.DEFAULT_CIRCLE_BG_LIGHT);
 		progressSizeType = t.getInt(R.styleable.MaterialRefreshLayout_progress_size_type, 0);
-		if (progressSizeType == 0) {
-			progressSize = (int) (DEFAULT_PROGRESS_SIZE / density);
-		} else {
-			progressSize = BIG_PROGRESS_SIZE;
-		}
-		isLoadMore = t.getBoolean(R.styleable.MaterialRefreshLayout_isLoadMore, false);
+		SUtils.initScreenDisplayMetrics((Activity) context);
+		progressSize = SUtils.getDip((Activity) context, BIG_PROGRESS_SIZE);
+		mPullUpRefreshable = t.getBoolean(R.styleable.MaterialRefreshLayout_pullUpRefreshable, false);
 		t.recycle();
+
+		setRefreshView(new RecyclerView(context));
 	}
 
 	public void setIsHor() {
 		isHor = true;
 	}
 
+	public void setRefreshView(View view) {
+		removeAllViews();
+		mChildView = view;
+		if (mChildView.getParent() == null) {
+			addView(mChildView);
+		}
+	}
+
+	public void replaceRefreshView(View view) {
+		if (mChildView != null) {
+			removeView(mChildView);
+		}
+		mChildView = view;
+		if (mChildView.getParent() == null) {
+			addView(mChildView);
+		}
+	}
+
+	public View getRefreshView() {
+		return mChildView;
+	}
+
+	//多余的方法，为了兼容老代码
+	public RecyclerView getRefreshViewForTypeRecycleView() {
+		if (mChildView instanceof RecyclerView) {
+			return (RecyclerView) mChildView;
+		} else {
+			return null;
+		}
+	}
+
 	@Override
 	protected void onAttachedToWindow() {
 		super.onAttachedToWindow();
-		Log.i(Tag, "onAttachedToWindow");
-
-		Context context = getContext();
-
-		mChildView = getChildAt(0);
 
 		if (mChildView == null) {
-			return;
+			new IllegalArgumentException("Refresh target view is null!");
 		}
+
+		Context context = getContext();
 
 		setWaveHeight(Util.dip2px(context, waveHeight));
 		setHeaderHeight(Util.dip2px(context, headHeight));
@@ -172,18 +214,18 @@ public class MaterialRefreshLayout extends FrameLayout {
 		if (isSunStyle) {
 			mSunLayout = new SunLayout(context);
 			LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-					Util.dip2px(context, hIGHER_HEAD_HEIGHT));
+					Util.dip2px(context, HIGHER_HEAD_HEIGHT));
 			layoutParams.gravity = Gravity.TOP;
 			mSunLayout.setVisibility(View.GONE);
 			setHeaderView(mSunLayout);
 		} else {
 			mMaterialHeaderView = new MaterialHeaderView(context);
 			LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-					Util.dip2px(context, hIGHER_HEAD_HEIGHT));
+					Util.dip2px(context, HIGHER_HEAD_HEIGHT));
 			if (!isHor) {
 				layoutParams.gravity = Gravity.TOP;
 			} else {
-				layoutParams.width = Util.dip2px(context, hIGHER_HEAD_HEIGHT);
+				layoutParams.width = Util.dip2px(context, HIGHER_HEAD_HEIGHT);
 				layoutParams.gravity = Gravity.CENTER_VERTICAL;
 			}
 			mMaterialHeaderView.setLayoutParams(layoutParams);
@@ -202,11 +244,11 @@ public class MaterialRefreshLayout extends FrameLayout {
 
 		mMaterialFooterView = new MaterialFooterView(context);
 		LayoutParams layoutParams2 = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-				Util.dip2px(context, hIGHER_HEAD_HEIGHT));
+				Util.dip2px(context, HIGHER_HEAD_HEIGHT));
 		if (!isHor) {
 			layoutParams2.gravity = Gravity.BOTTOM;
 		} else {
-			layoutParams2.width = Util.dip2px(context, hIGHER_HEAD_HEIGHT);
+			layoutParams2.width = Util.dip2px(context, HIGHER_HEAD_HEIGHT);
 			layoutParams2.gravity = Gravity.CENTER_VERTICAL | Gravity.RIGHT;
 		}
 		mMaterialFooterView.setLayoutParams(layoutParams2);
@@ -221,69 +263,71 @@ public class MaterialRefreshLayout extends FrameLayout {
 		mMaterialFooterView.setProgressBg(progressBg);
 		mMaterialFooterView.setVisibility(View.GONE);
 		setFooderView(mMaterialFooterView);
+
 	}
 
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
-		if (isRefreshing)
-			return false;
+		if (isRefreshing() || !isRefreshable()) {
+			return super.onInterceptTouchEvent(ev);
+		}
 		switch (ev.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-			mTouchY = ev.getY();
-			mCurrentY = mTouchY;
-			mTouchX = ev.getX();
-			mCurrentX = mTouchX;
-			break;
-		case MotionEvent.ACTION_MOVE:
-			if (!refreshable) {
-				return false;
-			}
-			float currentY = ev.getY();
-			float dy = currentY - mTouchY;
-			float currentX = ev.getX();
-			float dx = currentX - mTouchX;
-			// 如果为竖向
-			if (!isHor) {
-				if (dy > 0 && !canChildScrollUp()) {
-					if (mMaterialHeaderView != null) {
-						mMaterialHeaderView.setVisibility(View.VISIBLE);
-						mMaterialHeaderView.onBegin(this);
-					} else if (mSunLayout != null) {
-						mSunLayout.setVisibility(View.VISIBLE);
-						mSunLayout.onBegin(this);
+			case MotionEvent.ACTION_DOWN:
+				mTouchY = ev.getY();
+				mCurrentY = mTouchY;
+				mTouchX = ev.getX();
+				mCurrentX = mTouchX;
+				break;
+			case MotionEvent.ACTION_MOVE:
+				float currentY = ev.getY();
+				float dy = currentY - mTouchY;
+				float currentX = ev.getX();
+				float dx = currentX - mTouchX;
+				// 如果为竖向
+				if (!isHor) {
+					if (dx > 30) {//防止斜滑
+						return false;
 					}
-					return true;
-				} else if (dy < 0 && !canChildScrollDown() && isLoadMore) {
-					if (mMaterialFooterView != null && !isLoadMoreing) {
-						soveLoadMoreLogic();
+					if (mPullDownRefreshable && !mPullDownRefreshing && dy > 5 && !canChildScrollUp() && !childCanScrollInParentWithUp(true)) {
+						if (mMaterialHeaderView != null) {
+							mMaterialHeaderView.setVisibility(View.VISIBLE);
+							mMaterialHeaderView.onBegin(this);
+						} else if (mSunLayout != null) {
+							mSunLayout.setVisibility(View.VISIBLE);
+							mSunLayout.onBegin(this);
+						}
+						return true;
+					} else if (mPullUpRefreshable && !mPullUpRefreshing && dy < 0 && !canChildScrollDown() && !childCanScrollInParentWithUp(false)) {
+						if (mMaterialFooterView != null) {
+							soveLoadMoreLogic();
+						}
+						return super.onInterceptTouchEvent(ev);
 					}
-					return super.onInterceptTouchEvent(ev);
+				} else {
+					if (mPullDownRefreshable && !mPullDownRefreshing && dx > 0 && !canChildScrollUp() && !childCanScrollInParentWithUp(true)) {
+						if (mMaterialHeaderView != null) {
+							mMaterialHeaderView.setVisibility(View.VISIBLE);
+							mMaterialHeaderView.onBegin(this);
+						} else if (mSunLayout != null) {
+							mSunLayout.setVisibility(View.VISIBLE);
+							mSunLayout.onBegin(this);
+						}
+						return true;
+					} else if (mPullUpRefreshable && !mPullUpRefreshing && dx < 10 && !canChildScrollDown() && !childCanScrollInParentWithUp(false)) {
+						if (mMaterialFooterView != null) {
+							soveLoadMoreLogic();
+						}
+						return super.onInterceptTouchEvent(ev);
+					}
 				}
-			} else {
-				if (dx > 0 && !canChildScrollUp()) {
-					if (mMaterialHeaderView != null) {
-						mMaterialHeaderView.setVisibility(View.VISIBLE);
-						mMaterialHeaderView.onBegin(this);
-					} else if (mSunLayout != null) {
-						mSunLayout.setVisibility(View.VISIBLE);
-						mSunLayout.onBegin(this);
-					}
-					return true;
-				} else if (dx < 10 && !canChildScrollDown() && isLoadMore) {
-					if (mMaterialFooterView != null && !isLoadMoreing) {
-						soveLoadMoreLogic();
-					}
-					return super.onInterceptTouchEvent(ev);
-				}
-			}
 
-			break;
+				break;
 		}
 		return super.onInterceptTouchEvent(ev);
 	}
 
 	private void soveLoadMoreLogic() {
-		isLoadMoreing = true;
+		mPullUpRefreshing = true;
 		mMaterialFooterView.setVisibility(View.VISIBLE);
 		mMaterialFooterView.onBegin(this);
 		mMaterialFooterView.onRefreshing(this);
@@ -292,143 +336,142 @@ public class MaterialRefreshLayout extends FrameLayout {
 		}
 	}
 
+	public void setAutoLoadmore() {
+		if (refreshListener != null && mPullUpRefreshable && !mPullUpRefreshing) {
+			mPullUpRefreshing = true;
+			refreshListener.onRefreshLoadMore(MaterialRefreshLayout.this);
+		}
+	}
+
+	public void setViewPager(CustomerViewPager viewPager) {
+		this.mViewPager = viewPager;
+	}
+
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
-		if (isRefreshing) {
+		if (isRefreshing() || !isRefreshable()) {
 			return super.onTouchEvent(e);
 		}
-
+		float dy = 0, dx = 0;
 		switch (e.getAction()) {
-		case MotionEvent.ACTION_MOVE:
-			if (!refreshable) {
-				return true;
-			}
-			mCurrentY = e.getY();
-			mCurrentX = e.getX();
-			float axis;
-			float dy = mCurrentY - mTouchY;
-			float dx = mCurrentX - mTouchX;
-			if (isHor) {
-				axis = dx;
-			} else {
-				axis = dy;
-			}
-			axis = Math.min(mWaveHeight * 2, axis);
-			axis = Math.max(0, axis);
-			if (mChildView != null) {
-				float offsetY = decelerateInterpolator.getInterpolation(axis / mWaveHeight / 2) * axis / 2;
-				float fraction = offsetY / mHeadHeight;
-				if (mMaterialHeaderView != null) {
-					if (!isHor) {
-						mMaterialHeaderView.getLayoutParams().height = (int) offsetY;
-					} else {
-						mMaterialHeaderView.getLayoutParams().width = (int) offsetY;
-					}
-
-					mMaterialHeaderView.requestLayout();
-					mMaterialHeaderView.onPull(this, fraction);
-				} else if (mSunLayout != null) {
-					mSunLayout.getLayoutParams().height = (int) offsetY;
-					mSunLayout.requestLayout();
-					mSunLayout.onPull(this, fraction);
+			case MotionEvent.ACTION_MOVE:
+				mCurrentY = e.getY();
+				mCurrentX = e.getX();
+				float axis;
+				dy = mCurrentY - mTouchY;
+				dx = mCurrentX - mTouchX;
+				if (isHor) {
+					axis = dx;
+				} else {
+					axis = dy;
 				}
-				if (!isOverlay) {
-					if (isHor) {
-						ViewCompat.setTranslationX(mChildView, offsetY);
-					} else {
-						ViewCompat.setTranslationY(mChildView, offsetY);
-					}
-
-				}
-
-			}
-			return true;
-		case MotionEvent.ACTION_CANCEL:
-		case MotionEvent.ACTION_UP:
-			if (!refreshable) {
-				return true;
-			}
-			if (mChildView != null) {
-				if (mMaterialHeaderView != null) {
-					if (isHor) {
-						if (isOverlay) {
-							if (mMaterialHeaderView.getLayoutParams().width > mHeadHeight) {
-								updateListener();
-								mMaterialHeaderView.getLayoutParams().width = (int) mHeadHeight;
-								mMaterialHeaderView.requestLayout();
-
-							} else {
-								mMaterialHeaderView.getLayoutParams().width = 0;
-								mMaterialHeaderView.requestLayout();
-							}
-
+				axis = Math.min(mWaveHeight * 2, axis);
+				axis = Math.max(0, axis);
+				if (mChildView != null) {
+					float offsetY = decelerateInterpolator.getInterpolation(axis / mWaveHeight / 2) * axis / 2;
+					float fraction = offsetY / mHeadHeight;
+					if (mMaterialHeaderView != null) {
+						if (!isHor) {
+							mMaterialHeaderView.getLayoutParams().height = (int) offsetY;
 						} else {
-							/*
-							 * if (ViewCompat.getTranslationY(mChildView) >=
-							 * mHeadHeight) {
-							 * createAnimatorTranslationY(mChildView,
-							 * mHeadHeight, mMaterialHeaderView);
-							 * updateListener(); } else {
-							 * createAnimatorTranslationY(mChildView, 0,
-							 * mMaterialHeaderView); }
-							 */
+							mMaterialHeaderView.getLayoutParams().width = (int) offsetY;
 						}
-					} else {
+
+						mMaterialHeaderView.requestLayout();
+						mMaterialHeaderView.onPull(this, fraction);
+					} else if (mSunLayout != null) {
+						mSunLayout.getLayoutParams().height = (int) offsetY;
+						mSunLayout.requestLayout();
+						mSunLayout.onPull(this, fraction);
+					}
+					if (!isOverlay) {
+						if (isHor) {
+							ViewCompat.setTranslationX(mChildView, offsetY);
+						} else {
+							// ViewCompat.setTranslationY(mChildView, offsetY);
+						}
+					}
+
+				}
+				return true;
+			case MotionEvent.ACTION_CANCEL:
+			case MotionEvent.ACTION_UP:
+				if (mChildView != null) {
+					if (mMaterialHeaderView != null) {
+						if (isHor) {
+							if (isOverlay) {
+								if (mMaterialHeaderView.getLayoutParams().width > mHeadHeight) {
+									updateListener();
+									mMaterialHeaderView.getLayoutParams().width = (int) mHeadHeight;
+									mMaterialHeaderView.requestLayout();
+
+								} else {
+									mMaterialHeaderView.getLayoutParams().width = 0;
+									mMaterialHeaderView.requestLayout();
+								}
+
+							} else {
+								/*
+								 * if (ViewCompat.getTranslationY(mChildView) >=
+								 * mHeadHeight) {
+								 * createAnimatorTranslationY(mChildView,
+								 * mHeadHeight, mMaterialHeaderView);
+								 * updateListener(); } else {
+								 * createAnimatorTranslationY(mChildView, 0,
+								 * mMaterialHeaderView); }
+								 */
+							}
+						} else {
+							if (isOverlay) {
+								if (mMaterialHeaderView.getLayoutParams().height > mHeadHeight) {
+
+									updateListener();
+
+									mMaterialHeaderView.getLayoutParams().height = (int) mHeadHeight;
+									mMaterialHeaderView.requestLayout();
+
+								} else {
+									mMaterialHeaderView.getLayoutParams().height = 0;
+									mMaterialHeaderView.requestLayout();
+								}
+							} else {
+								if (mMaterialHeaderView.getLayoutParams().height >= mHeadHeight) {
+									updateListener();
+								} else {
+									createAnimatorTranslationY(mChildView, 0, mMaterialHeaderView);
+								}
+							}
+						}
+
+					} else if (mSunLayout != null) {
 						if (isOverlay) {
-							if (mMaterialHeaderView.getLayoutParams().height > mHeadHeight) {
+							if (mSunLayout.getLayoutParams().height > mHeadHeight) {
 
 								updateListener();
 
-								mMaterialHeaderView.getLayoutParams().height = (int) mHeadHeight;
-								mMaterialHeaderView.requestLayout();
+								mSunLayout.getLayoutParams().height = (int) mHeadHeight;
+								mSunLayout.requestLayout();
 
 							} else {
-								mMaterialHeaderView.getLayoutParams().height = 0;
-								mMaterialHeaderView.requestLayout();
+								mSunLayout.getLayoutParams().height = 0;
+								mSunLayout.requestLayout();
 							}
 
 						} else {
 							if (ViewCompat.getTranslationY(mChildView) >= mHeadHeight) {
-								createAnimatorTranslationY(mChildView, mHeadHeight, mMaterialHeaderView);
+								createAnimatorTranslationY(mChildView, mHeadHeight, mSunLayout);
 								updateListener();
 							} else {
-								createAnimatorTranslationY(mChildView, 0, mMaterialHeaderView);
+								createAnimatorTranslationY(mChildView, 0, mSunLayout);
 							}
 						}
 					}
 
-				} else if (mSunLayout != null) {
-					if (isOverlay) {
-						if (mSunLayout.getLayoutParams().height > mHeadHeight) {
-
-							updateListener();
-
-							mSunLayout.getLayoutParams().height = (int) mHeadHeight;
-							mSunLayout.requestLayout();
-
-						} else {
-							mSunLayout.getLayoutParams().height = 0;
-							mSunLayout.requestLayout();
-						}
-
-					} else {
-						if (ViewCompat.getTranslationY(mChildView) >= mHeadHeight) {
-							createAnimatorTranslationY(mChildView, mHeadHeight, mSunLayout);
-							updateListener();
-						} else {
-							createAnimatorTranslationY(mChildView, 0, mSunLayout);
-						}
-					}
 				}
-
-			}
-			return true;
+				return true;
 		}
 
-		return super.
-
-		onTouchEvent(e);
-
+		return super.onTouchEvent(e);
 	}
 
 	public void resetLocation() {
@@ -447,7 +490,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 		this.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				if (!isRefreshing) {
+				if (!isRefreshing()) {
 					if (mMaterialHeaderView != null) {
 						mMaterialHeaderView.setVisibility(View.VISIBLE);
 
@@ -479,7 +522,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 		this.post(new Runnable() {
 			@Override
 			public void run() {
-				if (isLoadMore) {
+				if (mPullUpRefreshable) {
 					soveLoadMoreLogic();
 				} else {
 					// throw new RuntimeException("you must setLoadMore ture");
@@ -489,7 +532,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 	}
 
 	public void updateListener() {
-		isRefreshing = true;
+		mPullDownRefreshing = true;
 
 		if (mMaterialHeaderView != null) {
 			mMaterialHeaderView.onRefreshing(MaterialRefreshLayout.this);
@@ -503,8 +546,33 @@ public class MaterialRefreshLayout extends FrameLayout {
 
 	}
 
-	protected void setLoadMore(boolean isLoadMore) {
-		this.isLoadMore = isLoadMore;
+	public void setRefreshable(boolean able) {
+		mPullDownRefreshable = able;
+		mPullUpRefreshable = able;
+	}
+
+	public boolean isRefreshable() {
+		return mPullDownRefreshable || mPullUpRefreshable;
+	}
+
+	public boolean isRefreshing() {
+		return mPullDownRefreshing || mPullUpRefreshing;
+	}
+
+	public void setPullDownRefreshable(boolean able) {
+		this.mPullDownRefreshable = able;
+	}
+
+	public boolean isPullDownRefreshable() {
+		return mPullDownRefreshable;
+	}
+
+	public void setPullUpRefreshable(boolean able) {
+		this.mPullUpRefreshable = able;
+	}
+
+	public boolean isPullUpRefreshable() {
+		return mPullUpRefreshable;
 	}
 
 	public void setProgressColors(int[] colors) {
@@ -523,38 +591,38 @@ public class MaterialRefreshLayout extends FrameLayout {
 		this.waveColor = waveColor;
 	}
 
-    protected void setWaveShow(boolean isShowWave) {
-        this.isShowWave = isShowWave;
-    }
+	protected void setWaveShow(boolean isShowWave) {
+		this.isShowWave = isShowWave;
+	}
 
-    protected void setIsOverLay(boolean isOverLay) {
-        this.isOverlay = isOverLay;
-    }
+	public void setIsOverLay(boolean isOverLay) {
+		this.isOverlay = isOverLay;
+	}
 
 //    public void setProgressValue(int progressValue) {
 //        this.progressValue = progressValue;
 //        mMaterialHeaderView.setProgressValue(progressValue);
 //    }
 
-    public void createAnimatorTranslationY(final View v, final float h, final FrameLayout fl) {
-        ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(v);
-        viewPropertyAnimatorCompat.setDuration(250);
-        viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
-        viewPropertyAnimatorCompat.translationY(h);
-        viewPropertyAnimatorCompat.start();
-        viewPropertyAnimatorCompat.setUpdateListener(new ViewPropertyAnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(View view) {
-                float height = ViewCompat.getTranslationY(v);
-                fl.getLayoutParams().height = (int) height;
-                fl.requestLayout();
-            }
-        });
-    }
+	public void createAnimatorTranslationY(final View v, final float h, final FrameLayout fl) {
+		ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(v);
+		viewPropertyAnimatorCompat.setDuration(250);
+		viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
+		viewPropertyAnimatorCompat.translationY(h);
+		viewPropertyAnimatorCompat.start();
+		viewPropertyAnimatorCompat.setUpdateListener(new ViewPropertyAnimatorUpdateListener() {
+			@Override
+			public void onAnimationUpdate(View view) {
+				float height = ViewCompat.getTranslationY(v);
+				fl.getLayoutParams().height = (int) height;
+				fl.requestLayout();
+			}
+		});
+	}
 
 	/**
 	 * @return Whether it is possible for the child view of this layout to
-	 *         scroll up. Override this if the child view is a custom view.
+	 * scroll up. Override this if the child view is a custom view.
 	 */
 	public boolean canChildScrollUp() {
 		if (mChildView == null) {
@@ -575,7 +643,13 @@ public class MaterialRefreshLayout extends FrameLayout {
 			if (isHor) {
 				return ViewCompat.canScrollHorizontally(mChildView, -1);
 			}
-			return ViewCompat.canScrollVertically(mChildView, -1);
+			if (mChildView instanceof PtrClassicFrameLayout) {
+				View ptrChild = ((PtrClassicFrameLayout) mChildView).getChildAt(0);
+				Logs.i("---" + ViewCompat.canScrollVertically(ptrChild, -1) + ",,," + (ptrChild.getScrollY() > 0));
+				return ViewCompat.canScrollVertically(ptrChild, -1) || ptrChild.getScrollY() > 0;
+			}
+
+			return ViewCompat.canScrollVertically(mChildView, -1) || mChildView.getScrollY() > 0;
 		}
 	}
 
@@ -594,128 +668,265 @@ public class MaterialRefreshLayout extends FrameLayout {
 					return false;
 				}
 
-            } else {
-                if(isHor){
-                    return ViewCompat.canScrollHorizontally(mChildView,1)|| mChildView.getScrollX() > 0;
-                }
-                return ViewCompat.canScrollVertically(mChildView, 1) || mChildView.getScrollY() > 0;
-            }
-        } else {
-            if(isHor){
-                return ViewCompat.canScrollHorizontally(mChildView,1);
-            }
-            return ViewCompat.canScrollVertically(mChildView, 1);
-        }
-    }
+			} else {
+				if (isHor) {
+					return ViewCompat.canScrollHorizontally(mChildView, 1) || mChildView.getScrollX() > 0;
+				}
+				return ViewCompat.canScrollVertically(mChildView, 1) || mChildView.getScrollY() > 0;
+			}
+		} else {
+			if (isHor) {
+				return ViewCompat.canScrollHorizontally(mChildView, 1);
+			}
+			if (mChildView instanceof PtrClassicFrameLayout) {
+				ViewGroup ptrChild = (ViewGroup) ((PtrClassicFrameLayout) mChildView).getChildAt(0);
+				Logs.i("mChildView.getScrollY()" + ((PtrClassicFrameLayout) mChildView).getChildAt(0).getScrollY() + ",,,," + mChildView.getTranslationY());
+				Logs.i("" + ViewCompat.canScrollVertically(mChildView, 1) + ",,," + ViewCompat.canScrollVertically(ptrChild.getChildAt(0), 1));
+				return ViewCompat.canScrollVertically(mChildView, 1);
+			}
+			return ViewCompat.canScrollVertically(mChildView, 1);
+		}
+	}
+
+	/**
+	 * 可支持刷新的目标view是否可以在某个可滚动的父view里可以滚动
+	 *
+	 * @param up true为可以往下拉,false反之
+	 */
+	protected boolean childCanScrollInParentWithUp(boolean up) {
+		if (mChildView == null) {
+			return false;
+		}
+		ViewGroup parent = getScrollParentView(mChildView);
+		if (parent == null) {
+			return false;
+		} else {
+			int parentScrollY = parent.getScrollY();
+			//ViewCompat.canScrollVertically对于自定义的会失效
+			if (up) {
+				return parentScrollY > 0;
+			} else {
+				int h = 0;
+				int pc = parent.getChildCount();
+				for (int i = 0; i < pc; i++)
+					h += parent.getChildAt(i).getHeight();
+//                int childY = (int) getViewLocationInParentView(mChildView, parent).y;
+//                Logs.d("zxc", "ccc "+parentScrollY+" "+h+" "+parent.getHeight()+" "+parent.getTop()+" "+parent.getBottom());
+				return parentScrollY < h - parent.getHeight();
+			}
+		}
+	}
+
+	/**
+	 * @param view
+	 * @return 如果返回为空代表刷新的目标view和当前view之间不包含可滚动的视图
+	 */
+	private ViewGroup getScrollParentView(View view) {
+		ViewParent parent = view.getParent();
+		if (parent == this || !(parent instanceof ViewGroup))
+			return null;
+		ViewGroup viewGroup = (ViewGroup) parent;
+		if (viewGroup == null)
+			return null;
+		//如果是自定义的滚动父view，不是继承于安卓自带的可滚动View，加上（|| instanceof）判断
+		if (viewGroup.isScrollContainer() || viewGroup instanceof NestedScrollView || viewGroup instanceof ScrollableLayout) {
+			return viewGroup;
+		} else {
+			return getScrollParentView(viewGroup);
+		}
+	}
 
 	public void setWaveHigher() {
-		headHeight = hIGHER_HEAD_HEIGHT;
+		headHeight = HIGHER_HEAD_HEIGHT;
 		waveHeight = HIGHER_WAVE_HEIGHT;
-		MaterialWaveView.DefaulHeadHeight = hIGHER_HEAD_HEIGHT;
+		MaterialWaveView.DefaulHeadHeight = HIGHER_HEAD_HEIGHT;
 		MaterialWaveView.DefaulWaveHeight = HIGHER_WAVE_HEIGHT;
 	}
 
-    public void finishRefreshing() {
-        if (mChildView != null) {
-            ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(mChildView);
-            viewPropertyAnimatorCompat.setDuration(200);
-            viewPropertyAnimatorCompat.y(ViewCompat.getTranslationY(mChildView));
-            viewPropertyAnimatorCompat.translationY(0);
-            viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
-            viewPropertyAnimatorCompat.start();
+	public void finishRefreshing() {
+		if (mChildView != null) {
+			ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(mChildView);
+			viewPropertyAnimatorCompat.setDuration(200);
+			viewPropertyAnimatorCompat.y(ViewCompat.getTranslationY(mChildView));
+			viewPropertyAnimatorCompat.translationY(0);
+			viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
+			viewPropertyAnimatorCompat.start();
 
-            if (mMaterialHeaderView != null) {
-                mMaterialHeaderView.onComlete(MaterialRefreshLayout.this);
-            } else if (mSunLayout != null) {
-                mSunLayout.onComlete(MaterialRefreshLayout.this);
-            }
+			if (mMaterialHeaderView != null) {
+				mMaterialHeaderView.onComlete(MaterialRefreshLayout.this);
+			} else if (mSunLayout != null) {
+				mSunLayout.onComlete(MaterialRefreshLayout.this);
+			}
 
 			if (refreshListener != null) {
 				refreshListener.onfinish();
 			}
 		}
 		showEmptyView();
-		isRefreshing = false;
+		mPullDownRefreshing = false;
 		progressValue = 0;
 	}
 
-    public void finishRefresh() {
-        this.post(new Runnable() {
-            @Override
-            public void run() {
-                finishRefreshing();
-            }
-        });
-    }
+	public void finishPullDownRefresh() {
+		this.post(new Runnable() {
+			@Override
+			public void run() {
+				finishRefreshing();
+			}
+		});
+	}
 
-    public void finishRefreshLoadMore() {
-        this.post(new Runnable() {
-            @Override
-            public void run() {
-                if (mMaterialFooterView != null && isLoadMoreing) {
-                    isLoadMoreing = false;
-                    mMaterialFooterView.onComlete(MaterialRefreshLayout.this);
-                }
-            }
-        });
+	public void finishPullUpRefresh() {
+		this.post(new Runnable() {
+			@Override
+			public void run() {
+				if (mMaterialFooterView != null && mPullUpRefreshing) {
+					mPullUpRefreshing = false;
+					mMaterialFooterView.onComlete(MaterialRefreshLayout.this);
+				}
+			}
+		});
 
 		showEmptyView();
 	}
-	
-	private void showEmptyView(){
-		if (refreshView != null) {
-			int count = refreshView.getAdapter().getItemCount();
-			if (count == 0) {
-				if (emptyView == null) {
-					int left = 0;
-					int top = 0;
-					if (this.getParent() != null) {
-						left = ((View) this.getParent()).getLeft();
-						top = ((View) this.getParent()).getTop();
+
+	public void showEmptyView() {
+		if (!showEmptyView) {
+			return;
+		}
+		if (mChildView != null && mChildView instanceof RecyclerView) {
+			RecyclerView.Adapter adapter = ((RecyclerView) mChildView).getAdapter();
+			if (adapter != null) {
+				int count = adapter.getItemCount();
+				int addBottom = 0;
+				int headCount = 0;
+				if (adapter instanceof SRecycleMoreAdapter) {
+					SRecycleMoreAdapter sAdapter = (SRecycleMoreAdapter) adapter;
+					addBottom = 1;
+					headCount = sAdapter.getHeaderCount();
+					if (showEmptyViewDespiteHeader) {
+						if (headCount > 0)
+							addBottom += headCount;
 					}
-					emptyView = new ImageView(getContext());
-					FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(201, 268);
-					SUtils.initScreenDisplayMetrics((Activity) getContext());
-					Logs.i("xia", refreshView.getMeasuredWidth() + ",," + refreshView.getWidth() + ",,"
-							+ refreshView.getLayoutParams().width);
-					params.leftMargin = (SUtils.screenWidth - 201) / 2 - left;
-					params.topMargin = (SUtils.screenHeight - 268) / 2 - top;
-					emptyView.setLayoutParams(params);
-					emptyView.setBackgroundResource(R.drawable.emptyview);
-					this.addView(emptyView);
+
 				}
-			} else {
-				if(emptyView != null){
-					this.removeView(emptyView);
-					emptyView = null;
+				Logs.i("显示空页面" + count + ",,," + addBottom);
+				if (count == addBottom) {
+					if (emptyView == null) {
+						emptyView = LayoutInflater.from(getContext()).inflate(R.layout.view_empty, null);
+						tvHintContent = (TextView) emptyView.findViewById(R.id.tv_hint_content);
+						if (mHintContent != null) {
+							tvHintContent.setText(mHintContent);
+						}
+						ImageView ivNav = emptyView.findViewById(R.id.iv_nav);
+						SUtils.setPicResource(ivNav, R.drawable.blank_empty_img);
+						this.addView(emptyView);
+						/* 有头部View的情况下，改写EmptyView的位置 */
+						if (headCount > 0 && showEmptyViewDespiteHeader) {
+							View child = ((RecyclerView) mChildView).getChildAt(0);
+							if(child != null){
+								int headHeight = child.getHeight();
+								LayoutParams headerParam = (LayoutParams) emptyView.getLayoutParams();
+								headerParam.topMargin = headHeight;
+							}
+
+						}
+						setPullUpRefreshable(false);
+					}
+				} else {
+					if (emptyView != null) {
+						this.removeView(emptyView);
+						emptyView = null;
+					}
 				}
 			}
 		}
 	}
 
-    private void setHeaderView(final View headerView) {
-        addView(headerView);
-    }
+	public void showEmptyView(String content, String btnContent, int drawableRes,int marginTop, OnClickListener listener) {
+		if (emptyView != null) {
+			this.removeView(emptyView);
+			emptyView = null;
+		}
+		emptyView = LayoutInflater.from(getContext()).inflate(R.layout.view_empty, null);
+		TextView tvReload = emptyView.findViewById(R.id.tv_reload);
+		ImageView ivNav = emptyView.findViewById(R.id.iv_nav);
+		SUtils.setPicResource(ivNav, drawableRes);
 
-    public void setHeader(final View headerView) {
-        setHeaderView(headerView);
-    }
+		tvReload.setOnClickListener(listener);
+		if(btnContent != null){
+			tvReload.setText(btnContent);
+			tvReload.setVisibility(View.VISIBLE);
+		}
+		tvHintContent = (TextView) emptyView.findViewById(R.id.tv_hint_content);
+		tvHintContent.setText(content);
+		this.addView(emptyView);
+		FrameLayout.LayoutParams params = (LayoutParams) emptyView.getLayoutParams();
+		params.width = SUtils.screenWidth;
+		params.topMargin = marginTop;
+		setPullUpRefreshable(false);
+	}
 
-    public void setFooderView(final View fooderView) {
-        this.addView(fooderView);
-    }
+
+	public void setHintContent(int id) {
+		setHintContent(getContext().getString(id));
+	}
+
+	public void setHintContent(String str) {
+		if (tvHintContent != null)
+			tvHintContent.setText(str);
+		mHintContent = str;
+	}
+
+	/**
+	 * 隐藏空状态
+	 */
+	public void hideEmptyView() {
+		if (emptyView != null) {
+			this.removeView(emptyView);
+			emptyView = null;
+		}
+	}
+
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	}
+
+	private void setHeaderView(final View headerView) {
+		addView(headerView);
+	}
+
+	public void setHeader(final View headerView) {
+		setHeaderView(headerView);
+	}
+
+	public void setFooderView(final View fooderView) {
+		this.addView(fooderView);
+	}
 
 
-    public void setWaveHeight(float waveHeight) {
-        this.mWaveHeight = waveHeight;
-    }
+	public void setWaveHeight(float waveHeight) {
+		this.mWaveHeight = waveHeight;
+	}
 
-    public void setHeaderHeight(float headHeight) {
-        this.mHeadHeight = headHeight;
-    }
+	public void setHeaderHeight(float headHeight) {
+		this.mHeadHeight = headHeight;
+	}
 
-    public void setMaterialRefreshListener(MaterialRefreshListener refreshListener) {
-        this.refreshListener = refreshListener;
-    }
+	public void setMaterialRefreshListener(MaterialRefreshListener refreshListener) {
+		this.refreshListener = refreshListener;
+	}
 
+	public void setShowEmptyView(boolean show) {
+		showEmptyView = show;
+	}
+
+	public boolean isShowEmptyViewDespiteHeader() {
+		return showEmptyViewDespiteHeader;
+	}
+
+	public void setShowEmptyViewDespiteHeader(boolean showEmptyViewDespiteHeader) {
+		this.showEmptyViewDespiteHeader = showEmptyViewDespiteHeader;
+	}
 }

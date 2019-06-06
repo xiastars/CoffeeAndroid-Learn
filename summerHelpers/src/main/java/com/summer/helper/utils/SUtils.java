@@ -83,6 +83,12 @@ public class SUtils {
 	private static InputMethodManager inputMethodManager = null;
 	private static Toast mToast = null;
 
+	static Context context;
+
+	public static void setContext(Context c) {
+		context = c;
+	}
+
 	/**
 	 * 弹出提示
 	 * 
@@ -1355,6 +1361,16 @@ public class SUtils {
 	 */
 	public static void setPicWithHolder(ImageView view, String img, int holder) {
 		setPic(view, img, 0, holder, true);
+	}
+
+	/**
+	 * 设置本地资源图片
+	 *
+	 * @param view
+	 * @param holder
+	 */
+	public static void setPicResource(ImageView view, int holder) {
+		setPic(view, null, 0, 0, holder, false, null);
 	}
 
 	public static void setPicWithHolder(ImageView view, String img, int holder, boolean download) {

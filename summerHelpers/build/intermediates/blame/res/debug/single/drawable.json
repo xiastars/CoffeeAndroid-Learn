@@ -8,12 +8,12 @@
         "source": "D:\\SummerDemo\\summerHelpers\\src\\main\\res\\drawable\\so_grayca90.xml"
     },
     {
-        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\drawable\\abc_dialog_material_background_dark.xml"
-    },
-    {
         "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\f405f8fb1152ff08bec065c6db504e12853f9e6f\\output\\res\\drawable\\abc_dialog_material_background_dark.xml"
     },
     {
         "merged": "D:\\SummerDemo\\summerHelpers\\build\\intermediates\\res\\merged\\debug\\drawable\\buttonbackground.xml",

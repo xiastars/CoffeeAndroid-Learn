@@ -2,7 +2,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/blue_04">
-    <com.summer.demo.DragLayer
+    <com.summer.demo.anim.DragLayer
         android:id="@+id/draglyer"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"

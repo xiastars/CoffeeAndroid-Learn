@@ -1,17 +1,34 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 28
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "demo.summer.com.summerdemo"
-        minSdkVersion 11
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        renderscriptTargetApi 19
-        renderscriptSupportModeEnabled true
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "a914f21fcf0b522d915b161a", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                MTA_APPKEY   : "AL7M8ZTD8I4A",//腾讯埋点
+                MTA_CHANNEL  : "self"
+        ]
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+        multiDexEnabled = true
     }
     buildTypes {
         release {
@@ -22,7 +39,19 @@ android {
 }
 
 dependencies {
-    compile project(':summerHelpers')
-    compile 'io.reactivex:rxjava:1.0.14'
-    compile 'io.reactivex:rxandroid:1.0.1'
+    implementation project(':summerHelpers')
+    implementation 'io.reactivex:rxjava:1.0.14'
+    implementation 'io.reactivex:rxandroid:1.0.1'
+    //mta 3.4.7 稳定版
+    implementation 'com.qq.mta:mta:3.4.7-release'
+    //bug监控
+    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //微信登录
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    implementation 'com.android.support:recyclerview-v7:28.+'
+    //兼容动态权限申请
+    implementation 'com.yanzhenjie:permission:2.0.0-rc4'
+    //注解
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
 }

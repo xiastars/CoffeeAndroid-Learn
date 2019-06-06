@@ -15,6 +15,9 @@
     <color name="yellow_78">#ff7800</color>
     <color name="yellow_fd">#FD603C</color>
     <color name="yellow_d1">#D15A3F</color>
+    <color name="yellow_ff9">#FF9E75</color>
+    <color name="yellow_fff">#FFF9F6</color>
+    <color name="yellow_ffc">#FFCB47</color>
 
     <!-- 红色 -->
     <color name="red_fe">#FEA59F</color>
@@ -61,14 +64,21 @@
     <color name="grey_e5">#e5e5e5</color>
     <color name="grey_dc">#DcDcDc</color>
     <color name="grey_ca">#cacaca</color>
+    <color name="grey_f3">#F3F1F9</color>
     <color name="grey_ba">#bab6b5</color>
+    <color name="grey_d6">#D6D5DA</color>
     <color name="grey_b1">#b1b1b1</color>
     <color name="grey_9c">#9C9C9C</color>
+    <color name="grey_93">#93909E</color>
+    <color name="grey_99">#999999</color>
     <color name="grey_97">#979795</color>
     <color name="grey_82">#828282</color>
+    <color name="grey_e1">#E1E2E3</color>
     <color name="grey_73">#737272</color>
     <color name="grey_60">#606060</color>
     <color name="grey_57">#57585c</color>
+    <color name="grey_4a">#4a4a4a</color>
+    <color name="blue_56">#5630EC</color>
     <color name="grey_31">#313235</color>
 
     <!-- ===================== 紫色  ================== -->

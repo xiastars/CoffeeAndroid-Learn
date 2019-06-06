@@ -85,7 +85,7 @@
     <declare-styleable name="MaterialRefreshLayout"><attr format="boolean" name="overlay"/><attr format="enum" name="wave_height_type">
             <enum name="normal" value="0"/>
             <enum name="higher" value="1"/>
-        </attr><attr format="color" name="wave_color"/><attr format="boolean" name="wave_show"/><attr format="reference" name="progress_colors"/><attr format="dimension" name="progress_stoke_width"/><attr format="color" name="progress_backgroud_color"/><attr format="boolean" name="progress_show_arrow"/><attr format="dimension" name="progress_arrow_width"/><attr format="dimension" name="progress_arrow_height"/><attr format="boolean" name="progress_show_circle_backgroud"/><attr format="integer" name="progress_value"/><attr format="integer" name="progress_max_value"/><attr format="dimension" name="progress_text_size"/><attr format="color" name="progress_text_color"/><attr format="enum" name="progress_text_visibility">
+        </attr><attr format="color" name="wave_color"/><attr format="boolean" name="wave_show"/><attr format="reference" name="progress_colors"/><attr format="dimension" name="progress_stoke_width"/><attr format="color" name="progress_backgroud_color"/><attr format="boolean" name="progress_show_arrow"/><attr format="dimension" name="progress_arrow_width"/><attr format="dimension" name="progress_arrow_height"/><attr format="boolean" name="progress_show_circle_backgroud"/><attr format="integer" name="progress_value"/><attr format="integer" name="progress_max_value"/><attr format="dimension" name="progress_text_size"/><attr format="color" name="progress_text_color"/><attr format="boolean" name="pullUpRefreshable"/><attr format="enum" name="progress_text_visibility">
             <enum name="visible" value="0"/>
             <enum name="invisible" value="1"/>
         </attr><attr format="enum" name="progress_size_type">
@@ -113,7 +113,7 @@
     <string name="update_unzip_tv_success_tip">解析数据成功</string>
     <style name="AiTheme" parent="android:Theme">
 
-        <!-- <item name="numberPickerInputTextStyle">@style/AiWidget.EditText.NumberPickerInputText</item> -->
+        
         <item name="numberPickerStyle">@style/AiWidget.NumberPicker</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
@@ -129,7 +129,7 @@
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:clickable">false</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
-        <item name="android:textColor">#000000</item><!-- 显示日期的文字颜色 -->
+        <item name="android:textColor">#000000</item>
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="AiWidget.EditText.NumberPickerInputText">
@@ -175,7 +175,7 @@
     </style>
     <style name="Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/white</item>
-        <!-- 初始状态栏颜色 -->
+        
         <item name="colorPrimaryDark">@color/blue_01</item>
         <item name="colorAccent">@color/green_4b</item>
     </style>
