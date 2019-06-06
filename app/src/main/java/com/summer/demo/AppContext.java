@@ -8,6 +8,8 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 
+import com.summer.demo.constant.SharePreConst;
+import com.summer.demo.helper.FFMepgHelper;
 import com.summer.helper.server.EasyHttp;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.Logs;
@@ -117,13 +119,12 @@ public class AppContext extends MultiDexApplication {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         builder.detectFileUriExposure();
-        FSXQSharedPreference.init(this, "fsxq_update_sp");
 
     }
 
     public void initJPushAndShare() {
-        JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
-        JPushInterface.init(this);
+        //JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
+        //JPushInterface.init(this);
 
     }
 

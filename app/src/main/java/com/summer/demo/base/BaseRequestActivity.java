@@ -20,12 +20,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
+import com.summer.demo.base.baserx.BaseModel;
+import com.summer.demo.base.baserx.BasePresenter;
+import com.summer.demo.base.baserx.RxManager;
+import com.summer.demo.base.baserx.TUtil;
 import com.summer.demo.base.swipe.SwipeBackActivity;
+import com.summer.demo.listener.OnShareListener;
 import com.summer.demo.utils.CUtils;
 import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
+import com.summer.helper.view.review.RRelativeLayout;
 import com.summer.helper.web.ActivitysManager;
 
 import java.lang.ref.WeakReference;

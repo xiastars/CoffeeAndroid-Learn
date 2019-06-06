@@ -1,15 +1,11 @@
 
 package com.summer.demo.base.swipe;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.nufang.fsxq.ui.main.activity.MainActivity;
-
-import cn.jzvd.Jzvd;
-
-public class SwipeBackActivity extends AppCompatActivity implements SwipeBackActivityBase {
+public class SwipeBackActivity extends Activity implements SwipeBackActivityBase {
     private SwipeBackActivityHelper mHelper;
     boolean isActivityStop;
 
@@ -20,11 +16,9 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
     }
 
     private void createSwipe(){
-        if(this instanceof MainActivity == false && mHelper == null){
-            mHelper = new SwipeBackActivityHelper(this);
-            mHelper.onActivityCreate();
-            mHelper.getSwipeBackLayout().setEnableGesture(true);
-        }
+        mHelper = new SwipeBackActivityHelper(this);
+        mHelper.onActivityCreate();
+        mHelper.getSwipeBackLayout().setEnableGesture(true);
     }
 
     @Override
@@ -65,7 +59,7 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
         super.onStop();
         isActivityStop = true;
         mHelper = null;
-        Jzvd.releaseAllVideos();
+        //Jzvd.releaseAllVideos();
     }
 
     @Override
