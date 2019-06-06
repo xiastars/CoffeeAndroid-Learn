@@ -80,7 +80,7 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <com.nufang.fsxq.widget.CommonSureView5
+        <com.summer.demo.view.CommonSureView5
             android:id="@+id/btn_right"
             android:layout_width="wrap_content"
             android:minWidth="52dp"

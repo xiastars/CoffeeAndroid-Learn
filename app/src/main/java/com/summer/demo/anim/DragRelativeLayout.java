@@ -1,10 +1,10 @@
 package com.summer.demo.anim;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -23,19 +23,12 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.summer.demo.AcAnim;
-import com.summer.demo.AcMain;
 import com.summer.demo.R;
-import com.summer.helper.db.DBType;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class DragRelativeLayout extends BaseDragView implements OnClickListener {
 
@@ -43,7 +36,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
 	public static final String ACTION_NAME_TEXT = "文字类型__";
 	/* 气泡文字 */
 	public String dialogtext;
-	AcAnim mCreator = null;
+	Context mCreator = null;
 	Dialog mMoveTipDialog;
 	/* 当前角色所属类型 */
 	int mUserType = 1;
@@ -105,7 +98,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
 
 	public DragRelativeLayout(Context context) {
 		super(context);
-		mCreator = (AcAnim) context;
+		mCreator = context;
 		this.setOnClickListener(this);
 		mHandler = new MyHandler(this);
 		mLongPressHelper = new CheckLongPressHelper(this);
@@ -326,7 +319,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
 	public void circlePlay(Bitmap[] mBitmaps) {
 		this.mBitmaps = mBitmaps;
 		/* 如果退出本类，则停止 */
-		if (mCreator.isFinishing()) {
+		if (((Activity)mCreator).isFinishing()) {
 			return;
 		}
 		mCircleMode = true;

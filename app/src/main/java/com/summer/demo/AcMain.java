@@ -1,20 +1,17 @@
 package com.summer.demo;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
+import com.summer.demo.base.BaseFragmentActivity;
 import com.summer.demo.fragment.CDrawableFragment;
 import com.summer.demo.fragment.DownloadFragment;
 import com.summer.demo.fragment.DragViewFragment;
@@ -35,23 +32,13 @@ import java.util.List;
  *
  * @编者 夏起亮
  */
-public class AcMain extends FragmentActivity implements OnItemClickListener, View.OnClickListener {
+public class AcMain extends BaseFragmentActivity implements OnItemClickListener, View.OnClickListener {
     ListView titles;
     Context context;
     FragmentManager fragmentManager;
     /* 当前显示的Fragment */
     Fragment mFragment;
     Button btnConceal;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.ac_main);
-        fragmentManager = this.getSupportFragmentManager();
-        context = AcMain.this;
-        initView();
-    }
 
     private void initView() {
         titles = (ListView) findViewById(R.id.listview);
@@ -62,6 +49,38 @@ public class AcMain extends FragmentActivity implements OnItemClickListener, Vie
 
         btnConceal = (Button) findViewById(R.id.btn_conceal);
         btnConceal.setOnClickListener(this);
+    }
+
+    @Override
+    protected void loadData() {
+
+    }
+
+    @Override
+    protected void finishLoad() {
+
+    }
+
+    @Override
+    protected void dealDatas(int requestCode, Object obj) {
+
+    }
+
+    @Override
+    protected int setTitleId() {
+        return 0;
+    }
+
+    @Override
+    protected int setContentView() {
+        return R.layout.ac_main;
+    }
+
+    @Override
+    protected void initData() {
+        fragmentManager = this.getSupportFragmentManager();
+        context = AcMain.this;
+        initView();
     }
 
     /**
@@ -150,7 +169,7 @@ public class AcMain extends FragmentActivity implements OnItemClickListener, Vie
                 showFragment(new RXJavaPractice());
                 break;
             case 16:
-                JumpTo.getInstance().commonJump(context,AcAnim.class);
+                showFragment(new AcAnim());
                 break;
         }
     }
