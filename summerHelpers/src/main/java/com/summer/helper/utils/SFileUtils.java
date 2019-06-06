@@ -1,6 +1,7 @@
 package com.summer.helper.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -613,6 +614,37 @@ public class SFileUtils {
                 }
         }
         return size;
+    }
+
+    public static boolean copyAssetFile(Context context, String assetPath, String outputFile) {
+        return copyAssetFile(context.getAssets(), assetPath, outputFile);
+    }
+
+
+    /**
+     * 复制Asset文件
+     *
+     * @param assetPath
+     * @param outputFile
+     * @return
+     */
+    public static boolean copyAssetFile(AssetManager assetManager, String assetPath, String outputFile) {
+        try {
+            Logs.i("assetPath:"+assetPath);
+            InputStream is = assetManager.open(assetPath);
+            int byteRead = 0;
+            FileOutputStream fs = new FileOutputStream(outputFile);
+            byte[] buffer = new byte[1024];
+            while ((byteRead = is.read(buffer)) != -1) {
+                fs.write(buffer, 0, byteRead);
+            }
+            fs.close();
+            is.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
 

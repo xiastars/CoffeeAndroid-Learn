@@ -13,7 +13,6 @@ import com.summer.helper.utils.Logs;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class AcAnim extends BaseFragment {
         for (int i = 1; i < 100; i++) {
             try {
                 String name = (40000 + i)+"";
-                InputStream stream = context.getResources().openRawResource("kaiche"+ File.separator + name + ".png");
+                AssetFileDescriptor stream = context.getResources().op("kaiche"+ File.separator + name + ".png");
                 // byte[] data = new byte[stream.available()];
                 // stream.read(data);
                 // stream.close();
