@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.fragment.HorListFragment;
 import com.summer.demo.fragment.list.RecycleGridFragment;
 import com.summer.demo.fragment.list.RecycleListFragment;
 import com.summer.helper.utils.JumpTo;
@@ -110,7 +109,6 @@ public class AcJava extends FragmentActivity implements OnItemClickListener, Vie
                 showFragment(new RecycleGridFragment());
                 break;
             case 4:
-                showFragment(new HorListFragment());
                 break;
         }
     }

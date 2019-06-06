@@ -15,8 +15,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.nufang.nfhelper.R;
-import com.nufang.nfhelper.utils.SUtils;
+import com.malata.summer.helper.R;
+import com.summer.helper.utils.SUtils;
 
 import butterknife.ButterKnife;
 

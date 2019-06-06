@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?><!--- 有关于TextView的样式 -->
 <resources>
+    <!-- 垂直的一条线 -->
+    <style name="line_vertical">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1dp</item>
+        <item name="android:background">@color/grey_f3</item>
+    </style>
+    <!-- 平行的一条线 -->
+    <style name="line_horizontal">
+        <item name="android:layout_height">0.5dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/grey_f3</item>
+    </style>
 
     <style name="grey4a_16">
         <item name="android:textColor">@color/grey_4a</item>

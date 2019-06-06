@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.nufang.fsxq.R;
+import com.summer.demo.R;
 
 import java.util.ArrayList;
 import java.util.List;

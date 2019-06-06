@@ -4,29 +4,34 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.summer.demo.AppContext;
 import com.summer.demo.R;
 import com.summer.demo.bean.BaseResp;
+import com.summer.demo.constant.ApiConstants;
+import com.summer.demo.constant.SharePreConst;
+import com.summer.demo.utils.CodeRespondUtils;
+import com.summer.demo.utils.ServerFileUtils;
+import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.adapter.SRecycleMoreAdapter;
 import com.summer.helper.db.CommonService;
 import com.summer.helper.db.DBType;
 import com.summer.helper.recycle.MaterialRefreshLayout;
-import com.summer.helper.server.CodeRespondUtils;
 import com.summer.helper.server.EasyHttp;
+import com.summer.helper.server.PostData;
 import com.summer.helper.server.RequestCallback;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SThread;
 import com.summer.helper.utils.SUtils;
 import com.summer.helper.view.NRecycleView;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -159,13 +164,7 @@ public class BaseHelper {
         if (params == null) {
             return;
         }
-        String token = FSXQSharedPreference.getInstance().getAppToken();
-        if(TextUtils.isEmpty(token)){
-            token = "tourist";
-            MarUser.isTourist = true;
-        }else{
-            MarUser.isTourist = false;
-        }
+        String token = SUtils.getStringData(context, SharePreConst.TOKEN);
         Logs.i("token:" + token);
         url = ApiConstants.getHost(version) + url;
         long time = System.currentTimeMillis();

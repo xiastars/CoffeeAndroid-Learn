@@ -1,3 +1,4 @@
+/*
 package com.summer.demo.fragment;
 
 import android.content.Context;
@@ -13,14 +14,17 @@ import com.summer.demo.R;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.recycle.MaterialRefreshListener;
 import com.summer.helper.utils.SUtils;
+import com.summer.helper.view.NRecycleView;
 
+*/
 /**
  * 横向的ListView示例，刷新状态正在优化中
  *
  * @author xiastars@vip.qq.com
- */
+ *//*
+
 public class HorListFragment extends BaseFragment implements View.OnClickListener {
-    HRecycleView refreshView;
+    NRecycleView refreshView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -31,9 +35,8 @@ public class HorListFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void initView(View view) {
-        refreshView = (HRecycleView) view.findViewById(R.id.list);
+        refreshView = (NRecycleView) view.findViewById(R.id.list);
         //支持上拉加载，默认为不支持
-        refreshView.setLoadMore();
         refreshView.setAdapter(new SimpleImgAdapter(context));
 
         //下拉刷新与上拉加载回调
@@ -115,4 +118,4 @@ public class HorListFragment extends BaseFragment implements View.OnClickListene
         }
     }
 
-}
+}*/

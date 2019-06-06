@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.nufang.nfhelper.R;
-import com.nufang.nfhelper.recycle.MaterialRefreshLayout;
-import com.nufang.nfhelper.recycle.MaterialRefreshListener;
-import com.nufang.nfhelper.view.SRecycleView;
+import com.malata.summer.helper.R;
+import com.summer.helper.recycle.MaterialRefreshLayout;
+import com.summer.helper.recycle.MaterialRefreshListener;
+import com.summer.helper.view.SRecycleView;
 
 /**
  * 底部弹出框基本样式

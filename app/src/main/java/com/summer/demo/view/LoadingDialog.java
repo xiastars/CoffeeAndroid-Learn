@@ -3,6 +3,7 @@ package com.summer.demo.view;
 import android.app.Activity;
 import android.app.Dialog;
 
+import com.summer.demo.AppContext;
 import com.summer.demo.R;
 import com.summer.demo.helper.DialogHelper;
 

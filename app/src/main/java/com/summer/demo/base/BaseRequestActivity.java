@@ -25,10 +25,14 @@ import com.summer.demo.base.baserx.BasePresenter;
 import com.summer.demo.base.baserx.RxManager;
 import com.summer.demo.base.baserx.TUtil;
 import com.summer.demo.base.swipe.SwipeBackActivity;
+import com.summer.demo.bean.BaseResp;
+import com.summer.demo.constant.ApiConstants;
 import com.summer.demo.listener.OnShareListener;
 import com.summer.demo.utils.CUtils;
+import com.summer.demo.view.CommonSureView5;
 import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.server.SummerParameter;
+import com.summer.helper.utils.BitmapUtils;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 import com.summer.helper.view.review.RRelativeLayout;
@@ -97,14 +101,6 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
      */
     public void setBackTag(String backTag) {
         BACK_TAG = backTag;
-    }
-
-    protected <T extends View> T fv(int id) {
-        return SUtils.findView(this, id);
-    }
-
-    protected <T extends View> T fv(View v, int id) {
-        return SUtils.findView(v, id);
     }
 
     private void checkView() {

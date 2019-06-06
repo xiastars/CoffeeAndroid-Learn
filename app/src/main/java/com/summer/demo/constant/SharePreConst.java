@@ -12,4 +12,9 @@ public class SharePreConst {
      */
 
     public static final String IS_TOURIST = "IS_TOURIST";
+
+    /**
+     * 用户TOKEN
+     */
+    public static final String TOKEN = "TOKEN";
 }

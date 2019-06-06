@@ -7,7 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.nufang.fsxq.R;
+import com.summer.demo.R;
 
 
 /**

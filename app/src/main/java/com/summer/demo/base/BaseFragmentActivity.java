@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,24 +19,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.nufang.fsxq.R;
-import com.nufang.fsxq.api.ApiConstants;
-import com.nufang.fsxq.base.activity.swipe.SwipeBackActivity;
-import com.nufang.fsxq.base.activity.swipe.SwipeBackActivityBase;
-import com.nufang.fsxq.base.activity.swipe.SwipeBackActivityHelper;
-import com.nufang.fsxq.base.activity.swipe.SwipeBackLayout;
-import com.nufang.fsxq.base.activity.swipe.Utils;
-import com.nufang.fsxq.ui.main.activity.MainActivity;
-import com.nufang.fsxq.utils.NewReceiverUtils;
-import com.nufang.nfhelper.recycle.MaterialRefreshLayout;
-import com.nufang.nfhelper.server.SummerParameter;
-import com.nufang.nfhelper.utils.BitmapUtils;
-import com.nufang.nfhelper.utils.Logs;
-import com.nufang.nfhelper.utils.SUtils;
-import com.nufang.nfhelper.utils.SViewUtils;
-import com.nufang.nfhelper.view.NRecycleView;
-import com.nufang.nfhelper.view.RRelativeLayout;
-import com.nufang.nfhelper.web.ActivitysManager;
+import com.summer.demo.R;
+import com.summer.demo.base.swipe.SwipeBackActivity;
+import com.summer.demo.constant.ApiConstants;
+import com.summer.helper.recycle.MaterialRefreshLayout;
+import com.summer.helper.server.SummerParameter;
+import com.summer.helper.utils.BitmapUtils;
+import com.summer.helper.utils.Logs;
+import com.summer.helper.utils.ReceiverUtils;
+import com.summer.helper.utils.SUtils;
+import com.summer.helper.utils.SViewUtils;
+import com.summer.helper.view.NRecycleView;
+import com.summer.helper.view.review.RRelativeLayout;
+import com.summer.helper.web.ActivitysManager;
 
 import java.lang.ref.WeakReference;
 
@@ -62,7 +56,7 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
     MaterialRefreshLayout scrollView;
 
     public BaseHelper baseHelper;
-    NewReceiverUtils receiverUtils;
+    ReceiverUtils receiverUtils;
     Resources resources;
 
     boolean isEmptyViewShowing;
@@ -102,14 +96,6 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
             ButterKnife.bind(this);
             initData();
         }
-    }
-
-    protected <T extends View> T fv(int id) {
-        return SUtils.findView(this, id);
-    }
-
-    protected <T extends View> T fv(View v, int id) {
-        return SUtils.findView(v, id);
     }
 
     public void showEmptyView() {
@@ -236,9 +222,9 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
         if (receiverUtils != null) {
             receiverUtils.unRegisterReceiver();
         }
-        receiverUtils = new NewReceiverUtils(this);
+        receiverUtils = new ReceiverUtils(this);
         receiverUtils.setActionsAndRegister(action);
-        receiverUtils.setOnReceiverListener(new NewReceiverUtils.ReceiverListener() {
+        receiverUtils.setOnReceiverListener(new ReceiverUtils.ReceiverListener() {
             @Override
             public void doSomething(String action, Intent intent) {
                 if (context == null) {

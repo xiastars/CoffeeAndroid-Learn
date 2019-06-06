@@ -52,7 +52,7 @@ public class RecycleListFragment extends BaseFragment implements View.OnClickLis
                 materialRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishPullDownRefresh();
 
                     }
                 }, 3000);
@@ -69,7 +69,7 @@ public class RecycleListFragment extends BaseFragment implements View.OnClickLis
                 materialRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        materialRefreshLayout.finishRefreshLoadMore();
+                        materialRefreshLayout.finishPullUpRefresh();
 
                     }
                 }, 3000);

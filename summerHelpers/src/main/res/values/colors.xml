@@ -5,8 +5,10 @@
     <color name="transparent">#00000000</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="half_grey">#33606060</color>
     <color name="transparent_80">#80000000</color>
     <color name="black88">#88000000</color>
+    <color name="half_greye1">#66606060</color>
 
     <!-- 黄色 -->
     <color name="yellow_f8">#f8f8ec</color>
@@ -80,6 +82,7 @@
     <color name="grey_d6">#D6D5DA</color>
     <color name="grey_b1">#b1b1b1</color>
     <color name="grey_9c">#9C9C9C</color>
+    <color name="grey_95">#9592A0</color>
     <color name="grey_93">#93909E</color>
     <color name="grey_99">#999999</color>
     <color name="grey_97">#979795</color>
@@ -89,6 +92,7 @@
     <color name="grey_60">#606060</color>
     <color name="grey_57">#57585c</color>
     <color name="grey_4a">#4a4a4a</color>
+
 
     <color name="grey_31">#313235</color>
 

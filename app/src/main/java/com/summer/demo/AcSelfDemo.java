@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.fragment.HorListFragment;
 import com.summer.demo.fragment.list.RecycleGridFragment;
 import com.summer.demo.fragment.list.RecycleListFragment;
 import com.summer.demo.fragment.self.DrawableTintingFragment;
@@ -111,7 +110,6 @@ public class AcSelfDemo extends FragmentActivity implements OnItemClickListener,
                 showFragment(new RecycleGridFragment());
                 break;
             case 4:
-                showFragment(new HorListFragment());
                 break;
         }
     }

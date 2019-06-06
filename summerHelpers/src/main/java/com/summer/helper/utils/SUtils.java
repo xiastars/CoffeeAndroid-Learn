@@ -1,38 +1,11 @@
 package com.summer.helper.utils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Method;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.regex.Pattern;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.malata.summer.helper.R;
-import com.summer.helper.db.CommonService;
-import com.summer.helper.db.DBType;
-import com.summer.helper.downloader.DownloadTask;
-import com.summer.helper.downloader.DownloadTaskListener;
-import com.summer.helper.server.EasyHttp;
-import com.summer.helper.utils.SFileUtils.FileType;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -67,6 +40,34 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.malata.summer.helper.R;
+import com.summer.helper.db.CommonService;
+import com.summer.helper.db.DBType;
+import com.summer.helper.downloader.DownloadTask;
+import com.summer.helper.downloader.DownloadTaskListener;
+import com.summer.helper.server.EasyHttp;
+import com.summer.helper.utils.SFileUtils.FileType;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
+import java.util.regex.Pattern;
 
 /**
  * 工具类
@@ -455,6 +456,28 @@ public class SUtils {
 			}
 		}
 		return false;
+	}
+
+
+	public static Bitmap decodeBackgoundBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+		final Options options = new Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeResource(res, resId, options);
+		options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+		options.inJustDecodeBounds = false;
+		return BitmapFactory.decodeResource(res, resId, options);
+	}
+
+	public static int calculateInSampleSize(Options options, int reqWidth, int reqHeight) {
+		final int width = options.outWidth;
+		final int height = options.outHeight;
+		int inSampleSize = 1;
+		if (height > reqHeight || width > reqWidth) {
+			final int heightRatio = Math.round((float) height / (float) reqHeight);
+			final int widthRatio = Math.round((float) width / (float) reqWidth);
+			inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+		}
+		return inSampleSize;
 	}
 
 	/**

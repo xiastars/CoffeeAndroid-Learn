@@ -1,6 +1,6 @@
 package com.summer.demo.base;
 
-import com.nufang.nfhelper.view.ScrollableHelper;
+import com.summer.helper.view.ScrollableHelper;
 
 /**
  * Created by xiaqiliang on 2017/4/22.

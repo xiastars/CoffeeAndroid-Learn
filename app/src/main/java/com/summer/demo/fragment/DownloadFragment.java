@@ -2,7 +2,6 @@ package com.summer.demo.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +9,12 @@ import android.view.ViewGroup;
 import com.summer.demo.R;
 import com.summer.demo.adapter.DownloadAdapter;
 import com.summer.demo.bean.BookBean;
-import com.summer.demo.bean.RequestBook;
 import com.summer.demo.server.CommonDBType;
 import com.summer.helper.db.CommonService;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.recycle.MaterialRefreshListener;
-import com.summer.helper.server.EasyHttp;
-import com.summer.helper.server.RequestCallback;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.Logs;
-import com.summer.helper.utils.SUtils;
 import com.summer.helper.view.SRecycleView;
 
 import java.util.ArrayList;
@@ -111,7 +106,7 @@ public class DownloadFragment extends BaseFragment implements View.OnClickListen
     private void requestData() {
         SummerParameter params = new SummerParameter();
         params.putLog("请求下载数据");
-        EasyHttp.get(context, url, RequestBook.class, params,
+     /*   EasyHttp.get(context, url, RequestBook.class, params,
                 new RequestCallback<RequestBook>() {
 
                     @Override
@@ -138,13 +133,18 @@ public class DownloadFragment extends BaseFragment implements View.OnClickListen
                             notifyDatas(mBooks);
                         }
                         if (pageNum > 1) {
-                            mGridView.finishRefreshLoadMore();
+                            mGridView.finishPullUpRefresh();
                         } else {
-                            mGridView.finishRefresh();
+                            mGridView.finishPullDownRefresh();
                         }
                         pageNum++;
                     }
-                });
+
+                    @Override
+                    public void onError(int errorCode, String errorStr) {
+
+                    }
+                });*/
     }
 
     public void onListLoad() {

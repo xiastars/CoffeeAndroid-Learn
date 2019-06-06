@@ -10,14 +10,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.nufang.fsxq.R;
-import com.nufang.nfhelper.recycle.MaterialRefreshLayout;
-import com.nufang.nfhelper.recycle.MaterialRefreshListener;
-import com.nufang.nfhelper.recycle.NestefreshLayout;
-import com.nufang.nfhelper.utils.SUtils;
-import com.nufang.nfhelper.utils.SViewUtils;
-import com.nufang.nfhelper.view.PagerSlidingTabStrip;
-import com.nufang.nfhelper.view.ScrollableLayout;
+import com.summer.demo.R;
+import com.summer.helper.recycle.MaterialRefreshLayout;
+import com.summer.helper.recycle.MaterialRefreshListener;
+import com.summer.helper.recycle.NestefreshLayout;
+import com.summer.helper.utils.SUtils;
+import com.summer.helper.utils.SViewUtils;
+import com.summer.helper.view.PagerSlidingTabStrip;
+import com.summer.helper.view.ScrollableLayout;
 
 import butterknife.BindView;
 

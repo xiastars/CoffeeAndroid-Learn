@@ -41,7 +41,7 @@
             android:singleLine="true"
             android:text="@string/tips"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey_33"
+            android:textColor="@color/grey_4a"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -54,13 +54,13 @@
             android:ellipsize="end"
             android:gravity="center"
             android:minHeight="50dp"
-            android:textColor="@color/grey_0f"
+            android:textColor="@color/grey_60"
             android:textSize="16sp" />
 
         <View
-            style="@style/line_horizontal_d8"
+            style="@style/line_horizontal_f1"
             android:layout_alignTop="@+id/ll_bottom"
-            android:background="@color/grey_da" />
+            android:background="@color/grey_d2" />
 
         <LinearLayout
             android:id="@+id/ll_bottom"
@@ -77,12 +77,12 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/cancel"
-                android:textColor="@color/grey_c5"
+                android:textColor="@color/grey_ca"
                 android:textSize="18sp" />
 
             <View
                 style="@style/line_vertical"
-                android:background="@color/grey_da" />
+                android:background="@color/grey_d2" />
 
             <TextView
                 android:id="@+id/tips_ok_tv"

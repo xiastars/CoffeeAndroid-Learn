@@ -14,9 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.fragment.HorListFragment;
-import com.summer.demo.fragment.list.RecycleGridFragment;
-import com.summer.demo.fragment.list.RecycleListFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.web.WebContainerActivity;
 
