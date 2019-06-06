@@ -1,1 +1,1 @@
-include ':app', ':summerHelpers'
+include ':app', ':summerHelpers', ':FFmpegAndroid'
