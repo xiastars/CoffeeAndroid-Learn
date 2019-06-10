@@ -1,10 +1,8 @@
-package com.summer.demo.fragment;
+package com.summer.demo.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +10,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.summer.demo.R;
+import com.summer.demo.transformer.RotateDownPageTransformer;
 import com.summer.helper.view.CircleIndicator;
 import com.summer.helper.view.CustomerViewPager;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 广告形式的ViewPager
  * @author Administrator
  *
  */
-public class BannerFragment extends BaseFragment{
+public class AnimFragment extends BaseFragment{
 	CustomerViewPager mBannerViewPager;
 	//下面的小点
 	CircleIndicator mCircleIndicator;
@@ -66,57 +63,9 @@ public class BannerFragment extends BaseFragment{
 		Random r = new Random();
 		mCurrentItem = r.nextInt(pics.length);
 		mBannerViewPager.setCurrentItem(mCurrentItem);
-		//开始轮播
-		startPlay();
+		//这是个动画效果，有多种动画效果，查看transformer这个包
+		mBannerViewPager.setPageTransformer(true,new RotateDownPageTransformer());
 	}
-
-	/**
-	 * 开始轮播图切换
-	 */
-	private void startPlay() {
-		//如果在播放状态就先关掉
-		stopPlay();
-		scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-		//第一个参数是要执行的线程，第二个为第一次进入等待时间，第三个轮播之间的时间，第四个为计时单位
-		scheduledExecutorService.scheduleAtFixedRate(new SlideShowTask(), 1, 4, TimeUnit.SECONDS);
-	}
-
-	/**
-	 * 停止轮播图切换
-	 */
-	private void stopPlay() {
-		if (scheduledExecutorService != null) {
-			scheduledExecutorService.shutdown();
-			scheduledExecutorService = null;
-		}
-	}
-
-	/**
-	 * 执行轮播图切换任务
-	 *
-	 */
-	private class SlideShowTask implements Runnable {
-
-		@Override
-		public void run() {
-			synchronized (mBannerViewPager) {
-				if (pics != null) {
-					mCurrentItem = (mCurrentItem + 1) % pics.length;
-					handler.obtainMessage().sendToTarget();
-				}
-			}
-		}
-	}
-
-	// Handler
-	private Handler handler = new Handler() {
-
-		@Override
-		public void handleMessage(Message msg) {
-			mBannerViewPager.setCurrentItem(mCurrentItem);
-		}
-
-	};
 
 	public class AdBanner extends PagerAdapter {
 

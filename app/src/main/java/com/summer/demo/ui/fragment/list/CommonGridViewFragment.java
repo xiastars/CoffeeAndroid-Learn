@@ -1,4 +1,4 @@
-package com.summer.demo.fragment.list;
+package com.summer.demo.ui.fragment.list;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import android.widget.GridView;
 
 import com.summer.demo.R;
 import com.summer.demo.adapter.CommonListAdapter;
-import com.summer.demo.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseFragment;
 
 /**
  * 一般的GridView

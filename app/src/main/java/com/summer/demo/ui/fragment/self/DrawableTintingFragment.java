@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.summer.demo.fragment.self;
+package com.summer.demo.ui.fragment.self;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;

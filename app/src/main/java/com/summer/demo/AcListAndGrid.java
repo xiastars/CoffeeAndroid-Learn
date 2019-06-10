@@ -11,16 +11,18 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.fragment.list.CommonGridViewFragment;
-import com.summer.demo.fragment.list.CommonListFragment;
-import com.summer.demo.fragment.list.RecycleGridFragment;
-import com.summer.demo.fragment.list.RecycleListFragment;
+import com.summer.demo.ui.fragment.list.CommonGridViewFragment;
+import com.summer.demo.ui.fragment.list.CommonListFragment;
+import com.summer.demo.ui.fragment.list.RecycleGridFragment;
+import com.summer.demo.ui.fragment.list.RecycleListFragment;
+import com.summer.helper.view.NRecycleView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 
 /**
@@ -29,7 +31,9 @@ import java.util.List;
  * @author xiastars@vip.qq.com
  */
 public class AcListAndGrid extends FragmentActivity implements OnItemClickListener, View.OnClickListener {
-    private ListView titles;
+    @BindView(R.id.nv_container)
+    NRecycleView nvContainer;
+
     private Context context;
     FragmentManager fragmentManager;
     /* 当前显示的Fragment */
@@ -47,10 +51,9 @@ public class AcListAndGrid extends FragmentActivity implements OnItemClickListen
     }
 
     private void initView() {
-        titles = (ListView) findViewById(R.id.listview);
-        titles.setOnItemClickListener(this);
+        nvContainer.setList();
         CommonAdapter adapter = new CommonAdapter(context);
-        titles.setAdapter(adapter);
+        nvContainer.setAdapter(adapter);
         adapter.notifyDataChanged(getData(context));
 
         btnConceal = (Button) findViewById(R.id.btn_conceal);

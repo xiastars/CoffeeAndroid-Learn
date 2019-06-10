@@ -1,4 +1,4 @@
-package com.summer.demo.fragment.cases;
+package com.summer.demo.ui.fragment.cases;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseFragment;
 import com.summer.demo.view.CustomScrollView;
 import com.summer.helper.utils.SUtils;
 import com.summer.helper.view.NRecycleView;

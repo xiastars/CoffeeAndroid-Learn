@@ -1,81 +1,82 @@
 package com.summer.demo.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.summer.demo.R;
+import com.summer.helper.adapter.SRecycleMoreAdapter;
+import com.summer.helper.listener.OnSimpleClickListener;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * 为首页的标题设置adapter
- * @编者 夏起亮
  *
+ * @编者 xiastars
  */
-public class CommonAdapter extends BaseAdapter {
-	
-	private List<String> title;
-	private ViewHolder holder;
-	private Context context;
-	private LayoutInflater inflater ;
-	
-    public CommonAdapter(Context context) {
-		this.context = context;
-		inflater = LayoutInflater.from(context);
-	}
-    
-    public void notifyDataChanged(List<String> title){
-    	this.title = title; 
-    	notifyDataSetChanged();
-    }   
-    
-	@Override
-	public int getCount() {
-		return title != null ? title.size() : 0;
-	}
-	@Override
-	public Object getItem(int position) {
-		return title.size();
-	}
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		if(convertView == null){
-			convertView =  inflater.inflate(R.layout.item_main,null);
-			holder = getViewHolder(convertView);				
-			convertView.setTag(holder);
-		}else{
-			holder =(ViewHolder)convertView.getTag();
-		}
-	    holder.content.setText(position+1+":"+title.get(position));
-	    /*
-	     * 根据奇偶数设置不同的颜色
-	     */
-	    if(position%2 == 0){
-	    	holder.content.setBackgroundColor(context.getResources().getColor(R.color.pink));
-	    }else{
-	    	holder.content.setBackgroundColor(context.getResources().getColor(R.color.green));
-	    }
-	    
-		return convertView;
-	}
-	private ViewHolder getViewHolder(View convertView){
-		holder = new ViewHolder();
-		holder.content = (TextView) convertView.findViewById(R.id.name);
-	
-		return holder;
-		
-	}
+public class CommonAdapter extends SRecycleMoreAdapter {
 
-    class ViewHolder{
-    	private TextView content;
+    private List<String> title;
+    private ViewHolder holder;
+    private Context context;
+    private LayoutInflater inflater;
+    OnSimpleClickListener onSimpleClickListener;
+
+    public CommonAdapter(Context context) {
+        super(context);
+    }
+
+
+    public CommonAdapter(Context context,OnSimpleClickListener onSimpleClickListener) {
+        super(context);
+        this.onSimpleClickListener = onSimpleClickListener;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder setContentView(ViewGroup parent) {
+        return new ViewHolder(createHolderView(R.layout.item_main, parent));
+    }
+
+    @Override
+    public void bindContentView(RecyclerView.ViewHolder holder, final int position) {
+        ViewHolder vh = (ViewHolder) holder;
+        vh.content.setText(position + 1 + ":" + title.get(position));
+        /*
+         * 根据奇偶数设置不同的颜色
+         */
+        if (position % 2 == 0) {
+            vh.content.setBackgroundColor(context.getResources().getColor(R.color.pink));
+        } else {
+            vh.content.setBackgroundColor(context.getResources().getColor(R.color.green));
+        }
+
+        vh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onSimpleClickListener != null){
+                    onSimpleClickListener.onClick(position);
+                }
+            }
+        });
 
     }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.name)
+        TextView content;
+
+        ViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
+    }
+
 
 }

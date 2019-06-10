@@ -1,4 +1,5 @@
-package com.summer.demo.fragment.list;
+/*
+package com.summer.demo.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,38 +11,32 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.summer.demo.R;
-import com.summer.demo.fragment.BaseFragment;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.recycle.MaterialRefreshListener;
 import com.summer.helper.utils.SUtils;
-import com.summer.helper.view.SRecycleView;
+import com.summer.helper.view.NRecycleView;
 
+*/
 /**
- * 可刷新的RecyleView示例
+ * 横向的ListView示例，刷新状态正在优化中
  *
  * @author xiastars@vip.qq.com
- */
-public class RecycleListFragment extends BaseFragment implements View.OnClickListener {
-    SRecycleView refreshView;
+ *//*
+
+public class HorListFragment extends BaseFragment implements View.OnClickListener {
+    NRecycleView refreshView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_listview, null);
+        View view = inflater.inflate(R.layout.fragment_horlist, null);
         initView(view);
         return view;
     }
 
     private void initView(View view) {
-        refreshView = (SRecycleView) view.findViewById(R.id.list);
-        /* 设置setList 注意与RecycleGridFragment的区别就在这一行 */
-        refreshView.setList();
+        refreshView = (NRecycleView) view.findViewById(R.id.list);
         //支持上拉加载，默认为不支持
-        refreshView.setLoadMore();
-        //设置波浪纹，传入波浪纹的颜色，默认不显示
-        //refreshView.setWaveShow(R.color.green);
-        //加载视图是否覆盖在当前页面上
-        //refreshView.setOverLay();
         refreshView.setAdapter(new SimpleImgAdapter(context));
 
         //下拉刷新与上拉加载回调
@@ -52,7 +47,7 @@ public class RecycleListFragment extends BaseFragment implements View.OnClickLis
                 materialRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        materialRefreshLayout.finishPullDownRefresh();
+                        materialRefreshLayout.finishRefresh();
 
                     }
                 }, 3000);
@@ -69,7 +64,7 @@ public class RecycleListFragment extends BaseFragment implements View.OnClickLis
                 materialRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        materialRefreshLayout.finishPullUpRefresh();
+                        materialRefreshLayout.finishRefreshLoadMore();
 
                     }
                 }, 3000);
@@ -123,4 +118,4 @@ public class RecycleListFragment extends BaseFragment implements View.OnClickLis
         }
     }
 
-}
+}*/

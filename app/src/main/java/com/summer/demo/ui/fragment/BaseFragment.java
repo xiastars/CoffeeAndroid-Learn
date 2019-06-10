@@ -1,4 +1,4 @@
-package com.summer.demo.fragment;
+package com.summer.demo.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;

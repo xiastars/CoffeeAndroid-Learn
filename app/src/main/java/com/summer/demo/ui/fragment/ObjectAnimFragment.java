@@ -1,8 +1,13 @@
-package com.summer.demo.fragment;
+package com.summer.demo.ui.fragment;
 
 import android.view.View;
 
+import com.summer.demo.R;
 import com.summer.demo.base.BaseFragment;
+import com.summer.helper.view.NRecycleView;
+
+import butterknife.BindView;
+import butterknife.Unbinder;
 
 /**
  * @Description: 属性动画
@@ -10,6 +15,10 @@ import com.summer.demo.base.BaseFragment;
  * @CreateDate: 2019/6/10 12:10
  */
 public class ObjectAnimFragment extends BaseFragment {
+    @BindView(R.id.sv_container)
+    NRecycleView svContainer;
+    Unbinder unbinder;
+
     @Override
     protected void initView(View view) {
 
@@ -27,6 +36,7 @@ public class ObjectAnimFragment extends BaseFragment {
 
     @Override
     protected int setContentView() {
-        return 0;
+        return R.layout.view_nrecyleview;
     }
+
 }

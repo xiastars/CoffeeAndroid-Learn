@@ -324,6 +324,10 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
         }
     }
 
+    public void addView(View view){
+        flContainer.addView(view);
+    }
+
     @TargetApi(Build.VERSION_CODES.M)
     public void changeHeaderStyleTrans(int color) {
         if (rlTitle != null) {

@@ -6,24 +6,23 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
 import com.summer.demo.base.BaseFragmentActivity;
 import com.summer.demo.constant.FragmentType;
-import com.summer.demo.fragment.CDrawableFragment;
-import com.summer.demo.fragment.DownloadFragment;
-import com.summer.demo.fragment.DragViewFragment;
-import com.summer.demo.fragment.MediaPlayerFragment;
-import com.summer.demo.fragment.MyDialogFragment;
-import com.summer.demo.fragment.PictureUseFragment;
-import com.summer.demo.fragment.RXJavaPractice;
-import com.summer.demo.fragment.ToastFragment;
+import com.summer.demo.ui.fragment.CDrawableFragment;
+import com.summer.demo.ui.fragment.DownloadFragment;
+import com.summer.demo.ui.fragment.DragViewFragment;
+import com.summer.demo.ui.fragment.MediaPlayerFragment;
+import com.summer.demo.ui.fragment.MyDialogFragment;
+import com.summer.demo.ui.fragment.PictureUseFragment;
+import com.summer.demo.ui.fragment.RXJavaPractice;
+import com.summer.demo.ui.fragment.ToastFragment;
 import com.summer.demo.view.DragLayer;
+import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.JumpTo;
+import com.summer.helper.view.NRecycleView;
 import com.summer.helper.web.WebContainerActivity;
 
 import java.util.ArrayList;
@@ -36,11 +35,11 @@ import butterknife.OnClick;
 /**
  * 首页
  *
- * @编者 夏起亮
+ * @编者 xiastars
  */
-public class AcMain extends BaseFragmentActivity implements OnItemClickListener, View.OnClickListener {
-    ListView titles;
-    Context context;
+public class AcMain extends BaseFragmentActivity implements View.OnClickListener {
+    @BindView(R.id.nv_container)
+    NRecycleView nvContainer;
     @BindView(R.id.draglyer)
     DragLayer dragLayer;
     FragmentManager fragmentManager;
@@ -48,10 +47,14 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
     Fragment mFragment;
 
     private void initView() {
-        titles = (ListView) findViewById(R.id.listview);
-        titles.setOnItemClickListener(this);
-        CommonAdapter adapter = new CommonAdapter(context);
-        titles.setAdapter(adapter);
+        nvContainer.setList();
+        CommonAdapter adapter = new CommonAdapter(context, new OnSimpleClickListener() {
+            @Override
+            public void onClick(int position) {
+                clickChild(position);
+            }
+        });
+        nvContainer.setAdapter(adapter);
         adapter.notifyDataChanged(getData(context));
 
         PermissionUtils.rationRequestPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -134,8 +137,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
     /**
      * 点击每个子项跳转
      */
-    @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+    public void clickChild( int position) {
         switch (position) {
             case 0:
                 JumpTo.getInstance().commonJump(context, AcJava.class);

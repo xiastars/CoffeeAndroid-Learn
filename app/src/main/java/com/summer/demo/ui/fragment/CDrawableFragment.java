@@ -1,4 +1,4 @@
-package com.summer.demo.fragment;
+package com.summer.demo.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

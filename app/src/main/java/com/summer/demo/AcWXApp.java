@@ -1,19 +1,14 @@
 package com.summer.demo;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.summer.demo.adapter.CommonAdapter;
+import com.summer.demo.ui.BaseTitleListActivity;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.web.WebContainerActivity;
 
@@ -26,7 +21,7 @@ import java.util.List;
  *
  * @author xiastars@vip.qq.com
  */
-public class AcWXApp extends FragmentActivity implements OnItemClickListener, View.OnClickListener {
+public class AcWXApp extends BaseTitleListActivity implements View.OnClickListener {
     private ListView titles;
     private Context context;
     FragmentManager fragmentManager;
@@ -35,24 +30,35 @@ public class AcWXApp extends FragmentActivity implements OnItemClickListener, Vi
     Button btnConceal;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.ac_main);
+    protected void initData() {
+        super.initData();
         fragmentManager = this.getSupportFragmentManager();
-        context = AcWXApp.this;
-        initView();
     }
 
-    private void initView() {
-        titles = (ListView) findViewById(R.id.listview);
-        titles.setOnItemClickListener(this);
-        CommonAdapter adapter = new CommonAdapter(context);
-        titles.setAdapter(adapter);
-        adapter.notifyDataChanged(getData(context));
+    @Override
+    protected List<String> setData() {
+        return getData(context);
+    }
 
-        btnConceal = (Button) findViewById(R.id.btn_conceal);
-        btnConceal.setOnClickListener(this);
+    @Override
+    protected void clickChild(int pos) {
+        switch (pos) {
+            case 0:
+                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%B8%80%E8%8A%82-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B.html");
+                break;
+            case 1:
+                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%BA%8C%E8%8A%82-d.html");
+                break;
+            case 2:
+                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%B8%89%E8%8A%82-%E5%88%9B%E5%BB%BAjs%E6%96%87%E4%BB%B6.html");
+                break;
+            case 3:
+                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%B8%89%E8%8A%82-%E4%BA%86%E8%A7%A3view%E5%B1%82.html");
+                break;
+            case 4:
+                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%BA%94%E8%8A%82-css%E5%9F%BA%E7%A1%80.html");
+                break;
+        }
     }
 
     /**
@@ -87,29 +93,6 @@ public class AcWXApp extends FragmentActivity implements OnItemClickListener, Vi
         return title;
     }
 
-    /**
-     * 点击每个子项跳转
-     */
-    @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-        switch (position) {
-            case 0:
-                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%B8%80%E8%8A%82-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B.html");
-                break;
-            case 1:
-                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%BA%8C%E8%8A%82-d.html");
-                break;
-            case 2:
-                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%B8%89%E8%8A%82-%E5%88%9B%E5%BB%BAjs%E6%96%87%E4%BB%B6.html");
-                break;
-            case 3:
-                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%B8%89%E8%8A%82-%E4%BA%86%E8%A7%A3view%E5%B1%82.html");
-                break;
-            case 4:
-                jump("https://xiastars.gitbooks.io/wxapp/content/%E7%AC%AC%E4%BA%94%E8%8A%82-css%E5%9F%BA%E7%A1%80.html");
-                break;
-        }
-    }
 
     private void jump(String url){
         JumpTo.getInstance().commonJump(context, WebContainerActivity.class,url);
@@ -152,5 +135,6 @@ public class AcWXApp extends FragmentActivity implements OnItemClickListener, Vi
                 break;
         }
     }
+
 
 }

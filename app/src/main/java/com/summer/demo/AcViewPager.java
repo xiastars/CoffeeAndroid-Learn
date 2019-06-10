@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.summer.demo.fragment.AnimFragment;
-import com.summer.demo.fragment.BannerFragment;
-import com.summer.demo.fragment.MediaPlayerFragment;
+import com.summer.demo.ui.fragment.AnimFragment;
+import com.summer.demo.ui.fragment.BannerFragment;
+import com.summer.demo.ui.fragment.MediaPlayerFragment;
 import com.summer.helper.view.CustomerViewPager;
 import com.summer.helper.view.PagerSlidingTabStrip;
 

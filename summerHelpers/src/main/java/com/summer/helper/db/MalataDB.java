@@ -34,7 +34,7 @@ public class MalataDB extends SQLiteOpenHelper {
 		
 		/** 公用数据库 */
 		String commonDatabase = "create table commonDatabase(id integer primary key autoincrement,"
-				+ "cacheData blob,"
+				+ "cacheData mediumblob,"
 				+ "type integer,"
 				+ "count integer,"
 				+ "key text,"

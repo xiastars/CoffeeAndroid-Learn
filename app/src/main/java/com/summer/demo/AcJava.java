@@ -1,21 +1,17 @@
 package com.summer.demo;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.fragment.list.RecycleGridFragment;
-import com.summer.demo.fragment.list.RecycleListFragment;
+import com.summer.demo.ui.BaseTitleListActivity;
+import com.summer.demo.ui.MarkDownActivity;
+import com.summer.demo.ui.fragment.list.RecycleGridFragment;
+import com.summer.demo.ui.fragment.list.RecycleListFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.web.WebContainerActivity;
 
@@ -28,7 +24,7 @@ import java.util.List;
  *
  * @author xiastars@vip.qq.com
  */
-public class AcJava extends FragmentActivity implements OnItemClickListener, View.OnClickListener {
+public class AcJava extends BaseTitleListActivity implements View.OnClickListener {
     private ListView titles;
     private Context context;
     FragmentManager fragmentManager;
@@ -37,25 +33,38 @@ public class AcJava extends FragmentActivity implements OnItemClickListener, Vie
     Button btnConceal;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.ac_main);
+    protected void initData() {
+        super.initData();
         fragmentManager = this.getSupportFragmentManager();
-        context = AcJava.this;
-        initView();
     }
 
-    private void initView() {
-        titles = (ListView) findViewById(R.id.listview);
-        titles.setOnItemClickListener(this);
-        CommonAdapter adapter = new CommonAdapter(context);
-        titles.setAdapter(adapter);
-        adapter.notifyDataChanged(getData(context));
-
-        btnConceal = (Button) findViewById(R.id.btn_conceal);
-        btnConceal.setOnClickListener(this);
+    @Override
+    protected List<String> setData() {
+        return getData(context);
     }
+
+    @Override
+    protected void clickChild(int pos) {
+        switch (pos) {
+            case 0:
+                JumpTo.getInstance().commonJump(context, MarkDownActivity.class);
+                //jump("https://github.com/xiastars/CoffeeAndroid-Learn/blob/master/document/java/1.%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1.md");
+                break;
+            case 1:
+                jump("https://xiastars.gitbooks.io/java/content/20-%E5%AD%90%E7%B1%BB%E4%B8%8E%E7%88%B6%E7%B1%BB.html");
+                break;
+            case 2:
+                jump("https://java.quanke.name/");
+                showFragment(new RecycleListFragment());
+                break;
+            case 3:
+                showFragment(new RecycleGridFragment());
+                break;
+            case 4:
+                break;
+        }
+    }
+
 
     /**
      * 监听系统的返回键，当处于Fragment时，点击返回，则回到主界面
@@ -87,30 +96,6 @@ public class AcJava extends FragmentActivity implements OnItemClickListener, Vie
             title.add(ti);
         }
         return title;
-    }
-
-    /**
-     * 点击每个子项跳转
-     */
-    @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-        switch (position) {
-            case 0:
-                jump("https://github.com/xiastars/CoffeeAndroid-Learn/blob/master/document/java/1.%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1.md");
-                break;
-            case 1:
-                jump("https://xiastars.gitbooks.io/java/content/20-%E5%AD%90%E7%B1%BB%E4%B8%8E%E7%88%B6%E7%B1%BB.html");
-                break;
-            case 2:
-                jump("https://java.quanke.name/");
-                showFragment(new RecycleListFragment());
-                break;
-            case 3:
-                showFragment(new RecycleGridFragment());
-                break;
-            case 4:
-                break;
-        }
     }
 
     private void jump(String url){

@@ -1,4 +1,4 @@
-package com.summer.demo.fragment.list;
+package com.summer.demo.ui.fragment.list;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.summer.demo.R;
-import com.summer.demo.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseFragment;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.recycle.MaterialRefreshListener;
 import com.summer.helper.utils.SUtils;

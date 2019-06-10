@@ -1,4 +1,4 @@
-package com.summer.demo.fragment.cases;
+package com.summer.demo.ui.fragment.cases;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

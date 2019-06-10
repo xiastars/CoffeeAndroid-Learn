@@ -1,20 +1,10 @@
-package com.summer.demo.fragment;
+package com.summer.demo.ui.fragment;
 
-
-import android.graphics.Bitmap;
 
 import com.summer.demo.R;
 import com.summer.demo.view.DragLayer;
-import com.summer.demo.view.DragView;
-import com.summer.helper.utils.SUtils;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 
 import rx.Subscriber;
-import rx.functions.Func1;
 /**     #                                                   #
          * #                       _oo0oo_                     #
          * #                      o8888888o                    #
@@ -77,6 +67,7 @@ public class RXJavaPractice extends BaseFragment {
             }
         };
         observable.subscribe(mySubscribe);
+
 
 
     }

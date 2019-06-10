@@ -30,7 +30,7 @@
         </activity>
         <activity android:name=".AcListAndGrid"></activity>
         <activity android:name=".AcViewPager"></activity>
-        <activity android:name=".FrameAnimFragment"></activity>
+        <activity android:name=".ui.MarkDownActivity" />
         <activity android:name=".AcJava" />
         <activity android:name=".AcSelfDemo" />
         <!--screenOrientation 设置为横屏 -->

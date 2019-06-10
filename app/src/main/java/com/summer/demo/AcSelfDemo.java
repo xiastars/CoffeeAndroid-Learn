@@ -1,22 +1,15 @@
 package com.summer.demo;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ListView;
 
-import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.fragment.list.RecycleGridFragment;
-import com.summer.demo.fragment.list.RecycleListFragment;
-import com.summer.demo.fragment.self.DrawableTintingFragment;
+import com.summer.demo.ui.BaseTitleListActivity;
+import com.summer.demo.ui.fragment.list.RecycleGridFragment;
+import com.summer.demo.ui.fragment.list.RecycleListFragment;
+import com.summer.demo.ui.fragment.self.DrawableTintingFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.web.WebContainerActivity;
 
@@ -29,33 +22,41 @@ import java.util.List;
  *
  * @author xiastars@vip.qq.com
  */
-public class AcSelfDemo extends FragmentActivity implements OnItemClickListener, View.OnClickListener {
-    private ListView titles;
-    private Context context;
+public class AcSelfDemo extends BaseTitleListActivity {
     FragmentManager fragmentManager;
     /* 当前显示的Fragment */
     Fragment mFragment;
-    Button btnConceal;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.ac_main);
+    protected void initData() {
+        super.initData();
         fragmentManager = this.getSupportFragmentManager();
-        context = AcSelfDemo.this;
-        initView();
     }
 
-    private void initView() {
-        titles = (ListView) findViewById(R.id.listview);
-        titles.setOnItemClickListener(this);
-        CommonAdapter adapter = new CommonAdapter(context);
-        titles.setAdapter(adapter);
-        adapter.notifyDataChanged(getData(context));
+    @Override
+    protected List<String> setData() {
+        return getData(context);
+    }
 
-        btnConceal = (Button) findViewById(R.id.btn_conceal);
-        btnConceal.setOnClickListener(this);
+    @Override
+    protected void clickChild(int pos) {
+        switch (pos) {
+            case 0:
+                showFragment(new DrawableTintingFragment());
+                break;
+            case 1:
+                jump("https://xiastars.gitbooks.io/java/content/20-%E5%AD%90%E7%B1%BB%E4%B8%8E%E7%88%B6%E7%B1%BB.html");
+                break;
+            case 2:
+                jump("https://java.quanke.name/");
+                showFragment(new RecycleListFragment());
+                break;
+            case 3:
+                showFragment(new RecycleGridFragment());
+                break;
+            case 4:
+                break;
+        }
     }
 
     /**
@@ -90,29 +91,6 @@ public class AcSelfDemo extends FragmentActivity implements OnItemClickListener,
         return title;
     }
 
-    /**
-     * 点击每个子项跳转
-     */
-    @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-        switch (position) {
-            case 0:
-                showFragment(new DrawableTintingFragment());
-                break;
-            case 1:
-                jump("https://xiastars.gitbooks.io/java/content/20-%E5%AD%90%E7%B1%BB%E4%B8%8E%E7%88%B6%E7%B1%BB.html");
-                break;
-            case 2:
-                jump("https://java.quanke.name/");
-                showFragment(new RecycleListFragment());
-                break;
-            case 3:
-                showFragment(new RecycleGridFragment());
-                break;
-            case 4:
-                break;
-        }
-    }
 
     private void jump(String url){
         JumpTo.getInstance().commonJump(context, WebContainerActivity.class,url);
@@ -132,7 +110,6 @@ public class AcSelfDemo extends FragmentActivity implements OnItemClickListener,
     private void beginTransation(Fragment fragment) {
         mFragment = fragment;
         findViewById(R.id.ll_container).setVisibility(View.VISIBLE);
-        btnConceal.setVisibility(View.VISIBLE);
         fragmentManager.beginTransaction().add(R.id.ll_container, fragment).commit();
     }
 
@@ -146,14 +123,5 @@ public class AcSelfDemo extends FragmentActivity implements OnItemClickListener,
         fragmentManager.beginTransaction().replace(R.id.ll_container, fragment).commit();
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_conceal:
-                removeFragment();
-                btnConceal.setVisibility(View.GONE);
-                break;
-        }
-    }
 
 }

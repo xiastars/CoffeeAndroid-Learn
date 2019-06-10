@@ -1,4 +1,4 @@
-package com.summer.demo.fragment;
+package com.summer.demo.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

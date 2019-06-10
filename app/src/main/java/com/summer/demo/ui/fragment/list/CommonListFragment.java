@@ -1,4 +1,4 @@
-package com.summer.demo.fragment.list;
+package com.summer.demo.ui.fragment.list;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import com.summer.demo.R;
 import com.summer.demo.adapter.CommonListAdapter;
-import com.summer.demo.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseFragment;
 
 /**
  * 一般的ListView
@@ -28,7 +28,6 @@ public class CommonListFragment extends BaseFragment implements View.OnClickList
     }
 
     private void initView(View view) {
-        refreshView = (ListView)view.findViewById(R.id.listview);
         //设置Adapter，List相当于一个楼梯的空间，告诉别人，这里是一个楼梯，而Adapter是具体的一层层的阶梯，第一阶被称为item
         refreshView.setAdapter(new CommonListAdapter(getActivity()));
     }
