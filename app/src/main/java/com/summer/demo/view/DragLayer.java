@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 import com.summer.helper.utils.Logs;
+import com.summer.helper.utils.SUtils;
 
 /**
  * 画布，所有的人物都在这个画布中
@@ -122,7 +123,7 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
         mBackgroundView.setClickable(false);
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         mBackgroundView.setLayoutParams(params);
-        mBackgroundView.setScaleType(ScaleType.FIT_XY);
+        mBackgroundView.setScaleType(ScaleType.CENTER_CROP);
     }
 
     @Override
@@ -197,6 +198,7 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
                 }, 200);
                 if (curTime - mDownTime > 500) {
                     hanleActionUP(x, y);
+                    Logs.i("come to here:"+mDragItem);
                     if (mDragItem != null) {
                         if(mDragItem.getOnLongClickListener() != null){
                             mDragItem.getOnLongClickListener().longClick();
@@ -204,7 +206,9 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
                     }
                 } else {
                     if (Math.abs(x - mMotionDownX) < 5 && Math.abs(y - mMotionDownY) < 5) {
+
                         setOnEditMode(true);
+                        Logs.i("come to here:"+mClickIndex+",,,"+mDragItem.getOnDoubleClickListener());
                         if (mDragItem != null) {
                             if(mClickIndex > 1){
                                 mClickIndex = 0;
@@ -377,6 +381,17 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
     public void setBackgroundResource(int resid) {
         if (mBackgroundView != null) {
             mBackgroundView.setBackgroundResource(resid);
+        }
+    }
+
+    /**
+     * 设置网络图片
+     * @param img
+     */
+    public void setmBackgroundImg(String img){
+
+        if (mBackgroundView != null) {
+            SUtils.setPic(mBackgroundView,img);
         }
     }
 

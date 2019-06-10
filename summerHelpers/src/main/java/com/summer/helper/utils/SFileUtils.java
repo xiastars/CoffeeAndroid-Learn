@@ -1,7 +1,6 @@
 package com.summer.helper.utils;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,7 +21,7 @@ public class SFileUtils {
     /**
      * 初始文件夹名称
      */
-    public static String DIR_NAME = "";
+    public static String DIR_NAME = "SummerDemo";
 
     /**
      * 根目录
@@ -62,7 +61,7 @@ public class SFileUtils {
     /**
      * 图书目录
      */
-    public static String ROOT_FILE = SOURCE_PATH + ".file/";
+    public static String ROOT_FILE = SOURCE_PATH + "file/";
 
     /**
      * 预览图根目录
@@ -327,7 +326,6 @@ public class SFileUtils {
         InputStream is;
         try {
             is = context.getAssets().open(fileNameFromAssets);
-            // copy ffmpeg file from assets to files dir
             final FileOutputStream os = new FileOutputStream(new File(outputFileName));
             byte[] buffer = new byte[1024 * 4];
 
@@ -616,35 +614,5 @@ public class SFileUtils {
         return size;
     }
 
-    public static boolean copyAssetFile(Context context, String assetPath, String outputFile) {
-        return copyAssetFile(context.getAssets(), assetPath, outputFile);
-    }
-
-
-    /**
-     * 复制Asset文件
-     *
-     * @param assetPath
-     * @param outputFile
-     * @return
-     */
-    public static boolean copyAssetFile(AssetManager assetManager, String assetPath, String outputFile) {
-        try {
-            Logs.i("assetPath:"+assetPath);
-            InputStream is = assetManager.open(assetPath);
-            int byteRead = 0;
-            FileOutputStream fs = new FileOutputStream(outputFile);
-            byte[] buffer = new byte[1024];
-            while ((byteRead = is.read(buffer)) != -1) {
-                fs.write(buffer, 0, byteRead);
-            }
-            fs.close();
-            is.close();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 }
 

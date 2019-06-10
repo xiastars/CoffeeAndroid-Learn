@@ -18,6 +18,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.Handler;
@@ -97,20 +98,23 @@ public class SUtils {
 	 * @param id
 	 */
 	public static void makeToast(Context context, int id) {
-		View view = null;
-		if (mToast == null) {
-			mToast = new Toast(context);
-			LayoutInflater inflater = LayoutInflater.from(context);
-			view = inflater.inflate(R.layout.layout_commont_toast, null);
+		if (VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+			View view = null;
+			if (mToast == null) {
+				mToast = new Toast(context.getApplicationContext());
+				LayoutInflater inflater = LayoutInflater.from(context);
+				view = inflater.inflate(R.layout.layout_commont_toast, null);
+			} else {
+				view = mToast.getView();
+			}
+			TextView textview = (TextView) view.findViewById(R.id.textview_hint);
+			textview.setText(context.getResources().getString(id));
+			mToast.setDuration(Toast.LENGTH_SHORT);
+			mToast.setView(view);
+			mToast.show();
 		} else {
-			view = mToast.getView();
+			Toast.makeText(context, context.getResources().getString(id), Toast.LENGTH_SHORT).show();
 		}
-		TextView textview = (TextView) view.findViewById(R.id.textview_hint);
-		textview.setTextColor(context.getResources().getColor(R.color.green_6f));
-		textview.setText(context.getString(id));
-		mToast.setDuration(Toast.LENGTH_SHORT);
-		mToast.setView(view);
-		mToast.show();
 	}
 
 	/**
@@ -120,20 +124,23 @@ public class SUtils {
 	 * @param text
 	 */
 	public static void makeToast(Context context, String text) {
-		View view = null;
-		if (mToast == null) {
-			mToast = new Toast(context);
-			LayoutInflater inflater = LayoutInflater.from(context);
-			view = inflater.inflate(R.layout.layout_commont_toast, null);
+		if (VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+			View view = null;
+			if (mToast == null) {
+				mToast = new Toast(context.getApplicationContext());
+				LayoutInflater inflater = LayoutInflater.from(context);
+				view = inflater.inflate(R.layout.layout_commont_toast, null);
+			} else {
+				view = mToast.getView();
+			}
+			TextView textview = (TextView) view.findViewById(R.id.textview_hint);
+			textview.setText(text);
+			mToast.setDuration(Toast.LENGTH_SHORT);
+			mToast.setView(view);
+			mToast.show();
 		} else {
-			view = mToast.getView();
+			Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 		}
-		TextView textview = (TextView) view.findViewById(R.id.textview_hint);
-		textview.setTextColor(context.getResources().getColor(R.color.green_6f));
-		textview.setText(text);
-		mToast.setDuration(Toast.LENGTH_SHORT);
-		mToast.setView(view);
-		mToast.show();
 	}
 
 	/**

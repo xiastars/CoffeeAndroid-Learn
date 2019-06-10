@@ -35,7 +35,7 @@ public class AppContext extends MultiDexApplication {
      * 切换服务器
      */
     public static int SERVER_MODE = 2;//0.是开发，1是测试，2是正式，3是预发布
-    public static final boolean DEBUGMODE = false;
+    public static final boolean DEBUGMODE = true;
     public static final String DEFAULT_TOKEN = "";//444392d5387d9415a5d8e7370b96645f
     public static final String WEIXIN_ID = "";//微信KEY
     public static final String TEXT_TIME = "2018.11.12 - 15：12";
@@ -116,6 +116,7 @@ public class AppContext extends MultiDexApplication {
 
 
     private void initApp() {
+        SFileUtils.DIR_NAME = "SummerDemo";
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         builder.detectFileUriExposure();

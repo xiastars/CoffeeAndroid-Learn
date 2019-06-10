@@ -1,5 +1,6 @@
 package com.summer.demo;
 
+import android.Manifest;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
 import com.summer.demo.base.BaseFragmentActivity;
+import com.summer.demo.constant.FragmentType;
 import com.summer.demo.fragment.CDrawableFragment;
 import com.summer.demo.fragment.DownloadFragment;
 import com.summer.demo.fragment.DragViewFragment;
@@ -20,11 +22,14 @@ import com.summer.demo.fragment.MyDialogFragment;
 import com.summer.demo.fragment.PictureUseFragment;
 import com.summer.demo.fragment.RXJavaPractice;
 import com.summer.demo.fragment.ToastFragment;
+import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.web.WebContainerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.OnClick;
 
 
 /**
@@ -49,6 +54,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
 
         btnConceal = (Button) findViewById(R.id.btn_conceal);
         btnConceal.setOnClickListener(this);
+        PermissionUtils.rationRequestPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override
@@ -68,7 +74,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
 
     @Override
     protected int setTitleId() {
-        return 0;
+        return R.string.app_name;
     }
 
     @Override
@@ -81,6 +87,15 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
         fragmentManager = this.getSupportFragmentManager();
         context = AcMain.this;
         initView();
+    }
+
+    @Override
+    protected void onBackClick() {
+        if (mFragment != null) {
+            removeFragment();
+        } else {
+            finish();
+        }
     }
 
     /**
@@ -120,8 +135,8 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
     public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
         switch (position) {
             case 0:
-                JumpTo.getInstance().commonJump(context,AcJava.class);
-               // JumpTo.getInstance().commonJump(context, WebContainerActivity.class, "https://java.quanke.name/");
+                JumpTo.getInstance().commonJump(context, AcJava.class);
+                // JumpTo.getInstance().commonJump(context, WebContainerActivity.class, "https://java.quanke.name/");
                 break;
             case 1:
                 JumpTo.getInstance().commonJump(context, AcCases.class);
@@ -160,16 +175,18 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
                 showFragment(new DownloadFragment());
                 break;
             case 13:
-                JumpTo.getInstance().commonJump(context,AcWXApp.class);
+                JumpTo.getInstance().commonJump(context, AcWXApp.class);
                 break;
-            case 14:
+            case FragmentType.DRAG_VIEW:
+                setTitleString("DragView演示");
                 showFragment(new DragViewFragment());
                 break;
             case 15:
                 showFragment(new RXJavaPractice());
                 break;
-            case 16:
-                showFragment(new AcAnim());
+            case FragmentType.FRAME_ANIM:
+                setTitleString("帧动画演示");
+                showFragment(new FrameAnimFragment());
                 break;
         }
     }
@@ -202,6 +219,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
         fragmentManager.beginTransaction().replace(R.id.ll_container, fragment).commit();
     }
 
+    @OnClick({R.id.ll_container})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -211,5 +229,6 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
                 break;
         }
     }
+
 
 }

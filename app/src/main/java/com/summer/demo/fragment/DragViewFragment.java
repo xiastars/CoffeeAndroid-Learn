@@ -1,11 +1,10 @@
 package com.summer.demo.fragment;
 
 
-import android.view.GestureDetector;
-
 import com.summer.demo.R;
 import com.summer.demo.view.DragLayer;
 import com.summer.demo.view.DragView;
+import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 
 
@@ -20,10 +19,10 @@ public class DragViewFragment extends BaseFragment {
         dragLayer = new DragLayer(context);
         llParent.addView(dragLayer);
         dragLayer.addBackgroundView();
-        dragLayer.setBackgroundResource(R.drawable.background1);
+        dragLayer.setmBackgroundImg("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560148003785&di=964660715cfbc2f53f9042a023a35c40&imgtype=0&src=http%3A%2F%2Fimg0.sc115.com%2Fuploads%2Fallimg%2F101119%2F20101119143144255.jpg");
         creageBig();
         for(int i = 0;i < 10;i++){
-            createLittle();
+            createLittle(i);
         }
 
     }
@@ -34,10 +33,10 @@ public class DragViewFragment extends BaseFragment {
         dragLayer.removeAllViews();
     }
 
-    private void createLittle() {
+    private void createLittle(int i) {
         DragView controlLayout = new DragView(context);
-        controlLayout.setLayoutPosition(500,300,100,100);
-        controlLayout.setDefalultIcon(R.drawable.so_grayca90);
+        controlLayout.setLayoutPosition(500,300+i*30,100,100);
+        controlLayout.setDefalultIcon(R.drawable.so_redf8_oval);
         dragLayer.addView(controlLayout);
         controlLayout.setOnSingleClickListener(new DragView.SingleClickListener() {
             @Override
@@ -48,6 +47,7 @@ public class DragViewFragment extends BaseFragment {
         controlLayout.setOnDoubleClickListener(new DragView.DoubleClickListener() {
             @Override
             public void onDClick() {
+                Logs.i("onDClick:");
                 SUtils.makeToast(context,"double click");
             }
         });
@@ -62,7 +62,7 @@ public class DragViewFragment extends BaseFragment {
     private void creageBig(){
         DragView controlLayout = new DragView(context);
         controlLayout.setLayoutPosition(200,300,300,300);
-        controlLayout.setDefalultIcon(R.drawable.xiehou04);
+        controlLayout.setDefalultIcon(R.drawable.drag);
         dragLayer.addView(controlLayout);
     }
 

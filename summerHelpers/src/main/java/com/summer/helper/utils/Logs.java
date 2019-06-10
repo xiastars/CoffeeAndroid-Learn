@@ -84,4 +84,15 @@ public class Logs {
 				+ stackTrace.getMethodName();
 		Log.i("creator", fileInfo + ": " + msg);
 	}
+
+	public static void t(long time) {
+		if (!isDebug)
+			return;
+		StackTraceElement stackTrace = Thread.currentThread()
+				.getStackTrace()[3];
+		String fileInfo = "at " + stackTrace.getFileName() + "("
+				+ stackTrace.getLineNumber() + ") "
+				+ stackTrace.getMethodName();
+		Log.i("跟踪时间", fileInfo + ": " + (System.currentTimeMillis() - time));
+	}
 }
