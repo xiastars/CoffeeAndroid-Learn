@@ -8,7 +8,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.summer.demo.adapter.CommonAdapter;
@@ -22,6 +21,7 @@ import com.summer.demo.fragment.MyDialogFragment;
 import com.summer.demo.fragment.PictureUseFragment;
 import com.summer.demo.fragment.RXJavaPractice;
 import com.summer.demo.fragment.ToastFragment;
+import com.summer.demo.view.DragLayer;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.web.WebContainerActivity;
@@ -29,6 +29,7 @@ import com.summer.helper.web.WebContainerActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 
@@ -40,10 +41,11 @@ import butterknife.OnClick;
 public class AcMain extends BaseFragmentActivity implements OnItemClickListener, View.OnClickListener {
     ListView titles;
     Context context;
+    @BindView(R.id.draglyer)
+    DragLayer dragLayer;
     FragmentManager fragmentManager;
     /* 当前显示的Fragment */
     Fragment mFragment;
-    Button btnConceal;
 
     private void initView() {
         titles = (ListView) findViewById(R.id.listview);
@@ -52,10 +54,9 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
         titles.setAdapter(adapter);
         adapter.notifyDataChanged(getData(context));
 
-        btnConceal = (Button) findViewById(R.id.btn_conceal);
-        btnConceal.setOnClickListener(this);
         PermissionUtils.rationRequestPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
+
 
     @Override
     protected void loadData() {
@@ -93,6 +94,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
     protected void onBackClick() {
         if (mFragment != null) {
             removeFragment();
+            setTitleId();
         } else {
             finish();
         }
@@ -110,6 +112,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (mFragment != null) {
                 removeFragment();
+                setTitleId();
                 return true;
             }
             return false;
@@ -188,6 +191,10 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
                 setTitleString("帧动画演示");
                 showFragment(new FrameAnimFragment());
                 break;
+            case FragmentType.OBJECT_ANIM:
+                setTitleString("属性动画演示");
+                showFragment(new FrameAnimFragment());
+                break;
         }
     }
 
@@ -205,7 +212,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
     private void beginTransation(Fragment fragment) {
         mFragment = fragment;
         findViewById(R.id.ll_container).setVisibility(View.VISIBLE);
-        btnConceal.setVisibility(View.VISIBLE);
+        dragLayer.setVisibility(View.VISIBLE);
         fragmentManager.beginTransaction().add(R.id.ll_container, fragment).commit();
     }
 
@@ -223,10 +230,7 @@ public class AcMain extends BaseFragmentActivity implements OnItemClickListener,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_conceal:
-                removeFragment();
-                btnConceal.setVisibility(View.GONE);
-                break;
+
         }
     }
 

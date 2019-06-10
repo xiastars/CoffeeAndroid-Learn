@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
 
-import com.summer.demo.anim.DragLayer;
 import com.summer.demo.anim.DragRelativeLayout;
 import com.summer.demo.base.BaseFragment;
+import com.summer.demo.view.DragLayer;
 import com.summer.helper.db.CommonService;
 import com.summer.helper.db.DBType;
 import com.summer.helper.db.SerializeUtil;

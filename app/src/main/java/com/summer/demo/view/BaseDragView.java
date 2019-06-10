@@ -21,7 +21,7 @@ public class BaseDragView extends RelativeLayout {
     boolean mIsPressed = false;
 
     CheckLongPressHelper mLongPressHelper;
-    FrameLayout.LayoutParams mParams;
+    protected FrameLayout.LayoutParams mParams;
 
     public String getmActionName() {
         return mActionName;

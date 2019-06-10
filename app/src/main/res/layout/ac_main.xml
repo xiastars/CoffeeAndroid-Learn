@@ -38,5 +38,10 @@
         android:text="隐藏"
         android:visibility="gone" />
 
+    <com.summer.demo.view.DragLayer
+        android:id="@+id/draglyer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

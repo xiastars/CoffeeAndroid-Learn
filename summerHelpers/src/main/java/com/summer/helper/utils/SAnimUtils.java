@@ -14,6 +14,10 @@ import android.view.animation.LinearInterpolator;
 import com.malata.summer.helper.R;
 import com.summer.helper.listener.OnAnimEndListener;
 
+/**
+ * 属性动画
+ */
+
 public class SAnimUtils {
 
     static boolean isOnAnim;
@@ -181,7 +185,7 @@ public class SAnimUtils {
      */
     public static void fromBottomMoveToHide(View view, float offset, final OnAnimEndListener listener) {
 
-        fromBottomMoveToHide(view,offset,300,listener);
+        fromBottomMoveToHide(view, offset, 300, listener);
         isOnAnim = true;
     }
 
@@ -191,7 +195,7 @@ public class SAnimUtils {
      * @param view
      * @param offset
      */
-    public static void fromBottomMoveToHide(View view, float offset,int time, final OnAnimEndListener listener) {
+    public static void fromBottomMoveToHide(View view, float offset, int time, final OnAnimEndListener listener) {
         showPropertyAnim(false, view, View.GONE, "translationY", 0f, offset, offset, time, listener);
     }
 
@@ -204,7 +208,7 @@ public class SAnimUtils {
      */
     public static void fromBottomMoveToShow(View view, float offset, final OnAnimEndListener listener) {
 
-        showPropertyAnim(false, view, View.VISIBLE, "translationY",offset, 0, 0, 300, listener);
+        showPropertyAnim(false, view, View.VISIBLE, "translationY", offset, 0, 0, 300, listener);
         isOnAnim = true;
     }
 
@@ -215,7 +219,7 @@ public class SAnimUtils {
      * @param offset
      */
     public static void fromTopMoveToShow(View view, float offset, final OnAnimEndListener listener) {
-        showPropertyAnim(false, view, View.VISIBLE, "translationY",-offset, 0, 0, 300, listener);
+        showPropertyAnim(false, view, View.VISIBLE, "translationY", -offset, 0, 0, 300, listener);
     }
 
     /**

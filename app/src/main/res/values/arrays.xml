@@ -18,6 +18,7 @@
         <item>添加一个随意拖动的View</item>
         <item>RXjava的应用</item>\
         <item>帧动画的使用</item>
+        <item>了解属性动画</item>
     </string-array>
     <string-array name="wxapp_titles">
         <item>第一节 从零开始</item>

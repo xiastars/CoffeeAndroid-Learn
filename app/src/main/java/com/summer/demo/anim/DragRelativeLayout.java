@@ -7,7 +7,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -24,6 +23,7 @@ import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.summer.demo.R;
+import com.summer.demo.view.BaseDragView;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 
@@ -118,7 +118,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
 		this.addView(view);
 //		disableClip(ivImage);
 	}
-	
+
 /*	private static void disableClip(View view) {
 		if (view.getParent() instanceof View) {
 			View g = (View) view.getParent();
@@ -443,16 +443,6 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
 			}
 		}
 		mBitmaps = null;
-	}
-
-	@Override
-	public Rect getCoor() {
-		mCoor = new Rect();
-		mCoor.left = mParams.leftMargin;
-		mCoor.right = mParams.leftMargin + mWidth;
-		mCoor.top = mParams.topMargin;
-		mCoor.bottom = mParams.topMargin + mHeight;
-		return mCoor;
 	}
 
 	@Override

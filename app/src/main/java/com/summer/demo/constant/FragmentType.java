@@ -12,4 +12,7 @@ public class FragmentType {
 
     //Drag演示
     public static final int DRAG_VIEW = 14;
+
+    //属性动画
+    public static final int OBJECT_ANIM = 17;
 }

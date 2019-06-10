@@ -98,28 +98,12 @@ public class SUtils {
 	 * @param id
 	 */
 	public static void makeToast(Context context, int id) {
-		if (VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			View view = null;
-			if (mToast == null) {
-				mToast = new Toast(context.getApplicationContext());
-				LayoutInflater inflater = LayoutInflater.from(context);
-				view = inflater.inflate(R.layout.layout_commont_toast, null);
-			} else {
-				view = mToast.getView();
-			}
-			TextView textview = (TextView) view.findViewById(R.id.textview_hint);
-			textview.setText(context.getResources().getString(id));
-			mToast.setDuration(Toast.LENGTH_SHORT);
-			mToast.setView(view);
-			mToast.show();
-		} else {
-			Toast.makeText(context, context.getResources().getString(id), Toast.LENGTH_SHORT).show();
-		}
+		makeToast(context,context.getResources().getString(id));
 	}
 
 	/**
 	 * 弹出提示
-	 * 
+	 *
 	 * @param context
 	 * @param text
 	 */
@@ -145,7 +129,7 @@ public class SUtils {
 
 	/**
 	 * 设置不为空的TextView
-	 * 
+	 *
 	 * @param view
 	 * @param text
 	 */
@@ -156,10 +140,10 @@ public class SUtils {
 			view.setText("");
 		}
 	}
-	
+
 	/**
 	 * 设置不为空的TextView
-	 * 
+	 *
 	 * @param view
 	 * @param text
 	 */
@@ -173,7 +157,7 @@ public class SUtils {
 
 	/**
 	 * 设置不为空的TextView
-	 * 
+	 *
 	 * @param view
 	 * @param text
 	 */
@@ -188,7 +172,7 @@ public class SUtils {
 
 	/**
 	 * 获取int类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @param selected
 	 */
@@ -199,7 +183,7 @@ public class SUtils {
 
 	/**
 	 * 得到int类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @return
 	 */
@@ -211,7 +195,7 @@ public class SUtils {
 
 	/**
 	 * 获取long类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @param selected
 	 */
@@ -222,7 +206,7 @@ public class SUtils {
 
 	/**
 	 * 得到long类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @return
 	 */
@@ -234,7 +218,7 @@ public class SUtils {
 
 	/**
 	 * 获取boolean类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @param selected
 	 */
@@ -245,7 +229,7 @@ public class SUtils {
 
 	/**
 	 * 得到boolean类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @return
 	 */
@@ -257,7 +241,7 @@ public class SUtils {
 
 	/**
 	 * 获取boolean类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @param selected
 	 */
@@ -268,7 +252,7 @@ public class SUtils {
 
 	/**
 	 * 得到boolean类型数据
-	 * 
+	 *
 	 * @param mContext
 	 * @return
 	 */
@@ -280,7 +264,7 @@ public class SUtils {
 
 	/**
 	 * 返回是否为当天，用于一些一天内只需请求一次的请求
-	 * 
+	 *
 	 * @param context
 	 * @return true 为是今天
 	 */
@@ -295,7 +279,7 @@ public class SUtils {
 
 	/**
 	 * 返回是否为当天，用于一些一天内只需请求一次的请求
-	 * 
+	 *
 	 * @param context
 	 * @return true 为是今天
 	 */
@@ -310,7 +294,7 @@ public class SUtils {
 
 	/**
 	 * 保存今天日期
-	 * 
+	 *
 	 * @param context
 	 */
 	public static void saveToday(Context context, String from) {
@@ -320,7 +304,7 @@ public class SUtils {
 
 	/**
 	 * 今天日期仍然要刷新
-	 * 
+	 *
 	 * @param context
 	 */
 	public static void refreshToday(Context context, String from) {
@@ -329,7 +313,7 @@ public class SUtils {
 
 	/**
 	 * 保存今天日期
-	 * 
+	 *
 	 * @param context
 	 */
 	public static void saveToday(Context context) {
@@ -347,7 +331,7 @@ public class SUtils {
 
 	/**
 	 * xml里是dp，但是到代码里是px，这个方法让传进去的dp仍然保持dp
-	 * 
+	 *
 	 * @param context
 	 * @param value
 	 *            传的dp值
@@ -395,7 +379,7 @@ public class SUtils {
 
 	/**
 	 * 获取安卓唯一序列号
-	 * 
+	 *
 	 * @return
 	 */
 	public static String getLocalMacAddress() {
@@ -444,7 +428,7 @@ public class SUtils {
 
 	/**
 	 * 判断现在网络是否可用
-	 * 
+	 *
 	 * @param context
 	 * @return
 	 */

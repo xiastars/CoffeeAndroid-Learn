@@ -1,17 +1,11 @@
 package com.summer.demo.view;
 
-import com.summer.demo.R;
-import com.summer.helper.utils.Logs;
-import com.summer.helper.utils.SUtils;
-
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -21,6 +15,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
+
+import com.summer.demo.R;
+import com.summer.helper.utils.Logs;
+import com.summer.helper.utils.SUtils;
 
 public class DragView extends BaseDragView {
 
@@ -150,6 +148,10 @@ public class DragView extends BaseDragView {
             requestLayout();
             invalidate();
         }
+    }
+
+    public void setRuleBottomRight(){
+        
     }
     
     @Override

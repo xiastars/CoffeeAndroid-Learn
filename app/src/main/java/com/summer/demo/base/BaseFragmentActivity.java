@@ -67,7 +67,7 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
-
+        SUtils.initScreenDisplayMetrics(this);
         ActivitysManager.Add(this.getClass().getSimpleName(), this);
         myHandlder = new MyHandler(this);
         baseHelper = new BaseHelper(context, myHandlder);
