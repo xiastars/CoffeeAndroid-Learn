@@ -2,7 +2,6 @@ package com.summer.demo.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -10,8 +9,6 @@ import android.widget.TextView;
 import com.summer.demo.R;
 import com.summer.helper.adapter.SRecycleMoreAdapter;
 import com.summer.helper.listener.OnSimpleClickListener;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,10 +20,6 @@ import butterknife.ButterKnife;
  */
 public class CommonAdapter extends SRecycleMoreAdapter {
 
-    private List<String> title;
-    private ViewHolder holder;
-    private Context context;
-    private LayoutInflater inflater;
     OnSimpleClickListener onSimpleClickListener;
 
     public CommonAdapter(Context context) {
@@ -47,14 +40,14 @@ public class CommonAdapter extends SRecycleMoreAdapter {
     @Override
     public void bindContentView(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder vh = (ViewHolder) holder;
-        vh.content.setText(position + 1 + ":" + title.get(position));
+        vh.content.setText(position + 1 + ":" + items.get(position));
         /*
          * 根据奇偶数设置不同的颜色
          */
         if (position % 2 == 0) {
-            vh.content.setBackgroundColor(context.getResources().getColor(R.color.pink));
+            vh.content.setBackgroundColor(getResourceColor(R.color.pink));
         } else {
-            vh.content.setBackgroundColor(context.getResources().getColor(R.color.green));
+            vh.content.setBackgroundColor(getResourceColor(R.color.green));
         }
 
         vh.itemView.setOnClickListener(new View.OnClickListener() {
