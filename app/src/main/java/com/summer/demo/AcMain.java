@@ -15,6 +15,7 @@ import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;
 import com.summer.demo.ui.fragment.MediaPlayerFragment;
 import com.summer.demo.ui.fragment.MyDialogFragment;
+import com.summer.demo.ui.fragment.ObjectAnimFragment;
 import com.summer.demo.ui.fragment.PictureUseFragment;
 import com.summer.demo.ui.fragment.RXJavaPractice;
 import com.summer.demo.ui.fragment.ToastFragment;
@@ -195,7 +196,7 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
                 break;
             case FragmentType.OBJECT_ANIM:
                 setTitleString("属性动画演示");
-                showFragment(new FrameAnimFragment());
+                showFragment(new ObjectAnimFragment());
                 break;
         }
     }

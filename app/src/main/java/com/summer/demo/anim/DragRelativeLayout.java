@@ -331,7 +331,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
 
                 for(int i = 0;i < bitmaps.size();i++){
                     FrameImgBean lastFrameImgBean = bitmaps.get(i);
-                    if(System.currentTimeMillis()- lastFrameImgBean.getCreateTime() > 1000 && lastFrameImgBean.getCreateTime() != 0){
+                    if(System.currentTimeMillis()- lastFrameImgBean.getCreateTime() > 500 && lastFrameImgBean.getCreateTime() != 0){
                         Bitmap b = lastFrameImgBean.getBitmap();
                         if(b != null){
                             b.recycle();

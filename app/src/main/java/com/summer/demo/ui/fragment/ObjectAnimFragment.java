@@ -4,10 +4,11 @@ import android.view.View;
 
 import com.summer.demo.R;
 import com.summer.demo.base.BaseFragment;
-import com.summer.helper.view.NRecycleView;
+import com.summer.helper.listener.OnAnimEndListener;
+import com.summer.helper.utils.SAnimUtils;
+import com.summer.helper.utils.SUtils;
 
 import butterknife.BindView;
-import butterknife.Unbinder;
 
 /**
  * @Description: 属性动画
@@ -15,13 +16,66 @@ import butterknife.Unbinder;
  * @CreateDate: 2019/6/10 12:10
  */
 public class ObjectAnimFragment extends BaseFragment {
-    @BindView(R.id.sv_container)
-    NRecycleView svContainer;
-    Unbinder unbinder;
+
+    @BindView(R.id.view_left)
+    View viewLeft;
+    @BindView(R.id.view_top)
+    View viewTop;
+    @BindView(R.id.view_right)
+    View viewRight;
+    @BindView(R.id.view_bottom)
+    View viewBottom;
 
     @Override
     protected void initView(View view) {
+        showLeftAnim();
+    }
 
+    private void showLeftAnim() {
+        viewLeft.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                SAnimUtils.fromLeftToShow(viewLeft, SUtils.getDip(context, 100), new OnAnimEndListener() {
+                    @Override
+                    public void onEnd() {
+                        hideLeft();
+                    }
+                });
+            }
+
+
+        },1000);
+
+    }
+
+    private void hideLeft() {
+        SAnimUtils.fromLeftToHide(viewLeft, SUtils.getDip(context, 100), new OnAnimEndListener() {
+            @Override
+            public void onEnd() {
+                showTop();
+            }
+
+        });
+    }
+
+    private void showTop() {
+        SAnimUtils.fromTopMoveToShow(viewTop, SUtils.getDip(context, 100), new OnAnimEndListener() {
+            @Override
+            public void onEnd() {
+                hideTop();
+            }
+
+        });
+    }
+
+    private void hideTop(){
+        SAnimUtils.fromTopMoveToHide(viewTop, SUtils.getDip(context, 100), new OnAnimEndListener() {
+            @Override
+            public void onEnd() {
+
+            }
+
+        });
     }
 
     @Override
@@ -36,7 +90,7 @@ public class ObjectAnimFragment extends BaseFragment {
 
     @Override
     protected int setContentView() {
-        return R.layout.view_nrecyleview;
+        return R.layout.ac_object_anim;
     }
 
 }

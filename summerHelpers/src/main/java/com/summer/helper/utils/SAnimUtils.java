@@ -178,6 +178,26 @@ public class SAnimUtils {
     }
 
     /**
+     * 在左侧，从隐藏到出现
+     *
+     * @param view
+     * @param offset
+     */
+    public static void fromLeftToShow(View view, float offset, final OnAnimEndListener listener) {
+        showPropertyAnim(false, view, View.VISIBLE, "translationX", -offset, 0, -0, 300, listener);
+    }
+
+    /**
+     * 在左侧，从隐藏到出现
+     *
+     * @param view
+     * @param offset
+     */
+    public static void fromLeftToHide(View view, float offset, final OnAnimEndListener listener) {
+        showPropertyAnim(false, view, View.VISIBLE, "translationX", 0, -offset, -offset, 300, listener);
+    }
+
+    /**
      * 在下侧，向下隐藏
      *
      * @param view
