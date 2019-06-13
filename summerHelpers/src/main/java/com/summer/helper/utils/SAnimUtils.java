@@ -77,7 +77,7 @@ public class SAnimUtils {
      * @param view
      */
     public static ObjectAnimator rotation(View view) {
-        return showPropertyAnim(true, view, View.VISIBLE, "rotation", 0, 360, 360, 1000, null);
+        return showPropertyAnim(true, view, View.VISIBLE, "rotation", 0, 360, 360, 3000, null);
     }
 
     /**
@@ -86,7 +86,7 @@ public class SAnimUtils {
      * @param view
      */
     public static void rotation(View view, int radius, OnAnimEndListener listener) {
-        showPropertyAnim(true, view, View.INVISIBLE, "rotation", 0, radius, radius, 500, listener);
+        showPropertyAnim(true, view, View.VISIBLE, "rotation", 0, radius, radius, 10000, listener);
     }
 
     /**
@@ -118,52 +118,22 @@ public class SAnimUtils {
 
 
     /**
-     * 向左偏移
+     * 在下方，从隐藏到出现
      *
      * @param view
      * @param offset
      */
-    public static void moveLeftShow(View view, float offset) {
-        showPropertyAnim(view, View.VISIBLE, "translationX", offset, 0, 0, 300);
-    }
-
-    /**
-     * 向左偏移
-     *
-     * @param view
-     * @param offset
-     */
-    public static void moveLeftShowInvisible(View view, float offset) {
-        showPropertyAnim(view, View.VISIBLE, "translationX", 0, offset, offset, 300);
-    }
-
-    /**
-     * 向左偏移
-     *
-     * @param view
-     * @param offset
-     */
-    public static void moveLeftShow(View view, float offset, final OnAnimEndListener listener) {
-        showPropertyAnim(true, view, View.VISIBLE, "translationX", 0, offset, offset, 300, listener);
-    }
-
-    /**
-     * 向下偏移
-     *
-     * @param view
-     * @param offset
-     */
-    public static void moveDownShow(View view, float offset, final OnAnimEndListener listener) {
+    public static void fromBottomToShow(View view, float offset, final OnAnimEndListener listener) {
         showPropertyAnim(false, view, View.VISIBLE, "translationY", offset, 0f, 0f, 300, listener);
     }
 
     /**
-     * 向下偏移
+     * 在下方，向下隐藏
      *
      * @param view
      * @param offset
      */
-    public static void moveDownHide(View view, float offset, final OnAnimEndListener listener) {
+    public static void fromBottomToHide(View view, float offset, final OnAnimEndListener listener) {
         showPropertyAnim(false, view, View.GONE, "translationY", offset, offset, 0f, 300, listener);
     }
 
@@ -198,38 +168,23 @@ public class SAnimUtils {
     }
 
     /**
-     * 在下侧，向下隐藏
+     * 在右侧，从隐藏到出现
      *
      * @param view
      * @param offset
      */
-    public static void fromBottomMoveToHide(View view, float offset, final OnAnimEndListener listener) {
-
-        fromBottomMoveToHide(view, offset, 300, listener);
-        isOnAnim = true;
+    public static void fromRightToShow(View view, float offset, final OnAnimEndListener listener) {
+        showPropertyAnim(false, view, View.VISIBLE, "translationX", offset, 0, -0, 300, listener);
     }
 
     /**
-     * 在下侧，向下隐藏
+     * 在右侧，从出现到隐藏
      *
      * @param view
      * @param offset
      */
-    public static void fromBottomMoveToHide(View view, float offset, int time, final OnAnimEndListener listener) {
-        showPropertyAnim(false, view, View.GONE, "translationY", 0f, offset, offset, time, listener);
-    }
-
-
-    /**
-     * 在下侧，向上显示
-     *
-     * @param view
-     * @param offset
-     */
-    public static void fromBottomMoveToShow(View view, float offset, final OnAnimEndListener listener) {
-
-        showPropertyAnim(false, view, View.VISIBLE, "translationY", offset, 0, 0, 300, listener);
-        isOnAnim = true;
+    public static void fromRightToHide(View view, float offset, final OnAnimEndListener listener) {
+        showPropertyAnim(false, view, View.GONE, "translationX", 0, offset, offset, 300, listener);
     }
 
     /**
@@ -240,46 +195,6 @@ public class SAnimUtils {
      */
     public static void fromTopMoveToShow(View view, float offset, final OnAnimEndListener listener) {
         showPropertyAnim(false, view, View.VISIBLE, "translationY", -offset, 0, 0, 300, listener);
-    }
-
-    /**
-     * 向上偏移
-     *
-     * @param view
-     * @param offset
-     */
-    public static void moveUpHide(View view, float offset) {
-        showPropertyAnim(view, View.GONE, "translationY", 0f, offset, offset, 300);
-    }
-
-    /**
-     * 向上偏移
-     *
-     * @param view
-     * @param offset
-     */
-    public static void moveUpHide(View view, float offset, long time) {
-        showPropertyAnim(view, View.GONE, "translationY", 0f, offset, offset, time);
-    }
-
-    /**
-     * 向上偏移
-     *
-     * @param view
-     * @param offset
-     */
-    public static void moveUpShow(View view, float offset, long time, OnAnimEndListener listener) {
-        showPropertyAnim(true, view, View.VISIBLE, "translationY", offset, offset, 0, time, listener);
-    }
-
-    /**
-     * 向上偏移
-     *
-     * @param view
-     * @param offset
-     */
-    public static void moveUpShow(View view, float from, float offset, long time, OnAnimEndListener listener) {
-        showPropertyAnim(true, view, View.VISIBLE, "translationY", from, offset, 0, time, listener);
     }
 
     /**
@@ -370,6 +285,9 @@ public class SAnimUtils {
      */
     public static ObjectAnimator showPropertyAnim(final boolean anim, final View view, final int visible, String animAction, float x1, float x2, float x3, long time, final OnAnimEndListener listener) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(view, animAction, x1, x2, x3);
+        if(view == null){
+            return null;
+        }
         if (visible == View.VISIBLE) {
             if (view.getVisibility() == View.GONE) {
                 view.setVisibility(View.VISIBLE);

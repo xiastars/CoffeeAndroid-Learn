@@ -1,8 +1,9 @@
-package com.summer.demo;
+package com.summer.demo.ui.fragment;
 
 import android.graphics.Bitmap;
 import android.view.View;
 
+import com.summer.demo.R;
 import com.summer.demo.anim.DragRelativeLayout;
 import com.summer.demo.anim.FrameImgBean;
 import com.summer.demo.base.BaseFragment;
@@ -58,8 +59,6 @@ public class FrameAnimFragment extends BaseFragment {
         dragLayer.addView(layout);
         layout.initBitmaps(bitmaps);
         layout.circlePlay();
-
-        Logs.t(time);
 
     }
 

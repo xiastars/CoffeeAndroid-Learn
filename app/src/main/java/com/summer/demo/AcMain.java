@@ -13,6 +13,7 @@ import com.summer.demo.constant.FragmentType;
 import com.summer.demo.ui.fragment.CDrawableFragment;
 import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;
+import com.summer.demo.ui.fragment.FrameAnimFragment;
 import com.summer.demo.ui.fragment.MediaPlayerFragment;
 import com.summer.demo.ui.fragment.MyDialogFragment;
 import com.summer.demo.ui.fragment.ObjectAnimFragment;

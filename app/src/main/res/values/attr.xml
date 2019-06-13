@@ -15,4 +15,14 @@
         <attr name="shadow_right" format="reference" />
         <attr name="shadow_bottom" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="ClockView">
+        <attr name="circle_color" format="color" />
+        <attr name="hour_color" format="color" />
+        <attr name="minute_color" format="color" />
+        <attr name="second_color" format="color" />
+        <attr name="quarter_mark_color" format="color" />
+        <attr name="minute_mark_color" format="color" />
+        <attr name="draw_center_circle" format="boolean" />
+    </declare-styleable>
 </resources>

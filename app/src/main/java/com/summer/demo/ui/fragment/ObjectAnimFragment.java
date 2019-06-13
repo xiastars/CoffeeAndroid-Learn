@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.summer.demo.R;
 import com.summer.demo.base.BaseFragment;
+import com.summer.demo.view.CanvasAnimView;
 import com.summer.helper.listener.OnAnimEndListener;
 import com.summer.helper.utils.SAnimUtils;
 import com.summer.helper.utils.SUtils;
@@ -25,10 +26,17 @@ public class ObjectAnimFragment extends BaseFragment {
     View viewRight;
     @BindView(R.id.view_bottom)
     View viewBottom;
+    @BindView(R.id.view_center)
+    View viewCenter;
+    @BindView(R.id.canvas_anim)
+    CanvasAnimView canvasAnimView;
+    @BindView(R.id.view_rotate)View vRotate;
 
     @Override
     protected void initView(View view) {
         showLeftAnim();
+        SAnimUtils.rotationRepeat(vRotate);
+        cirlce();
     }
 
     private void showLeftAnim() {
@@ -44,8 +52,19 @@ public class ObjectAnimFragment extends BaseFragment {
             }
 
 
-        },1000);
+        }, 1000);
 
+
+    }
+
+    private void cirlce(){
+        canvasAnimView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                canvasAnimView.setIndex();
+                cirlce();
+            }
+        },50);
     }
 
     private void hideLeft() {
@@ -68,11 +87,54 @@ public class ObjectAnimFragment extends BaseFragment {
         });
     }
 
-    private void hideTop(){
+    private void hideTop() {
         SAnimUtils.fromTopMoveToHide(viewTop, SUtils.getDip(context, 100), new OnAnimEndListener() {
             @Override
             public void onEnd() {
+                showRight();
+            }
 
+        });
+    }
+
+    private void showRight(){
+        SAnimUtils.fromRightToShow(viewRight, SUtils.getDip(context, 100), new OnAnimEndListener() {
+            @Override
+            public void onEnd() {
+                hideRight();
+            }
+
+        });
+    }
+
+    /**
+     * 在右侧，从出现到隐藏
+     */
+    private void hideRight(){
+        SAnimUtils.fromRightToHide(viewRight, SUtils.getDip(context, 100), new OnAnimEndListener() {
+            @Override
+            public void onEnd() {
+                showBottom();
+            }
+
+        });
+    }
+
+    private void showBottom(){
+        SAnimUtils.fromBottomToShow(viewBottom, SUtils.getDip(context, 100), new OnAnimEndListener() {
+            @Override
+            public void onEnd() {
+                hideBottom();
+            }
+
+        });
+    }
+
+    private void hideBottom(){
+        SAnimUtils.fromBottomToHide(viewBottom, SUtils.getDip(context, 100), new OnAnimEndListener() {
+            @Override
+            public void onEnd() {
+                showLeftAnim();
             }
 
         });
