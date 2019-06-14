@@ -23,7 +23,7 @@ import java.io.File;
  *
  * @author xiastars@vip.qq.com
  */
-public class MediaPlayerFragment extends BaseFragment implements View.OnClickListener {
+public class MediaPlayerFragment extends BaseSimpleFragment implements View.OnClickListener {
     MediaPlayer mMediaPlayer = null;
     //这个状态用来确认是否在播放状态,0表示MediaPlayer没有被占用，1表示正在占用,2表示暂停
     int mAudioState;

@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.ui.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseSimpleFragment;
 import com.summer.demo.view.CustomScrollView;
 import com.summer.helper.utils.SUtils;
 import com.summer.helper.view.NRecycleView;
@@ -21,7 +21,7 @@ import com.summer.helper.view.NRecycleView;
  * *Created by summer on 2016年12月14日 16:24.
  */
 
-public class SGHeightConflictFragment extends BaseFragment implements View.OnClickListener {
+public class SGHeightConflictFragment extends BaseSimpleFragment implements View.OnClickListener {
     LinearLayout rlDownload;
     LinearLayout llDelete;
     CustomScrollView scrollView;

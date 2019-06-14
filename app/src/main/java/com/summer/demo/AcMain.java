@@ -11,6 +11,7 @@ import com.summer.demo.adapter.CommonAdapter;
 import com.summer.demo.base.BaseFragmentActivity;
 import com.summer.demo.constant.FragmentType;
 import com.summer.demo.ui.AcViewPager;
+import com.summer.demo.ui.AcViews;
 import com.summer.demo.ui.fragment.CDrawableFragment;
 import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;
@@ -147,7 +148,8 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
                 // JumpTo.getInstance().commonJump(context, WebContainerActivity.class, "https://java.quanke.name/");
                 break;
             case 1:
-                JumpTo.getInstance().commonJump(context, AcCases.class);
+                JumpTo.getInstance().commonJump(context, AcViews.class);
+                //JumpTo.getInstance().commonJump(context, AcCases.class);
                 break;
             case 2:
                 JumpTo.getInstance().commonJump(context, AcCases.class);

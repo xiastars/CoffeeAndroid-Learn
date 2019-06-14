@@ -22,7 +22,7 @@ import com.summer.helper.utils.TipDialog;
  * @author Administrator
  *
  */
-public class MyDialogFragment extends BaseFragment implements View.OnClickListener{
+public class MyDialogFragment extends BaseSimpleFragment implements View.OnClickListener{
 	Dialog dialog;
 	
 	@Override

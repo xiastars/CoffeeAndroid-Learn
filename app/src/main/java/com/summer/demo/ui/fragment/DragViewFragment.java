@@ -11,7 +11,7 @@ import com.summer.helper.utils.SUtils;
 /**
  * View的拖动示例
  */
-public class DragViewFragment extends BaseFragment {
+public class DragViewFragment extends BaseSimpleFragment {
     DragLayer dragLayer;
 
     @Override

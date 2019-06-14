@@ -2,9 +2,9 @@
 <resources>
     <string-array name="titles">
         <item>JAVA基础</item>
+        <item>View的用法</item>
         <item>疑难问题总结</item>
         <item>相关链接收藏</item>
-        <item>Android官方DEMO</item>
         <item>@string/toast_demo</item>
         <item>@string/picture_demo</item>
         <item>@string/mediaPlayer</item>
@@ -44,6 +44,11 @@
     <string-array name="title_viewpager">
         <item>一般Viewpager</item>
         <item>Viewpager自定义标题栏</item>
+    </string-array>
+
+    <string-array name="titl_view">
+        <item>TextView</item>
+        <item>EditView</item>
     </string-array>
 
     <string-array name="self_titles">

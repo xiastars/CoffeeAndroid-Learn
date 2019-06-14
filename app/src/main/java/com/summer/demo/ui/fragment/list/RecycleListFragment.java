@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.summer.demo.R;
-import com.summer.demo.ui.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseSimpleFragment;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.recycle.MaterialRefreshListener;
 import com.summer.helper.utils.SUtils;
@@ -21,7 +21,7 @@ import com.summer.helper.view.SRecycleView;
  *
  * @author xiastars@vip.qq.com
  */
-public class RecycleListFragment extends BaseFragment implements View.OnClickListener {
+public class RecycleListFragment extends BaseSimpleFragment implements View.OnClickListener {
     SRecycleView refreshView;
 
     @Override

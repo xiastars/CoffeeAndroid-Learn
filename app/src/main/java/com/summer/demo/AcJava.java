@@ -2,8 +2,6 @@ package com.summer.demo;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 
 import com.summer.demo.ui.BaseTitleListActivity;
 import com.summer.demo.ui.MarkDownActivity;
@@ -20,10 +18,6 @@ import java.util.List;
  * @author xiastars@vip.qq.com
  */
 public class AcJava extends BaseTitleListActivity implements View.OnClickListener {
-    private ListView titles;
-    private Context context;
-
-    Button btnConceal;
 
     @Override
     protected void initData() {
@@ -75,8 +69,6 @@ public class AcJava extends BaseTitleListActivity implements View.OnClickListene
     private void jump(String url){
         JumpTo.getInstance().commonJump(context, WebContainerActivity.class,url);
     }
-
-
 
 
     @Override

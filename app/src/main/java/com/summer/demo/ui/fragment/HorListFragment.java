@@ -23,7 +23,7 @@ import com.summer.helper.view.NRecycleView;
  * @author xiastars@vip.qq.com
  *//*
 
-public class HorListFragment extends BaseFragment implements View.OnClickListener {
+public class HorListFragment extends BaseSimpleFragment implements View.OnClickListener {
     NRecycleView refreshView;
 
     @Override

@@ -12,7 +12,7 @@ import com.summer.demo.R;
  * @author Administrator
  *
  */
-public class CDrawableFragment extends BaseFragment{
+public class CDrawableFragment extends BaseSimpleFragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,

@@ -2,7 +2,10 @@ package com.summer.helper.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -18,10 +21,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
@@ -1818,6 +1823,34 @@ public class SUtils {
         ;
         src[1] = (byte) (data & 0xFF);
         return src;
+    }
+
+    /**
+     * 刷新本地相册
+     *
+     * @param activity
+     * @param path
+     */
+    public static void notifyLocalAlbum(Context activity, String path) {
+        Uri localUri = Uri.fromFile(new File(SFileUtils.SOURCE_PATH));
+        Intent localIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        Logs.i("SFIle:" + SFileUtils.SOURCE_PATH);
+        localIntent.setData(localUri);
+        activity.sendBroadcast(localIntent);
+        ContentValues localContentValues = new ContentValues();
+
+        localContentValues.put("_data", path);
+
+        localContentValues.put("description", "save image ---");
+
+        localContentValues.put("mime_type", "image/jpeg");
+
+        ContentResolver localContentResolver = context.getContentResolver();
+
+        Uri local = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+
+        localContentResolver.insert(local, localContentValues);
+        // activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED,Uri.parse("file://" + Environment.getExternalStorageDirectory())));
     }
 
     public enum NetState {

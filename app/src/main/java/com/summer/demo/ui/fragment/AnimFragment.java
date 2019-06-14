@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledExecutorService;
  * @author Administrator
  *
  */
-public class AnimFragment extends BaseFragment{
+public class AnimFragment extends BaseSimpleFragment {
 	CustomerViewPager mBannerViewPager;
 	//下面的小点
 	CircleIndicator mCircleIndicator;

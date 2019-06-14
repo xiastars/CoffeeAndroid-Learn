@@ -32,7 +32,7 @@ import rx.Subscriber;
 /**
  * View的拖动示例
  */
-public class RXJavaPractice extends BaseFragment {
+public class RXJavaPractice extends BaseSimpleFragment {
     DragLayer dragLayer;
 
     @Override

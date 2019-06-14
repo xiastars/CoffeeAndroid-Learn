@@ -9,14 +9,14 @@ import android.widget.GridView;
 
 import com.summer.demo.R;
 import com.summer.demo.adapter.CommonListAdapter;
-import com.summer.demo.ui.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseSimpleFragment;
 
 /**
  * 一般的GridView
  *
  * @author xiastars@vip.qq.com
  */
-public class CommonGridViewFragment extends BaseFragment implements View.OnClickListener {
+public class CommonGridViewFragment extends BaseSimpleFragment implements View.OnClickListener {
     GridView refreshView;
 
     @Override

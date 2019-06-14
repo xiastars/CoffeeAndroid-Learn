@@ -9,14 +9,14 @@ import android.widget.ListView;
 
 import com.summer.demo.R;
 import com.summer.demo.adapter.CommonListAdapter;
-import com.summer.demo.ui.fragment.BaseFragment;
+import com.summer.demo.ui.fragment.BaseSimpleFragment;
 
 /**
  * 一般的ListView
  *
  * @author xiastars@vip.qq.com
  */
-public class CommonListFragment extends BaseFragment implements View.OnClickListener {
+public class CommonListFragment extends BaseSimpleFragment implements View.OnClickListener {
     ListView refreshView;
 
     @Override

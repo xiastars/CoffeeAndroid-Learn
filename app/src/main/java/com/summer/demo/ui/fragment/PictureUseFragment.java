@@ -26,7 +26,7 @@ import java.io.InputStream;
  * @author Administrator
  *
  */
-public class PictureUseFragment extends BaseFragment implements View.OnClickListener{
+public class PictureUseFragment extends BaseSimpleFragment implements View.OnClickListener{
 	ImageView ivBg;
 	
 	@Override

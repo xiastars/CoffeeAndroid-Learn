@@ -24,7 +24,7 @@ import java.util.List;
  * Created by xiastars@vip.qq.com on 2016年12月12日 14:08.
  */
 
-public class DownloadFragment extends BaseFragment implements View.OnClickListener {
+public class DownloadFragment extends BaseSimpleFragment implements View.OnClickListener {
     String url = "http://appstore.kidspad.zuoyegou.com/search?qs=a";
 
     SRecycleView mGridView;

@@ -1,11 +1,11 @@
 package com.summer.helper.utils;
 
-import java.io.Serializable;
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+
+import java.io.Serializable;
 
 /**
  * 跳转方法，不需要传递Bundle使用commonJump(),如果传递内容以下方法不满足，请自定义
@@ -23,6 +23,7 @@ public class JumpTo {
     public static String TYPE_OBJECT = "key";
     public static String TYPE_STRING = "tag_string";
     public static String TYPE_STRING2 = "tag_string2";
+    public static String TYPE_BOOLEAN = "tag_boolean";
 
     public static synchronized JumpTo getInstance() {
         if (jumpTo == null) {
@@ -227,6 +228,15 @@ public class JumpTo {
      */
     public static String getString(Activity context) {
         return context.getIntent().getStringExtra(TYPE_STRING);
+    }
+
+    /**
+     * 简单的获取Boolean参数的方法
+     *
+     * @param context
+     */
+    public static boolean getBoolean(Activity context) {
+        return context.getIntent().getBooleanExtra(TYPE_BOOLEAN, false);
     }
 
     /**

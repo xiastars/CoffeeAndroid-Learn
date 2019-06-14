@@ -17,7 +17,7 @@ import com.summer.demo.R;
  * @author Administrator
  *
  */
-public class ToastFragment extends BaseFragment{
+public class ToastFragment extends BaseSimpleFragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,

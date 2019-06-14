@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @author Administrator
  *
  */
-public class BannerFragment extends BaseFragment{
+public class BannerFragment extends BaseSimpleFragment {
 	CustomerViewPager mBannerViewPager;
 	//下面的小点
 	CircleIndicator mCircleIndicator;
