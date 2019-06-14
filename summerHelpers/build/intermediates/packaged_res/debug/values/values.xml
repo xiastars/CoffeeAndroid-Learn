@@ -57,7 +57,9 @@
     <color name="grey_9c">#9C9C9C</color>
     <color name="grey_b1">#b1b1b1</color>
     <color name="grey_ba">#bab6b5</color>
+    <color name="grey_c6">#C6C4D0</color>
     <color name="grey_ca">#cacaca</color>
+    <color name="grey_cd">#CDCCD6</color>
     <color name="grey_d2">#D2D1D6</color>
     <color name="grey_d6">#D6D5DA</color>
     <color name="grey_dc">#DcDcDc</color>
@@ -143,7 +145,7 @@
     <string name="update_unzip_tv_success_tip">解析数据成功</string>
     <style name="AiTheme" parent="android:Theme">
 
-        <!-- <item name="numberPickerInputTextStyle">@style/AiWidget.EditText.NumberPickerInputText</item> -->
+        
         <item name="numberPickerStyle">@style/AiWidget.NumberPicker</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
@@ -159,7 +161,7 @@
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:clickable">false</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
-        <item name="android:textColor">#000000</item><!-- 显示日期的文字颜色 -->
+        <item name="android:textColor">#000000</item>
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="AiWidget.EditText.NumberPickerInputText">
@@ -205,7 +207,7 @@
     </style>
     <style name="Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/white</item>
-        <!-- 初始状态栏颜色 -->
+        
         <item name="colorPrimaryDark">@color/blue_01</item>
         <item name="colorAccent">@color/green_4b</item>
     </style>

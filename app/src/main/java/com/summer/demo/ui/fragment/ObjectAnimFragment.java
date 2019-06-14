@@ -61,6 +61,9 @@ public class ObjectAnimFragment extends BaseFragment {
         canvasAnimView.postDelayed(new Runnable() {
             @Override
             public void run() {
+                if(canvasAnimView == null){
+                    return;
+                }
                 canvasAnimView.setIndex();
                 cirlce();
             }

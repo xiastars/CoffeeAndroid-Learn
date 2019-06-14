@@ -10,6 +10,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,7 @@ public abstract class BaseFragment extends Fragment {
     public long fromId;
     public int pageIndex;
     public Context context;
+    public FragmentActivity activity;
     boolean isRefresh;
     public String lastId;
     public static int PAGE_FROM = 0;
@@ -61,6 +63,7 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = getContext();
+        this.activity = getActivity();
         myHandlder = new MyHandler(this);
         baseHelper = new BaseHelper(context, myHandlder);
     }
@@ -448,6 +451,10 @@ public abstract class BaseFragment extends Fragment {
     public void onPause() {
         super.onPause();
         //MobclickAgent.onPageEnd(this.getClass().getName());
+    }
+
+    public void onHide(){
+
     }
 
     /**

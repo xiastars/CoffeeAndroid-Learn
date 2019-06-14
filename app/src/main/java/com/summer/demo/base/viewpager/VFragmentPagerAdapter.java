@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
+
 import com.summer.helper.view.PagerSlidingTabStrip;
 
 import java.util.List;
@@ -33,4 +34,5 @@ public class VFragmentPagerAdapter extends FragmentPagerAdapter implements Pager
     public View getPageView(int position) {
         return mTabViews.get(position);
     }
+
 }

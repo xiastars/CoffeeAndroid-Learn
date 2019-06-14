@@ -22,6 +22,12 @@ public class SAnimUtils {
 
     static boolean isOnAnim;
 
+    public static AnimManager build(){
+        AnimManager animManager = new AnimManager();
+        return animManager;
+    }
+
+
     /**
      * 向左偏移
      *
@@ -134,7 +140,7 @@ public class SAnimUtils {
      * @param offset
      */
     public static void fromBottomToHide(View view, float offset, final OnAnimEndListener listener) {
-        showPropertyAnim(false, view, View.GONE, "translationY", offset, offset, 0f, 300, listener);
+        showPropertyAnim(false, view, View.GONE, "translationY", 0, offset,  offset, 300, listener);
     }
 
     /**

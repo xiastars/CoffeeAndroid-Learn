@@ -3,13 +3,13 @@ package com.summer.demo.utils;
 import android.content.Context;
 
 import com.summer.helper.utils.SThread;
-import com.tencent.stat.StatService;
 
 import java.util.HashMap;
-import java.util.Properties;
 
 /**
- * 埋点帮助类
+ * 埋点帮助类,示例用的是腾讯的
+ * 在这里可以改成别的平台
+ * 埋点最禁在单个页面写，因为如果有切换平台的需求就完了
  * Created by xiaqiliang on 2017/5/15.
  */
 
@@ -71,11 +71,11 @@ public class CUtils {
         SThread.getIntances().submit(new Runnable() {
             @Override
             public void run() {
-                Properties prop = new Properties();
+          /*      Properties prop = new Properties();
                 if (id != null && !id.equals("0")) {
                     prop.setProperty(mark, id);
                 }
-                StatService.trackCustomKVEvent(context, tag, prop);
+                StatService.trackCustomKVEvent(context, tag, prop);*/
             }
         });
     }

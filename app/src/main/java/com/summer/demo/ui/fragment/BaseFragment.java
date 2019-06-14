@@ -7,11 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 public class BaseFragment extends Fragment{
 	protected Context context;
-	protected FrameLayout llParent;
+	protected ViewGroup llParent;
 	
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class BaseFragment extends Fragment{
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		llParent = (FrameLayout) container;
+		llParent = (ViewGroup) container;
 		initView();
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}

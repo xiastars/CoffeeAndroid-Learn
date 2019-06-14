@@ -449,10 +449,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
               * lineRight);
     }
 
-//    canvas.drawRect(lineLeft, height - indicatorHeight, lineRight, height,
-//        rectPaint);
-    rectPaint.setStrokeWidth(tabStrokeWith);
-    canvas.drawLine(lineLeft + mTabWidth, height - 5, lineRight - mTabWidth, height - 5, rectPaint);
+    //画底部滑动那根线
+    canvas.drawLine(lineLeft + mTabWidth, height - indicatorHeight, lineRight - mTabWidth, height, rectPaint);
     //canvas.drawOval(lineLeft + mTabWidth, height - 5, lineRight - mTabWidth, height - 5, rectPaint);
     // draw underline
 

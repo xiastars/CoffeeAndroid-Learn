@@ -30,7 +30,7 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:background="@color/blue_0a"
-        android:layout_height="30dp" />
+        android:layout_height="100dp" />
 
     <View
         android:id="@+id/view_center"

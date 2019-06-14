@@ -33,6 +33,8 @@ public class FrameAnimFragment extends BaseFragment {
     @BindView(R.id.draglyer)
     DragLayer dragLayer;
 
+    DragRelativeLayout dragRelativeLayout;
+
     private void createLittle() {
 
     }
@@ -54,13 +56,39 @@ public class FrameAnimFragment extends BaseFragment {
             frameImgBean.setImgType(2);
             bitmaps.add(frameImgBean);
         }
-        DragRelativeLayout layout = new DragRelativeLayout(context);
-        layout.setLayoutPosition(40 ,  180);
-        dragLayer.addView(layout);
-        layout.initBitmaps(bitmaps);
-        layout.circlePlay();
+        dragRelativeLayout = new DragRelativeLayout(context);
+        dragRelativeLayout.setLayoutPosition(40 ,  180);
+        dragLayer.addView(dragRelativeLayout);
+        dragRelativeLayout.initBitmaps(bitmaps);
+        dragRelativeLayout.circlePlay();
 
     }
+
+    @Override
+    public void onHide() {
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(dragRelativeLayout != null){
+            dragRelativeLayout.stopPlay();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Logs.i("check:ONPAUSE");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Logs.i("check:ONPAUSE");
+    }
+
 
 
     /**

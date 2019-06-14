@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AcListAndGrid"></activity>
-        <activity android:name=".AcViewPager"></activity>
+        <activity android:name=".ui.AcViewPager"></activity>
         <activity android:name=".ui.MarkDownActivity" />
         <activity android:name=".AcJava" />
         <activity android:name=".AcSelfDemo" />

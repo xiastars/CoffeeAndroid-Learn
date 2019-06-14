@@ -25,24 +25,28 @@ public class NFPagerTabView extends TextView {
     private boolean mShowIndicate;//显示指示图案
 
     public NFPagerTabView(Context context) {
-        this(context, null, 0, null);
+        this(context, null, 0, null,0);
     }
 
     public NFPagerTabView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0, null);
+        this(context, attrs, 0, null,0);
     }
 
     public NFPagerTabView(Context context, String text) {
-        this(context, null, 0, text);
+        this(context, null, 0, text,0);
     }
 
-    public NFPagerTabView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, String text) {
+    public NFPagerTabView(Context context, String text,int textSize) {
+        this(context, null, 0, text,textSize);
+    }
+
+    public NFPagerTabView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, String text,int textSize) {
         super(context, attrs, defStyleAttr);
 //        mPaint.setTextAlign(Paint.Align.CENTER);
         mTextColor = 0xEE060606;
         mIndicateColor = ContextCompat.getColor(context, R.color.red_d3);
         mText = text;
-        mTextSize = sp2px(16);
+        mTextSize = sp2px(textSize == 0 ? 16 : textSize);
         mIndicateRadius = SUtils.getDip(context, 4);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setDither(true);

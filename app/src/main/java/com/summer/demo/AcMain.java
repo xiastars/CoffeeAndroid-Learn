@@ -10,6 +10,7 @@ import android.view.View;
 import com.summer.demo.adapter.CommonAdapter;
 import com.summer.demo.base.BaseFragmentActivity;
 import com.summer.demo.constant.FragmentType;
+import com.summer.demo.ui.AcViewPager;
 import com.summer.demo.ui.fragment.CDrawableFragment;
 import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;

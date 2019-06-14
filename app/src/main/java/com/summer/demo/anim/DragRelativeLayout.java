@@ -488,6 +488,13 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
         }, CommomData.PLAY_TIME);
     }
 
+    public void stopPlay(){
+        Logs.i("stopPlay::::check");
+        mHandler.removeMessages(0);
+        afterPlayEnd();
+    }
+
+
     @SuppressLint("NewApi")
     private void removeTransaction() {
         int left = (int) (getViewLeft() + getTranslationX());
