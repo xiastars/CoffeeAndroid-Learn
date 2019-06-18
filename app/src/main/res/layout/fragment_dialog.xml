@@ -40,6 +40,11 @@
             android:id="@+id/btn5"
             style="@style/common_button"
             android:text="长按我试一试" />
+
+        <Button
+            android:id="@+id/btn6"
+            style="@style/common_button"
+            android:text="从底部弹出的Dialog" />
     </LinearLayout>
 
 </RelativeLayout>
