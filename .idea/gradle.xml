@@ -10,6 +10,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/FFmpegAndroid" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/libs" />
+            <option value="$PROJECT_DIR$/libs/AlexaAndroid" />
+            <option value="$PROJECT_DIR$/libs/RecorderLevelView" />
+            <option value="$PROJECT_DIR$/libs/speechutils-master" />
             <option value="$PROJECT_DIR$/summerHelpers" />
           </set>
         </option>

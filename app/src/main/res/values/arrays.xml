@@ -19,6 +19,7 @@
         <item>RXjava的应用</item>\
         <item>帧动画的使用</item>
         <item>了解属性动画</item>
+        <item>SDK对接</item>
     </string-array>
     <string-array name="wxapp_titles">
         <item>第一节 从零开始</item>
@@ -39,6 +40,10 @@
     <string-array name="java_titles">
         <item>关于对象</item>
         <item>子类与父类</item>
+    </string-array>
+
+    <string-array name="sdks">
+        <item>Alexa</item>
     </string-array>
 
     <string-array name="title_viewpager">

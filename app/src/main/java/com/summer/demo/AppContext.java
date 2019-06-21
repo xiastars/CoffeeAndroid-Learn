@@ -1,11 +1,10 @@
 package com.summer.demo;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.StrictMode;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 
 import com.summer.demo.constant.SharePreConst;
@@ -22,12 +21,13 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.stat.MtaSDkException;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatService;
+import com.willblaschko.android.alexa.AlexaManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AppContext extends MultiDexApplication {
+public class AppContext extends Application {
     private static AppContext instance;
     IWXAPI mWxApi;
 
@@ -60,6 +60,7 @@ public class AppContext extends MultiDexApplication {
         if (DEBUGMODE) {
             SERVER_MODE = SUtils.getIntegerData(this, "server_mode");
         }
+        AlexaManager.getInstance(this);
     }
 
     public void initAll() {
@@ -79,7 +80,6 @@ public class AppContext extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         // you must install multiDex whatever tinker is installed!
-        MultiDex.install(base);
         // 安装tinker
         //Beta.installTinker();
     }

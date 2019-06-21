@@ -49,6 +49,30 @@ public class PermissionUtils {
         return checkPermmision(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
+    public static void showPermissionDialog(Context context, String... permissions) {
+        if (!checkPermission(context, permissions)) {
+            PermissionDialog permissionDialog = new PermissionDialog(context, permissions);
+            permissionDialog.show();
+        }
+    }
+
+    /**
+     * 检测权限是否打开
+     */
+    private static boolean checkPermission(Context context, String... permissions) {
+        boolean isChecked = true;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            for (String p : permissions) {
+                if (ContextCompat.checkSelfPermission(context,
+                        p) != PackageManager.PERMISSION_GRANTED) {
+                    isChecked = false;
+                }
+            }
+
+        }
+        return isChecked;
+    }
+
     /**
      * 检查有没有联系人读取权限
      *

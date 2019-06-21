@@ -31,6 +31,7 @@
         <activity android:name=".ui.AcViewPager"></activity>
         <activity android:name=".ui.MarkDownActivity" />
         <activity android:name=".AcJava" />
+        <activity android:name=".ui.SDKActivity" />
         <activity android:name=".AcSelfDemo" />
         <!--screenOrientation 设置为横屏 -->
         <activity

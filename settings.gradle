@@ -1,1 +1,1 @@
-include ':app', ':summerHelpers', ':FFmpegAndroid'
+include ':app', ':summerHelpers', ':FFmpegAndroid', ':libs:RecorderLevelView', ':libs:speechutils-master', ':libs:AlexaAndroid'

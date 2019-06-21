@@ -12,6 +12,7 @@ import com.summer.demo.base.BaseFragmentActivity;
 import com.summer.demo.constant.FragmentType;
 import com.summer.demo.ui.AcViewPager;
 import com.summer.demo.ui.AcViews;
+import com.summer.demo.ui.SDKActivity;
 import com.summer.demo.ui.fragment.CDrawableFragment;
 import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;
@@ -141,7 +142,7 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
     /**
      * 点击每个子项跳转
      */
-    public void clickChild( int position) {
+    public void clickChild(int position) {
         switch (position) {
             case 0:
                 JumpTo.getInstance().commonJump(context, AcJava.class);
@@ -201,6 +202,9 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
             case FragmentType.OBJECT_ANIM:
                 setTitleString("属性动画演示");
                 showFragment(new ObjectAnimFragment());
+                break;
+            case FragmentType.SDK:
+                JumpTo.getInstance().commonJump(context, SDKActivity.class);
                 break;
         }
     }

@@ -57,6 +57,10 @@ import com.summer.helper.downloader.DownloadTaskListener;
 import com.summer.helper.server.EasyHttp;
 import com.summer.helper.utils.SFileUtils.FileType;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -1823,6 +1827,28 @@ public class SUtils {
         ;
         src[1] = (byte) (data & 0xFF);
         return src;
+    }
+
+    public static byte[] audioToByteArray(ByteArrayInputStream audio){
+        try {
+            return IOUtils.toByteArray(audio);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static byte[] audioToByteArray(InputStream audio) throws IOException {
+        return IOUtils.toByteArray(audio);
+    }
+
+    /**
+     * 将路径文件转为byte[]
+     *
+     * @return 二进制文件数据
+     */
+    public static byte[] readFileAsBytes(File filename) throws IOException {
+        return FileUtils.readFileToByteArray(filename);
     }
 
     /**

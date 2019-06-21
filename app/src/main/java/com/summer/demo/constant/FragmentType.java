@@ -15,4 +15,7 @@ public class FragmentType {
 
     //属性动画
     public static final int OBJECT_ANIM = 17;
+
+    //属性动画
+    public static final int SDK = 18;
 }

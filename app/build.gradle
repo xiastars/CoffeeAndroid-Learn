@@ -41,11 +41,17 @@ android {
 dependencies {
     implementation project(':summerHelpers')
     implementation project(':FFmpegAndroid')
+
+    implementation project(':libs:speechutils-master')
+    implementation project(':libs:RecorderLevelView')
+    implementation project(':libs:AlexaAndroid')
     implementation 'io.reactivex:rxjava:1.0.1'
     implementation 'io.reactivex:rxandroid:1.0.1'
     implementation 'com.android.support:support-v4:28.+'
     implementation 'com.alibaba:fastjson:1.2.8'
     implementation 'com.android.support:appcompat-v7:28.+'
+    //amazon alexa智能语音服务
+    //implementation 'com.willblaschko.android.alexa:AlexaAndroid:2.4.2'
     //mta 3.4.7 稳定版
     implementation 'com.qq.mta:mta:3.4.7-release'
     //bug监控
