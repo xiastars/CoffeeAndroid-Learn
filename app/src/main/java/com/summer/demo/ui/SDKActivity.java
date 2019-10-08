@@ -1,7 +1,6 @@
 package com.summer.demo.ui;
 
 import com.summer.demo.R;
-import com.summer.demo.ui.fragment.sdk.AlexaFragment;
 
 /**
  * @Description: 有关sdk对接
@@ -21,7 +20,7 @@ public class SDKActivity extends BaseGridListActivity {
     protected void clickChild(int pos) {
         switch (pos){
             case 0:
-                showFragment(new AlexaFragment());
+                //showFragment(new AlexaFragment());
                 break;
         }
     }

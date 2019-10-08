@@ -1,4 +1,4 @@
-package com.nufang.nfhelper.utils;
+package com.summer.helper.utils;
 
 import android.content.Context;
 
@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Properties;
 
 /**
+ * 腾讯MTA埋点统计
  * Created by xiaqiliang on 2017/5/15.
  */
 

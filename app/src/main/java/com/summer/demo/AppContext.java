@@ -21,7 +21,6 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.stat.MtaSDkException;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatService;
-import com.willblaschko.android.alexa.AlexaManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +59,6 @@ public class AppContext extends Application {
         if (DEBUGMODE) {
             SERVER_MODE = SUtils.getIntegerData(this, "server_mode");
         }
-        AlexaManager.getInstance(this);
     }
 
     public void initAll() {

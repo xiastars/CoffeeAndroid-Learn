@@ -79,7 +79,7 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
     }
 
     protected void checkView() {
-        if (!SUtils.isNetworkAvailable(context)) {
+    /*    if (!SUtils.isNetworkAvailable(context)) {
             View view = LayoutInflater.from(this).inflate(R.layout.view_network_broken, null);
             flContainer.addView(view);
             TextView tvReload = view.findViewById(R.id.tv_reload);
@@ -92,10 +92,11 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
                 }
             });
         } else {
-            initView();
-            ButterKnife.bind(this);
-            initData();
-        }
+
+        }*/
+        initView();
+        ButterKnife.bind(this);
+        initData();
     }
 
     public void showEmptyView() {
