@@ -5,9 +5,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseFragment;
-import com.summer.demo.base.viewpager.NFPagerTabView;
-import com.summer.demo.base.viewpager.VFragmentPagerAdapter;
+import com.summer.demo.module.base.BaseFragment;
+import com.summer.demo.module.base.viewpager.NFPagerTabView;
+import com.summer.demo.module.base.viewpager.VFragmentPagerAdapter;
 import com.summer.demo.ui.fragment.EmptyFragment;
 import com.summer.demo.utils.CUtils;
 import com.summer.helper.utils.Logs;

@@ -8,7 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.base.BaseFragmentActivity;
+import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.constant.FragmentType;
 import com.summer.demo.ui.AcViewPager;
 import com.summer.demo.ui.AcViews;

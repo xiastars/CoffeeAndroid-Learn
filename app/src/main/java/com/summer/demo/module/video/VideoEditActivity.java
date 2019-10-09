@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseActivity;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.video.util.CompressListener;
 import com.summer.demo.module.video.util.Compressor;

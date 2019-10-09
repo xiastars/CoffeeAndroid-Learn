@@ -8,11 +8,13 @@
     <string name="cancel">取消</string>
     <string name="confirm">确定</string>
 
-    <!-- 下载我爱游戏 -->
-    <string name="dialog_hint">下载我爱游戏APP，边玩游戏边泡妹子</string>
+    <string name="dialog_hint"></string>
     <string name="download_start">开始下载啦</string>
     <string name="take_photo">拍照</string>
     <string name="choose_photo">选择</string>
+
+    <string name="search_edi_hint">搜索样式</string>
+    <string name="search">搜索</string>
 
     <string name="title1">通过城市名，从中国天气网取出该城市当天的温度与天气</string>
     <string name="title2">输入中文，点击 后朗读出来</string>
@@ -37,6 +39,11 @@
     <string name="value_green">Green: %d\%</string>
     <string name="value_blue">Blue: %d\%</string>
     <string name="loading">正在加载…</string>
+
+    <!-- 首页 -->
+    <string name="tab_view">UI</string>
+    <string name="tab_module">模块</string>
+    <string name="tab_mine">自定义</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

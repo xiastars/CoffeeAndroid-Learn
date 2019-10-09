@@ -19,8 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseActivity;
-import com.summer.demo.bean.BaseResp;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.constant.BroadConst;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.view.SupportScrollEventWebView;
@@ -31,7 +30,6 @@ import com.summer.helper.downloader.DownloadTaskListener;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.server.EasyHttp;
 import com.summer.helper.server.PostData;
-import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;

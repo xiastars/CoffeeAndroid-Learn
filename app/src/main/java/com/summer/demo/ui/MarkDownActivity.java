@@ -6,7 +6,7 @@ import android.text.Spanned;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseActivity;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 import com.zzhoujay.markdown.MarkDown;

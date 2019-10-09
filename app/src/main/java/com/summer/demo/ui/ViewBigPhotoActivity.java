@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseActivity;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.constant.BroadConst;
 import com.summer.demo.view.SupportScrollEventWebView;
 import com.summer.helper.listener.OnSimpleClickListener;

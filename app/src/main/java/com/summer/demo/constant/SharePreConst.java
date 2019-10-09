@@ -17,4 +17,9 @@ public class SharePreConst {
      * 用户TOKEN
      */
     public static final String TOKEN = "TOKEN";
+
+    /**
+     * 是否双击
+     */
+    public static final String DOUBLE_CLICK = "DOUBLE_CLICK";
 }

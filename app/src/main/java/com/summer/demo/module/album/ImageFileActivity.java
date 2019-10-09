@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.widget.GridView;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseActivity;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.adapter.FolderAdapter;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.util.PublicWay;

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseFragment;
+import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.utils.TextWebUtils;
 import com.summer.helper.utils.STextUtils;
 

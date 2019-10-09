@@ -3,7 +3,7 @@ package com.summer.demo.ui.fragment;
 import android.view.View;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseFragment;
+import com.summer.demo.module.base.BaseFragment;
 import com.summer.helper.utils.Logs;
 
 /**

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseActivity;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.adapter.AlbumGridViewAdapter;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.util.PublicWay;

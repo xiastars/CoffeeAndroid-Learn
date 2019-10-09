@@ -42,6 +42,7 @@ android {
                 [
                         'src/main/res/',
                         'src/main/res/res-media',
+                        'src/main/res/res-base',
                         'src/main/res/layout/media'
                 ]
     }

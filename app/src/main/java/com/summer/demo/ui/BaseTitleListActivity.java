@@ -7,8 +7,8 @@ import android.view.View;
 
 import com.summer.demo.R;
 import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.base.BaseActivity;
-import com.summer.demo.base.BaseFragment;
+import com.summer.demo.module.base.BaseActivity;
+import com.summer.demo.module.base.BaseFragment;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.view.NRecycleView;

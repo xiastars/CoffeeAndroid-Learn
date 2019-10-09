@@ -1,29 +1,23 @@
 package com.summer.demo.ui.fragment;
 
 import android.app.Dialog;
-import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.summer.demo.R;
-import com.summer.demo.base.BaseFragment;
+import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.dialog.BaseTipsDialog;
 import com.summer.demo.dialog.DialogWeixin;
 import com.summer.demo.dialog.LoadingDialog;
 import com.summer.demo.ui.fragment.dialog.BottomTestDialog;
-import com.summer.helper.dialog.BaseCenterDialog;
 import com.summer.helper.utils.SUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Dialog的用法
