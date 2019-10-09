@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,8 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.summer.demo.R;
-import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.util.ImageItem;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.video.util.CompressListener;
 import com.summer.demo.module.video.util.Compressor;
 import com.summer.demo.module.video.util.EditSpacingItemDecoration;
@@ -38,6 +37,7 @@ import com.summer.demo.module.video.util.PictureUtils;
 import com.summer.demo.module.video.util.RangeSeekBar;
 import com.summer.demo.module.video.util.TrimVideoUtils;
 import com.summer.demo.module.video.util.VideoEditInfo;
+import com.summer.demo.view.CommonSureView5;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
@@ -70,7 +70,7 @@ public class VideoEditActivity extends BaseActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.btn_right)
-    Button btnRight;
+    CommonSureView5 btnRight;
     @BindView(R.id.title)
     RRelativeLayout title;
     @BindView(R.id.uVideoView)
@@ -136,6 +136,7 @@ public class VideoEditActivity extends BaseActivity {
         ButterKnife.bind(this);
         context = this;
         btnRight.setVisibility(View.VISIBLE);
+        btnRight.changeStyle(true);
         SUtils.initScreenDisplayMetrics(this);
         PermissionUtils.checkReadPermission(this);
         videoItem = (ImageItem) JumpTo.getObject(this);

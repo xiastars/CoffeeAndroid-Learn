@@ -41,6 +41,7 @@ public class ModuleFragment extends BaseMainFragment {
         moduleInfos.add(new ModuleInfo(R.drawable.ic_module_animation,"帧动画"));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_module_transition,"属性动画"));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_module_dialog,"弹窗"));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text,"视频裁剪"));
         adapter.notifyDataChanged(moduleInfos);
     }
 

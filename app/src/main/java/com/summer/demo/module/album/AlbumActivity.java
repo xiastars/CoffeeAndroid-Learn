@@ -23,14 +23,15 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.summer.demo.R;
-import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.adapter.AlbumGridViewAdapter;
 import com.summer.demo.module.album.adapter.FolersAdapter;
 import com.summer.demo.module.album.util.AlbumHelper;
 import com.summer.demo.module.album.util.ImageBucket;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.util.PublicWay;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.video.VideoEditActivity;
+import com.summer.demo.view.CommonSureView5;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
@@ -123,7 +124,7 @@ public class AlbumActivity extends BaseActivity {
     // 初始化，给一些对象赋值
     private void init() {
         setTitle("最近照片");
-        Button btnAlbum = (Button) findViewById(R.id.btn_right);
+        CommonSureView5 btnAlbum = (CommonSureView5) findViewById(R.id.btn_right);
         btnAlbum.setOnClickListener(new BackListener());
         btnAlbum.setVisibility(View.VISIBLE);
         btnAlbum.setText("预览");
