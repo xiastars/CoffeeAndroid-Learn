@@ -8,18 +8,15 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.summer.demo.adapter.CommonAdapter;
-import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.constant.FragmentType;
+import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.ui.AcViewPager;
 import com.summer.demo.ui.AcViews;
 import com.summer.demo.ui.SDKActivity;
-import com.summer.demo.ui.fragment.CDrawableFragment;
 import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;
-import com.summer.demo.ui.fragment.FrameAnimFragment;
 import com.summer.demo.ui.fragment.MediaPlayerFragment;
 import com.summer.demo.ui.fragment.MyDialogFragment;
-import com.summer.demo.ui.fragment.ObjectAnimFragment;
 import com.summer.demo.ui.fragment.PictureUseFragment;
 import com.summer.demo.ui.fragment.RXJavaPractice;
 import com.summer.demo.ui.fragment.ToastFragment;
@@ -179,9 +176,6 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
             case 10:
                 showFragment(new MyDialogFragment());
                 break;
-            case 11:
-                showFragment(new CDrawableFragment());
-                break;
             case 12:
                 showFragment(new DownloadFragment());
                 break;
@@ -194,14 +188,6 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
                 break;
             case 15:
                 showFragment(new RXJavaPractice());
-                break;
-            case FragmentType.FRAME_ANIM:
-                setTitleString("帧动画演示");
-                showFragment(new FrameAnimFragment());
-                break;
-            case FragmentType.OBJECT_ANIM:
-                setTitleString("属性动画演示");
-                showFragment(new ObjectAnimFragment());
                 break;
             case FragmentType.SDK:
                 JumpTo.getInstance().commonJump(context, SDKActivity.class);

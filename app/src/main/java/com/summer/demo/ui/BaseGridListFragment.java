@@ -23,7 +23,7 @@ import butterknife.BindView;
  * @Author: xiastars@vip.qq.com
  * @CreateDate: 2019/6/10 18:00
  */
-public abstract class BaseGridListActivity extends BaseActivity {
+public abstract class BaseGridListFragment extends BaseActivity {
     @BindView(R.id.nv_container)
     NRecycleView nvContainer;
     FragmentManager fragmentManager;
@@ -57,13 +57,14 @@ public abstract class BaseGridListActivity extends BaseActivity {
     }
 
     protected void setData(String[] titles ,int[] bgs){
+        //adapter.setBackgroundImgs(bgs);
         List<String> title = new ArrayList<String>();
         /* 从XML里获取String数组的方法*/
         for (int i = 0; i < titles.length; i++) {
             String ti = titles[i];
             title.add(ti);
         }
-        //adapter.notifyDataChanged(title);
+        adapter.notifyDataChanged(title);
     }
 
 

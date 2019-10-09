@@ -23,6 +23,32 @@
         <TextView
             style="@style/common_button"
             android:text="单边圆角与底色"/>
+
+        <TextView
+            android:layout_width="40dp"
+
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/so_yellow_oval"
+            android:text="圆形"/>
+
+        <TextView
+            style="@style/common_button"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/so_gradient_redffe_blued8"
+            android:text="颜色渐变"/>
+
+        <TextView
+            style="@style/common_button"
+            android:background="@drawable/so_white_st_red5_dash"
+            android:text="圆角、底色、描边与虚线"/>
+
+        <TextView
+            style="@style/common_button"
+            android:background="@drawable/so_redd4_right"
+            android:text="两边圆角"/>
     </LinearLayout>
 
 </ScrollView>

@@ -42,6 +42,8 @@
         <activity android:name="com.summer.helper.web.WebViewActivity"></activity>
         <activity android:name="com.summer.helper.web.WebContainerActivity"></activity>
         <activity android:name=".ui.ViewBigPhotoActivity" />
+        <activity android:name=".ui.FragmentContainerActivity" />
+        <activity android:name=".ui.module.ModuleContainerActivity" />
     </application>
 
 </manifest>

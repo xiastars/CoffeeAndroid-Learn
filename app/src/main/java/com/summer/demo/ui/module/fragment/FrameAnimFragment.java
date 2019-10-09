@@ -1,4 +1,4 @@
-package com.summer.demo.ui.fragment;
+package com.summer.demo.ui.module.fragment;
 
 import android.graphics.Bitmap;
 import android.view.View;
@@ -33,7 +33,7 @@ public class FrameAnimFragment extends BaseFragment {
     @BindView(R.id.draglyer)
     DragLayer dragLayer;
 
-    DragRelativeLayout dragRelativeLayout;
+    List<DragRelativeLayout> dragRelativeLayouts;
 
     private void createLittle() {
 
@@ -56,11 +56,16 @@ public class FrameAnimFragment extends BaseFragment {
             frameImgBean.setImgType(2);
             bitmaps.add(frameImgBean);
         }
-        dragRelativeLayout = new DragRelativeLayout(context);
-        dragRelativeLayout.setLayoutPosition(40 ,  180);
-        dragLayer.addView(dragRelativeLayout);
-        dragRelativeLayout.initBitmaps(bitmaps);
-        dragRelativeLayout.circlePlay();
+        for(int i = 0;i < 2;i++){
+            DragRelativeLayout dragRelativeLayout = new DragRelativeLayout(context);
+            dragRelativeLayout.setLayoutPosition(40+(i+100) ,  180+(i+200));
+            dragLayer.addView(dragRelativeLayout);
+            List<FrameImgBean> datas = new ArrayList<FrameImgBean>();
+            datas.addAll(bitmaps);
+            dragRelativeLayout.initBitmaps(datas);
+            dragRelativeLayout.circlePlay();
+        }
+
 
     }
 
@@ -72,8 +77,11 @@ public class FrameAnimFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        if(dragRelativeLayout != null){
-            dragRelativeLayout.stopPlay();
+        if(dragRelativeLayouts != null){
+            for(int i =0; i < dragRelativeLayouts.size();i++){
+                dragRelativeLayouts.get(i).stopPlay();
+            }
+
         }
     }
 

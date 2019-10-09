@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.summer.demo.R;
+import com.summer.demo.bean.ModuleInfo;
 import com.summer.helper.adapter.SRecycleMoreAdapter;
 import com.summer.helper.listener.OnSimpleClickListener;
 
@@ -22,7 +23,6 @@ import butterknife.ButterKnife;
 public class CommonGridAdapter extends SRecycleMoreAdapter {
 
     OnSimpleClickListener onSimpleClickListener;
-    int[] bgs;
 
     public CommonGridAdapter(Context context) {
         super(context);
@@ -42,8 +42,9 @@ public class CommonGridAdapter extends SRecycleMoreAdapter {
     @Override
     public void bindContentView(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder vh = (ViewHolder) holder;
-        vh.content.setText(position + 1 + ":" + items.get(position));
-        vh.ivBg.setBackgroundResource(bgs[position]);
+        ModuleInfo moduleInfo = (ModuleInfo) items.get(position);
+        vh.content.setText(moduleInfo.getTitle());
+        vh.ivBg.setBackgroundResource(moduleInfo.getRes());
         vh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,10 +54,6 @@ public class CommonGridAdapter extends SRecycleMoreAdapter {
             }
         });
 
-    }
-
-    public void setBackgroundImgs(int[] bgs){
-        this.bgs = bgs;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

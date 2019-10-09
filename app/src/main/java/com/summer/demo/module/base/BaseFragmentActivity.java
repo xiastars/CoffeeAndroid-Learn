@@ -99,6 +99,11 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
         initData();
     }
 
+    @Override
+    public void setTitle(CharSequence title) {
+        tvTitle.setText(title);
+    }
+
     public void showEmptyView() {
         showEmptyView("");
     }
