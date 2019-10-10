@@ -6,6 +6,8 @@ import com.summer.demo.R;
 import com.summer.demo.adapter.CommonGridAdapter;
 import com.summer.demo.bean.ModuleInfo;
 import com.summer.demo.ui.main.BaseMainFragment;
+import com.summer.demo.ui.module.colorpicker.AmbilWarnaDialog;
+import com.summer.demo.ui.module.colorpicker.AmbilWarnaDialog.OnAmbilWarnaListener;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.view.NRecycleView;
@@ -21,47 +23,62 @@ import butterknife.BindView;
  * @CreateDate: 2019/10/9 10:32
  */
 public class ModuleFragment extends BaseMainFragment {
-    @BindView(R.id.sv_container)
-    NRecycleView svContainer;
+	@BindView(R.id.sv_container)
+	NRecycleView svContainer;
 
-    CommonGridAdapter adapter;
+	CommonGridAdapter adapter;
 
-    @Override
-    protected void initView(View view) {
-        svContainer.setGridView(3);
-        svContainer.setDivider();
-        adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
-            @Override
-            public void onClick(int position) {
-                clickChild(position);
-            }
-        });
-        svContainer.setAdapter(adapter);
-        List<ModuleInfo> moduleInfos = new ArrayList<>();
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_animation,"帧动画", ModulePos.POS_FRAME));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_transition,"属性动画", ModulePos.POS_FRAME));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_dialog,"弹窗", ModulePos.POS_FRAME));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text,"视频裁剪", ModulePos.POS_FRAME));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_navigatior,"Webview网页", ModulePos.POS_FRAME));
-        adapter.notifyDataChanged(moduleInfos);
-    }
+	@Override
+	protected void initView(View view) {
+		svContainer.setGridView(3);
+		svContainer.setDivider();
+		adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
+			@Override
+			public void onClick(int position) {
+				clickChild(position);
+			}
+		});
+		svContainer.setAdapter(adapter);
+		List<ModuleInfo> moduleInfos = new ArrayList<>();
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_animation, "帧动画", ModulePos.POS_FRAME));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_transition, "属性动画", ModulePos.POS_ANIM));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_dialog, "弹窗", ModulePos.POS_DIALOG));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text, "视频裁剪", ModulePos.POS_VIDEO_CUTTER));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_navigatior, "Webview网页", ModulePos.POS_WEBVIEW));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_picker, "颜色选择器", ModulePos.POS_COLOR_PICKER));
+		adapter.notifyDataChanged(moduleInfos);
+	}
 
-    private void clickChild(int position) {
-        JumpTo.getInstance().commonJump(context, ModuleContainerActivity.class,position);
-    }
+	private void clickChild(int position) {
+		switch (position) {
+			case ModulePos.POS_COLOR_PICKER:
+				AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(context, getResColor(R.color.red_d3), new OnAmbilWarnaListener() {
+					@Override
+					public void onOk(int color) {
 
-    @Override
-    public void loadData() {
+					}
+				});
+				ambilWarnaDialog.show();
+				break;
+			default:
+				JumpTo.getInstance().commonJump(context, ModuleContainerActivity.class, position);
+				break;
+		}
 
-    }
+	}
 
-    @Override
-    protected void dealDatas(int requestType, Object obj) {
+	@Override
+	public void loadData() {
 
-    }
+	}
 
-    @Override
-    protected int setContentView() {
-        return R.layout.view_nrecyleview;
-    }
+	@Override
+	protected void dealDatas(int requestType, Object obj) {
+
+	}
+
+	@Override
+	protected int setContentView() {
+		return R.layout.view_nrecyleview;
+	}
 }

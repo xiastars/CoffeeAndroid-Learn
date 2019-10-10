@@ -3,10 +3,13 @@ package com.summer.demo.ui.module;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.summer.demo.R;
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.ui.FragmentContainerActivity;
 import com.summer.demo.ui.fragment.MyDialogFragment;
 import com.summer.demo.ui.fragment.ObjectAnimFragment;
+import com.summer.demo.ui.module.colorpicker.AmbilWarnaDialog;
+import com.summer.demo.ui.module.colorpicker.AmbilWarnaDialog.OnAmbilWarnaListener;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.helper.utils.JumpTo;
@@ -19,32 +22,32 @@ import com.summer.helper.utils.SFileUtils;
  */
 public class ModuleContainerActivity extends FragmentContainerActivity {
 
-    @Override
-    protected void showViews(int type) {
-        switch (type){
-            case 0:
-                setTitle("帧动画");
-                showFragment(new FrameAnimFragment());
-                break;
-            case 1:
-                setTitle("属性动画");
-                showFragment(new ObjectAnimFragment());
-                break;
-            case 2:
-                setTitle("弹窗");
-                showFragment(new MyDialogFragment());
-                break;
-            case 3:
-                Intent intent = new Intent(context, AlbumActivity.class);
-                intent.putExtra(JumpTo.TYPE_INT, 1);
-                intent.putExtra(JumpTo.TYPE_STRING, SFileUtils.FileType.FILE_MP4);
-                ((Activity) context).startActivityForResult(intent, 12);
-                break;
-            case 4:
-                setTitle("Webview网页");
-                showFragment(new WebLeanFragment());
-                break;
-        }
-    }
+	@Override
+	protected void showViews(int type) {
+		switch (type) {
+			case ModulePos.POS_FRAME:
+				setTitle("帧动画");
+				showFragment(new FrameAnimFragment());
+				break;
+			case ModulePos.POS_ANIM:
+				setTitle("属性动画");
+				showFragment(new ObjectAnimFragment());
+				break;
+			case ModulePos.POS_DIALOG:
+				setTitle("弹窗");
+				showFragment(new MyDialogFragment());
+				break;
+			case ModulePos.POS_VIDEO_CUTTER:
+				Intent intent = new Intent(context, AlbumActivity.class);
+				intent.putExtra(JumpTo.TYPE_INT, 1);
+				intent.putExtra(JumpTo.TYPE_STRING, SFileUtils.FileType.FILE_MP4);
+				((Activity) context).startActivityForResult(intent, 12);
+				break;
+			case ModulePos.POS_WEBVIEW:
+				setTitle("Webview网页");
+				showFragment(new WebLeanFragment());
+				break;
+		}
+	}
 
 }

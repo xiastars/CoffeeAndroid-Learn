@@ -7,5 +7,15 @@ package com.summer.demo.ui.module;
  */
 public class ModulePos {
 
-    public static final int POS_FRAME = 1;
+    public static final int POS_FRAME = 0;
+
+    public static final int POS_ANIM = 1;
+
+    public static final int POS_DIALOG = 2;
+
+    public static final int POS_VIDEO_CUTTER = 3;
+    public static final int POS_WEBVIEW = 4;
+
+    public static final int POS_COLOR_PICKER = 5;
+
 }
