@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
+import com.malata.summer.helper.R;
 import com.summer.helper.utils.SUtils;
 
 /**
@@ -27,7 +28,7 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
     public GridItemDecoration(Context context)
     {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
-        mDivider = a.getDrawable(0);
+        mDivider = new ColorDrawable(context.getResources().getColor(R.color.grey_e1));
         mDividerWith = mDivider.getIntrinsicWidth();
         mDividerHeight = mDivider.getIntrinsicHeight();
         a.recycle();
@@ -86,8 +87,8 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
         int spanCount = getSpanCount(parent);
         for (int i = 0; i < childCount; i++)
         {
-            if (isLastRaw(parent, i, spanCount, childCount))
-                continue;
+          /*  if (isLastRaw(parent, i, spanCount, childCount))
+                continue;*/
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
@@ -107,8 +108,8 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
         int spanCount = getSpanCount(parent);
         for (int i = 0; i < childCount; i++)
         {
-            if (isLastColum(parent, i, spanCount, childCount) || isLast(i, childCount))
-                continue;
+        /*    if (isLastColum(parent, i, spanCount, childCount) || isLast(i, childCount))
+                continue;*/
             final View child = parent.getChildAt(i);
 
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child

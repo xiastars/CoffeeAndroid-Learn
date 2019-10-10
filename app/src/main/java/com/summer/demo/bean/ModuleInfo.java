@@ -7,13 +7,24 @@ package com.summer.demo.bean;
  */
 public class ModuleInfo {
 
-    public ModuleInfo(int res, String title) {
+
+    public ModuleInfo(int res, String title,int pos) {
         this.res = res;
+        this.pos = pos;
         this.title = title;
     }
 
     int res;
+    int pos;
     String title;
+
+    public int getPos() {
+        return pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
 
     public int getRes() {
         return res;

@@ -38,10 +38,11 @@ public class ModuleFragment extends BaseMainFragment {
         });
         svContainer.setAdapter(adapter);
         List<ModuleInfo> moduleInfos = new ArrayList<>();
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_animation,"帧动画"));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_transition,"属性动画"));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_dialog,"弹窗"));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text,"视频裁剪"));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_animation,"帧动画", ModulePos.POS_FRAME));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_transition,"属性动画", ModulePos.POS_FRAME));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_dialog,"弹窗", ModulePos.POS_FRAME));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text,"视频裁剪", ModulePos.POS_FRAME));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_navigatior,"Webview网页", ModulePos.POS_FRAME));
         adapter.notifyDataChanged(moduleInfos);
     }
 

@@ -1,11 +1,10 @@
-package com.summer.demo.ui.ui;
+package com.summer.demo.ui.view;
 
 import android.view.View;
 
 import com.summer.demo.R;
 import com.summer.demo.adapter.CommonGridAdapter;
 import com.summer.demo.bean.ModuleInfo;
-import com.summer.demo.ui.FragmentContainerActivity;
 import com.summer.demo.ui.main.BaseMainFragment;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.utils.JumpTo;
@@ -17,11 +16,11 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * @Description: 普通View
+ * @Description: 自定义View
  * @Author: xiastars@vip.qq.com
  * @CreateDate: 2019/10/9 10:29
  */
-public class CommonViewFragment extends BaseMainFragment {
+public class CustomViewFragment extends BaseMainFragment {
     @BindView(R.id.sv_container)
     NRecycleView svContainer;
 
@@ -31,21 +30,23 @@ public class CommonViewFragment extends BaseMainFragment {
     protected void initView(View view) {
         svContainer.setGridView(3);
         svContainer.setDivider();
+
+
+        final List<ModuleInfo> moduleInfos = new ArrayList<>();
+        moduleInfos.add(new ModuleInfo(R.drawable.so_gradient_redffe_blued8, "item收集", ElementPosition.POS_ITEM));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_gallery, "Gallery", ElementPosition.POS));
         adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
             @Override
             public void onClick(int position) {
-                clickChild(position);
+                clickChild(moduleInfos.get(position).getPos());
             }
         });
         svContainer.setAdapter(adapter);
-        List<ModuleInfo> moduleInfos = new ArrayList<>();
-        moduleInfos.add(new ModuleInfo(R.drawable.so_gradient_redffe_blued8,"Drawable"));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text,"文本"));
         adapter.notifyDataChanged(moduleInfos);
     }
 
     private void clickChild(int position) {
-        JumpTo.getInstance().commonJump(context, FragmentContainerActivity.class,position);
+        JumpTo.getInstance().commonJump(context, ViewCustomContainerActivity.class, position);
     }
 
     @Override
@@ -62,6 +63,5 @@ public class CommonViewFragment extends BaseMainFragment {
     protected int setContentView() {
         return R.layout.view_nrecyleview;
     }
-
 
 }

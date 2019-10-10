@@ -122,7 +122,8 @@ public class NRecycleView extends RecyclerView {
 	}
 
 	public void setDivider() {
-		this.addItemDecoration(new ListItemDecoration(getContext(), LinearLayoutManager.VERTICAL, getContext().getResources().getDrawable(R.drawable.line_greye1)));
+		this.addItemDecoration(new GridItemDecoration(getContext()));
+
 	}
 
 	public void setCommonDividerGrey(int left, int right) {

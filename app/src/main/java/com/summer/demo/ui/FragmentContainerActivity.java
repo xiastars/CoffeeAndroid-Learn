@@ -8,7 +8,8 @@ import android.widget.FrameLayout;
 import com.summer.demo.R;
 import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.ui.fragment.views.TextViewFragment;
-import com.summer.demo.ui.ui.CDrawableFragment;
+import com.summer.demo.ui.view.UiPosition;
+import com.summer.demo.ui.view.commonfragment.CDrawableFragment;
 import com.summer.helper.utils.JumpTo;
 
 import butterknife.BindView;
@@ -59,11 +60,11 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
 
     protected void showViews(int type){
         switch (type){
-            case 0:
+            case UiPosition.POS_DRAWABLE:
                 setTitle("Drawable");
                 showFragment(new CDrawableFragment());
                 break;
-            case 1:
+            case UiPosition.POS_TEXT:
                 setTitle("文本");
                 showFragment(new TextViewFragment());
                 break;

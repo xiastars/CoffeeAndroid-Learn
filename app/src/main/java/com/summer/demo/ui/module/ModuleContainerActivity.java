@@ -8,6 +8,7 @@ import com.summer.demo.ui.FragmentContainerActivity;
 import com.summer.demo.ui.fragment.MyDialogFragment;
 import com.summer.demo.ui.fragment.ObjectAnimFragment;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
+import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.SFileUtils;
 
@@ -38,6 +39,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
                 intent.putExtra(JumpTo.TYPE_INT, 1);
                 intent.putExtra(JumpTo.TYPE_STRING, SFileUtils.FileType.FILE_MP4);
                 ((Activity) context).startActivityForResult(intent, 12);
+                break;
+            case 4:
+                setTitle("Webview网页");
+                showFragment(new WebLeanFragment());
                 break;
         }
     }

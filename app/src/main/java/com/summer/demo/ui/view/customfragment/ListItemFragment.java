@@ -1,19 +1,25 @@
-package com.summer.demo.ui.ui;
+package com.summer.demo.ui.view.customfragment;
 
 import android.view.View;
 
 import com.summer.demo.R;
-import com.summer.demo.ui.main.BaseMainFragment;
+import com.summer.demo.module.base.BaseFragment;
+import com.summer.helper.view.NRecycleView;
+
+import butterknife.BindView;
 
 /**
- * @Description: 自定义View
+ * @Description:
  * @Author: xiastars@vip.qq.com
- * @CreateDate: 2019/10/9 10:29
+ * @CreateDate: 2019/10/10 16:38
  */
-public class CustomViewFragment extends BaseMainFragment {
+public class ListItemFragment extends BaseFragment {
+    @BindView(R.id.sv_container)
+    NRecycleView nvContainer;
+
     @Override
     protected void initView(View view) {
-
+        nvContainer.setList();
     }
 
     @Override

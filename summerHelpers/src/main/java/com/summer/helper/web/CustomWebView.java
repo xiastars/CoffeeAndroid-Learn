@@ -116,6 +116,7 @@ public class CustomWebView extends WebView {
 		setLayerType(View.LAYER_TYPE_HARDWARE, null);
 		setLongClickable(true);
 		setScrollbarFadingEnabled(true);
+		settings.setDefaultTextEncodingName("utf-8");//文本编码
 		setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 		setDrawingCacheEnabled(true);
 		settings.setAppCacheEnabled(true);
@@ -142,6 +143,7 @@ public class CustomWebView extends WebView {
 		try {
 			// 所有网页请求都加入请求头
 			Map<String, String> additionalHttpHeaders = new HashMap<String, String>();
+			additionalHttpHeaders.put("encoding","utf-8");
 			super.loadUrl(url, additionalHttpHeaders);
 		} catch (NullPointerException e) {
 		}

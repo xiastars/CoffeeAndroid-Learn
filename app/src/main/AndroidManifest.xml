@@ -44,6 +44,7 @@
         <activity android:name=".ui.ViewBigPhotoActivity" />
         <activity android:name=".ui.FragmentContainerActivity" />
         <activity android:name=".ui.module.ModuleContainerActivity" />
+        <activity android:name=".ui.view.ViewCustomContainerActivity" />
         <!-- 图片视频 -->
         <activity android:name=".module.album.AlbumActivity" />
         <activity android:name=".module.album.ShowAllPhotoActivity" />
@@ -51,6 +52,7 @@
         <activity android:name=".module.album.GalleryActivity" />
         <activity android:name=".module.album.ImageFileActivity" />
         <activity android:name=".module.video.VideoEditActivity" />
+        <activity android:name=".module.video.ViewVideoActivity" />
     </application>
 
 </manifest>

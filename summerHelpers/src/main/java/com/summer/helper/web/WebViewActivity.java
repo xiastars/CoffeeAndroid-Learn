@@ -27,6 +27,9 @@ import com.summer.helper.utils.JumpTo.ShortcutJump;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.view.RoundAngleImageView;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class WebViewActivity extends Activity {
 	
 	private WebViewActivity INSTANCE;
@@ -116,7 +119,19 @@ public class WebViewActivity extends Activity {
 //			} else {
 //				url = UrlUtils.getSearchUrl(this, url);
 //			}
+			try {
+				InputStream inputStream = this.getAssets().open("home.html");
+				//inputStream.
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(url.startsWith("http")){
+				mCurrentWebView.loadUrl(url);
+			}else{
+				//mCurrentWebView.loadDataWithBaseURL(null,url, "text/html", "utf-8",null);
+			}
 			mCurrentWebView.loadUrl(url);
+
 		}
 	}
 	

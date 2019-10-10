@@ -13,7 +13,7 @@ import com.summer.demo.dialog.LoadingDialog;
 import com.summer.demo.module.view.NavigationButton;
 import com.summer.demo.ui.mine.MineFragment;
 import com.summer.demo.ui.module.ModuleFragment;
-import com.summer.demo.ui.ui.HomePagerFragment;
+import com.summer.demo.ui.view.HomePagerFragment;
 import com.summer.demo.utils.CUtils;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.view.transformer.MoveAnimation;

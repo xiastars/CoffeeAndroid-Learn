@@ -1,4 +1,4 @@
-package com.summer.demo.ui.ui;
+package com.summer.demo.ui.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -54,10 +54,10 @@ public class HomePagerFragment extends BaseMainFragment implements View.OnClickL
         pagerStrip.setIndicatorColor(getResColor(R.color.transparent));
         //选中时的文字颜色
         pagerStrip.setTextColor(getResColor(R.color.grey_4a));
-        NFPagerTabView homeTab = new NFPagerTabView(context, "普通");
+        NFPagerTabView homeTab = new NFPagerTabView(context, "视图");
         homeTab.setmTextSize(22);
         mTabViews.add(homeTab);
-        NFPagerTabView trendsTab = new NFPagerTabView(context, "自定义");
+        NFPagerTabView trendsTab = new NFPagerTabView(context, "组件");
         trendsTab.setmTextSize(22);
         mTabViews.add(trendsTab);
         VFragmentPagerAdapter adapter = new VFragmentPagerAdapter(activity.getSupportFragmentManager(), fragments, mTabViews);

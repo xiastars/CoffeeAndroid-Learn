@@ -25,4 +25,15 @@
         <attr name="minute_mark_color" format="color" />
         <attr name="draw_center_circle" format="boolean" />
     </declare-styleable>
+
+
+    <declare-styleable name="XGallery">
+
+        <!-- Item的宽度 -->
+        <attr name="xGallery_itemWidth" format="dimension" />
+
+        <!-- Item的高度 -->
+        <attr name="xGallery_itemHeight" format="dimension" />
+
+    </declare-styleable>
 </resources>

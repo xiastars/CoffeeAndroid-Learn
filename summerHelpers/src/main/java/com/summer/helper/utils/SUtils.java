@@ -1417,6 +1417,7 @@ public class SUtils {
         setPic(view, null, 0, 0, holder, false, null);
     }
 
+
     public static void setPicWithHolder(ImageView view, String img, int holder, boolean download) {
         setPic(view, img, 0, holder, download);
     }
@@ -1877,6 +1878,15 @@ public class SUtils {
 
         localContentResolver.insert(local, localContentValues);
         // activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED,Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+    }
+
+    /**
+     * 判断List是否为空
+     * @param list
+     * @return
+     */
+    public static boolean isEmptyArrays(List list){
+        return list==null || list.isEmpty();
     }
 
     public enum NetState {

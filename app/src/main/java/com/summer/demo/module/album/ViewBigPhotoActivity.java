@@ -1,5 +1,6 @@
 package com.summer.demo.module.album;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -19,9 +20,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.constant.BroadConst;
 import com.summer.demo.module.album.util.ImageItem;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.view.SupportScrollEventWebView;
 import com.summer.helper.dialog.BottomListDialog;
 import com.summer.helper.downloader.DownloadStatus;
@@ -46,8 +47,7 @@ import butterknife.BindView;
  *
  * @编者 夏起亮
  */
-public class ViewBigPhotoActivity extends BaseActivity implements
-        OnClickListener {
+public class ViewBigPhotoActivity extends BaseActivity implements OnClickListener {
     @BindView(R.id.count)
     protected TextView tvItemCount;
     private static final String STATE_POSITION = "STATE_POSITION";
@@ -58,6 +58,18 @@ public class ViewBigPhotoActivity extends BaseActivity implements
     private ImageItem photo;
 
     boolean isMine;//是不是我的
+
+    /**
+     * 跳转
+     * @param items
+     * @param curPos 显示的位置
+     */
+    public static void show(Context context, List<ImageItem> items, int curPos){
+        Intent intent = new Intent(context, ViewBigPhotoActivity.class);
+        intent.putExtra(JumpTo.TYPE_INT, curPos);
+        intent.putExtra(JumpTo.TYPE_OBJECT, (Serializable) items);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void dealDatas(int requestCode, Object obj) {
