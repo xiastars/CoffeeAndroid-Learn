@@ -43,7 +43,7 @@ android {
                         'src/main/res/',
                         'src/main/res/res-media',
                         'src/main/res/res-base',
-                        'src/main/res/layout/media'
+                        'src/main/res/res-emoji'
                 ]
     }
 }
@@ -79,4 +79,5 @@ dependencies {
     implementation 'com.zzhoujay.markdown:markdown:1.0.5'
     //裁剪视频
     implementation 'com.googlecode.mp4parser:isoparser:1.1.22'
+    implementation 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
 }

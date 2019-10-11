@@ -35,6 +35,9 @@ public class CustomViewFragment extends BaseMainFragment {
         final List<ModuleInfo> moduleInfos = new ArrayList<>();
         moduleInfos.add(new ModuleInfo(R.drawable.so_gradient_redffe_blued8, "item收集", ElementPosition.POS_ITEM));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_gallery, "Gallery", ElementPosition.POS));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_danmake,"简单弹幕",ElementPosition.DANMAKU));
+
+
         adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
             @Override
             public void onClick(int position) {

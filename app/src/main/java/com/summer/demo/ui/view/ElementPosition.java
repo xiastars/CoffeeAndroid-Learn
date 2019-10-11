@@ -10,4 +10,6 @@ public class ElementPosition {
     public final static int POS_ITEM = 0;
 
     public final static int POS = 1;
+
+    public final static int DANMAKU = 2;
 }

@@ -414,12 +414,13 @@ public class SUtils {
     /**
      * 打开输入法
      */
-    public static void showSoftInpuFromWindow(EditText searchEdit, Context context) {
+    public static void showSoftInpuFromWindow(EditText searchEdit) {
         if (searchEdit == null)
             return;
         if (searchEdit != null) {
             searchEdit.requestFocus();
         }
+        Context context = searchEdit.getContext();
         if (inputMethodManager == null)
             inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.showSoftInput(searchEdit, InputMethodManager.SHOW_FORCED);

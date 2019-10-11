@@ -1,8 +1,5 @@
 package com.summer.helper.view;
 
-import com.malata.summer.helper.R;
-import com.summer.helper.utils.SUtils;
-
 import android.animation.ArgbEvaluator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,7 +16,12 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Property;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
+
+import com.malata.summer.helper.R;
+import com.summer.helper.utils.SUtils;
 
 public class RoundAngleImageView extends ImageView {
 	public static final String TAG = "RoundedImageView";
@@ -54,6 +56,10 @@ public class RoundAngleImageView extends ImageView {
     private static final int END_COLOR = 0xFFFFC107;
     private Bitmap tempBitmap;
     private Canvas tempCanvas;
+
+
+	/* 触摸时显示动画 */
+	boolean showTouchAnim = true;
 
 	public RoundAngleImageView(Context context) {
 		super(context);
@@ -372,6 +378,22 @@ public class RoundAngleImageView extends ImageView {
 		}
         
     }
+
+	public boolean isShowTouchAnim() {
+		return showTouchAnim;
+	}
+
+	public void setShowTouchAnim(boolean showTouchAnim) {
+		this.showTouchAnim = showTouchAnim;
+		if(!showTouchAnim){
+			this.setOnTouchListener(new OnTouchListener() {
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					return false;
+				}
+			});
+		}
+	}
 
     @Override
     protected void onDraw(Canvas canvas) {
