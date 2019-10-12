@@ -39,6 +39,7 @@ import butterknife.OnClick;
  *
  * @编者 xiastars
  */
+@Deprecated
 public class AcMain extends BaseFragmentActivity implements View.OnClickListener {
     @BindView(R.id.nv_container)
     NRecycleView nvContainer;
@@ -141,10 +142,6 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
      */
     public void clickChild(int position) {
         switch (position) {
-            case 0:
-                JumpTo.getInstance().commonJump(context, AcJava.class);
-                // JumpTo.getInstance().commonJump(context, WebContainerActivity.class, "https://java.quanke.name/");
-                break;
             case 1:
                 JumpTo.getInstance().commonJump(context, AcViews.class);
                 //JumpTo.getInstance().commonJump(context, AcCases.class);

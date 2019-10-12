@@ -3,24 +3,24 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/home_content"
+        android:id="@+id/fl_ui"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp" />
 
     <FrameLayout
-        android:id="@+id/home_content3"
+        android:id="@+id/fl_module"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
         android:visibility="gone" />
 
     <FrameLayout
-        android:id="@+id/home_content1"
+        android:id="@+id/fl_course"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:visibility="gone" />
+        android:layout_marginBottom="50dp" />
 
     <FrameLayout
         android:id="@+id/home_content2"
@@ -76,7 +76,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:visibility="gone"
             android:paddingLeft="@dimen/lay_12"
             android:paddingRight="@dimen/lay_12" />
 

@@ -10,4 +10,6 @@ public class UiPosition {
     public static final int POS_DRAWABLE = 0;
 
     public static final int POS_TEXT = 1;
+
+    public static final int POS_CONSTRAINT = 2;
 }

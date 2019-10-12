@@ -40,15 +40,15 @@ public class CommonAdapter extends SRecycleMoreAdapter {
     @Override
     public void bindContentView(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder vh = (ViewHolder) holder;
-        vh.content.setText(position + 1 + ":" + items.get(position));
+        vh.content.setText(position + 1 + ". " + items.get(position));
         /*
          * 根据奇偶数设置不同的颜色
          */
-        if (position % 2 == 0) {
+/*        if (position % 2 == 0) {
             vh.content.setBackgroundColor(getResourceColor(R.color.pink));
         } else {
             vh.content.setBackgroundColor(getResourceColor(R.color.green));
-        }
+        }*/
 
         vh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

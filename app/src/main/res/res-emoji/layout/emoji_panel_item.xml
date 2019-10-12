@@ -3,5 +3,6 @@
     android:id="@+id/nv_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+	android:background="@color/red_fe7"
     android:layout_centerInParent="true"
 ></com.summer.helper.view.NRecycleView>

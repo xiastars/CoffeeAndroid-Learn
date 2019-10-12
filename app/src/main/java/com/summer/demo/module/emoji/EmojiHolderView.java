@@ -3,22 +3,17 @@ package com.summer.demo.module.emoji;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import com.summer.demo.R;
 import com.summer.demo.module.base.viewpager.Holder;
 import com.summer.demo.module.emoji.source.Source;
 import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.view.NRecycleView;
-import com.summer.helper.view.RoundAngleImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EmojiHolderView implements Holder<Source> {
-    private RoundAngleImageView imageView;
-    private TextView tvTitle;
-    private TextView tvSubTitle;
     ViewHolder hd;
     OnReturnObjectClickListener listener;
     EmojiItemAdapter emojiItemAdapter;

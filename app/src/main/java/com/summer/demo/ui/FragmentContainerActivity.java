@@ -10,6 +10,7 @@ import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.ui.fragment.views.TextViewFragment;
 import com.summer.demo.ui.view.UiPosition;
 import com.summer.demo.ui.view.commonfragment.CDrawableFragment;
+import com.summer.demo.ui.view.commonfragment.ConstraintLayoutFragment;
 import com.summer.helper.utils.JumpTo;
 
 import butterknife.BindView;
@@ -58,8 +59,8 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
         showViews(type);
     }
 
-    protected void showViews(int type){
-        switch (type){
+    protected void showViews(int type) {
+        switch (type) {
             case UiPosition.POS_DRAWABLE:
                 setTitle("Drawable");
                 showFragment(new CDrawableFragment());
@@ -67,6 +68,10 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
             case UiPosition.POS_TEXT:
                 setTitle("文本");
                 showFragment(new TextViewFragment());
+                break;
+            case UiPosition.POS_CONSTRAINT:
+                setTitle("ConstraintLayout");
+                showFragment(new ConstraintLayoutFragment());
                 break;
         }
     }

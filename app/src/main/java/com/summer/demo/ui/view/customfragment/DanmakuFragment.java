@@ -5,6 +5,9 @@ import android.view.View;
 import com.summer.demo.R;
 import com.summer.demo.bean.DanmakuInfo;
 import com.summer.demo.module.base.BaseFragment;
+import com.summer.demo.ui.module.comment.CommentDialog;
+import com.summer.demo.ui.module.comment.OnCommentedListener;
+import com.summer.demo.ui.module.comment.StarCommentInfo;
 import com.summer.demo.view.SimpleDanmakuView;
 import com.summer.helper.utils.Logs;
 
@@ -32,6 +35,13 @@ public class DanmakuFragment extends BaseFragment {
             danmakuInfos.add(danmakuInfo);
         }
         rlDanmaku.addDatas(danmakuInfos,0);
+        CommentDialog commentDialog = new CommentDialog(context, "", new OnCommentedListener() {
+            @Override
+            public void onSucceed(StarCommentInfo info) {
+
+            }
+        });
+        commentDialog.show();
     }
 
     @Override

@@ -29,8 +29,7 @@
         </activity>
         <activity android:name=".AcListAndGrid"></activity>
         <activity android:name=".ui.AcViewPager"></activity>
-        <activity android:name=".ui.MarkDownActivity" />
-        <activity android:name=".AcJava" />
+        <activity android:name=".ui.course.LearnJavaActivity" />
         <activity android:name=".ui.SDKActivity" />
         <activity android:name=".AcSelfDemo" />
         <!--screenOrientation 设置为横屏 -->
@@ -45,6 +44,8 @@
         <activity android:name=".ui.FragmentContainerActivity" />
         <activity android:name=".ui.module.ModuleContainerActivity" />
         <activity android:name=".ui.view.ViewCustomContainerActivity" />
+        <activity android:name=".ui.course.CourseContainerActivity" />
+        <activity android:name=".ui.course.LearnNetActivity" />
         <!-- 图片视频 -->
         <activity android:name=".module.album.AlbumActivity" />
         <activity android:name=".module.album.ShowAllPhotoActivity" />

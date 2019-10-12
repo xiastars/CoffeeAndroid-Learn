@@ -18,4 +18,8 @@ public class ModulePos {
 
     public static final int POS_COLOR_PICKER = 5;
 
+    public static final int POS_CHAT = 6;
+
+    public static final int POS_EMOJI = 7;
+
 }

@@ -56,14 +56,16 @@ public class FrameAnimFragment extends BaseFragment {
             frameImgBean.setImgType(2);
             bitmaps.add(frameImgBean);
         }
-        for(int i = 0;i < 2;i++){
+        dragRelativeLayouts = new ArrayList<>();
+        for(int i = 0;i < 1;i++){
             DragRelativeLayout dragRelativeLayout = new DragRelativeLayout(context);
-            dragRelativeLayout.setLayoutPosition(40+(i+100) ,  180+(i+200));
+            dragRelativeLayout.setLayoutPosition(40+(i+100) ,  180+(i+600));
             dragLayer.addView(dragRelativeLayout);
             List<FrameImgBean> datas = new ArrayList<FrameImgBean>();
             datas.addAll(bitmaps);
             dragRelativeLayout.initBitmaps(datas);
             dragRelativeLayout.circlePlay();
+            dragRelativeLayouts.add(dragRelativeLayout);
         }
 
 
@@ -77,18 +79,19 @@ public class FrameAnimFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        if(dragRelativeLayouts != null){
-            for(int i =0; i < dragRelativeLayouts.size();i++){
-                dragRelativeLayouts.get(i).stopPlay();
-            }
 
-        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
         Logs.i("check:ONPAUSE");
+        if(dragRelativeLayouts != null){
+            for(int i =0; i < dragRelativeLayouts.size();i++){
+                dragRelativeLayouts.get(i).stopPlay();
+            }
+
+        }
     }
 
     @Override

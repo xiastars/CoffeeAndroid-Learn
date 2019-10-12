@@ -43,6 +43,7 @@ public abstract class BaseTitleListActivity extends BaseActivity {
     protected void initData() {
         fragmentManager = this.getSupportFragmentManager();
         nvContainer.setList();
+        nvContainer.setDivider();
         CommonAdapter adapter = new CommonAdapter(context, new OnSimpleClickListener() {
             @Override
             public void onClick(int position) {

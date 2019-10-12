@@ -42,8 +42,10 @@
 
     <!-- 首页 -->
     <string name="tab_view">UI</string>
+    <string name="tab_course">教程</string>
     <string name="tab_module">模块</string>
     <string name="tab_mine">自定义</string>
+    <string name="hint_empty_comment">请输入5个字以上内容</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -82,7 +82,7 @@ public class Logs {
 		String fileInfo = "at "+stackTrace.getFileName() + "("
 				+ stackTrace.getLineNumber() + ") "
 				+ stackTrace.getMethodName();
-		Log.i("creator", fileInfo + ": " + msg);
+		Log.i("summer", fileInfo + ": " + msg);
 	}
 
 	public static void t(long time) {

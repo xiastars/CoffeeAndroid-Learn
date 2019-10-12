@@ -223,6 +223,7 @@ public class BaseHelper {
         if (hasVirturData) {
             return;
         }
+        Logs.i("first:"+firstRequest);
         //页面启动第一次时从缓存里获取数据
         if (!firstRequest && readCache) {
             firstRequest = true;

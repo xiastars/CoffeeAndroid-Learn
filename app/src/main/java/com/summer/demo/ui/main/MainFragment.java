@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.summer.demo.R;
 import com.summer.demo.dialog.LoadingDialog;
 import com.summer.demo.module.view.NavigationButton;
+import com.summer.demo.ui.course.CourseFragment;
 import com.summer.demo.ui.mine.MineFragment;
 import com.summer.demo.ui.module.ModuleFragment;
 import com.summer.demo.ui.view.HomePagerFragment;
@@ -30,14 +31,14 @@ import butterknife.OnClick;
  */
 public class MainFragment extends BaseMainFragment implements View.OnClickListener {
 
-    @BindView(R.id.home_content)
-    FrameLayout indexLayout;
-    @BindView(R.id.home_content1)
-    FrameLayout tweetLayout;
+    @BindView(R.id.fl_ui)
+    FrameLayout flUi;
+    @BindView(R.id.fl_course)
+    FrameLayout flCourse;
     @BindView(R.id.home_content2)
     FrameLayout minLayout;
-    @BindView(R.id.home_content3)
-    FrameLayout exploreLayout;
+    @BindView(R.id.fl_module)
+    FrameLayout flModule;
     @BindView(R.id.line1)
     View line1;
     @BindView(R.id.nav_view)
@@ -80,6 +81,9 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
                 switchToFragment(0);
                 break;
             case R.id.nav_item_me:
+                switchToFragment(3);
+                break;
+            case R.id.nav_item_dynamic:
                 switchToFragment(2);
                 break;
         }
@@ -123,7 +127,9 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
         nvItemExplore.init(R.drawable.tab_icon_discover,
                 R.string.tab_module,
                 ModuleFragment.class);
-
+        navItemDynamic.init(R.drawable.tab_icon_discover,
+                R.string.tab_course,
+                CourseFragment.class);
         navItemMe.init(R.drawable.tab_icon_mine,
                 R.string.tab_mine,
                 MineFragment.class);
@@ -132,14 +138,15 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
 
     private void initFragment() {
         fgManager = activity.getSupportFragmentManager();
-        frameLayouts.add(indexLayout);
-        frameLayouts.add(exploreLayout);
-        frameLayouts.add(tweetLayout);
+        frameLayouts.add(flUi);
+        frameLayouts.add(flModule);
+        frameLayouts.add(flCourse);
         frameLayouts.add(minLayout);
         homePagerFragment = new HomePagerFragment();
         fragments.add(homePagerFragment);
         moduleFragment = new ModuleFragment();
         fragments.add(moduleFragment);
+        fragments.add(new CourseFragment());
         mineFragment = new MineFragment();
         fragments.add(mineFragment);
         for (int i = 0; i < fragments.size(); i++) {
@@ -186,15 +193,6 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
         navItemDynamic.showRedDot(isShowDot);
     }
 
-    /**
-     * 刷新我的页面
-     */
-    public void refreshMine() {
-        if (mineFragment != null) {
-            mineFragment.loadData();
-        }
-    }
-
 
     /**
      * 显示当前模块
@@ -229,7 +227,8 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
     private void onTabSelect(int position) {
         navView.setSelected(position == 0 ? true : false);
         nvItemExplore.setSelected(position == 1 ? true : false);
-        navItemMe.setSelected(position == 2 ? true : false);
+        navItemDynamic.setSelected(position == 2 ? true : false);
+        navItemMe.setSelected(position == 3 ? true : false);
     }
 
 

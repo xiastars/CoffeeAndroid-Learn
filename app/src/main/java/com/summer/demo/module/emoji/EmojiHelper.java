@@ -74,6 +74,49 @@ public class EmojiHelper {
         initView();
     }
 
+    /**
+     * 初始化表情View
+     */
+    public void initEmojiView(final View view) {
+        this.activity = (Activity) view.getContext();
+        edtComment = (EditText) view.findViewById(R.id.edt_comment);
+        ivComment = (ImageView) view.findViewById(R.id.iv_emoji);
+        SUtils.setPicResource(ivComment,R.drawable.ic_biaoqing);
+        rlEmojiLayout = (RelativeLayout) view.findViewById(R.id.emoji_layout);
+        // 评论布局
+        new MyEmojiView(activity, 0, new OnReturnObjectClickListener() {
+            @Override
+            public void onClick(Object object) {
+                IconEntity iconEntity = (IconEntity) object;
+                String name = iconEntity.getName();
+                if (!TextUtils.isEmpty(name)) {
+                    if (!name.equals("[]")) {
+                        int index = edtComment.getSelectionStart();
+                        Editable editable = edtComment.getEditableText();
+                        String emojiText = iconEntity.getEmojiText();
+                        if(emojiText != null){
+                            int maxLength = edtComment.getText().toString().length();
+                            if(maxLength + name.length() > 140){
+                                return;
+                            }
+                            //直接将表情显示在EditTextView上
+                            SpannableString text = MyEmojiService.getInstance(activity).replaceEmoji(emojiText, (int) edtComment.getTextSize());
+                            editable.insert(index, text);
+                        }
+                    } else {
+                        //动作按下
+                        int action = KeyEvent.ACTION_DOWN;
+                        //code:删除，其他code也可以，例如 code = 0
+                        int code = KeyEvent.KEYCODE_DEL;
+                        KeyEvent event = new KeyEvent(action, code);
+                        edtComment.onKeyDown(KeyEvent.KEYCODE_DEL, event); //抛给系统处理了
+                    }
+                }
+            }
+        });
+        initView();
+    }
+
     private void initView() {
         /* 当表情视图可见时,点击输入框,表情视图与键盘同时存在,这里处理,当点击时,表情视图隐藏*/
         if(edtComment == null){
