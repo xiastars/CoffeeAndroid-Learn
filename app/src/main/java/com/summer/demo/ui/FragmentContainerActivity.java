@@ -7,6 +7,7 @@ import android.widget.FrameLayout;
 
 import com.summer.demo.R;
 import com.summer.demo.module.base.BaseFragmentActivity;
+import com.summer.demo.ui.fragment.views.ListRecyclerViewFragment;
 import com.summer.demo.ui.fragment.views.TextViewFragment;
 import com.summer.demo.ui.view.UiPosition;
 import com.summer.demo.ui.view.commonfragment.CDrawableFragment;
@@ -72,6 +73,10 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
             case UiPosition.POS_CONSTRAINT:
                 setTitle("ConstraintLayout");
                 showFragment(new ConstraintLayoutFragment());
+                break;
+            case UiPosition.POS_LIST_REC:
+                setTitle("列状RecyclerView");
+                showFragment(new ListRecyclerViewFragment());
                 break;
         }
     }

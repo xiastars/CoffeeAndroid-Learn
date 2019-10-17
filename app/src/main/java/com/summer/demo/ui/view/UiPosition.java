@@ -12,4 +12,6 @@ public class UiPosition {
     public static final int POS_TEXT = 1;
 
     public static final int POS_CONSTRAINT = 2;
+
+    public static final int POS_LIST_REC = 3;
 }

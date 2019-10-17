@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SummerDemos</string>
+    <string name="app_name">SummerDemo</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="back">点击返回</string>
@@ -39,6 +39,20 @@
     <string name="value_green">Green: %d\%</string>
     <string name="value_blue">Blue: %d\%</string>
     <string name="loading">正在加载…</string>
+
+    <!--用户设置-->
+    <string name="mine_set_title">设置</string>
+    <string name="mine_set_phone">手机号码</string>
+    <string name="mine_set_push_msg">推送消息免打扰</string>
+    <string name="mine_set_push_title">推送消息</string>
+    <string name="mine_set_clear">清除缓存</string>
+    <string name="mine_set_logout">退出登录</string>
+    <string name="my_about">关于</string>
+
+    <!--设置推送开关-->
+    <string name="mine_set_push_open">开启</string>
+    <string name="mine_set_push_open_night">夜间开启</string>
+    <string name="mine_set_push_close">关闭</string>
 
     <!-- 首页 -->
     <string name="tab_view">UI</string>

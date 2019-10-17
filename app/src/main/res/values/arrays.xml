@@ -42,6 +42,10 @@
         <item>子类与父类</item>
     </string-array>
 
+    <string-array name="tools">
+        <item>文件夹里的视频生成所有封面</item>
+    </string-array>
+
     <string-array name="net">
         <item>五层体系结构</item>
         <item>TCP三次握手和四次挥手过程</item>

@@ -38,19 +38,24 @@ public class CourseFragment extends BaseMainFragment {
         });
         svContainer.setAdapter(adapter);
         List<ModuleInfo> moduleInfos = new ArrayList<>();
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_course_computer,"常用工具",CoursePos.POS_TOOL));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_course_java, "JAVA基础", CoursePos.POS_JAVA));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_course_computer, "计算机网络", CoursePos.POS_NET));
+
 
         adapter.notifyDataChanged(moduleInfos);
     }
 
     private void clickChild(int position) {
         switch (position) {
+            case CoursePos.POS_TOOL:
+                JumpTo.getInstance().commonJump(context, LearnJavaActivity.class,CoursePos.POS_TOOL);
+                break;
             case CoursePos.POS_JAVA:
-                JumpTo.getInstance().commonJump(context, LearnJavaActivity.class);
+                JumpTo.getInstance().commonJump(context, LearnJavaActivity.class,CoursePos.POS_JAVA);
                 break;
             case CoursePos.POS_NET:
-                JumpTo.getInstance().commonJump(context, LearnNetActivity.class);
+                JumpTo.getInstance().commonJump(context, LearnNetActivity.class, CoursePos.POS_NET);
                 break;
             default:
                 JumpTo.getInstance().commonJump(context, LearnJavaActivity.class);

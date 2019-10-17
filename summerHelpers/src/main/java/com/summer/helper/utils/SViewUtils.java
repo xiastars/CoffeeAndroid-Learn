@@ -64,7 +64,7 @@ public class SViewUtils {
                 .setShadowRadius(45)
                 .setShadowSide(ShadowProperty.ALL);
         ShadowViewDrawable sd = new ShadowViewDrawable(sp, Color.WHITE, SUtils.getDip(bgView.getContext(), 1), SUtils.getDip(bgView.getContext(), 1));
-        ViewCompat.setBackground(bgView, sd);
+        //ViewCompat.setBackground(bgView, sd);
         ViewCompat.setLayerType(bgView, ViewCompat.LAYER_TYPE_SOFTWARE, null);
     }
 

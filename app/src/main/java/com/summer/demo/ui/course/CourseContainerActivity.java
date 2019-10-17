@@ -1,6 +1,7 @@
 package com.summer.demo.ui.course;
 
 import com.summer.demo.ui.FragmentContainerActivity;
+import com.summer.demo.ui.course.fragment.VideoGetCoverFragment;
 
 /**
  * @Description: Fragment容器
@@ -34,6 +35,10 @@ public class CourseContainerActivity extends FragmentContainerActivity {
                 setTitle("Http和Https");
                 url = "file:///android_asset/net/httpandhttps.html";
                 showFragment(CourseWebFragment.show(url));
+                break;
+            case MarkdownPos.TOOL_VIDEO_FRAME:
+                setTitle("生成封面");
+                showFragment(new VideoGetCoverFragment());
                 break;
         }
     }

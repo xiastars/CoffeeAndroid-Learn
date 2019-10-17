@@ -28,6 +28,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.+'
     implementation 'com.android.support:support-annotations:28.+'
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
+    compileOnly 'com.android.support:design:23.0.0'
     implementation 'com.android.support:recyclerview-v7:28.+'
     implementation 'com.alibaba:fastjson:1.2.8'
     //汉字转拼音

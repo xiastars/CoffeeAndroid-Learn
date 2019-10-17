@@ -37,7 +37,7 @@ public class CommonViewFragment extends BaseMainFragment {
         moduleInfos.add(new ModuleInfo(R.drawable.so_gradient_redffe_blued8,"Drawable",UiPosition.POS_DRAWABLE));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text,"文本",UiPosition.POS_TEXT));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_danmake,"ConstarintLayout",UiPosition.POS_CONSTRAINT));
-
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_danmake,"列表RecyclerView",UiPosition.POS_LIST_REC));
         adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
             @Override
             public void onClick(int position) {

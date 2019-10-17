@@ -16,4 +16,6 @@ public class MarkdownPos {
     public static final int NET_HANKSHAKE = 3;
 
     public static final int NET_HTTPS = 4;
+
+    public static final int TOOL_VIDEO_FRAME = 5;
 }

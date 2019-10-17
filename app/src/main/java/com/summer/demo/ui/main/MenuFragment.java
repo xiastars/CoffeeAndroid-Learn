@@ -27,6 +27,6 @@ public class MenuFragment extends BaseMainFragment {
 
     @Override
     protected int setContentView() {
-        return R.layout.view_nrecyleview;
+        return R.layout.fragment_menu;
     }
 }

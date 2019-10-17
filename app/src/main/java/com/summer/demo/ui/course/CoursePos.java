@@ -10,4 +10,6 @@ public class CoursePos {
     public static final int POS_JAVA = 0;
 
     public static final int POS_NET = 1;
+
+    public static final int POS_TOOL = 2;
 }
