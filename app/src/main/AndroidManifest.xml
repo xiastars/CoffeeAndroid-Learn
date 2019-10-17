@@ -28,11 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AcListAndGrid"></activity>
         <activity android:name=".ui.AcViewPager"></activity>
         <activity android:name=".ui.course.LearnJavaActivity" />
         <activity android:name=".ui.SDKActivity" />
-        <activity android:name=".AcSelfDemo" />
         <!--screenOrientation 设置为横屏 -->
         <activity
             android:name=".AcCases"

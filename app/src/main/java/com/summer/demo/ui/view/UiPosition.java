@@ -14,4 +14,10 @@ public class UiPosition {
     public static final int POS_CONSTRAINT = 2;
 
     public static final int POS_LIST_REC = 3;
+
+    public static final int POS_GRID_REC = 4;
+
+    public static final int POS_REFRESH_LIST = 5;
+
+    public static final int POS_REFRESH_GRID = 6;
 }

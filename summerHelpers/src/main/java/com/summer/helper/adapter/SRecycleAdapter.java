@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * 基础Adapter
+ */
 public class SRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public Context context;
     public List<?> items;

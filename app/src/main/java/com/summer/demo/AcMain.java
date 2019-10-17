@@ -149,9 +149,6 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
             case 2:
                 JumpTo.getInstance().commonJump(context, AcCases.class);
                 break;
-            case 3:
-                JumpTo.getInstance().commonJump(context, AcSelfDemo.class);
-                break;
             case 4:
                 showFragment(new ToastFragment());
                 break;
@@ -160,9 +157,6 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
                 break;
             case 6:
                 showFragment(new MediaPlayerFragment());
-                break;
-            case 7:
-                JumpTo.getInstance().commonJump(context, AcListAndGrid.class);
                 break;
             case 8:
                 JumpTo.getInstance().commonJump(context, WebContainerActivity.class, "https://m.mzmoney.com/topic/recruit/app-recruit.html");

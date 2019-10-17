@@ -10,8 +10,6 @@ import android.widget.ListView;
 
 import com.summer.demo.ui.BaseTitleListActivity;
 import com.summer.demo.ui.fragment.cases.SGHeightConflictFragment;
-import com.summer.demo.ui.fragment.list.RecycleGridFragment;
-import com.summer.demo.ui.fragment.list.RecycleListFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.web.WebContainerActivity;
 
@@ -51,13 +49,6 @@ public class AcCases extends BaseTitleListActivity implements View.OnClickListen
                 break;
             case 1:
                 jump("https://xiastars.gitbooks.io/java/content/20-%E5%AD%90%E7%B1%BB%E4%B8%8E%E7%88%B6%E7%B1%BB.html");
-                break;
-            case 2:
-                jump("https://java.quanke.name/");
-                showFragment(new RecycleListFragment());
-                break;
-            case 3:
-                showFragment(new RecycleGridFragment());
                 break;
             case 4:
                 //showFragment(new HorListFragment());

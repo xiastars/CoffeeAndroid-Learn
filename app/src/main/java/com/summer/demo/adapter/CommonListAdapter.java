@@ -1,50 +1,33 @@
 package com.summer.demo.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.summer.demo.R;
+import com.summer.demo.constant.TestData;
+import com.summer.helper.adapter.SRecycleAdapter;
+import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.utils.SUtils;
 
-/**
- * 所有的Adapter都必须继承自BaseAdapter类
- */
-public class CommonListAdapter extends BaseAdapter {
-	private Context context;
-	boolean isShowDelete = false;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-	int[] datas = {R.drawable.xiehou01,R.drawable.xiehou02,R.drawable.xiehou03,R.drawable.xiehou04};
+public class CommonListAdapter extends SRecycleAdapter {
 
-	/**
-	 * 通常情况下，创建一个会传Context的构造器
-	 * @param context
-	 */
+	OnSimpleClickListener listener;
+
 	public CommonListAdapter(Context context) {
-		this.context = context;
+		super(context);
 	}
 
-	/**
-	 * 必须重写的方法，如果return 为0,则ListView为空，以下为规范写法
-	 * @return
-	 */
-	@Override
-	public int getCount() {
-		return datas != null ? datas.length : 0;
-	}
+	public CommonListAdapter(Context context,OnSimpleClickListener listener) {
+		super(context);
+		this.listener = listener;
 
-
-	/**
-	 * 获取当前位置的对象
-	 * @param position
-	 * @return
-	 */
-	@Override
-	public Object getItem(int position) {
-		return datas[position];
 	}
 
 	@Override
@@ -53,40 +36,45 @@ public class CommonListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		//ViewHolder用来重用布局，不这样，数据多时，滚动界面会卡
-		ViewHolder viewHodler;
-		if (convertView == null) {
-			//以下方法把R.layout.item_icon这个布局加载为View
-			convertView = LayoutInflater.from(context).inflate(R.layout.item_icon,null);
-			viewHodler = new ViewHolder(convertView);
-			convertView.setTag(viewHodler);
+	public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		return new CommonListAdapter.ViewHolder(createHolderView(R.layout.item_view_list, parent));
+	}
 
-		} else {
-			viewHodler = (ViewHolder) convertView.getTag();
-		}
-		viewHodler.icon.setOnClickListener(new View.OnClickListener() {
+	@Override
+	public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+		CommonListAdapter.ViewHolder vh = (CommonListAdapter.ViewHolder) holder;
 
+		vh.itemView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				int index = position +1;
-				SUtils.makeToast(context,"点击了第"+index+"个");
-				// }
+				if(listener != null){
+					listener.onClick(position);
+				}
+				SUtils.makeToast(context,"点击了第"+position+"行");
 			}
 		});
-		int data = (int) getItem(position);
-			viewHodler.icon.setBackgroundResource(data);
-		return convertView;
+		//静态页面，数据写死
+		int data = TestData.imgs[position];
+		vh.ivImg.setBackgroundResource(data);
+		vh.tvContent.setText(TestData.contents[position]);
 	}
 
-	class ViewHolder {
-		ImageView icon;
-		public ViewHolder(View view) {
-			icon = (ImageView) view.findViewById(R.id.item_album);
+	//重写数量
+	@Override
+	public int getItemCount() {
+		return TestData.imgs.length;
+	}
+
+	static class ViewHolder extends RecyclerView.ViewHolder {
+		@BindView(R.id.iv_img)
+		ImageView ivImg;
+		@BindView(R.id.tv_content)
+		TextView tvContent;
+
+		ViewHolder(View view) {
+			super(view);
+			ButterKnife.bind(this, view);
 		}
 	}
 
-	public interface PurposeSelectedListener {
-		void afterClick(int position);
-	}
 }
