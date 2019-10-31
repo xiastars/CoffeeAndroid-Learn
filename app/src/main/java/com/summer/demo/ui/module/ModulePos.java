@@ -28,4 +28,6 @@ public class ModulePos {
 
     //Socket连接
     public static final int POS_SOCKET = 10;
+
+    public static final int POS_VIBRATE = 11;
 }
