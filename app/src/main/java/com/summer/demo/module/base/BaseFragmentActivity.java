@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
+import com.summer.demo.helper.PlayAudioHelper;
 import com.summer.demo.module.base.swipe.SwipeBackActivity;
 import com.summer.demo.constant.ApiConstants;
 import com.summer.helper.recycle.MaterialRefreshLayout;
@@ -221,6 +222,7 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
 
     protected void onBackClick() {
         //. CUtils.onClick(getClass().getSimpleName() + "_onback");
+        PlayAudioHelper.getInstance().stopPlayingAudio();
         BaseFragmentActivity.this.finish();
     }
 

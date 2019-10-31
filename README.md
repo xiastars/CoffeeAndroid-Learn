@@ -321,6 +321,8 @@ H.一步实现Broadcast消息通知
 04-27 16:08:39.076 30733-30733/? I/hxq: at EasyHttp.java(84) onResponse: 请求结果:我的圈子{"code":"0","message":"request success","handleTime":1493280519555}
 
 ```
+Logs文件增加是否打印日志到本地手机的设置，isNeedWriteLogToLocal，默认为false
+
 ## 6. com.summer.helper.utils.SUtils
 SUtils类是本框架非常重要的类,熟悉它后会有效地提高开发人员的效率,以下是基本方法描述:
 

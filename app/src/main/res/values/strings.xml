@@ -39,6 +39,7 @@
     <string name="value_green">Green: %d\%</string>
     <string name="value_blue">Blue: %d\%</string>
     <string name="loading">正在加载…</string>
+    <string name="test_string">哈哈%s</string>
 
     <!--用户设置-->
     <string name="mine_set_title">设置</string>

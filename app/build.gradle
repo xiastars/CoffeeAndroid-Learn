@@ -84,4 +84,7 @@ dependencies {
 
     //constraint支持
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    //图片压缩处理
+    implementation 'com.ghnor:flora:1.0.0-alpha1'
 }

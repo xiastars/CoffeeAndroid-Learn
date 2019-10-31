@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.summer.demo.R;
 import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.utils.TextWebUtils;
+import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.STextUtils;
 
 import java.math.BigDecimal;
@@ -55,6 +56,21 @@ public class TextViewFragment extends BaseFragment {
                 " title=\"ViewPager\" >; 图片标签<e type=\"web\" title=\"「查看图片」\" href=\"https://img1.doubanio.com/view/photo/l/public/p2324017307.webp\" >；";
 
         TextWebUtils.setHtmlText(tvSuper,content);
+        long time = System.currentTimeMillis();
+        //尽量不要用这个format，特别是在列表里
+        for(int i =0; i < 1000;i++){
+           context.getString(R.string.test_string,"你好哈哈哈哈");
+
+        }
+        Logs.t(time);
+        time = System.currentTimeMillis();
+        //拼接字符串用这种
+        for(int i =0; i < 1000;i++){
+            STextUtils.spliceText("哈哈","你好哈哈哈哈");
+
+        }
+        Logs.t(time);
+
     }
 
     @Override

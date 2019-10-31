@@ -2,12 +2,14 @@ package com.summer.demo.helper;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.summer.demo.AppContext;
 import com.summer.demo.listener.OnAudioPlayListener;
 import com.summer.helper.utils.Logs;
 
@@ -79,6 +81,59 @@ public class PlayAudioHelper {
             } else {
                 mMediaPlayer.setAudioStreamType(AudioManager.STREAM_SYSTEM);
             }
+            mMediaPlayer.prepareAsync();
+            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+                @Override
+                public void onPrepared(MediaPlayer paramMediaPlayer) {
+                    Logs.i("开始播放");
+                    if(FORCE_STOP_STATE == 1){
+                        stopPlayingAudio();
+                        return;
+                    }
+                 /*   if(anwserAudio != null){
+                        //LOCAL_PLAY_POSITION = anwserAudio.getLocalPosition();
+                    }*/
+                    myHandler.sendEmptyMessage(0);
+                    mMediaPlayer.start();
+                    mAudioState = 1;
+                    if(onAudioPlayListener != null){
+                        onAudioPlayListener.onStart();
+                    }
+
+                }
+            });
+            mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    if(onAudioPlayListener == null){
+                        return;
+                    }
+                    onAudioPlayListener.onComplete();
+                    stopPlayingAudio();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logs.i("播放失败");
+            // playMediaFile(fileName,listener);
+        }
+    }
+
+    public void playRaw(int rawid){
+        if(rawid == 0){
+            return;
+        }
+        stopPlayingAudio();
+        FORCE_STOP_STATE = 0;
+        try {
+            if (null == mMediaPlayer) {
+                mMediaPlayer = new MediaPlayer();
+            }
+            mMediaPlayer.reset();
+            mMediaPlayer.setDataSource(AppContext.getInstance(), Uri.parse("android.resource://" + AppContext.getInstance().getPackageName() + "/" +rawid));
+            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_SYSTEM);
             mMediaPlayer.prepareAsync();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 

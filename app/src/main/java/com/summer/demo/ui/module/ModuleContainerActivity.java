@@ -8,6 +8,8 @@ import com.summer.demo.ui.FragmentContainerActivity;
 import com.summer.demo.ui.fragment.MyDialogFragment;
 import com.summer.demo.ui.fragment.ObjectAnimFragment;
 import com.summer.demo.ui.module.comment.ChatFragment;
+import com.summer.demo.ui.module.fragment.AudioPlayerFragment;
+import com.summer.demo.ui.module.fragment.CompressImgFragment;
 import com.summer.demo.ui.module.fragment.EmojiFragment;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
@@ -52,6 +54,13 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
                 break;
             case ModulePos.POS_EMOJI:
                 showFragment(new EmojiFragment());
+                break;
+            case ModulePos.POS_COMPRESS_IMG:
+                showFragment(new CompressImgFragment());
+                break;
+            case ModulePos.POS_AUDIO_PLAY:
+                setTitle("音频播放");
+                showFragment(new AudioPlayerFragment());
                 break;
         }
     }

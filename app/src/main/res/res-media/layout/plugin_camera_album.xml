@@ -60,7 +60,6 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:background="#00000000"
-            android:onClick="onSelectItem"
             android:textColor="#FFFFFF" />
     </RelativeLayout>
 

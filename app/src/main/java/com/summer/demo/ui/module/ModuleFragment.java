@@ -48,7 +48,8 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_picker, "颜色选择器", ModulePos.POS_COLOR_PICKER));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_chat,"聊天",ModulePos.POS_CHAT));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_biaoqing,"表情",ModulePos.POS_EMOJI));
-
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"yasuo",ModulePos.POS_COMPRESS_IMG));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"音频播放",ModulePos.POS_AUDIO_PLAY));
 		adapter.notifyDataChanged(moduleInfos);
 	}
 

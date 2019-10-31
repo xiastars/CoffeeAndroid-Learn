@@ -22,4 +22,7 @@ public class ModulePos {
 
     public static final int POS_EMOJI = 7;
 
+    public static final int POS_COMPRESS_IMG = 8;
+
+    public static final int POS_AUDIO_PLAY = 9;
 }
