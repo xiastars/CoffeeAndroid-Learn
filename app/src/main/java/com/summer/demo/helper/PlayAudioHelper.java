@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.summer.demo.AppContext;
 import com.summer.demo.listener.OnAudioPlayListener;
 import com.summer.helper.utils.Logs;
+import com.summer.helper.utils.SUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -35,7 +36,7 @@ public class PlayAudioHelper {
     public static int CURRENT_PLAY_TIME = 0;
 
     public static synchronized PlayAudioHelper getInstance() {
-        if(playAudioHelper != null){
+        if (playAudioHelper != null) {
             playAudioHelper.stopPlayingAudio();
         }
         playAudioHelper = new PlayAudioHelper();
@@ -67,6 +68,11 @@ public class PlayAudioHelper {
         if (TextUtils.isEmpty(fileName)) {
             return;
         }
+        //根据链接，查找本地数据库，如果缓存过，就取本地的文件，如果没有，则把文件下载下来
+        String local = SUtils.downloadAudio(AppContext.getInstance(), fileName, true);
+        if (null != local) {
+            fileName = local;
+        }
         stopPlayingAudio();
         FORCE_STOP_STATE = 0;
         Logs.i("播放:" + fileName);
@@ -76,18 +82,20 @@ public class PlayAudioHelper {
             }
             mMediaPlayer.reset();
             mMediaPlayer.setDataSource(fileName);
-            if (fileName.startsWith("http")) {
+            //设置播放音频流类型，经测试，发现本地的文件用STREAM_MUSIC会卡顿一点时间，所以在这里区分开
+           /* if (fileName.startsWith("http")) {
                 mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             } else {
                 mMediaPlayer.setAudioStreamType(AudioManager.STREAM_SYSTEM);
-            }
+            }*/
+            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.prepareAsync();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
                 @Override
                 public void onPrepared(MediaPlayer paramMediaPlayer) {
                     Logs.i("开始播放");
-                    if(FORCE_STOP_STATE == 1){
+                    if (FORCE_STOP_STATE == 1) {
                         stopPlayingAudio();
                         return;
                     }
@@ -97,7 +105,7 @@ public class PlayAudioHelper {
                     myHandler.sendEmptyMessage(0);
                     mMediaPlayer.start();
                     mAudioState = 1;
-                    if(onAudioPlayListener != null){
+                    if (onAudioPlayListener != null) {
                         onAudioPlayListener.onStart();
                     }
 
@@ -107,7 +115,7 @@ public class PlayAudioHelper {
 
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    if(onAudioPlayListener == null){
+                    if (onAudioPlayListener == null) {
                         return;
                     }
                     onAudioPlayListener.onComplete();
@@ -121,8 +129,8 @@ public class PlayAudioHelper {
         }
     }
 
-    public void playRaw(int rawid){
-        if(rawid == 0){
+    public void playRaw(int rawid) {
+        if (rawid == 0) {
             return;
         }
         stopPlayingAudio();
@@ -132,7 +140,7 @@ public class PlayAudioHelper {
                 mMediaPlayer = new MediaPlayer();
             }
             mMediaPlayer.reset();
-            mMediaPlayer.setDataSource(AppContext.getInstance(), Uri.parse("android.resource://" + AppContext.getInstance().getPackageName() + "/" +rawid));
+            mMediaPlayer.setDataSource(AppContext.getInstance(), Uri.parse("android.resource://" + AppContext.getInstance().getPackageName() + "/" + rawid));
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_SYSTEM);
             mMediaPlayer.prepareAsync();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -140,7 +148,7 @@ public class PlayAudioHelper {
                 @Override
                 public void onPrepared(MediaPlayer paramMediaPlayer) {
                     Logs.i("开始播放");
-                    if(FORCE_STOP_STATE == 1){
+                    if (FORCE_STOP_STATE == 1) {
                         stopPlayingAudio();
                         return;
                     }
@@ -150,7 +158,7 @@ public class PlayAudioHelper {
                     myHandler.sendEmptyMessage(0);
                     mMediaPlayer.start();
                     mAudioState = 1;
-                    if(onAudioPlayListener != null){
+                    if (onAudioPlayListener != null) {
                         onAudioPlayListener.onStart();
                     }
 
@@ -160,7 +168,7 @@ public class PlayAudioHelper {
 
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    if(onAudioPlayListener == null){
+                    if (onAudioPlayListener == null) {
                         return;
                     }
                     onAudioPlayListener.onComplete();
@@ -174,11 +182,38 @@ public class PlayAudioHelper {
         }
     }
 
+
+    /**
+     * 暂停播放音频
+     */
+    public void pausePlayingAudio() {
+        if (null == mMediaPlayer)
+            return;
+        if (0 == mAudioState)
+            return;
+        mMediaPlayer.pause();
+        mAudioState = 2;
+    }
+
+    /**
+     * 继续播放音频
+     */
+    public void restartPlayingAudio() {
+        if (null == mMediaPlayer)
+            return;
+        if (0 == mAudioState)
+            return;
+        mMediaPlayer.start();
+        mAudioState = 1;
+    }
+
+
+
     public boolean checkEnable() {
         return mAudioState == 0;
     }
 
-    public void stopPlayingAndClearStatus(){
+    public void stopPlayingAndClearStatus() {
         tvTime = null;
         seekBar = null;
         stopPlayingAudio();
@@ -187,19 +222,12 @@ public class PlayAudioHelper {
     public void stopPlayingAudio() {
         FORCE_STOP_STATE = 1;
         myHandler.removeMessages(0);
-        if(mMediaPlayer != null && seekBar != null){
+        if (mMediaPlayer != null && seekBar != null) {
             seekBar.setProgress(0);
         }
+        Logs.i("停止播放");
         CURRENT_PLAY_TIME = 0;
         LOCAL_PLAY_POSITION = -1;
-/*        if (anwserAudio != null) {
-            if(tvTime != null){
-                tvTime.setText("  "+anwserAudio.getLength()+"\"");
-            }
-            anwserAudio.setLocalPlaying(false);
-            anwserAudio.setLocalPlayingProgress(0);
-            anwserAudio.setLocalPlayingTime(anwserAudio.getLength());
-        }*/
         if (null == mMediaPlayer)
             return;
         if (0 == mAudioState)
@@ -215,7 +243,7 @@ public class PlayAudioHelper {
             mMediaPlayer = null;
             mAudioState = 0;
         }
-        if(onAudioPlayListener != null){
+        if (onAudioPlayListener != null) {
             onAudioPlayListener.onComplete();
         }
         seekBar = null;
@@ -227,10 +255,10 @@ public class PlayAudioHelper {
         this.onAudioPlayListener = onAudioPlayListener;
     }
 
-    public void setSeekBarAndiTimeView(SeekBar seekBar,TextView tvTime) {
+    public void setSeekBarAndiTimeView(SeekBar seekBar, TextView tvTime) {
         this.seekBar = seekBar;
         this.tvTime = tvTime;
-        if(seekBar == null){
+        if (seekBar == null) {
             return;
         }
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -264,22 +292,22 @@ public class PlayAudioHelper {
         }
         int position = mMediaPlayer.getCurrentPosition();
         int time = mMediaPlayer.getDuration();
-        CURRENT_PLAY_TIME = (time - position)/1000;
-        if(seekBar == null){
-            tvTime.setText(" "+CURRENT_PLAY_TIME+"\"");
+        CURRENT_PLAY_TIME = (time - position) / 1000;
+        if (seekBar == null) {
+            tvTime.setText(" " + CURRENT_PLAY_TIME + "\"");
             myHandler.sendEmptyMessageDelayed(0, 500);
             return;
         }
 
         int max = seekBar.getMax();
         Logs.i("position::" + position + ",," + time + ",,," + max);
-        CURRENT_PLAY_TIME = (time - position)/1000;
-        if(time == 0){
+        CURRENT_PLAY_TIME = (time - position) / 1000;
+        if (time == 0) {
             return;
         }
-        int progress = (int) ((float)max * position/time);
+        int progress = (int) ((float) max * position / time);
         CURRENT_PLAY_POS = progress;
-        if(tvTime != null){
+        if (tvTime != null) {
            /* if(seekBar.getTag() != null){
                 int pos = (int) seekBar.getTag();
                 Logs.i("pos::::"+anwserAudio.getLocalPosition()+",,"+anwserAudio.isLocalPlaying() +",,anwserAudio"+seekBar+"<,,"+CURRENT_PLAY_POS);
