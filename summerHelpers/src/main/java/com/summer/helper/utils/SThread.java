@@ -19,6 +19,13 @@ public class SThread {
 	private SThread(){
 
 	}
+
+	/**
+	 * 清空所有线程
+	 */
+	public void clear(){
+		threadPool.removeAllTask();
+	}
 	
 	/**
 	 * 返回当前线程池

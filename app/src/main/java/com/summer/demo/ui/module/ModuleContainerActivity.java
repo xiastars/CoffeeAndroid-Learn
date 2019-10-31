@@ -13,6 +13,7 @@ import com.summer.demo.ui.module.fragment.CompressImgFragment;
 import com.summer.demo.ui.module.fragment.EmojiFragment;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
+import com.summer.demo.ui.module.fragment.socket.SocketFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.SFileUtils;
 
@@ -61,6 +62,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
             case ModulePos.POS_AUDIO_PLAY:
                 setTitle("音频播放");
                 showFragment(new AudioPlayerFragment());
+                break;
+            case ModulePos.POS_SOCKET:
+                setTitle("原生Socket");
+                showFragment(new SocketFragment());
                 break;
         }
     }

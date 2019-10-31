@@ -577,7 +577,7 @@ public class SFileUtils {
     }
 
     /**
-     * 获取指定文件夹
+     * 获取指定文件夹的大小
      */
     public static long getFolderSize(File f) {
         long size = 0;
@@ -612,6 +612,36 @@ public class SFileUtils {
                 }
         }
         return size;
+    }
+
+    /**
+     * 获取文件的名称
+     * @param filePath
+     * @return
+     */
+    public static String getFileName(String filePath) {
+
+        if (isEmpty(filePath)) {
+            return filePath;
+        }
+
+        int filePosi = filePath.lastIndexOf(File.separator);
+        return (filePosi == -1) ? "" : filePath.substring(filePosi+1, filePath.length());
+    }
+
+    /**
+     * 获取文件的后缀
+     * @param filePath
+     * @return
+     */
+    public static String getFileType(String filePath) {
+
+        if (isEmpty(filePath)) {
+            return "";
+        }
+
+        int filePosi = filePath.lastIndexOf(".");
+        return (filePosi == -1) ? "" : filePath.substring(filePosi+1, filePath.length());
     }
 
 }

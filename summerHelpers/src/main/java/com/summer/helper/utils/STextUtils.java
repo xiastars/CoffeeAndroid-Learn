@@ -28,6 +28,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 
 import java.math.BigDecimal;
+import java.nio.ByteOrder;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
@@ -417,6 +418,40 @@ public class STextUtils {
         }
 
         return spannableString;
+    }
+
+    /**
+     * 根据机型，返回大小端Long的字节数组
+     *
+     * @param data
+     * @return
+     */
+    public static byte[] getBytes(long data) {
+        byte[] bytes = new byte[8];
+        if (isLittleEndian()) {
+            bytes[0] = (byte) (data & 0xff);
+            bytes[1] = (byte) ((data >> 8) & 0xff);
+            bytes[2] = (byte) ((data >> 16) & 0xff);
+            bytes[3] = (byte) ((data >> 24) & 0xff);
+            bytes[4] = (byte) ((data >> 32) & 0xff);
+            bytes[5] = (byte) ((data >> 40) & 0xff);
+            bytes[6] = (byte) ((data >> 48) & 0xff);
+            bytes[7] = (byte) ((data >> 56) & 0xff);
+        } else {
+            bytes[7] = (byte) (data & 0xff);
+            bytes[6] = (byte) ((data >> 8) & 0xff);
+            bytes[5] = (byte) ((data >> 16) & 0xff);
+            bytes[4] = (byte) ((data >> 24) & 0xff);
+            bytes[3] = (byte) ((data >> 32) & 0xff);
+            bytes[2] = (byte) ((data >> 40) & 0xff);
+            bytes[1] = (byte) ((data >> 48) & 0xff);
+            bytes[0] = (byte) ((data >> 56) & 0xff);
+        }
+        return bytes;
+    }
+
+    private static boolean isLittleEndian() {
+        return ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
     }
 
     private static String getUrl(String var) {

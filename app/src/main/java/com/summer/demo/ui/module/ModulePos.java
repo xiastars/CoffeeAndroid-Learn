@@ -25,4 +25,7 @@ public class ModulePos {
     public static final int POS_COMPRESS_IMG = 8;
 
     public static final int POS_AUDIO_PLAY = 9;
+
+    //Socket连接
+    public static final int POS_SOCKET = 10;
 }

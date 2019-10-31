@@ -1,7 +1,5 @@
 package com.summer.demo.bean;
 
-import android.text.SpannableStringBuilder;
-
 import java.io.Serializable;
 
 public class BaseResp implements Serializable {
@@ -11,15 +9,16 @@ public class BaseResp implements Serializable {
     String msg;
     long time;
     Object info;
-    transient SpannableStringBuilder builder;
+    int fun;
 
-    public SpannableStringBuilder getBuilder() {
-        return builder;
+    public int getFun() {
+        return fun;
     }
 
-    public void setBuilder(SpannableStringBuilder builder) {
-        this.builder = builder;
+    public void setFun(int fun) {
+        this.fun = fun;
     }
+
 
     public boolean isResult() {
         return result;
