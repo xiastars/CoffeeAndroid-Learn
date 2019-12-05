@@ -109,11 +109,12 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
           /*  View view = LayoutInflater.from(this).inflate(R.layout.view_network_broken, null);
             flContainer.addView(view);*/
         } else {
-            initContentView();
-            ButterKnife.bind(this);
-            initPresenter();
-            initData();
+
         }
+        initContentView();
+        ButterKnife.bind(this);
+        initPresenter();
+        initData();
 
     }
 
@@ -292,9 +293,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
 
     @Override
     public void setTitle(CharSequence title) {
-//        if (!TextUtils.isEmpty(content)) {
         tvTitle.setText(title);
-//        }
     }
 
     @Override

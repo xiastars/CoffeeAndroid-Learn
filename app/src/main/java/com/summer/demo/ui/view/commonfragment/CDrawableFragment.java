@@ -1,25 +1,36 @@
 package com.summer.demo.ui.view.commonfragment;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.summer.demo.R;
-import com.summer.demo.ui.fragment.BaseSimpleFragment;
+import com.summer.demo.module.base.BaseFragment;
+import com.summer.helper.utils.SViewUtils;
+
+import butterknife.BindView;
 
 /**
  * 自定义Drawable的一些用法，看layout布局
  * @author Administrator
  *
  */
-public class CDrawableFragment extends BaseSimpleFragment {
-	
+public class CDrawableFragment extends BaseFragment {
+	@BindView(R.id.iv_gradient)
+	ImageView ivGradient;
+
 	@Override
-	public View onCreateView(LayoutInflater inflater,
-			ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_cdrawable, null);
-		return view;
+	protected void initView(View view) {
+		SViewUtils.setShadowView(ivGradient);
+	}
+
+	@Override
+	protected void dealDatas(int requestType, Object obj) {
+
+	}
+
+	@Override
+	protected int setContentView() {
+		return R.layout.fragment_cdrawable;
 	}
 
 }

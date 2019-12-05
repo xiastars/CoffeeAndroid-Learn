@@ -43,6 +43,16 @@ public class STextUtils {
         return text == null || text.trim().length() == 0;
     }
 
+
+    /**
+     * 为EditText设置光标
+     */
+    public static void setSelection(EditText editView) {
+        editView.setSelection(editView.getText().length());
+        editView.requestFocus();
+    }
+
+
     /**
      * 设置文本内的一段颜色
      *

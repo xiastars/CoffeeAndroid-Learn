@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Logs {
     public static boolean isDebug = true;
-    public static boolean isNeedWriteLogToLocal = false;
+    public static boolean isNeedWriteLogToLocal = true;
 
     public static void d(String tag, String msg) {
         if (!isDebug)
@@ -106,15 +106,23 @@ public class Logs {
 
     }
 
+    /**
+     * 保存log到本地
+     *
+     * @param content
+     */
     private static void saveToLocal(String content) {
-        String TODAY = STimeUtils.getDayWithFormat("yyyy-MM-dd", System.currentTimeMillis());
 
-        String filePath = SFileUtils.getFileDirectory() + TODAY + "/";
+        //得到当天时间格式 例：2019-11-21
+        String TODAY = STimeUtils.getDayWithFormat("yyyy-MM-dd", System.currentTimeMillis());
+        //以当天时间创建文件夹
+        String filePath = STextUtils.spliceText(SFileUtils.getFileDirectory(), TODAY, "/");
         File file = new File(filePath);
         if (!file.exists()) {
             file.mkdirs();
         }
-        String logFile = STextUtils.spliceText(filePath + "logs.txt");
+        //创建文件
+        String logFile = STextUtils.spliceText(filePath, "logs.txt");
         File fileLog = new File(logFile);
         if (!fileLog.exists()) {
             try {
@@ -126,8 +134,7 @@ public class Logs {
         try {
             FileWriter fw = new FileWriter(logFile, true);
             fw.flush();
-            fw.write(content);
-
+            fw.write(content + "\n");
             fw.close();
         } catch (Exception e) {
             e.printStackTrace();

@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.summer.demo.R;
 import com.summer.demo.helper.PlayAudioHelper;
-import com.summer.demo.listener.OnAudioPlayListener;
 import com.summer.demo.module.base.BaseFragment;
 
 import butterknife.OnClick;
@@ -46,17 +45,7 @@ public class AudioPlayerFragment extends BaseFragment implements View.OnClickLis
 
     @Override
     protected void initView(View view) {
-        playAudioHelper = new PlayAudioHelper(new OnAudioPlayListener() {
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+        playAudioHelper = PlayAudioHelper.getInstance();
     }
 
     @Override

@@ -41,11 +41,12 @@
         <activity android:name="com.summer.helper.web.WebContainerActivity"></activity>
         <activity android:name=".ui.ViewBigPhotoActivity" />
         <activity android:name=".ui.FragmentContainerActivity" />
-        <activity android:name=".ui.module.ModuleContainerActivity" />
+        <activity android:name=".ui.module.ModuleContainerActivity" android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".ui.view.ViewCustomContainerActivity" />
         <activity android:name=".ui.course.CourseContainerActivity" />
         <activity android:name=".ui.course.LearnNetActivity" />
         <activity android:name=".ui.SettingActivity" />
+        <activity android:name=".ui.course.calculation.CalculationActivity" />
         <!-- 图片视频 -->
         <activity android:name=".module.album.AlbumActivity" />
         <activity android:name=".module.album.ShowAllPhotoActivity" />

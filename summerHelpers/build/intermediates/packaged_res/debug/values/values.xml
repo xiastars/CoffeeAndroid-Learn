@@ -99,6 +99,7 @@
     <color name="grey_9c">#9C9C9C</color>
     <color name="grey_b1">#b1b1b1</color>
     <color name="grey_ba">#bab6b5</color>
+    <color name="grey_c5">#C5C4CA</color>
     <color name="grey_c6">#C6C4D0</color>
     <color name="grey_ca">#cacaca</color>
     <color name="grey_cd">#CDCCD6</color>
@@ -154,35 +155,6 @@
     <color name="yellow_ffb">#FFB45F</color>
     <color name="yellow_ffc">#FFCB47</color>
     <color name="yellow_fff">#FFF9F6</color>
-    <declare-styleable name="BallPulseFooter"><attr name="srlClassicsSpinnerStyle"/><attr format="color" name="srlAnimatingColor"/><attr format="color" name="srlNormalColor"/></declare-styleable>
-    <declare-styleable name="BezierRadarHeader"><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr name="srlEnableHorizontalDrag"/></declare-styleable>
-    <declare-styleable name="CircleIndicator"><attr format="dimension" name="ci_width"/><attr format="dimension" name="ci_height"/><attr format="dimension" name="ci_margin"/><attr format="reference" name="ci_animator"/><attr format="reference" name="ci_drawable"/></declare-styleable>
-    <declare-styleable name="CirclePageIndicator"><attr name="centered"/><attr format="color" name="fillColor"/><attr format="color" name="pageColor"/><attr name="android:orientation"/><attr format="dimension" name="radius"/><attr format="boolean" name="snap"/><attr format="color" name="strokeColor"/><attr name="strokeWidth"/><attr name="android:background"/></declare-styleable>
-    <declare-styleable name="CircleProgressBar"><attr format="dimension" name="mlpb_inner_radius"/><attr format="color" name="mlpb_background_color"/><attr format="color" name="mlpb_progress_color"/><attr format="dimension" name="mlpb_progress_stoke_width"/><attr format="boolean" name="mlpb_show_arrow"/><attr format="boolean" name="mlpb_enable_circle_background"/><attr format="dimension" name="mlpb_arrow_width"/><attr format="dimension" name="mlpb_arrow_height"/><attr format="integer" name="mlpb_progress"/><attr format="integer" name="mlpb_max"/><attr format="dimension" name="mlpb_progress_text_size"/><attr format="color" name="mlpb_progress_text_color"/><attr format="enum" name="mlpb_progress_text_visibility">
-            <enum name="visible" value="0"/>
-            <enum name="invisible" value="1"/>
-        </attr></declare-styleable>
-    <declare-styleable name="ClassicsFooter"><attr name="srlClassicsSpinnerStyle"/><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr name="srlFinishDuration"/><attr name="srlTextSizeTitle"/><attr name="srlDrawableArrow"/><attr name="srlDrawableProgress"/><attr name="srlDrawableMarginRight"/><attr name="srlDrawableSize"/><attr name="srlDrawableArrowSize"/><attr name="srlDrawableProgressSize"/><attr name="srlTextPulling"/><attr name="srlTextRelease"/><attr name="srlTextLoading"/><attr name="srlTextRefreshing"/><attr name="srlTextFinish"/><attr name="srlTextFailed"/><attr name="srlTextNothing"/></declare-styleable>
-    <declare-styleable name="ClassicsHeader"><attr name="srlClassicsSpinnerStyle"/><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr name="srlFinishDuration"/><attr name="srlDrawableArrow"/><attr name="srlDrawableProgress"/><attr name="srlDrawableMarginRight"/><attr name="srlDrawableSize"/><attr name="srlDrawableArrowSize"/><attr name="srlDrawableProgressSize"/><attr name="srlTextSizeTitle"/><attr name="srlTextSizeTime"/><attr format="dimension" name="srlTextTimeMarginTop"/><attr format="boolean" name="srlEnableLastTime"/><attr name="srlTextPulling"/><attr name="srlTextLoading"/><attr name="srlTextRelease"/><attr name="srlTextFinish"/><attr name="srlTextFailed"/><attr name="srlTextUpdate"/><attr name="srlTextSecondary"/><attr name="srlTextRefreshing"/></declare-styleable>
-    <declare-styleable name="LinePageIndicator"><attr name="centered"/><attr name="unselectedColor"/><attr name="selectedColor"/><attr format="dimension" name="lineWidth"/><attr name="strokeWidth"/><attr format="dimension" name="gapWidth"/><attr name="android:background"/></declare-styleable>
-    <declare-styleable name="MaterialRefreshLayout"><attr format="boolean" name="overlay"/><attr format="enum" name="wave_height_type">
-            <enum name="normal" value="0"/>
-            <enum name="higher" value="1"/>
-        </attr><attr format="color" name="wave_color"/><attr format="boolean" name="wave_show"/><attr format="reference" name="progress_colors"/><attr format="dimension" name="progress_stoke_width"/><attr format="color" name="progress_backgroud_color"/><attr format="boolean" name="progress_show_arrow"/><attr format="dimension" name="progress_arrow_width"/><attr format="dimension" name="progress_arrow_height"/><attr format="boolean" name="progress_show_circle_backgroud"/><attr format="integer" name="progress_value"/><attr format="integer" name="progress_max_value"/><attr format="dimension" name="progress_text_size"/><attr format="color" name="progress_text_color"/><attr format="boolean" name="pullUpRefreshable"/><attr format="enum" name="progress_text_visibility">
-            <enum name="visible" value="0"/>
-            <enum name="invisible" value="1"/>
-        </attr><attr format="enum" name="progress_size_type">
-            <enum name="normal" value="0"/>
-            <enum name="big" value="1"/>
-        </attr><attr format="boolean" name="isLoadMore"/></declare-styleable>
-    <declare-styleable name="NumberPicker"><attr format="color|reference" name="solidColor"/><attr format="boolean" name="flingable"/><attr format="reference" name="selectionDivider"/><attr format="dimension" name="selectionDividerHeight"/><attr format="dimension" name="selectionDividersDistance"/><attr name="android:minHeight"/><attr name="android:maxHeight"/><attr name="android:minWidth"/><attr name="android:maxWidth"/><attr name="android:orientation"/><attr name="android:fadingEdgeLength"/></declare-styleable>
-    <declare-styleable name="PagerSlidingTabStrip"><attr format="color" name="pstsIndicatorColor"/><attr format="color" name="pstsUnderlineColor"/><attr format="color" name="pstsDividerColor"/><attr format="dimension" name="pstsIndicatorHeight"/><attr format="dimension" name="pstsUnderlineHeight"/><attr format="dimension" name="pstsDividerPadding"/><attr format="dimension" name="pstsTabPaddingLeftRight"/><attr format="dimension" name="pstsScrollOffset"/><attr format="reference" name="pstsTabBackground"/><attr format="boolean" name="pstsShouldExpand"/><attr format="boolean" name="pstsTextAllCaps"/></declare-styleable>
-    <declare-styleable name="RoundedImageView"><attr format="dimension" name="corner_radius"/><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/><attr name="android:scaleType"/><attr format="boolean" name="mutate_background"/><attr format="reference" name="default_background"/><attr format="boolean" name="oval"/></declare-styleable>
-    <declare-styleable name="SmartRefreshLayout"><attr name="android:clipChildren"/><attr name="android:clipToPadding"/><attr name="srlPrimaryColor"/><attr name="srlAccentColor"/><attr format="integer" name="srlReboundDuration"/><attr format="dimension" name="srlHeaderHeight"/><attr format="dimension" name="srlFooterHeight"/><attr format="dimension" name="srlHeaderInsetStart"/><attr format="dimension" name="srlFooterInsetStart"/><attr format="float" name="srlDragRate"/><attr format="float" name="srlHeaderMaxDragRate"/><attr format="float" name="srlFooterMaxDragRate"/><attr format="float" name="srlHeaderTriggerRate"/><attr format="float" name="srlFooterTriggerRate"/><attr format="boolean" name="srlEnableRefresh"/><attr format="boolean" name="srlEnableLoadMore"/><attr format="boolean" name="srlEnableHeaderTranslationContent"/><attr format="boolean" name="srlEnableFooterTranslationContent"/><attr format="reference" name="srlHeaderTranslationViewId"/><attr format="reference" name="srlFooterTranslationViewId"/><attr format="boolean" name="srlEnablePreviewInEditMode"/><attr format="boolean" name="srlEnableAutoLoadMore"/><attr format="boolean" name="srlEnableOverScrollBounce"/><attr format="boolean" name="srlEnablePureScrollMode"/><attr format="boolean" name="srlEnableNestedScrolling"/><attr format="boolean" name="srlEnableScrollContentWhenLoaded"/><attr format="boolean" name="srlEnableScrollContentWhenRefreshed"/><attr format="boolean" name="srlEnableLoadMoreWhenContentNotFull"/><attr format="boolean" name="srlEnableFooterFollowWhenLoadFinished"/><attr format="boolean" name="srlEnableFooterFollowWhenNoMoreData"/><attr format="boolean" name="srlEnableClipHeaderWhenFixedBehind"/><attr format="boolean" name="srlEnableClipFooterWhenFixedBehind"/><attr format="boolean" name="srlEnableOverScrollDrag"/><attr format="boolean" name="srlDisableContentWhenRefresh"/><attr format="boolean" name="srlDisableContentWhenLoading"/><attr format="reference" name="srlFixedHeaderViewId"/><attr format="reference" name="srlFixedFooterViewId"/></declare-styleable>
-    <declare-styleable name="SmartRefreshLayout_Layout"><attr name="layout_srlSpinnerStyle"/><attr format="color" name="layout_srlBackgroundColor"/></declare-styleable>
-    <declare-styleable name="TwoLevelHeader"><attr format="float" name="srlMaxRage"/><attr format="float" name="srlFloorRage"/><attr format="float" name="srlRefreshRage"/><attr format="integer" name="srlFloorDuration"/><attr format="boolean" name="srlEnableTwoLevel"/><attr format="boolean" name="srlEnablePullToCloseTwoLevel"/></declare-styleable>
-    <declare-styleable name="ViewPagerIndicator"><attr format="reference" name="vpiCirclePageIndicatorStyle"/><attr format="reference" name="vpiIconPageIndicatorStyle"/><attr format="reference" name="vpiLinePageIndicatorStyle"/><attr format="reference" name="vpiTitlePageIndicatorStyle"/><attr format="reference" name="vpiTabPageIndicatorStyle"/><attr format="reference" name="vpiUnderlinePageIndicatorStyle"/></declare-styleable>
-    <declare-styleable name="crLayout"><attr format="reference" name="load_layout"/><attr format="string" name="load_text"/><attr format="reference" name="load_indeterminate_drawable"/><attr format="string" name="load_completed_text"/><attr format="boolean" name="load_animator"/><attr format="string" name="empty_text"/></declare-styleable>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="action_settings">Settings</string>
@@ -384,4 +356,290 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <declare-styleable name="BallPulseFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr format="color" name="srlAnimatingColor"/>
+        <attr format="color" name="srlNormalColor"/>
+    </declare-styleable>
+    <declare-styleable name="BezierRadarHeader">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlEnableHorizontalDrag"/>
+    </declare-styleable>
+    <declare-styleable name="CircleIndicator">
+        <attr format="dimension" name="ci_width"/>
+        <attr format="dimension" name="ci_height"/>
+        <attr format="dimension" name="ci_margin"/>
+        <attr format="reference" name="ci_animator"/>
+        <attr format="reference" name="ci_drawable"/>
+    </declare-styleable>
+    <declare-styleable name="CirclePageIndicator">
+
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="centered"/>
+        <!-- Color of the filled circle that represents the current page. -->
+        <attr format="color" name="fillColor"/>
+        <!-- Color of the filled circles that represents pages. -->
+        <attr format="color" name="pageColor"/>
+        <!-- Orientation of the indicator. -->
+        <attr name="android:orientation"/>
+        <!-- Radius of the circles. This is also the spacing between circles. -->
+        <attr format="dimension" name="radius"/>
+        <!-- Whether or not the selected indicator snaps to the circles. -->
+        <attr format="boolean" name="snap"/>
+        <!-- Color of the open circles. -->
+        <attr format="color" name="strokeColor"/>
+        <!-- Width of the stroke used to draw the circles. -->
+        <attr name="strokeWidth"/>
+        <!-- View background -->
+        <attr name="android:background"/>
+    </declare-styleable>
+    <declare-styleable name="CircleProgressBar">
+        <attr format="dimension" name="mlpb_inner_radius"/>
+        <attr format="color" name="mlpb_background_color"/>
+        <attr format="color" name="mlpb_progress_color"/>
+        <attr format="dimension" name="mlpb_progress_stoke_width"/>
+        <attr format="boolean" name="mlpb_show_arrow"/>
+        <attr format="boolean" name="mlpb_enable_circle_background"/>
+        <attr format="dimension" name="mlpb_arrow_width"/>
+        <attr format="dimension" name="mlpb_arrow_height"/>
+
+        <attr format="integer" name="mlpb_progress"/>
+        <attr format="integer" name="mlpb_max"/>
+
+
+        <attr format="dimension" name="mlpb_progress_text_size"/>
+        <attr format="color" name="mlpb_progress_text_color"/>
+
+        <!--<attr name="mlpb_progress_text_offset" format="dimension"/>-->
+
+        <attr format="enum" name="mlpb_progress_text_visibility">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ClassicsFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRefreshing"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextNothing"/>
+
+    </declare-styleable>
+    <declare-styleable name="ClassicsHeader">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlTextSizeTime"/>
+        <attr format="dimension" name="srlTextTimeMarginTop"/>
+        <attr format="boolean" name="srlEnableLastTime"/>
+
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextUpdate"/>
+        <attr name="srlTextSecondary"/>
+        <attr name="srlTextRefreshing"/>
+
+    </declare-styleable>
+    <declare-styleable name="LinePageIndicator">
+
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="centered"/>
+        <!-- Color of the unselected lines that represent the pages. -->
+        <attr name="unselectedColor"/>
+        <!-- Color of the selected line that represents the current page. -->
+        <attr name="selectedColor"/>
+        <!-- Width of each indicator line. -->
+        <attr format="dimension" name="lineWidth"/>
+        <!-- Width of each indicator line's stroke. -->
+        <attr name="strokeWidth"/>
+        <!-- Width of the gap between each indicator line. -->
+        <attr format="dimension" name="gapWidth"/>
+        <!-- View background -->
+        <attr name="android:background"/>
+    </declare-styleable>
+    <declare-styleable name="MaterialRefreshLayout">
+        <attr format="boolean" name="overlay"/>
+        <!-- style for MaterialWaveView  -->
+        <attr format="enum" name="wave_height_type">
+            <enum name="normal" value="0"/>
+            <enum name="higher" value="1"/>
+        </attr>
+        <attr format="color" name="wave_color"/>
+        <attr format="boolean" name="wave_show"/>
+        <!-- style for CircleProgressBar  -->
+        <attr format="reference" name="progress_colors"/>
+        <attr format="dimension" name="progress_stoke_width"/>
+        <attr format="color" name="progress_backgroud_color"/>
+        <attr format="boolean" name="progress_show_arrow"/>
+        <attr format="dimension" name="progress_arrow_width"/>
+        <attr format="dimension" name="progress_arrow_height"/>
+        <attr format="boolean" name="progress_show_circle_backgroud"/>
+        <attr format="integer" name="progress_value"/>
+        <attr format="integer" name="progress_max_value"/>
+        <attr format="dimension" name="progress_text_size"/>
+        <attr format="color" name="progress_text_color"/>
+        <attr format="boolean" name="pullUpRefreshable"/>
+        <attr format="enum" name="progress_text_visibility">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+        <attr format="enum" name="progress_size_type">
+            <enum name="normal" value="0"/>
+            <enum name="big" value="1"/>
+        </attr>
+        <attr format="boolean" name="isLoadMore"/>
+    </declare-styleable>
+    <declare-styleable name="NumberPicker">
+
+        <!-- @hide Color for the solid color background if such for optimized rendering. -->
+        <attr format="color|reference" name="solidColor"/>
+        <!-- @hide Whether the number picker supports fligning. -->
+        <attr format="boolean" name="flingable"/>
+        <!-- @hide The divider for making the selection area. -->
+        <attr format="reference" name="selectionDivider"/>
+        <!-- @hide The height of the selection divider. -->
+        <attr format="dimension" name="selectionDividerHeight"/>
+        <!-- @hide The distance of the selection divider -->
+        <attr format="dimension" name="selectionDividersDistance"/>
+        <!-- @hide The min height of the NumberPicker. -->
+        <attr name="android:minHeight"/>
+        <!-- @hide The max height of the NumberPicker. -->
+        <attr name="android:maxHeight"/>
+        <!-- @hide The min width of the NumberPicker. -->
+        <attr name="android:minWidth"/>
+        <!-- @hide The max width of the NumberPicker. -->
+        <attr name="android:maxWidth"/>
+
+        <!-- We need some extra attributes -->
+        <attr name="android:orientation"/>
+        <attr name="android:fadingEdgeLength"/>
+    </declare-styleable>
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr format="color" name="pstsIndicatorColor"/>
+        <attr format="color" name="pstsUnderlineColor"/>
+        <attr format="color" name="pstsDividerColor"/>
+        <attr format="dimension" name="pstsIndicatorHeight"/>
+        <attr format="dimension" name="pstsUnderlineHeight"/>
+        <attr format="dimension" name="pstsDividerPadding"/>
+        <attr format="dimension" name="pstsTabPaddingLeftRight"/>
+        <attr format="dimension" name="pstsScrollOffset"/>
+        <attr format="reference" name="pstsTabBackground"/>
+        <attr format="boolean" name="pstsShouldExpand"/>
+        <attr format="boolean" name="pstsTextAllCaps"/>
+    </declare-styleable>
+    <declare-styleable name="RoundedImageView">
+        <attr format="dimension" name="corner_radius"/>
+        <attr format="dimension" name="border_width"/>
+        <attr format="color" name="border_color"/>
+        <attr name="android:scaleType"/>
+        <attr format="boolean" name="mutate_background"/>
+        <attr format="reference" name="default_background"/>
+        <attr format="boolean" name="oval"/>
+    </declare-styleable>
+    <declare-styleable name="SmartRefreshLayout">
+        <attr name="android:clipChildren"/>
+        <attr name="android:clipToPadding"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr format="integer" name="srlReboundDuration"/>
+        <attr format="dimension" name="srlHeaderHeight"/>
+        <attr format="dimension" name="srlFooterHeight"/>
+        <attr format="dimension" name="srlHeaderInsetStart"/>
+        <attr format="dimension" name="srlFooterInsetStart"/>
+        <attr format="float" name="srlDragRate"/>
+        <attr format="float" name="srlHeaderMaxDragRate"/>
+        <attr format="float" name="srlFooterMaxDragRate"/>
+        <attr format="float" name="srlHeaderTriggerRate"/>
+        <attr format="float" name="srlFooterTriggerRate"/>
+        <attr format="boolean" name="srlEnableRefresh"/>
+        <attr format="boolean" name="srlEnableLoadMore"/>
+        <attr format="boolean" name="srlEnableHeaderTranslationContent"/>
+        <attr format="boolean" name="srlEnableFooterTranslationContent"/>
+        <attr format="reference" name="srlHeaderTranslationViewId"/>
+        <attr format="reference" name="srlFooterTranslationViewId"/>
+        <attr format="boolean" name="srlEnablePreviewInEditMode"/>
+        <attr format="boolean" name="srlEnableAutoLoadMore"/>
+        <attr format="boolean" name="srlEnableOverScrollBounce"/>
+        <attr format="boolean" name="srlEnablePureScrollMode"/>
+        <attr format="boolean" name="srlEnableNestedScrolling"/>
+        <attr format="boolean" name="srlEnableScrollContentWhenLoaded"/>
+        <attr format="boolean" name="srlEnableScrollContentWhenRefreshed"/>
+        <attr format="boolean" name="srlEnableLoadMoreWhenContentNotFull"/>
+        <attr format="boolean" name="srlEnableFooterFollowWhenLoadFinished"/>
+        <attr format="boolean" name="srlEnableFooterFollowWhenNoMoreData"/>
+        <attr format="boolean" name="srlEnableClipHeaderWhenFixedBehind"/>
+        <attr format="boolean" name="srlEnableClipFooterWhenFixedBehind"/>
+        <attr format="boolean" name="srlEnableOverScrollDrag"/>
+        <attr format="boolean" name="srlDisableContentWhenRefresh"/>
+        <attr format="boolean" name="srlDisableContentWhenLoading"/>
+        <attr format="reference" name="srlFixedHeaderViewId"/>
+        <attr format="reference" name="srlFixedFooterViewId"/>
+    </declare-styleable>
+    <declare-styleable name="SmartRefreshLayout_Layout">
+        <attr name="layout_srlSpinnerStyle"/>
+        <attr format="color" name="layout_srlBackgroundColor"/>
+    </declare-styleable>
+    <declare-styleable name="TwoLevelHeader">
+        <attr format="float" name="srlMaxRage"/>
+        <attr format="float" name="srlFloorRage"/>
+        <attr format="float" name="srlRefreshRage"/>
+        <attr format="integer" name="srlFloorDuration"/>
+        <attr format="boolean" name="srlEnableTwoLevel"/>
+        <attr format="boolean" name="srlEnablePullToCloseTwoLevel"/>
+    </declare-styleable>
+    <declare-styleable name="ViewPagerIndicator">
+
+        <!-- Style of the circle indicator. -->
+        <attr format="reference" name="vpiCirclePageIndicatorStyle"/>
+        <!-- Style of the icon indicator's views. -->
+        <attr format="reference" name="vpiIconPageIndicatorStyle"/>
+        <!-- Style of the line indicator. -->
+        <attr format="reference" name="vpiLinePageIndicatorStyle"/>
+        <!-- Style of the title indicator. -->
+        <attr format="reference" name="vpiTitlePageIndicatorStyle"/>
+        <!-- Style of the tab indicator's tabs. -->
+        <attr format="reference" name="vpiTabPageIndicatorStyle"/>
+        <!-- Style of the underline indicator. -->
+        <attr format="reference" name="vpiUnderlinePageIndicatorStyle"/>
+    </declare-styleable>
+    <declare-styleable name="crLayout">
+
+        <!-- 自定义加载更多 res layout id -->
+        <attr format="reference" name="load_layout"/>
+        <!-- 加载更多显示的文字 -->
+        <attr format="string" name="load_text"/>
+        <!-- 加载更多的进度菊花 -->
+        <attr format="reference" name="load_indeterminate_drawable"/>
+        <!-- 加载更多完成显示的文字 -->
+        <attr format="string" name="load_completed_text"/>
+        <!-- 加载更多layout有动画显示效果 -->
+        <attr format="boolean" name="load_animator"/>
+        <attr format="string" name="empty_text"/>
+    </declare-styleable>
 </resources>

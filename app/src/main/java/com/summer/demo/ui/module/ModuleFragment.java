@@ -51,7 +51,8 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"yasuo",ModulePos.POS_COMPRESS_IMG));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_audio,"音频播放",ModulePos.POS_AUDIO_PLAY));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_socket,"Socket通讯",ModulePos.POS_SOCKET));
-		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_audio,"振动",ModulePos.POS_VIBRATE));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
 		adapter.notifyDataChanged(moduleInfos);
 	}
 

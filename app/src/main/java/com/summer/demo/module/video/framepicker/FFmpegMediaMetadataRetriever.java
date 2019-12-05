@@ -26,66 +26,7 @@ public class FFmpegMediaMetadataRetriever
 	 * transparent/translucent colors. 
 	 */
 	public static Bitmap.Config IN_PREFERRED_CONFIG;
-	
-	/*@SuppressLint("SdCardPath")
-	private static final String LIBRARY_PATH = "/data/data/";
-	
-	private static final String [] JNI_LIBRARIES = {
-		"libavutil.so",
-		"libswscale.so",
-		"libavcodec.so",
-		"libavformat.so",
-		"libffmpeg_mediametadataretriever_jni.so"		
-	};
-	
-	static {
-    	StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-    	
-    	StringBuffer path = null;
-    	File file = null;
-    	boolean foundLibs = false;
-    	
-    	for (int j = 0; j < stackTraceElements.length; j++) {
-    		String libraryPath = stackTraceElements[j].getClassName();
-    	
-    		String [] packageFragments = libraryPath.trim().split("\\.");
-    	
-    		path = new StringBuffer(LIBRARY_PATH);
-    	
-    		for (int i = 0; i < packageFragments.length; i++) {
-    			if (i > 0) {
-    				path.append(".");
-    			}
-    		
-    			path.append(packageFragments[i]);
-    			try {
-    				//System.load(path.toString() + "/lib/" + JNI_LIBRARIES[0]);
-    				file = new File(path.toString() + "/lib/" + JNI_LIBRARIES[0]);
-    				if (file.exists()) {
-    					path.append("/lib/");
-    					foundLibs = true;
-    					break;
-    				}
-    			} catch (UnsatisfiedLinkError ex) {
-    			}
-    		}
-    		
-    		if (foundLibs) {
-    			break;
-    		}
-    	}
-    	
-    	if (!foundLibs) {
-    		Log.e(TAG, TAG + " libraries not found. Did you forget to add them to your libs folder?");
-    		throw new UnsatisfiedLinkError();
-    	}
-    	
-    	for (int i = 0; i < JNI_LIBRARIES.length; i++) {
-    		System.load(path.toString() + JNI_LIBRARIES[i]);
-    	}
-    	
-        native_init();
-    }*/
+
 	
 	private static final String [] JNI_LIBRARIES = {
 		"avutil",

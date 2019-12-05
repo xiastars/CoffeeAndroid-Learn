@@ -54,7 +54,7 @@ public abstract class BaseFragment extends Fragment {
     boolean isOnRefresh;
     Resources resources;
     private ReceiverUtils receiverUtils;
-    private View mView;
+    protected View mView;
     protected int DEFAULT_LIMIT = 10;
 
     Unbinder unbinder;
@@ -459,6 +459,14 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
+     * 添加一个子View
+     * @param view
+     */
+    private void addView(View view){
+        ((ViewGroup)mView).addView(view);
+    }
+
+    /**
      * 获取颜色资源
      *
      * @param coloRes
@@ -471,9 +479,11 @@ public abstract class BaseFragment extends Fragment {
         return resources.getColor(coloRes);
     }
 
-    protected abstract void initView(View view);
+    protected void loadData(){
 
-    public abstract void loadData();
+    }
+
+    protected abstract void initView(View view);
 
     protected abstract void dealDatas(int requestType, Object obj);
 

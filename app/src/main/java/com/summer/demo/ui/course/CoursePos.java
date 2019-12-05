@@ -12,4 +12,8 @@ public class CoursePos {
     public static final int POS_NET = 1;
 
     public static final int POS_TOOL = 2;
+
+    public static final int POS_CALCULATION = 3;
+
+    public static final int POS_BACK = 4;//后端技术
 }

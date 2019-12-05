@@ -93,6 +93,20 @@ public class JumpTo {
      * @param cls
      * @param tag
      */
+    public void commonJump(Context context, Class<?> cls, int tag, String tag2) {
+        Intent intent = new Intent(context, cls);
+        intent.putExtra(TYPE_INT, tag);
+        intent.putExtra(TYPE_STRING, tag2);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 普通的跳转方法，带一个标识符
+     *
+     * @param context
+     * @param cls
+     * @param tag
+     */
     public void commonJump(Context context, Class<?> cls, long tag, String tag2) {
         Intent intent = new Intent(context, cls);
         intent.putExtra(TYPE_LONG, tag);

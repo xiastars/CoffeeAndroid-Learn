@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<EditText
+		android:id="@+id/edt_content"
+		style="@style/common_button"
+		android:layout_centerInParent="true"
+		android:layout_width="match_parent"
+		android:layout_height="52dp" />
+
+	<Button
+		android:id="@+id/btn_change_input"
+		android:layout_below="@id/edt_content"
+		android:layout_width="match_parent"
+		android:text="隐藏/显示"
+		android:layout_height="35dp"
+		style="@style/common_button"/>
+
+</RelativeLayout>

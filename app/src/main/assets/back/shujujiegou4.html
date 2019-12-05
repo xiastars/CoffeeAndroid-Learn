@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 优先适配移动设备 maximum-scale=1.0 与 user-scalable=no一起使用可以禁用缩放 -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		 crossorigin="anonymous">
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</head>
+	<body>
+		<div class="container">
+			<h2 class="text-center">Java集合详解--什么是List</h2>
+			<h3>什么是List</h3>
+			<p>List是Collection的其中一种实现方式。List主要分为3类，ArrayList， LinkedList和Vector。</p>
+			<p>List是一个有序的集合，和set不同的是，List允许存储项的值为空，也允许存储相等值的存储项。</p>
+			<p>List是继承于Collection接口，除了Collection通用的方法以外，扩展了部分只属于List的方法。(subList(int,int)))</p>
+			<br />
+			<h3>ArrayList</h3>
+			<p>ArrayList是一个数组实现的列表，由于数据是存入数组中的，所以它的特点也和数组一样，查询很快，但是中间部分的插入和删除很慢。</p>
+			<p>ArrayList的底层是由数组实现的，并且默认数组的默认大小是10</p>
+			<p>ArrayList有一个传参构造函数，传入数组大小，如果使用无参的，每次调用 Arrays.copyOf()方法，扩展数组大小，造成性能浪费</p>
+			<br />
+			<h3>Vector</h3>
+			<p>Vector就是ArrayList的线程安全版，它的方法前都加了synchronized锁，其他实现逻辑都相同。
+				如果对线程安全要求不高的话，可以选择ArrayList，毕竟synchronized也很耗性能</p>
+			<br />
+			<h3>LinkedList</h3>
+			<p>故名思意就是链表，和我们大学在数据结构里学的链表是一会事，LinkedList还是一个双向链表。</p>
+			<p>inkedList继承于AbstractSequentialList,和ArrayList一个套路。内部维护了3个成员变量，一个是当前链表的头节点，一个是尾部节点，还有是链表长度。</p>
+			<p>和C语言实现方式差不多，由于是双向链表，所以记录了next和prev，只不过把C语言里的指针换成了对象。</p>
+			<br />
+			<h3>总结</h3>
+			<p class="lead">通过上面对ArrayList和LinkedList的分析，可以理解List的3个特性
+				<br />1.是按顺序查找
+				<br />2.允许存储项为空
+				<br />3.允许多个存储项的值相等
+				<br />可以知其然知其所以然
+
+				<br />然后对比LinkedList和ArrayList的实现方式不同，可以在不同的场景下使用不同的List
+				<br />ArrayList是由数组实现的，方便查找，返回数组下标对应的值即可，适用于多查找的场景
+				<br />LinkedList由链表实现，插入和删除方便，适用于多次数据替换的场景
+			</p>
+
+
+
+		</div>
+	</body>
+</html>

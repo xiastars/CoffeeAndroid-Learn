@@ -30,4 +30,6 @@ public class ModulePos {
     public static final int POS_SOCKET = 10;
 
     public static final int POS_VIBRATE = 11;
+
+    public static final int POS_ALBUM_LISTENER = 12;
 }

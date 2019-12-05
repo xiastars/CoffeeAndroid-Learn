@@ -41,6 +41,9 @@ public class LearnNetActivity extends BaseTitleListActivity {
             case 2:
                 JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.NET_HTTPS);
                 break;
+            case 3:
+                JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, 15);
+                break;
         }
     }
 

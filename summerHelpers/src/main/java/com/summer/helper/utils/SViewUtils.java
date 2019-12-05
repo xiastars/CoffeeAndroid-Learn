@@ -1,7 +1,8 @@
 package com.summer.helper.utils;
 
 import android.graphics.Color;
-import android.support.v4.view.ViewCompat;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -57,15 +58,15 @@ public class SViewUtils {
      * 设置阴影
      * @param bgView
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public static void setShadowView(View bgView) {
         ShadowProperty sp = new ShadowProperty()
-                .setShadowColor(bgView.getContext().getResources().getColor(R.color.grey_d6))
-                .setShadowDy((int) SUtils.getDip(bgView.getContext(), 2f))
-                .setShadowRadius(45)
+                .setShadowColor(bgView.getContext().getResources().getColor(R.color.black))
+                .setShadowDy((int) SUtils.getDip(bgView.getContext(), 22f))
+                .setShadowRadius(15)
                 .setShadowSide(ShadowProperty.ALL);
-        ShadowViewDrawable sd = new ShadowViewDrawable(sp, Color.WHITE, SUtils.getDip(bgView.getContext(), 1), SUtils.getDip(bgView.getContext(), 1));
-        //ViewCompat.setBackground(bgView, sd);
-        ViewCompat.setLayerType(bgView, ViewCompat.LAYER_TYPE_SOFTWARE, null);
+        ShadowViewDrawable sd = new ShadowViewDrawable(sp, Color.RED, SUtils.getDip(bgView.getContext(), 5), SUtils.getDip(bgView.getContext(), 5));
+        bgView.setBackground(sd);
     }
 
     /**
@@ -174,11 +175,24 @@ public class SViewUtils {
         if (view == null) {
             return;
         }
+        setViewWidth(view,width,true);
+    }
+
+    /**
+     * 设置View的宽度
+     *
+     * @param view
+     * @param width
+     */
+    public static void setViewWidth(View view, int width,boolean isDip) {
+        if (view == null) {
+            return;
+        }
         ViewGroup.LayoutParams params = view.getLayoutParams();
         if (params == null) {
             return;
         }
-        params.width = SUtils.getDip(view.getContext(), width);
+        params.width = isDip ? SUtils.getDip(view.getContext(), width) : width;
     }
 
 

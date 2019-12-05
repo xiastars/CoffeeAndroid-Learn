@@ -36,7 +36,8 @@ public class CustomViewFragment extends BaseMainFragment {
         moduleInfos.add(new ModuleInfo(R.drawable.so_gradient_redffe_blued8, "item收集", ElementPosition.POS_ITEM));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_gallery, "Gallery", ElementPosition.POS));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_danmake,"简单弹幕",ElementPosition.DANMAKU));
-
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"dd",ElementPosition.CAL));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_calendar,"日历(当月)",ElementPosition.CALENDAR));
 
         adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
             @Override

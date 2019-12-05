@@ -50,6 +50,12 @@
             android:background="@drawable/so_redd4_right"
             android:textColor="@color/white"
             android:text="两边圆角"/>
+
+        <ImageView
+            android:id="@+id/iv_gradient"
+            android:layout_marginLeft="15dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
     </LinearLayout>
 
 </ScrollView>

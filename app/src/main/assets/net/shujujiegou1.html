@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 优先适配移动设备 maximum-scale=1.0 与 user-scalable=no一起使用可以禁用缩放 -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		 crossorigin="anonymous">
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</head>
+	<body>
+		<div class="container">
+			<h2 class='text-center'>数据结构之java队列--queue详细分析</h2>
+			<p class="lead">Queue,基本上，一个队列就是一个先入先出的数据结构.<br />ueue接口与List、Set同一级别，都是继承了Collection接口。LinkedList实现了Deque接 口。</p>
+
+			<strong>Queue的实现</strong>
+			<div class="panel-group" id="accordion">
+				<div class="panel">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+								1、没有实现的阻塞接口的LinkedList： 实现了java.util.Queue接口和java.util.AbstractQueue接口
+							</a>
+						</h4>
+		
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in">
+						<div class="panel-body">
+							内置的不阻塞队列： PriorityQueue 和 ConcurrentLinkedQueue<br />
+							　　PriorityQueue 和 ConcurrentLinkedQueue 类在 Collection Framework 中加入两个具体集合实现。<br />
+							　　PriorityQueue 类实质上维护了一个有序列表。加入到 Queue 中的元素根据它们的天然排序（通过其 java.util.Comparable 实现）或者根据传递给构造函数的
+							java.util.Comparator 实现来定位。<br />
+							　　ConcurrentLinkedQueue 是基于链接节点的、线程安全的队列。并发访问不需要同步。因为它在队列的尾部添加元素并从头部删除它们，所以只要不需要知道队列的大小,ConcurrentLinkedQueue
+							对公共集合的共享访问就可以工作得很好。收集关于队列大小的信息会很慢，需要遍历队列。
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</body>
+</html>

@@ -42,6 +42,17 @@
         <item>子类与父类</item>
     </string-array>
 
+    <string-array name="back_titles">
+        <item>数据结构之java队列 -- queue详细分析</item>
+        <item>数据结构之《LinkedList、ConcurrentLinkedQueue、LinkedBlockingQueue对比分析》</item>
+        <item>Java Set集合的详解</item>
+        <item>Java集合详解--什么是List</item>
+    </string-array>
+
+    <string-array name="calculation">
+        <item>梯形计算</item>
+    </string-array>
+
     <string-array name="tools">
         <item>文件夹里的视频生成所有封面</item>
     </string-array>
@@ -50,6 +61,7 @@
         <item>五层体系结构</item>
         <item>TCP三次握手和四次挥手过程</item>
         <item>Http和Https</item>
+        <item>ddd</item>
     </string-array>
 
     <string-array name="sdks">

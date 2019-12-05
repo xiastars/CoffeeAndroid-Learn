@@ -2,6 +2,7 @@ package com.summer.demo.ui.course;
 
 import com.summer.demo.ui.FragmentContainerActivity;
 import com.summer.demo.ui.course.fragment.VideoGetCoverFragment;
+import com.summer.helper.utils.JumpTo;
 
 /**
  * @Description: Fragment容器
@@ -12,6 +13,7 @@ public class CourseContainerActivity extends FragmentContainerActivity {
 
     @Override
     protected void showViews(int type) {
+        setTitle(JumpTo.getString(this));
         switch (type) {
             case MarkdownPos.JAVA_OBJECT:
                 setTitle("关于对象");
@@ -40,6 +42,28 @@ public class CourseContainerActivity extends FragmentContainerActivity {
                 setTitle("生成封面");
                 showFragment(new VideoGetCoverFragment());
                 break;
+            case 15:
+                url = "file:///android_asset/net/shujujiegou1.html";
+                showFragment(CourseWebFragment.show(url));
+                break;
+            case MarkdownPos.BACK_QUEUE:
+                setTitle("数据结构之java队列--queue详细分析");
+                url = "file:///android_asset/back/shujujiegou1.html";
+                showFragment(CourseWebFragment.show(url));
+                break;
+            case MarkdownPos.BACK_QUEUE1:
+                url = "file:///android_asset/back/shujujiegou2.html";
+                showFragment(CourseWebFragment.show(url));
+                break;
+            case MarkdownPos.BACK_QUEUE2:
+                url = "file:///android_asset/back/shujujiegou3.html";
+                showFragment(CourseWebFragment.show(url));
+                break;
+            case MarkdownPos.BACK_QUEUE3:
+                url = "file:///android_asset/back/shujujiegou4.html";
+                showFragment(CourseWebFragment.show(url));
+                break;
+
         }
     }
 

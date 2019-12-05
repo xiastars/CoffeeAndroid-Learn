@@ -12,6 +12,7 @@ import com.summer.demo.ui.module.fragment.AudioPlayerFragment;
 import com.summer.demo.ui.module.fragment.CompressImgFragment;
 import com.summer.demo.ui.module.fragment.EmojiFragment;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
+import com.summer.demo.ui.module.fragment.ListenerAlbumListener;
 import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.demo.ui.module.fragment.socket.SocketFragment;
@@ -71,6 +72,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
             case ModulePos.POS_VIBRATE:
                 setTitle("振动");
                 showFragment(new VibratorFragment());
+                break;
+            case ModulePos.POS_ALBUM_LISTENER:
+                setTitle("相册监听");
+                showFragment(new ListenerAlbumListener());
                 break;
         }
     }

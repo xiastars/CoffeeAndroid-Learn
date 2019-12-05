@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 优先适配移动设备 maximum-scale=1.0 与 user-scalable=no一起使用可以禁用缩放 -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		 crossorigin="anonymous">
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div class="container">
+			<div class="postBody">
+
+				<div id="cnblogs_post_body" class="blogpost-body ">
+					<br />
+					<p class="lead">写这篇文章源于我经历过的一次生产事故，在某家公司的时候，有个服务会收集业务系统的日志，此服务的开发人员在给业务系统的sdk中就因为用了LinkedList，又没有做并发控制，就造成了此服务经常不能正常收集到业务系统的日志(丢日志以及日志上报的线程停止运行)。看一下add()方法的源码，我们就可以知道原因了：</p>
+					<div class="cnblogs_Highlighter">
+						<pre class="brush:java;gutter:true;">    public boolean add(E e) {
+        linkLast(e);//调用linkLast，在队列尾部添加元素
+        return true;
+    }
+
+    void linkLast(E e) {
+        final Node&lt;E&gt; l = last;
+        final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);
+        last = newNode;
+        if (l == null)
+            first = newNode;
+        else
+            l.next = newNode;
+        size++;//多线程情况下，如果业务系统没做并发控制，size的数量会远远大于实际元素的数量
+        modCount++;
+    }
+</pre>
+					</div>
+					<p>以上demo展示了在多线程且没有做并发控制的环境下，size的值远远大于了队列的实际值，100个线程，每个添加1000个元素，最后实际只加进去2030个元素：</p>
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;List的变量size值为：88371<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;第2031个元素取出为null</p>
+					<p>&nbsp; &nbsp; 解决方案，使用锁或者使用ConcurrentLinkedQueue、LinkedBlockingQueue等支持添加元素为原子操作的队列。</p>
+				<pre class="brush:java;gutter:true;"><br />    public boolean offer(E e) {
+        checkNotNull(e);
+        final Node&lt;E&gt; newNode = new Node&lt;E&gt;(e);
+
+        for (Node&lt;E&gt; t = tail, p = t;;) {
+            Node&lt;E&gt; q = p.next;
+            if (q == null) {
+                // p is last node
+                if (p.casNext(null, newNode)) {
+                    // Successful CAS is the linearization point
+                    // for e to become an element of this queue,
+                    // and for newNode to become "live".
+                    if (p != t) // hop two nodes at a time
+                        casTail(t, newNode);  // Failure is OK.
+                    return true;
+                }
+                // Lost CAS race to another thread; re-read next
+            }
+            else if (p == q)
+                // We have fallen off list.  If tail is unchanged, it
+                // will also be off-list, in which case we need to
+                // jump to head, from which all live nodes are always
+                // reachable.  Else the new tail is a better bet.
+                p = (t != (t = tail)) ? t : head;
+            else
+                // Check for tail updates after two hops.
+                p = (p != t &amp;&amp; t != (t = tail)) ? t : q;
+        }
+    }
+</pre>
+					</div>
+					<p>　　接下来，我们再利用高并发queue对上面的demo进行改造，大家只要改变demo中的内容，讲下面两行的注释内容颠倒，即可发现没有丢失任何的元素：</p>
+					<p>&nbsp; &nbsp; &nbsp; public static LinkedList list = new LinkedList();<br />&nbsp; &nbsp; &nbsp; //public
+						static
+						ConcurrentLinkedQueue list = new ConcurrentLinkedQueue();</p>
+					<p>&nbsp; &nbsp;
+						&nbsp;再看一下高性能queue的poll()方法，才觉得NB，取元素的方法也用CAS实现了原子操作，因此在实际使用的过程中，当我们在不那么在意元素处理顺序的情况下，队列元素的消费者，完全可以是多个，不会丢任何数据：</p>
+					<div class="cnblogs_code">
+						<pre>    <span style="color: #0000ff;">public</span><span style="color: #000000;"> E poll() {
+        restartFromHead:
+        </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (;;) {
+            </span><span style="color: #0000ff;">for</span> (Node&lt;E&gt; h = head, p =<span style="color: #000000;"> h, q;;) {
+                E item </span>=<span style="color: #000000;"> p.item;
+
+                </span><span style="color: #0000ff;">if</span> (item != <span style="color: #0000ff;">null</span> &amp;&amp; p.casItem(item, <span style="color: #0000ff;">null</span><span style="color: #000000;">)) {
+                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Successful CAS is the linearization point
+                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> for item to be removed from this queue.</span>
+                    <span style="color: #0000ff;">if</span> (p != h) <span style="color: #008000;">//</span><span style="color: #008000;"> hop two nodes at a time</span>
+                        updateHead(h, ((q = p.next) != <span style="color: #0000ff;">null</span>) ?<span style="color: #000000;"> q : p);
+                    </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> item;
+                }
+                </span><span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span> ((q = p.next) == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {
+                    updateHead(h, p);
+                    </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+                }
+                </span><span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span> (p ==<span style="color: #000000;"> q)
+                    </span><span style="color: #0000ff;">continue</span><span style="color: #000000;"> restartFromHead;
+                </span><span style="color: #0000ff;">else</span><span style="color: #000000;">
+                    p </span>=<span style="color: #000000;"> q;
+            }
+        }
+    }</span></pre>
+					</div>
+					<p>&nbsp; &nbsp; 关于ConcurrentLinkedQueue和LinkedBlockingQueue：</p>
+					<p>&nbsp; &nbsp; 1.LinkedBlockingQueue是使用锁机制，ConcurrentLinkedQueue是使用CAS算法，虽然LinkedBlockingQueue的底层获取锁也是使用的CAS算法</p>
+					<p>&nbsp; &nbsp;
+						2.关于取元素，ConcurrentLinkedQueue不支持阻塞去取元素，LinkedBlockingQueue支持阻塞的take()方法，如若大家需要ConcurrentLinkedQueue的消费者产生阻塞效果，需要自行实现</p>
+					<p>&nbsp; &nbsp;
+						3.关于插入元素的性能，从字面上和代码简单的分析来看ConcurrentLinkedQueue肯定是最快的，但是这个也要看具体的测试场景，我做了两个简单的demo做测试，测试的结果如下，两个的性能差不多，但在实际的使用过程中，尤其在多cpu的服务器上，有锁和无锁的差距便体现出来了，ConcurrentLinkedQueue会比LinkedBlockingQueue快很多：</p>
+					<p>demo Lesson2ConcurrentLinkedQueuePerform:在使用ConcurrentLinkedQueue的情况下100个线程循环增加的元素数为：33828193</p>
+					<p>demo Lesson2LinkedBlockingQueuePerform:在使用LinkedBlockingQueue的情况下100个线程循环增加的元素数为：33827382</p>
+				</div>
+			</div>
+	</body>
+</html>

@@ -1,6 +1,7 @@
 package com.summer.demo.ui.view;
 
 import com.summer.demo.ui.FragmentContainerActivity;
+import com.summer.demo.ui.view.customfragment.CalendarFragment;
 import com.summer.demo.ui.view.customfragment.DanmakuFragment;
 import com.summer.demo.ui.view.customfragment.GalleryFragment;
 
@@ -24,6 +25,14 @@ public class ViewCustomContainerActivity extends FragmentContainerActivity {
             case ElementPosition.DANMAKU:
                 setTitle("弹幕");
                 showFragment(new DanmakuFragment());
+                break;
+            case ElementPosition.CAL:
+                setTitle("CAL");
+                //  showFragment(new CalCuWEbFragment());
+                break;
+            case ElementPosition.CALENDAR:
+                setTitle("日历");
+                showFragment(new CalendarFragment());
                 break;
         }
     }

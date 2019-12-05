@@ -13,8 +13,10 @@ import com.summer.demo.ui.view.commonfragment.CDrawableFragment;
 import com.summer.demo.ui.view.commonfragment.CommonGridFragment;
 import com.summer.demo.ui.view.commonfragment.CommonListFragment;
 import com.summer.demo.ui.view.commonfragment.ConstraintLayoutFragment;
+import com.summer.demo.ui.view.commonfragment.EditTextFragment;
 import com.summer.demo.ui.view.commonfragment.GridRecyclerFragment;
 import com.summer.demo.ui.view.commonfragment.ListRecyclerFragment;
+import com.summer.demo.ui.view.customfragment.ProgressBarFragment;
 import com.summer.helper.utils.JumpTo;
 
 import butterknife.BindView;
@@ -92,6 +94,14 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
             case UiPosition.POS_REFRESH_GRID:
                 setTitle("可刷新Grid");
                 showFragment(new GridRecyclerFragment());
+                break;
+            case UiPosition.PROGRESS:
+                setTitle("进度条");
+                showFragment(new ProgressBarFragment());
+                break;
+            case UiPosition.EDITTEXT:
+                setTitle("EditText");
+                showFragment(new EditTextFragment());
                 break;
         }
     }

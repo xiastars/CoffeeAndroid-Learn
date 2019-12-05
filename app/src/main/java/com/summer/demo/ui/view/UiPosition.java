@@ -20,4 +20,15 @@ public class UiPosition {
     public static final int POS_REFRESH_LIST = 5;
 
     public static final int POS_REFRESH_GRID = 6;
+
+    //SViewUtil
+    public static final int POS_SVIEWUTIL = 7;
+
+
+    public final static int PROGRESS = 8;
+
+
+    public final static int EDITTEXT = 9;
+
+
 }

@@ -534,7 +534,7 @@ public final class EasyHttp {
 	 * @param filePath      文件本地路径
 	 * @param listener
 	 */
-	public static void upLoadFile(Context context, String fileDirectory, String fileType, String filePath, final OnResponseListener listener) {
+	public static void upLoadOssFile(Context context, String fileDirectory, String fileType, String filePath, final OnResponseListener listener) {
 		try {
 			//setCoockies(context);
 			MultipartBody.Builder builder = new MultipartBody.Builder();

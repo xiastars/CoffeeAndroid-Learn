@@ -43,8 +43,6 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
     RelativeLayout rlEditParent;
     @BindView(R.id.ll_parent)
     RelativeLayout llParent;
-    @BindView(R.id.rl_comment_parent)
-    RelativeLayout rlCommentParent;
     String userId = "";
     String groupId;
 
