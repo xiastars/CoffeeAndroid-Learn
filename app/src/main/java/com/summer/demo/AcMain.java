@@ -57,6 +57,7 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
                 clickChild(position);
             }
         });
+
         nvContainer.setAdapter(adapter);
         adapter.notifyDataChanged(getData(context));
 
