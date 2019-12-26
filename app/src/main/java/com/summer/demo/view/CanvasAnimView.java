@@ -58,21 +58,18 @@ public class CanvasAnimView extends View {
         showBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         showCanvas = new Canvas(showBitmap);
 
-
-
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if(null == circlePaint){
+        if (null == circlePaint) {
             circlePaint = new Paint();
             circlePaint.setAntiAlias(true);
             circlePaint.setStyle(Paint.Style.FILL);
             circlePaint.setColor(Color.BLUE);
         }
-        if(null == showPaint){
+        if (null == showPaint) {
             showPaint = new Paint();
             showPaint.setAntiAlias(true);
             showPaint.setColor(Color.RED);
@@ -94,9 +91,9 @@ public class CanvasAnimView extends View {
 
     }
 
-    public void setIndex(){
-        index ++;
-        if(index >= 60){
+    public void setIndex() {
+        index++;
+        if (index >= 60) {
             index = 0;
         }
         invalidate();

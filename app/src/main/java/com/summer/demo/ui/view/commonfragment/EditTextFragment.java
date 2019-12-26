@@ -1,6 +1,8 @@
 package com.summer.demo.ui.view.commonfragment;
 
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -29,6 +31,22 @@ public class EditTextFragment extends BaseFragment implements View.OnClickListen
     @Override
     protected void initView(View view) {
         edtContent.setInputType(EditorInfo.TYPE_CLASS_TEXT |  InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        edtContent.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Logs.i("beforeTextChanged");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Logs.i("onTextChanged");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Logs.i("afterTextChanged");
+            }
+        });
     }
 
     @Override

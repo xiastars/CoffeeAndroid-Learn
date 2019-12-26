@@ -1,13 +1,14 @@
 package com.summer.demo.view;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.summer.demo.R;
 import com.summer.helper.utils.SUtils;
 
-public class CommonSureView extends TextView {
+public class CommonSureView extends AppCompatTextView {
     public CommonSureView(Context context) {
         super(context);
     }

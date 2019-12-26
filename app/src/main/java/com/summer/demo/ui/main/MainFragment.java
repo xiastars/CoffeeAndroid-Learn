@@ -149,8 +149,9 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
         fragments.add(new CourseFragment());
         mineFragment = new MineFragment();
         fragments.add(mineFragment);
-        for (int i = 0; i < fragments.size(); i++) {
-            try {
+
+        try {
+            for (int i = 0; i < fragments.size(); i++) {
                 BaseMainFragment frament = fragments.get(i);
                 if (frament.isAdded()) {
 
@@ -158,11 +159,11 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
                 } else {
                     fgManager.beginTransaction().add(frameLayouts.get(i).getId(), frament).commitAllowingStateLoss();
                 }
-
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
             }
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
         }
+
         //1.3.2 游客跳到发现
         myHandlder.postDelayed(new Runnable() {
             @Override

@@ -259,30 +259,8 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
                                 invalidate();
                                 requestLayout();
                                 long time = System.currentTimeMillis();
-                                if (firstCP.x == 0 && firstCP.y == 0) {
-                                    for (int i = 0; i < bitmap.getWidth(); i++) {
-                                        if (firstCP.x != 0) {
-                                            break;
-                                        }
-                                        for (int j = 0; j < bitmap.getHeight(); j++) {
-                                            int color = bitmap.getPixel(i, j);
-                                            if (color != 0) {
-                                                firstCP.x = i;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    for (int i = 0; i < bitmap.getHeight(); i++) {
-                                        for (int j = 0; j < bitmap.getWidth(); j++) {
-                                            int color = bitmap.getPixel(j, i);
-                                            if (color != 0) {
-                                                firstCP.y = i;
-                                                return;
-                                            }
-                                        }
-                                    }
-                                }
-                                Logs.i("xia", "TIME:" + (System.currentTimeMillis() - time));
+                                getFirstPosUnTransparent(bitmap);
+                                Logs.i("取第一个不透明点耗时："+ (System.currentTimeMillis() - time));
                             }
 
                         }
@@ -294,12 +272,33 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
         }
     }
 
+    /**
+     * 获取第一个不透明的点
+     *
+     * @param bitmap
+     */
+    private void getFirstPosUnTransparent(Bitmap bitmap) {
+        if(firstCP.x != 0 && firstCP.y != 0){
+            return;
+        }
+        for (int i = 0; i < bitmap.getWidth(); i++) {
+            for (int j = 0; j < bitmap.getHeight(); j++) {
+                int color = bitmap.getPixel(i, j);
+                if (color != 0) {
+                    firstCP.x = i;
+                    firstCP.y = j;
+                    break;
+                }
+            }
+        }
+    }
+
     @SuppressLint("NewApi")
     private void setPhotoIndex() {
         if (null == bitmaps || bitmaps.size() < playIndex) {
             return;
         }
-        Logs.i("index:::"+playIndex);
+        Logs.i("index:::" + playIndex);
         initSycnBitmap();
         Bitmap bitmap = bitmaps.get(playIndex).getBitmap();
         bitmaps.get(playIndex).setCreateTime(System.currentTimeMillis());
@@ -317,23 +316,23 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
             return;
         }
         int size = bitmaps.size();
-        bitmapIndex ++;
+        bitmapIndex++;
         //如果超出，则从0开始
-        if(bitmapIndex >= size){
+        if (bitmapIndex >= size) {
             bitmapIndex = 0;
         }
         SThread.getIntances().submit(new Runnable() {
             @Override
             public void run() {
-                if(playIndex == 0){
+                if (playIndex == 0) {
                     return;
                 }
 
-                for(int i = 0;i < bitmaps.size();i++){
+                for (int i = 0; i < bitmaps.size(); i++) {
                     FrameImgBean lastFrameImgBean = bitmaps.get(i);
-                    if(System.currentTimeMillis()- lastFrameImgBean.getCreateTime() > 500 && lastFrameImgBean.getCreateTime() != 0){
+                    if (System.currentTimeMillis() - lastFrameImgBean.getCreateTime() > 500 && lastFrameImgBean.getCreateTime() != 0) {
                         Bitmap b = lastFrameImgBean.getBitmap();
-                        if(b != null){
+                        if (b != null) {
                             b.recycle();
                             lastFrameImgBean.setBitmap(null);
                         }
@@ -342,7 +341,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
                 try {
                     FrameImgBean frameImgBean = bitmaps.get(bitmapIndex);
                     int type = frameImgBean.getImgType();
-                    if(frameImgBean.getBitmap() != null){
+                    if (frameImgBean.getBitmap() != null) {
                         return;
                     }
                     if (type == 2) {
@@ -439,7 +438,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
                     Bitmap bitmap = BitmapFactory.decodeStream(stream, null, OPTIONS_DECODE);
                     frameImgBean.setBitmap(bitmap);
                     frameImgBean.setCreateTime(System.currentTimeMillis());
-                    Logs.i("bitmap:"+bitmap);
+                    Logs.i("bitmap:" + bitmap);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -488,7 +487,7 @@ public class DragRelativeLayout extends BaseDragView implements OnClickListener 
         }, CommomData.PLAY_TIME);
     }
 
-    public void stopPlay(){
+    public void stopPlay() {
         Logs.i("stopPlay::::check");
         mHandler.removeMessages(0);
         afterPlayEnd();

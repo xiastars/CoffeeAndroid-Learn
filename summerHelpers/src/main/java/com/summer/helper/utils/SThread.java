@@ -60,4 +60,10 @@ public class SThread {
 			mMainHandler = new Handler(Looper.getMainLooper());
 		mMainHandler.post(runnable);
 	}
+
+	public void runOnUiThreadDelayed(Runnable runnable,int second){
+		if (mMainHandler == null)
+			mMainHandler = new Handler(Looper.getMainLooper());
+		mMainHandler.postDelayed(runnable,second);
+	}
 }

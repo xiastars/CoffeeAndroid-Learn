@@ -37,7 +37,6 @@ import in.srain.cube.views.ptr.PtrClassicFrameLayout;
  */
 public class MaterialRefreshLayout extends FrameLayout {
 
-	public static final String Tag = MaterialRefreshLayout.class.getSimpleName();
 	private final static int DEFAULT_WAVE_HEIGHT = 140;
 	private final static int HIGHER_WAVE_HEIGHT = 180;
 	private static int DEFAULT_HEAD_HEIGHT = 70;

@@ -1,7 +1,6 @@
 package com.summer.helper.recycle;
 
 import android.content.Context;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -147,9 +146,9 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
         }
         if (circleProgressBar != null) {
             circleProgressBar.onComlete(materialRefreshLayout);
-            ViewCompat.setTranslationY(circleProgressBar, 0);
-            ViewCompat.setScaleX(circleProgressBar, 0);
-            ViewCompat.setScaleY(circleProgressBar, 0);
+            circleProgressBar.setTranslationY(0);
+            circleProgressBar.setScaleX(0);
+            circleProgressBar.setScaleY(0);
         }
 
     }
@@ -160,8 +159,8 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
             materialWaveView.onBegin(materialRefreshLayout);
         }
         if (circleProgressBar != null) {
-            ViewCompat.setScaleX(circleProgressBar, 0.001f);
-            ViewCompat.setScaleY(circleProgressBar, 0.001f);
+            circleProgressBar.setScaleX(0.001f);
+            circleProgressBar.setScaleY(0.001f);
             circleProgressBar.onBegin(materialRefreshLayout);
         }
     }
@@ -174,9 +173,9 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
         if (circleProgressBar != null) {
             circleProgressBar.onPull(materialRefreshLayout, fraction);
             float a = Util.limitValue(1, fraction);
-            ViewCompat.setScaleX(circleProgressBar, a);
-            ViewCompat.setScaleY(circleProgressBar, a);
-            ViewCompat.setAlpha(circleProgressBar, a);
+            circleProgressBar.setScaleX( a);
+            circleProgressBar.setScaleY(a);
+            circleProgressBar.setAlpha(a);
         }
     }
 

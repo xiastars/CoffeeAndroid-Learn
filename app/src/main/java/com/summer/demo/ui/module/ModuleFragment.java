@@ -53,6 +53,7 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_socket,"Socket通讯",ModulePos.POS_SOCKET));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_upload,"上传文件",ModulePos.POS_UPLOAD));
 		adapter.notifyDataChanged(moduleInfos);
 	}
 

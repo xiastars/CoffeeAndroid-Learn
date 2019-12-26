@@ -63,7 +63,7 @@ public class SelectPhotoHelper {
         aspectY = y;
     }
 
-    public void setTargetView(ImageView imageView, final String mark) {
+    public void setTargetView(ImageView imageView) {
         this.imageView = imageView;
         targetView = imageView;
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +115,9 @@ public class SelectPhotoHelper {
     }
 
     public void startSelectPhoto(){
+        if(!PermissionUtils.checkReadPermission(context)){
+            return;
+        }
         SelectOptions.Builder builder = new SelectOptions.Builder();
         builder.setCallback(new AlbumCallback() {
             @Override

@@ -1327,6 +1327,51 @@ public class SUtils {
     }
 
     /**
+     * 保存图片到本地
+     *
+     * @param context
+     * @param bitmap
+     * @return
+     */
+    public static String getAndSaveCurrentImage(Context context, Bitmap bitmap) {
+        String filePath = "";
+        try {
+            if (bitmap != null) {
+                String SavePath = SFileUtils.getImageViewDirectory();
+                //保存Bitmap
+                File path = new File(SavePath);
+
+                if (!path.exists()) {
+                    path.mkdirs();
+                }
+                //文件
+                filePath = SavePath + "/" + System.currentTimeMillis() + ".png";
+                File file = new File(filePath);
+                if (!file.exists()) {
+                    file.createNewFile();
+                }
+                FileOutputStream fos = null;
+                fos = new FileOutputStream(file);
+                if (null != fos) {
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    fos.flush();
+                    fos.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } catch (OutOfMemoryError e) {
+            e.printStackTrace();
+        } finally {
+            if (bitmap != null) {
+                bitmap.recycle();
+                bitmap = null;
+            }
+        }
+        return filePath;
+    }
+
+    /**
      * 去除Bitmap的颜色
      *
      * @param bitmap

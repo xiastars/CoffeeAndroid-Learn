@@ -13,7 +13,7 @@ import com.summer.helper.adapter.SRecycleAdapter;
 import com.summer.helper.listener.OnSimpleClickListener;
 
 /**
- * Created by xiaqiliang on 2017/6/20.
+ * Created by xiastars@vip.qq.com on 2017/6/20.
  */
 
 public class SelectIntegralAdapter extends SRecycleAdapter {

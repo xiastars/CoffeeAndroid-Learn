@@ -103,7 +103,7 @@ public class PostData {
     }
 
     public static String getMac() {
-        if(MAC != null){
+        if (MAC != null) {
             return MAC;
         }
         String mac = null;
@@ -122,7 +122,7 @@ public class PostData {
         } catch (IOException ex) {
             // 赋予默认值
             ex.printStackTrace();
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
         MAC = mac;
@@ -148,14 +148,14 @@ public class PostData {
             if (TextUtils.isEmpty(PostData.IMEI)) {
                 try {
                     TelephonyManager telManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-                    if(PermissionUtils.checkPhonePermission(context)){
+                    if (PermissionUtils.checkPhonePermission(context)) {
                         PostData.IMEI = telManager.getDeviceId();
                     }
 
                     Logs.i("IMEI" + PostData.IMEI);
                 } catch (Exception e) {
 
-                    Logs.i("IMEI" + e.toString());
+                    Logs.i("获取IMEI失败：" + e.toString());
                 }
 
             }
