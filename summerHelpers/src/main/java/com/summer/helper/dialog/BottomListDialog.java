@@ -92,6 +92,7 @@ public class BottomListDialog extends BaseBottomDialog {
     public void initView(View view) {
         tvTopTitle = view.findViewById(R.id.tv_top_title);
         tvFinish = view.findViewById(R.id.tv_finish);
+        nvContainer = view.findViewById(R.id.nv_container);
         init();
         setCanceledOnTouchOutside(true);
         if (!TextUtils.isEmpty(topTitle)) {
@@ -103,7 +104,7 @@ public class BottomListDialog extends BaseBottomDialog {
         if (spannbleString != null) {
             tvBottomContent.setText(spannbleString);
         }
-        rlTop.setVisibility(showTopContent);
+        //rlTop.setVisibility(showTopContent);
         tvFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,8 +113,8 @@ public class BottomListDialog extends BaseBottomDialog {
             }
         });
         tvFinish.setVisibility(showFinishView);
-        tvBottomContent.setVisibility(showBottomContent);
-        tvCancel.setVisibility(showCancelView ? View.VISIBLE : View.GONE);
+        //tvBottomContent.setVisibility(showBottomContent);
+        //tvCancel.setVisibility(showCancelView ? View.VISIBLE : View.GONE);
         setDialogBottom();
         if (stringType) {
             nvContainer.setList();

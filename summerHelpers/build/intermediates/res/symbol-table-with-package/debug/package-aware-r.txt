@@ -565,6 +565,7 @@ color blue_2e
 color blue_44
 color blue_4c
 color blue_56
+color blue_5b
 color blue_66
 color blue_7a
 color blue_85

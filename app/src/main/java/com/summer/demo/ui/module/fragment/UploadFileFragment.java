@@ -1,6 +1,7 @@
 package com.summer.demo.ui.module.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -57,6 +58,7 @@ public class UploadFileFragment extends BaseFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_select_photo:
+
                 selectPhotoHelper = new SelectPhotoHelper(context, new OnResponseListener() {
                     @Override
                     public void succeed(String url) {
@@ -70,7 +72,7 @@ public class UploadFileFragment extends BaseFragment implements View.OnClickList
 
                     }
                 });
-                selectPhotoHelper.startSelectPhoto();
+                selectPhotoHelper.showSelectPhotoDialog();
                 break;
             case R.id.btn_upload:
                 ImgHelper.compressImg(context, false, filePath, new Callback<String>() {
@@ -107,5 +109,9 @@ public class UploadFileFragment extends BaseFragment implements View.OnClickList
         });
     }
 
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        selectPhotoHelper.handleRequestCode(requestCode,data);
+    }
 }

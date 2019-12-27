@@ -13,10 +13,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.summer.demo.dialog.SelectPhotoDialog;
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.module.album.bean.SelectOptions;
 import com.summer.demo.module.album.listener.AlbumCallback;
 import com.summer.helper.listener.OnResponseListener;
+import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.JumpTo;
@@ -157,32 +159,24 @@ public class SelectPhotoHelper {
      * 选择图片
      */
     public void showSelectPhotoDialog() {
-/*
-        final BottomListDialog selectTypeDialog = new BottomListDialog(context);
-        String[] titles = {"拍照", "从手机相册选择"};
-        selectTypeDialog.setDatas(titles);
-        selectTypeDialog.setStringType();
-        selectTypeDialog.showTopContent(View.GONE);
-        selectTypeDialog.showBottomContent(View.GONE);
-        selectTypeDialog.show();
-        selectTypeDialog.setListener(new OnSimpleClickListener() {
+        SelectPhotoDialog selectPhotoVideoDialog = new SelectPhotoDialog(context, new OnSimpleClickListener() {
             @Override
             public void onClick(int position) {
-                fileName = "nf_" + System.currentTimeMillis() + ".png";
-                if (position == 0) {
-                    if (!PermissionUtils.checkCameraPermission(context)) {
-                        return;
-                    }
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//拍照
-                    imgFile = new File(SFileUtils.getAvatarDirectory() + fileName);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imgFile));
-                    activity.startActivityForResult(intent, FROME_CAMERA);
-                } else if (position == 1) {
-                    enterToAlbum();
+                switch (position) {
+                    case 0:
+                        if (!PermissionUtils.checkCameraPermission(context)) {
+                            return;
+                        }
+                        setCroped(false);
+                        enterToCamera();
+                        break;
+                    case 1:
+                        startSelectPhoto();
+                        break;
                 }
-                selectTypeDialog.cancelDialog();
             }
-        });*/
+        });
+        selectPhotoVideoDialog.show();
     }
 
     /**
@@ -228,6 +222,7 @@ public class SelectPhotoHelper {
     }
 
     public void handleRequestCode(int requestCode, Intent data) {
+        Logs.i("reqeustOCde:"+requestCode+",,"+data);
         switch (requestCode) {
             case FROME_CAMERA:
                 String path = imgFile.getPath();
@@ -247,6 +242,7 @@ public class SelectPhotoHelper {
                     if (imageData == null) {
                         cropedPath = data.getStringExtra("filePath");
                         if (!TextUtils.isEmpty(cropedPath)) {
+                            listener.succeed(cropedPath);
                            // SUtils.setPicWithHolder(targetView, cropedPath, R.drawable.ic_defaul_img);
                         }
                     }

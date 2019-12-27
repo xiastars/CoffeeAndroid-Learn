@@ -2,6 +2,7 @@ package com.summer.demo.ui.module;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.ui.FragmentContainerActivity;
@@ -18,6 +19,7 @@ import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.demo.ui.module.fragment.socket.SocketFragment;
 import com.summer.helper.utils.JumpTo;
+import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
 
 /**
@@ -85,4 +87,12 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Logs.i("reqest:"+requestCode);
+        if(mFragment != null){
+            mFragment.onActivityResult(requestCode,resultCode,data);
+        }
+    }
 }

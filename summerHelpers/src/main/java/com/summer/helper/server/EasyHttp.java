@@ -796,8 +796,8 @@ public final class EasyHttp {
                         if (code == 200) {
                             ResponseBody body = response.body();
                             if(body != null){
-                                String content = body.string();
-                                Logs.i("content:"+content);
+                                //String content = body.string();
+                                //Logs.i("content:"+content);
                             }
                            // listener.succeed(PostData.ALI_PRE + key);
                             return;

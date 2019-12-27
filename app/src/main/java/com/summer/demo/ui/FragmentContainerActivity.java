@@ -30,7 +30,7 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
     @BindView(R.id.rl_container)
     FrameLayout rlContainer;
 
-    Fragment mFragment;
+    public Fragment mFragment;
     FragmentManager fragmentManager;
 
     @Override
