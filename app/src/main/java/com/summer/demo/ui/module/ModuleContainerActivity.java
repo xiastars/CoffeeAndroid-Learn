@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.ui.FragmentContainerActivity;
-import com.summer.demo.ui.fragment.MyDialogFragment;
 import com.summer.demo.ui.fragment.ObjectAnimFragment;
 import com.summer.demo.ui.module.comment.ChatFragment;
 import com.summer.demo.ui.module.fragment.AudioPlayerFragment;
@@ -17,6 +16,7 @@ import com.summer.demo.ui.module.fragment.ListenerAlbumListener;
 import com.summer.demo.ui.module.fragment.UploadFileFragment;
 import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
+import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
 import com.summer.demo.ui.module.fragment.socket.SocketFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;

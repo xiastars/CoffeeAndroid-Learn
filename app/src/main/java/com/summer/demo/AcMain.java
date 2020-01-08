@@ -16,7 +16,7 @@ import com.summer.demo.ui.SDKActivity;
 import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;
 import com.summer.demo.ui.fragment.MediaPlayerFragment;
-import com.summer.demo.ui.fragment.MyDialogFragment;
+import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
 import com.summer.demo.ui.fragment.PictureUseFragment;
 import com.summer.demo.ui.fragment.RXJavaPractice;
 import com.summer.demo.ui.fragment.ToastFragment;
