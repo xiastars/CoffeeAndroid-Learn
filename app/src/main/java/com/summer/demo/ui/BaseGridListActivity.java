@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.summer.demo.R;
 import com.summer.demo.adapter.CommonGridAdapter;
+import com.summer.demo.bean.ModuleInfo;
 import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.base.BaseFragment;
 import com.summer.helper.listener.OnSimpleClickListener;
@@ -56,14 +57,15 @@ public abstract class BaseGridListActivity extends BaseActivity {
         nvContainer.setAdapter(adapter);
     }
 
-    protected void setData(String[] titles ,int[] bgs){
+    protected void setData(String[] titles, int[] bgs) {
         List<String> title = new ArrayList<String>();
         /* 从XML里获取String数组的方法*/
+        List<ModuleInfo> moduleInfos = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {
-            String ti = titles[i];
-            title.add(ti);
+
+            moduleInfos.add(new ModuleInfo(bgs[i], titles[i], i));
         }
-        //adapter.notifyDataChanged(title);
+        adapter.notifyDataChanged(moduleInfos);
     }
 
 
@@ -83,7 +85,7 @@ public abstract class BaseGridListActivity extends BaseActivity {
      * 销毁Fragment最适用的方法是将它替换成一个空的
      */
     private void removeFragment() {
-        Logs.i("removeFragment"+mFragment);
+        Logs.i("removeFragment" + mFragment);
         mFragment = null;
         findViewById(R.id.ll_container).setVisibility(View.GONE);
         Fragment fragment = new Fragment();
@@ -99,7 +101,7 @@ public abstract class BaseGridListActivity extends BaseActivity {
      */
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-
+        Logs.i("mFragment:"+mFragment);
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (mFragment != null) {
                 removeFragment();

@@ -89,6 +89,7 @@ dependencies {
     //图片压缩处理
     implementation 'com.ghnor:flora:1.0.0-alpha1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'io.agora.rtc:full-sdk:3.0.0'
 }
 repositories {
     mavenCentral()

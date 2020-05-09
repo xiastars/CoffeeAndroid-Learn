@@ -21,7 +21,6 @@
     <string name="cancel">取消</string>
 
     <string name="tip_permission_always_failed">我们需要以下权限，请在设置中为我们开启：\n\n%1$s</string>
-    <string name="btn_resume">继续</string>
     <string name="title_tip">提示</string>
     <string name="btn_setting">设置</string>
     <string name="btn_no">不</string>

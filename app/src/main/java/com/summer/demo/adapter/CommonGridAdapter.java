@@ -42,14 +42,14 @@ public class CommonGridAdapter extends SRecycleMoreAdapter {
     @Override
     public void bindContentView(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder vh = (ViewHolder) holder;
-        ModuleInfo moduleInfo = (ModuleInfo) items.get(position);
+        final ModuleInfo moduleInfo = (ModuleInfo) items.get(position);
         vh.content.setText(moduleInfo.getTitle());
         vh.ivBg.setBackgroundResource(moduleInfo.getRes());
         vh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(onSimpleClickListener != null){
-                    onSimpleClickListener.onClick(position);
+                    onSimpleClickListener.onClick(moduleInfo.getPos());
                 }
             }
         });

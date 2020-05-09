@@ -34,4 +34,6 @@ public class ModulePos {
     public static final int POS_ALBUM_LISTENER = 12;
 
     public static final int POS_UPLOAD = 13;
+
+    public static final int POS_SDK = 14;
 }

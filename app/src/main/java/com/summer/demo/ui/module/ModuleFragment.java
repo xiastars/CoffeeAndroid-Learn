@@ -40,6 +40,7 @@ public class ModuleFragment extends BaseMainFragment {
 		});
 		svContainer.setAdapter(adapter);
 		List<ModuleInfo> moduleInfos = new ArrayList<>();
+		moduleInfos.add(new ModuleInfo(R.drawable.open, "SDK", ModulePos.POS_SDK));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_animation, "帧动画", ModulePos.POS_FRAME));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_transition, "属性动画", ModulePos.POS_ANIM));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_dialog, "弹窗", ModulePos.POS_DIALOG));

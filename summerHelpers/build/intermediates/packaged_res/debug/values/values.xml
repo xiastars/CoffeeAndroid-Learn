@@ -6,11 +6,11 @@
     </integer-array>
     <attr format="boolean" name="centered"/>
     <attr format="enum" name="layout_srlSpinnerStyle">
-        <enum name="Translate" value="0"/><!--平行移动-->
-        <enum name="Scale" value="1"/><!--拉伸形变-->
-        <enum name="FixedBehind" value="2"/><!--固定在背后-->
-        <enum name="FixedFront" value="3"/><!--固定在前面-->
-        <enum name="MatchLayout" value="4"/><!--填满布局-->
+        <enum name="Translate" value="0"/>
+        <enum name="Scale" value="1"/>
+        <enum name="FixedBehind" value="2"/>
+        <enum name="FixedFront" value="3"/>
+        <enum name="MatchLayout" value="4"/>
     </attr>
     <attr format="reference" name="numberPickerDownButtonStyle"/>
     <attr format="reference" name="numberPickerStyle"/>
@@ -18,9 +18,9 @@
     <attr format="color" name="selectedColor"/>
     <attr format="color" name="srlAccentColor"/>
     <attr format="enum" name="srlClassicsSpinnerStyle">
-        <enum name="Translate" value="0"/><!--平行移动-->
-        <enum name="Scale" value="1"/><!--拉伸形变-->
-        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+        <enum name="Translate" value="0"/>
+        <enum name="Scale" value="1"/>
+        <enum name="FixedBehind" value="2"/>
     </attr>
     <attr format="reference" name="srlDrawableArrow"/>
     <attr format="dimension" name="srlDrawableArrowSize"/>
@@ -161,7 +161,6 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">ZipPaser</string>
     <string name="btn_no">不</string>
-    <string name="btn_resume">继续</string>
     <string name="btn_setting">设置</string>
     <string name="cancel">取消</string>
     <string name="cancel_dialog">Cancel</string>
@@ -213,7 +212,7 @@
     <string name="update_unzip_tv_success_tip">解析数据成功</string>
     <style name="AiTheme" parent="android:Theme">
 
-        <!-- <item name="numberPickerInputTextStyle">@style/AiWidget.EditText.NumberPickerInputText</item> -->
+        
         <item name="numberPickerStyle">@style/AiWidget.NumberPicker</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
@@ -229,7 +228,7 @@
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:clickable">false</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
-        <item name="android:textColor">#000000</item><!-- 显示日期的文字颜色 -->
+        <item name="android:textColor">#000000</item>
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="AiWidget.EditText.NumberPickerInputText">
@@ -275,7 +274,7 @@
     </style>
     <style name="Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/white</item>
-        <!-- 初始状态栏颜色 -->
+        
         <item name="colorPrimaryDark">@color/blue_01</item>
         <item name="colorAccent">@color/green_4b</item>
     </style>
@@ -376,23 +375,23 @@
     </declare-styleable>
     <declare-styleable name="CirclePageIndicator">
 
-        <!-- Whether or not the indicators should be centered. -->
+        
         <attr name="centered"/>
-        <!-- Color of the filled circle that represents the current page. -->
+        
         <attr format="color" name="fillColor"/>
-        <!-- Color of the filled circles that represents pages. -->
+        
         <attr format="color" name="pageColor"/>
-        <!-- Orientation of the indicator. -->
+        
         <attr name="android:orientation"/>
-        <!-- Radius of the circles. This is also the spacing between circles. -->
+        
         <attr format="dimension" name="radius"/>
-        <!-- Whether or not the selected indicator snaps to the circles. -->
+        
         <attr format="boolean" name="snap"/>
-        <!-- Color of the open circles. -->
+        
         <attr format="color" name="strokeColor"/>
-        <!-- Width of the stroke used to draw the circles. -->
+        
         <attr name="strokeWidth"/>
-        <!-- View background -->
+        
         <attr name="android:background"/>
     </declare-styleable>
     <declare-styleable name="CircleProgressBar">
@@ -412,7 +411,7 @@
         <attr format="dimension" name="mlpb_progress_text_size"/>
         <attr format="color" name="mlpb_progress_text_color"/>
 
-        <!--<attr name="mlpb_progress_text_offset" format="dimension"/>-->
+        
 
         <attr format="enum" name="mlpb_progress_text_visibility">
             <enum name="visible" value="0"/>
@@ -469,31 +468,31 @@
     </declare-styleable>
     <declare-styleable name="LinePageIndicator">
 
-        <!-- Whether or not the indicators should be centered. -->
+        
         <attr name="centered"/>
-        <!-- Color of the unselected lines that represent the pages. -->
+        
         <attr name="unselectedColor"/>
-        <!-- Color of the selected line that represents the current page. -->
+        
         <attr name="selectedColor"/>
-        <!-- Width of each indicator line. -->
+        
         <attr format="dimension" name="lineWidth"/>
-        <!-- Width of each indicator line's stroke. -->
+        
         <attr name="strokeWidth"/>
-        <!-- Width of the gap between each indicator line. -->
+        
         <attr format="dimension" name="gapWidth"/>
-        <!-- View background -->
+        
         <attr name="android:background"/>
     </declare-styleable>
     <declare-styleable name="MaterialRefreshLayout">
         <attr format="boolean" name="overlay"/>
-        <!-- style for MaterialWaveView  -->
+        
         <attr format="enum" name="wave_height_type">
             <enum name="normal" value="0"/>
             <enum name="higher" value="1"/>
         </attr>
         <attr format="color" name="wave_color"/>
         <attr format="boolean" name="wave_show"/>
-        <!-- style for CircleProgressBar  -->
+        
         <attr format="reference" name="progress_colors"/>
         <attr format="dimension" name="progress_stoke_width"/>
         <attr format="color" name="progress_backgroud_color"/>
@@ -518,26 +517,26 @@
     </declare-styleable>
     <declare-styleable name="NumberPicker">
 
-        <!-- @hide Color for the solid color background if such for optimized rendering. -->
+        
         <attr format="color|reference" name="solidColor"/>
-        <!-- @hide Whether the number picker supports fligning. -->
+        
         <attr format="boolean" name="flingable"/>
-        <!-- @hide The divider for making the selection area. -->
+        
         <attr format="reference" name="selectionDivider"/>
-        <!-- @hide The height of the selection divider. -->
+        
         <attr format="dimension" name="selectionDividerHeight"/>
-        <!-- @hide The distance of the selection divider -->
+        
         <attr format="dimension" name="selectionDividersDistance"/>
-        <!-- @hide The min height of the NumberPicker. -->
+        
         <attr name="android:minHeight"/>
-        <!-- @hide The max height of the NumberPicker. -->
+        
         <attr name="android:maxHeight"/>
-        <!-- @hide The min width of the NumberPicker. -->
+        
         <attr name="android:minWidth"/>
-        <!-- @hide The max width of the NumberPicker. -->
+        
         <attr name="android:maxWidth"/>
 
-        <!-- We need some extra attributes -->
+        
         <attr name="android:orientation"/>
         <attr name="android:fadingEdgeLength"/>
     </declare-styleable>
@@ -616,30 +615,30 @@
     </declare-styleable>
     <declare-styleable name="ViewPagerIndicator">
 
-        <!-- Style of the circle indicator. -->
+        
         <attr format="reference" name="vpiCirclePageIndicatorStyle"/>
-        <!-- Style of the icon indicator's views. -->
+        
         <attr format="reference" name="vpiIconPageIndicatorStyle"/>
-        <!-- Style of the line indicator. -->
+        
         <attr format="reference" name="vpiLinePageIndicatorStyle"/>
-        <!-- Style of the title indicator. -->
+        
         <attr format="reference" name="vpiTitlePageIndicatorStyle"/>
-        <!-- Style of the tab indicator's tabs. -->
+        
         <attr format="reference" name="vpiTabPageIndicatorStyle"/>
-        <!-- Style of the underline indicator. -->
+        
         <attr format="reference" name="vpiUnderlinePageIndicatorStyle"/>
     </declare-styleable>
     <declare-styleable name="crLayout">
 
-        <!-- 自定义加载更多 res layout id -->
+        
         <attr format="reference" name="load_layout"/>
-        <!-- 加载更多显示的文字 -->
+        
         <attr format="string" name="load_text"/>
-        <!-- 加载更多的进度菊花 -->
+        
         <attr format="reference" name="load_indeterminate_drawable"/>
-        <!-- 加载更多完成显示的文字 -->
+        
         <attr format="string" name="load_completed_text"/>
-        <!-- 加载更多layout有动画显示效果 -->
+        
         <attr format="boolean" name="load_animator"/>
         <attr format="string" name="empty_text"/>
     </declare-styleable>

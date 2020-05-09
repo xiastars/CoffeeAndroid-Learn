@@ -66,6 +66,7 @@
 
     <string-array name="sdks">
         <item>Alexa</item>
+        <item>Agora多视频</item>
     </string-array>
 
     <string-array name="title_viewpager">

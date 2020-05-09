@@ -42,25 +42,25 @@ public class LearnJavaActivity extends BaseTitleListActivity {
         if (type == CoursePos.POS_BACK) {
             switch (pos) {
                 case 0:
-                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE,title);
+                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE, title);
                     break;
                 case 1:
-                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE1,title);
+                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE1, title);
                     break;
                 case 2:
-                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE2,title);
+                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE2, title);
                     break;
                 case 3:
-                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE3,title);
+                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE3, title);
                     break;
             }
         } else {
             switch (pos) {
                 case 0:
-                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.JAVA_OBJECT,title);
+                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.JAVA_OBJECT, title);
                     break;
                 case 1:
-                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.JAVA_CHILD,title);
+                    JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.JAVA_CHILD, title);
                     break;
             }
         }
@@ -74,6 +74,9 @@ public class LearnJavaActivity extends BaseTitleListActivity {
         switch (type) {
             case CoursePos.POS_BACK:
                 res = R.array.back_titles;
+                break;
+            case CoursePos.POS_JAVA:
+                res = R.array.java_titles;
                 break;
         }
         /* 从XML里获取String数组的方法*/

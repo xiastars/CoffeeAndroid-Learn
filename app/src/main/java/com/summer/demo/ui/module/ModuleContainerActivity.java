@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.ui.FragmentContainerActivity;
+import com.summer.demo.ui.SDKActivity;
 import com.summer.demo.ui.fragment.ObjectAnimFragment;
 import com.summer.demo.ui.module.comment.ChatFragment;
 import com.summer.demo.ui.module.fragment.AudioPlayerFragment;
@@ -32,6 +33,12 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
     @Override
     protected void showViews(int type) {
         switch (type) {
+            case ModulePos.POS_SDK:
+
+                Logs.i("0-----00000000000");
+                JumpTo.getInstance().commonJump(context, SDKActivity.class);
+                finish();
+                break;
             case ModulePos.POS_FRAME:
                 setTitle("帧动画");
                 showFragment(new FrameAnimFragment());

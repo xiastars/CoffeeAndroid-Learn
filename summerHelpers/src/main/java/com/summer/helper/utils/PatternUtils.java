@@ -37,12 +37,13 @@ public class PatternUtils {
      * source = "<a title=\"你好\">";
      * getContentInHtmlTag(content, "a", "title");
      * result -> 你好
+     *
      * @param source
      * @param element
      * @param attr
      * @return
      */
-    public static String getContentInHtmlTag(String source, String element, String attr){
+    public static String getContentInHtmlTag(String source, String element, String attr) {
         String reg = "<" + element + "[^<>]*?\\s" + attr + "=['\"]?(.*?)['\"]?(\\s.*?)?>";
         Matcher m = Pattern.compile(reg).matcher(source);
         while (m.find()) {
@@ -54,10 +55,11 @@ public class PatternUtils {
 
     /**
      * 是否为纯汉字
+     *
      * @param str
      * @return
      */
-    public static boolean isPureHanzi(String str){
+    public static boolean isPureHanzi(String str) {
         Pattern pattern = Pattern.compile("[\\u4e00-\\u9fa5]+");
         Matcher m = pattern.matcher(str);
         return m.find() && m.group(0).equals(str);
@@ -65,16 +67,47 @@ public class PatternUtils {
 
     /**
      * 是否为正确的邮箱
+     *
      * @param email
      * @return
      */
-    public static boolean isRightfulEmail(String email){
-        if(TextUtils.isEmpty(email)){
+    public static boolean isRightfulEmail(String email) {
+        if (TextUtils.isEmpty(email)) {
             return false;
         }
         Pattern p = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");//复杂匹配
         Matcher m = p.matcher(email);
         return m.matches();
+    }
+
+    /**
+     * 替换一段文本中指定的文本的第一个
+     * @param input 原文本
+     * @param regex 被替换文本
+     * @param replacement 替换文本
+     * @return
+     */
+    public static String getReplaceFirst(final String input,
+                                         final String regex,
+                                         final String replacement) {
+        if (input == null) return "";
+        return Pattern.compile(regex).matcher(input).replaceFirst(replacement);
+    }
+
+
+
+    /**
+     * 替换一段文本中指定的文本
+     * @param input 原文本
+     * @param regex 被替换文本
+     * @param replacement 替换文本
+     * @return
+     */
+    public static String getReplaceAll(final String input,
+                                       final String regex,
+                                       final String replacement) {
+        if (input == null) return "";
+        return Pattern.compile(regex).matcher(input).replaceAll(replacement);
     }
 
 }
