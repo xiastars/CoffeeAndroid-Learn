@@ -44,7 +44,7 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_animation, "帧动画", ModulePos.POS_FRAME));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_transition, "属性动画", ModulePos.POS_ANIM));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_dialog, "弹窗", ModulePos.POS_DIALOG));
-		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text, "视频裁剪", ModulePos.POS_VIDEO_CUTTER));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_cut_video, "视频裁剪", ModulePos.POS_VIDEO_CUTTER));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_navigatior, "Webview网页", ModulePos.POS_WEBVIEW));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_picker, "颜色选择器", ModulePos.POS_COLOR_PICKER));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_chat,"聊天",ModulePos.POS_CHAT));

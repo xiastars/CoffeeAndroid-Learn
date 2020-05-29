@@ -9,14 +9,18 @@ import android.widget.ImageView;
 import com.ghnor.flora.callback.Callback;
 import com.summer.demo.R;
 import com.summer.demo.helper.ImgHelper;
+import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.util.SelectPhotoHelper;
 import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.listener.OnResponseListener;
+import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.server.EasyHttp;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.SFileUtils;
 import com.summer.helper.utils.SUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -59,18 +63,14 @@ public class UploadFileFragment extends BaseFragment implements View.OnClickList
         switch (v.getId()) {
             case R.id.btn_select_photo:
 
-                selectPhotoHelper = new SelectPhotoHelper(context, new OnResponseListener() {
+                selectPhotoHelper = new SelectPhotoHelper(context, new OnReturnObjectClickListener() {
                     @Override
-                    public void succeed(String url) {
-                        filePath = url;
-                        SUtils.setPic(ivCover, url);
-
+                    public void onClick(Object object) {
+                        List<ImageItem> items = (List<ImageItem>) object;
+                        filePath = items.get(0).getImagePath();
+                        SUtils.setPic(ivCover, filePath);
                     }
 
-                    @Override
-                    public void failure() {
-
-                    }
                 });
                 selectPhotoHelper.showSelectPhotoDialog();
                 break;

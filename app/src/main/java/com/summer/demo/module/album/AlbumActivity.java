@@ -1,12 +1,8 @@
 package com.summer.demo.module.album;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -23,20 +19,19 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.summer.demo.R;
+import com.summer.demo.constant.BroadConst;
 import com.summer.demo.module.album.adapter.AlbumGridViewAdapter;
 import com.summer.demo.module.album.adapter.FolersAdapter;
 import com.summer.demo.module.album.bean.SelectOptions;
 import com.summer.demo.module.album.util.AlbumHelper;
+import com.summer.demo.module.album.util.AlbumSet;
 import com.summer.demo.module.album.util.ImageBucket;
 import com.summer.demo.module.album.util.ImageItem;
-import com.summer.demo.module.album.util.PublicWay;
 import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.view.CommonSureView5;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
-import com.summer.helper.utils.SFileUtils;
 import com.summer.helper.utils.SThread;
-import com.summer.helper.utils.SUtils;
 import com.summer.helper.view.NRecycleView;
 
 import java.io.File;
@@ -46,13 +41,11 @@ import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+
 /**
- * 这个是进入相册显示所有图片的界面
- *
- * @author zhangqian
+ * 进入图片或视频选择页面
  */
 public class AlbumActivity extends BaseActivity implements OnClickListener {
 
@@ -66,8 +59,8 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
     RelativeLayout rlListCover;
     @BindView(R.id.preview)
     Button preview;
-    @BindView(R.id.ok_button)
-    Button okButton;
+    @BindView(R.id.btn_finish)
+    Button btnFinish;
     @BindView(R.id.bottom_layout)
     RelativeLayout bottomLayout;
     @BindView(R.id.tv_finish)
@@ -80,54 +73,64 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
     private ArrayList<ImageItem> dataList;
     private AlbumHelper helper;
     public static List<ImageBucket> contentList;
-    public static Bitmap bitmap;
-    ArrayList<ImageItem> tempSelectBitmap = new ArrayList<>();
+    ArrayList<ImageItem> tempSelectBitmap;
 
     private static SelectOptions mOption;
 
     boolean showVideo = false;//是否为纯视频
 
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            gridImageAdapter.notifyDataSetChanged();
-
-        }
-    };
-
-
+    /**
+     * 跳转到选择图片页面
+     *
+     * @param context
+     * @param options
+     */
     public static void show(Context context, SelectOptions options) {
         mOption = options;
         context.startActivity(new Intent(context, AlbumActivity.class));
     }
 
+    @Override
+    protected void initData() {
+        setTitle("最近照片");
+        AlbumSet.activitys.add(this);
+        //用户可能选择图片后，重新进行选择
+        tempSelectBitmap = (ArrayList<ImageItem>) JumpTo.getObject(this);
+        if(tempSelectBitmap == null){
+            tempSelectBitmap = new ArrayList<>();
+        }
+        //是否为选择视频
+        showVideo = mOption.isVideoMode();
+        //选择图片数量
+        AlbumSet.MAX_SELECT_COUNT = mOption.getSelectCount();
+        init();
+        //这个函数主要用来控制预览和完成按钮的状态
+        isShowOkBt();
+        initBroadcast(BroadConst.NOTIFY_ALBUM_DELETE);
+    }
+
+    @Override
+    protected void onMsgReceiver(String action, Intent intent) {
+        super.onMsgReceiver(action, intent);
+        switch (action) {
+            case BroadConst.NOTIFY_ALBUM_DELETE:
+                if (gridImageAdapter != null) {
+                    gridImageAdapter.notifyDataSetChanged();
+                }
+                break;
+        }
+    }
 
     /**
-     * 完成
+     * 完成图片或视频选择
      */
-    public void onSelectItem() {
+    public void finishSelect() {
         if (tempSelectBitmap != null) {
-            if (showVideo) {
-                Intent intent = new Intent();
-                intent.putExtra(JumpTo.TYPE_OBJECT, tempSelectBitmap);
-                setResult(RESULT_OK, intent);
-                if (mOption != null) {
-                    mOption.getCallback().doSelected(toArray(tempSelectBitmap));
-                }
-            } else {
-                Intent intent = new Intent();
-                intent.putExtra(JumpTo.TYPE_OBJECT, tempSelectBitmap);
-                setResult(RESULT_OK, intent);
-                if (mOption != null) {
-                    mOption.getCallback().doSelected(toArray(tempSelectBitmap));
-                }
+            if (mOption != null) {
+                mOption.getCallback().doSelected(tempSelectBitmap);
             }
         }
-        for (int i = 0; i < PublicWay.activityList.size(); i++) {
-            if (null != PublicWay.activityList.get(i)) {
-                PublicWay.activityList.get(i).finish();
-            }
-        }
+        AlbumSet.finishAll();
     }
 
 
@@ -147,12 +150,22 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
         return strings;
     }
 
-    @OnClick({R.id.ok_button})
+    @OnClick({R.id.btn_finish, R.id.preview})
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ok_button:
-                onSelectItem();
+        switch (v.getId()) {
+            case R.id.btn_finish:
+                finishSelect();
+                break;
+            case R.id.preview:
+                if (rlListCover.getVisibility() == View.VISIBLE) {
+                    hideFolderView();
+                } else {
+                    rlListCover.setVisibility(View.VISIBLE);
+                    Animation anim = AnimationUtils.loadAnimation(context,
+                            R.anim.slide_up);
+                    nvList.startAnimation(anim);
+                }
                 break;
         }
     }
@@ -171,32 +184,15 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
 
     // 初始化，给一些对象赋值
     private void init() {
-        setTitle("最近照片");
+
         CommonSureView5 btnAlbum = (CommonSureView5) findViewById(R.id.btn_right);
         btnAlbum.setOnClickListener(new BackListener());
         btnAlbum.setVisibility(View.VISIBLE);
         btnAlbum.setText("预览");
-        preview = (Button) findViewById(R.id.preview);
-        preview.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Logs.i(nvList.getVisibility() + ",,,,");
-                if (rlListCover.getVisibility() == View.VISIBLE) {
-                    hideFolderView();
-                } else {
-                    rlListCover.setVisibility(View.VISIBLE);
-                    Animation anim = AnimationUtils.loadAnimation(context,
-                            R.anim.slide_up);
-                    nvList.startAnimation(anim);
-                }
-            }
-        });
         intent = getIntent();
         gridView = (NRecycleView) findViewById(R.id.myGrid);
         gridView.setGridView(3);
-        tvFinish = (TextView) findViewById(R.id.tv_finish);
-        okButton = (Button) findViewById(R.id.ok_button);
-        okButton.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+        btnAlbum.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + AlbumSet.MAX_SELECT_COUNT + ")");
         if (showVideo) {
             preview.setVisibility(View.GONE);
             setTitle("最近视频");
@@ -390,11 +386,11 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
 
             @Override
             public void onItemClick(final ToggleButton toggleButton, int position, boolean isChecked, ImageView chooseBt) {
-                if (tempSelectBitmap.size() >= PublicWay.MAX_SELECT_COUNT) {
+                if (tempSelectBitmap.size() >= AlbumSet.MAX_SELECT_COUNT) {
                     toggleButton.setChecked(false);
                     chooseBt.setVisibility(View.GONE);
                     if (!removeOneData(dataList.get(position))) {
-                        if (PublicWay.MAX_SELECT_COUNT == 1) {
+                        if (AlbumSet.MAX_SELECT_COUNT == 1) {
                             tempSelectBitmap.clear();
                             gridImageAdapter.notifyDataSetChanged();
                             toggleButton.setChecked(true);
@@ -408,22 +404,29 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
                 if (isChecked) {//如果选中
                     chooseBt.setVisibility(View.VISIBLE);
                     tempSelectBitmap.add(dataList.get(position));
-                    okButton.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+                    updateSelectCount();
                 } else {
                     dataList.get(position).setSelected(false);
                     tempSelectBitmap.remove(dataList.get(position));
                     chooseBt.setVisibility(View.GONE);
-                    okButton.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+                    updateSelectCount();
                 }
                 isShowOkBt();
             }
         });
     }
 
+    /**
+     * 更新完成按钮的数量
+     */
+    private void updateSelectCount(){
+        btnFinish.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + AlbumSet.MAX_SELECT_COUNT + ")");
+    }
+
     private boolean removeOneData(ImageItem imageItem) {
         if (tempSelectBitmap.contains(imageItem)) {
             tempSelectBitmap.remove(imageItem);
-            okButton.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+            updateSelectCount();
             return true;
         }
         return false;
@@ -431,20 +434,20 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
 
     public void isShowOkBt() {
         if (tempSelectBitmap.size() > 0) {
-            okButton.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+            updateSelectCount();
             preview.setPressed(true);
-            okButton.setPressed(true);
+            btnFinish.setPressed(true);
             preview.setClickable(true);
-            okButton.setClickable(true);
-            okButton.setTextColor(Color.parseColor("#FFFFFF"));
+            btnFinish.setClickable(true);
+            btnFinish.setTextColor(Color.parseColor("#FFFFFF"));
             preview.setTextColor(Color.WHITE);
         } else {
-            okButton.setText(getString(R.string.finish) + "(" + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+            updateSelectCount();
             preview.setPressed(true);
             preview.setClickable(true);
-            okButton.setPressed(false);
-            okButton.setClickable(false);
-            okButton.setTextColor(Color.parseColor("#FFFFFF"));
+            btnFinish.setPressed(false);
+            btnFinish.setClickable(false);
+            btnFinish.setTextColor(Color.parseColor("#FFFFFF"));
             preview.setTextColor(Color.parseColor("#E1E0DE"));
         }
     }
@@ -463,7 +466,7 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
                 gridImageAdapter.notifyDataSetChanged();
                 setResult(RESULT_OK, intent);
             }
-            if(!showVideo && PublicWay.MAX_SELECT_COUNT == 1){
+            if (!showVideo && AlbumSet.MAX_SELECT_COUNT == 1) {
                 intent = new Intent();
                 intent.putExtra(JumpTo.TYPE_OBJECT, tempSelectBitmap);
                 setResult(RESULT_OK, intent);
@@ -502,45 +505,10 @@ public class AlbumActivity extends BaseActivity implements OnClickListener {
         return R.layout.plugin_camera_album;
     }
 
-    @Override
-    protected void initData() {
-        ButterKnife.bind(this);
-        SUtils.initScreenDisplayMetrics(this);
-        PublicWay.activityList.add(this);
-        //注册一个广播，这个广播主要是用于在GalleryActivity进行预览时，防止当所有图片都删除完后，再回到该页面时被取消选中的图片仍处于选中状态
-        IntentFilter filter = new IntentFilter("data.broadcast.action");
-        registerReceiver(broadcastReceiver, filter);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.plugin_camera_no_pictures);
-        ArrayList<ImageItem> datas = (ArrayList<ImageItem>) JumpTo.getObject(this);
-        if (datas != null) {
-            tempSelectBitmap = datas;
-        }
-        String selectType = JumpTo.getString(this);
-        if (selectType != null) {
-            showVideo = selectType.equals(SFileUtils.FileType.FILE_MP4);
-        }
-        int count = JumpTo.getInteger(this);
-        if (count != 0) {
-            PublicWay.MAX_SELECT_COUNT = count;
-        } else {
-            PublicWay.MAX_SELECT_COUNT = 9;
-        }
-        if (mOption != null) {
-            showVideo =mOption.isVideoMode();
-            PublicWay.MAX_SELECT_COUNT = mOption.getSelectCount();
-        }
-        if (mOption != null && mOption.getSelectCount() != 0) {
-            PublicWay.MAX_SELECT_COUNT = mOption.getSelectCount();
-        }
-        init();
-        //这个函数主要用来控制预览和完成按钮的状态
-        isShowOkBt();
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mOption = null;
-        unregisterReceiver(broadcastReceiver);
     }
 }

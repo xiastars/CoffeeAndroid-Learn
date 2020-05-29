@@ -17,7 +17,7 @@ import com.summer.demo.R;
 import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.adapter.AlbumGridViewAdapter;
 import com.summer.demo.module.album.util.ImageItem;
-import com.summer.demo.module.album.util.PublicWay;
+import com.summer.demo.module.album.util.AlbumSet;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.view.NRecycleView;
@@ -80,7 +80,7 @@ public class ShowAllPhotoActivity extends BaseActivity {
             }
         }
 
-        PublicWay.activityList.add(this);
+        AlbumSet.activitys.add(this);
         preview = (Button) findViewById(R.id.showallphoto_preview);
         okButton = (Button) findViewById(R.id.showallphoto_ok_button);
         this.intent = getIntent();
@@ -135,7 +135,7 @@ public class ShowAllPhotoActivity extends BaseActivity {
 
                 System.out.println("请求============" + mList.size() + "  ,  " + isChecked);
 
-                if (mList.size() >= PublicWay.MAX_SELECT_COUNT && isChecked) {
+                if (mList.size() >= AlbumSet.MAX_SELECT_COUNT && isChecked) {
                     button.setVisibility(View.GONE);
                     toggleButton.setChecked(false);
                     Toast.makeText(ShowAllPhotoActivity.this, getString(R.string.only_choose_num), Toast.LENGTH_SHORT).show();
@@ -147,12 +147,12 @@ public class ShowAllPhotoActivity extends BaseActivity {
                     button.setVisibility(View.VISIBLE);
                     mList.add(dataList.get(position));
                     tempSelectBitmap.add(dataList.get(position));
-                    okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+                    okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + AlbumSet.MAX_SELECT_COUNT + ")");
                 } else {
                     button.setVisibility(View.GONE);
                     mList.remove(dataList.get(position));
                     tempSelectBitmap.remove(dataList.get(position));
-                    okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+                    okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + AlbumSet.MAX_SELECT_COUNT + ")");
                 }
                 isShowOkBt();
             }
@@ -171,7 +171,7 @@ public class ShowAllPhotoActivity extends BaseActivity {
 
     public void isShowOkBt() {
         if (mList.size() > 0) {
-            okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+            okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + AlbumSet.MAX_SELECT_COUNT + ")");
             preview.setPressed(true);
             okButton.setPressed(true);
             preview.setClickable(true);
@@ -179,7 +179,7 @@ public class ShowAllPhotoActivity extends BaseActivity {
             okButton.setTextColor(Color.WHITE);
             preview.setTextColor(Color.WHITE);
         } else {
-            okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+            okButton.setText(getString(R.string.finish) + "(" + mList.size() + "/" + AlbumSet.MAX_SELECT_COUNT + ")");
             preview.setPressed(false);
             preview.setClickable(false);
             okButton.setPressed(false);

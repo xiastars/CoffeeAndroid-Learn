@@ -17,18 +17,21 @@ import com.summer.demo.dialog.SelectPhotoDialog;
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.module.album.bean.SelectOptions;
 import com.summer.demo.module.album.listener.AlbumCallback;
-import com.summer.helper.listener.OnResponseListener;
+import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
+import com.summer.helper.utils.SUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * 图片，视频选择辅助
  * Created by xiastars on 2017/10/23.
  */
 
@@ -48,38 +51,32 @@ public class SelectPhotoHelper {
     ImageView imageView;
     ImageView targetView;
     Activity activity;
-    OnResponseListener listener;
+    OnReturnObjectClickListener listener;
 
 
     boolean croped;
 
-    public SelectPhotoHelper(Context context, OnResponseListener listener) {
+    public SelectPhotoHelper(Context context, OnReturnObjectClickListener listener) {
         this.context = context;
         this.listener = listener;
         activity = (Activity) context;
 
     }
 
-    public void setAspectY(int x, int y) {
-        aspectX = x;
-        aspectY = y;
-    }
-
+    /**
+     * 点击View，选择照片,并加载选择的照片
+     * @param imageView
+     */
     public void setTargetView(ImageView imageView) {
-        this.imageView = imageView;
-        targetView = imageView;
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //CUtils.onClick(mark);
-               if(!PermissionUtils.checkReadPermission(context)){
-                    return;
-                }
-                showSelectPhotoDialog();
-            }
-        });
+        setTargetView(imageView,imageView,"");
     }
 
+    /**
+     * 点击View，选择照片
+     * @param imageView 点击的View
+     * @param targetView 加载图片的View
+     * @param mark 埋点
+     */
     public void setTargetView(ImageView imageView, final ImageView targetView, final String mark) {
         this.imageView = imageView;
         this.targetView = targetView;
@@ -87,45 +84,37 @@ public class SelectPhotoHelper {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //CUtils.onClick(mark);
-                //enterToAlbum();
+                //CUtils.onClick(context,mark);
                 if(!PermissionUtils.checkReadPermission(context)){
                     return;
                 }
-                SelectOptions.Builder builder = new SelectOptions.Builder();
-                builder.setCallback(new AlbumCallback() {
-                    @Override
-                    public void doSelected(String[] images) {
-                        if (images != null && images.length>0) {
-                            String imgPaath = images[0];
-                            if (croped) {
-                                imgFile = new File(imgPaath);
-                                cropImage();
-                                return;
-                            }
-
-                            if (listener != null) {
-                                listener.succeed(imgPaath);
-                            }
-                        }
-                    }
-
-                });
-                AlbumActivity.show(context, builder.build());
+                enterToAlbumForOne();
             }
         });
     }
 
-    public void startSelectPhoto(){
+    /**
+     * 进入相册，每次选择一张图片
+     */
+    public void enterToAlbumForOne(){
+        enterToAlbumForMore(1);
+    }
+
+    /**
+     * 进入相册，选择多张图片
+     * @param count
+     */
+    public void enterToAlbumForMore(int count){
         if(!PermissionUtils.checkReadPermission(context)){
             return;
         }
         SelectOptions.Builder builder = new SelectOptions.Builder();
+        builder.setSelectCount(count);
         builder.setCallback(new AlbumCallback() {
             @Override
-            public void doSelected(String[] images) {
-                if (images != null && images.length>0) {
-                    String imgPaath = images[0];
+            public void doSelected(List<ImageItem> images) {
+                if(!SUtils.isEmptyArrays(images)){
+                    String imgPaath = images.get(0).getImagePath();
                     if (croped) {
                         imgFile = new File(imgPaath);
                         cropImage();
@@ -133,45 +122,31 @@ public class SelectPhotoHelper {
                     }
 
                     if (listener != null) {
-                        listener.succeed(imgPaath);
+                        listener.onClick(images);
                     }
                 }
             }
-
         });
         AlbumActivity.show(context, builder.build());
-    }
-
-    public void startTakePhoto(){
-        fileName = "tmy_" + System.currentTimeMillis() + ".png";
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//拍照
-        imgFile = new File(SFileUtils.getAvatarDirectory() + fileName);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imgFile));
-        activity.startActivityForResult(intent, FROME_CAMERA);
-    }
-
-    public void setTargetViewDisableTouch(ImageView imageView, final String mark) {
-        this.imageView = imageView;
-        targetView = imageView;
     }
 
     /**
      * 选择图片
      */
     public void showSelectPhotoDialog() {
+        if (!PermissionUtils.checkCameraPermission(context)) {
+            return;
+        }
         SelectPhotoDialog selectPhotoVideoDialog = new SelectPhotoDialog(context, new OnSimpleClickListener() {
             @Override
             public void onClick(int position) {
                 switch (position) {
                     case 0:
-                        if (!PermissionUtils.checkCameraPermission(context)) {
-                            return;
-                        }
                         setCroped(false);
                         enterToCamera();
                         break;
                     case 1:
-                        startSelectPhoto();
+                        enterToAlbumForOne();
                         break;
                 }
             }
@@ -180,7 +155,7 @@ public class SelectPhotoHelper {
     }
 
     /**
-     * 进行摄像头
+     * 打开摄像头
      */
     public void enterToCamera(){
         fileName = "ec_" + System.currentTimeMillis() + ".png";
@@ -193,36 +168,8 @@ public class SelectPhotoHelper {
         activity.startActivityForResult(intent, FROME_CAMERA);
     }
 
-    public void enterToAlbum() {
-        if (!PermissionUtils.checkReadPermission(context)) {
-            return;
-        }
-        SelectOptions.Builder builder = new SelectOptions.Builder();
-        builder.setCallback(new AlbumCallback() {
-            @Override
-            public void doSelected(String[] images) {
-                if (images != null && images.length>0) {
-                    String imgPaath = images[0];
-                    Logs.i("file::"+imgPaath);
-                    if (croped) {
-                        imgFile = new File(imgPaath);
-                        cropImage();
-                        return;
-                    }
-
-                    if (listener != null) {
-                        listener.succeed(imgPaath);
-                    }
-                }
-            }
-
-        });
-        builder.setSelectCount(1);
-        AlbumActivity.show(context, builder.build());
-    }
-
     public void handleRequestCode(int requestCode, Intent data) {
-        Logs.i("reqeustOCde:"+requestCode+",,"+data);
+        Logs.i("requestCode:"+requestCode+",,"+data);
         switch (requestCode) {
             case FROME_CAMERA:
                 String path = imgFile.getPath();
@@ -232,7 +179,7 @@ public class SelectPhotoHelper {
                     cropImage();
                 } else {
                     if (listener != null) {
-                        listener.succeed(path);
+                        listener.onClick(buildListWithString(cropedPath));
                     }
                 }
                 break;
@@ -242,7 +189,7 @@ public class SelectPhotoHelper {
                     if (imageData == null) {
                         cropedPath = data.getStringExtra("filePath");
                         if (!TextUtils.isEmpty(cropedPath)) {
-                            listener.succeed(cropedPath);
+                            listener.onClick(buildListWithString(cropedPath));
                            // SUtils.setPicWithHolder(targetView, cropedPath, R.drawable.ic_defaul_img);
                         }
                     }
@@ -251,7 +198,7 @@ public class SelectPhotoHelper {
                 }
                 Logs.i("fielP_ath"+cropedPath);
                 if (listener != null) {
-                    listener.succeed(cropedPath);
+                    listener.onClick(buildListWithString(cropedPath));
                 }
                 break;
             case AlbumActivity.REQUEST_CODE:
@@ -263,10 +210,8 @@ public class SelectPhotoHelper {
                         cropImage();
                         return;
                     }
-
-                    Logs.i(".." + imageItem.getImagePath());
                     if (listener != null) {
-                        listener.succeed(imageItem.getImagePath());
+                        listener.onClick(arrayList);
                     }
                 }
                 break;
@@ -358,6 +303,30 @@ public class SelectPhotoHelper {
         }
     }
 
+    /**
+     * 构造返回内容
+     * @param path
+     * @return
+     */
+    private List<ImageItem> buildListWithString(String path){
+        List<ImageItem> imageItems = new ArrayList<>();
+        ImageItem imageItem = new ImageItem();
+        imageItem.setImagePath(path);
+        imageItems.add(imageItem);
+        return imageItems;
+    }
+
+
+    /**
+     * 设置图片裁剪比例
+     * @param x
+     * @param y
+     */
+    public void setAspectY(int x, int y) {
+        aspectX = x;
+        aspectY = y;
+    }
+
     public String filePath(){
         return imgFile.getPath();
     }
@@ -366,7 +335,4 @@ public class SelectPhotoHelper {
         this.croped = croped;
     }
 
-    public interface OnReturnImgListener {
-        void returnImg(String path);
-    }
 }

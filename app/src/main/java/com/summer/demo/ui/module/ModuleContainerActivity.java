@@ -1,13 +1,12 @@
 package com.summer.demo.ui.module;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
-import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.ui.FragmentContainerActivity;
 import com.summer.demo.ui.SDKActivity;
 import com.summer.demo.ui.fragment.ObjectAnimFragment;
+import com.summer.demo.ui.fragment.VideoCutFragment;
 import com.summer.demo.ui.module.comment.ChatFragment;
 import com.summer.demo.ui.module.fragment.AudioPlayerFragment;
 import com.summer.demo.ui.module.fragment.CompressImgFragment;
@@ -21,7 +20,6 @@ import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
 import com.summer.demo.ui.module.fragment.socket.SocketFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
-import com.summer.helper.utils.SFileUtils;
 
 /**
  * @Description: Fragment容器
@@ -52,10 +50,9 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
                 showFragment(new MyDialogFragment());
                 break;
             case ModulePos.POS_VIDEO_CUTTER:
-                Intent intent = new Intent(context, AlbumActivity.class);
-                intent.putExtra(JumpTo.TYPE_INT, 1);
-                intent.putExtra(JumpTo.TYPE_STRING, SFileUtils.FileType.FILE_MP4);
-                ((Activity) context).startActivityForResult(intent, 12);
+                setTitle("视频裁剪");
+                showFragment(new VideoCutFragment());
+
                 break;
             case ModulePos.POS_WEBVIEW:
                 setTitle("Webview网页");

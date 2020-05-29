@@ -7,5 +7,5 @@ package com.summer.demo.constant;
  */
 public class BroadConst {
 
-    public static String NOTIFY_ALBUM_DELETE = "NOTIFY_ALBUM_DELETE";
+    public static final String NOTIFY_ALBUM_DELETE = "data.broadcast.action";
 }

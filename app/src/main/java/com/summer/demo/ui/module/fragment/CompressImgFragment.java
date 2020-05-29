@@ -9,9 +9,10 @@ import com.ghnor.flora.callback.Callback;
 import com.ghnor.flora.spec.decoration.Decoration;
 import com.summer.demo.R;
 import com.summer.demo.module.album.listener.SizeCalculation;
+import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.util.SelectPhotoHelper;
 import com.summer.demo.module.base.BaseFragment;
-import com.summer.helper.listener.OnResponseListener;
+import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
@@ -27,6 +28,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,10 +42,10 @@ public class CompressImgFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
 
-        selectPhotoHelper = new SelectPhotoHelper(context, new OnResponseListener() {
+        selectPhotoHelper = new SelectPhotoHelper(context, new OnReturnObjectClickListener() {
             @Override
-            public void succeed(final String url) {
-               //compressFile(url);
+            public void onClick(Object object) {
+                final List<ImageItem> items = (List<ImageItem>) object;
                 SThread.getIntances().submit(new Runnable() {
                     @Override
                     public void run() {
@@ -55,20 +57,14 @@ public class CompressImgFragment extends BaseFragment {
                         fileMap.put("userfile", url);
                         String ret = formUpload(urlStr, textMap, fileMap);
                         Logs.i("rest::"+ret);*/
-                        uploadMedia(context,"25ffbd05-1217-4d98-a368-951a09e17e34","http://39.108.57.190:8080/zswyHMS/easyCtl/upload.do",url);
+                        uploadMedia(context,"session","上传接口",items.get(0).getImagePath());
 
 
                     }
                 });
-
-            }
-
-            @Override
-            public void failure() {
-
             }
         });
-        selectPhotoHelper.enterToAlbum();
+        selectPhotoHelper.enterToAlbumForOne();
     }
 
     /**

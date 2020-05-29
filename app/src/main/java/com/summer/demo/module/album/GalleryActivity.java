@@ -12,12 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.util.AlbumHelper;
+import com.summer.demo.module.album.util.AlbumSet;
 import com.summer.demo.module.album.util.ImageItem;
-import com.summer.demo.module.album.util.PublicWay;
 import com.summer.demo.module.album.zoom.PhotoView;
 import com.summer.demo.module.album.zoom.ViewPagerFixed;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.SUtils;
 
@@ -65,7 +65,7 @@ public class GalleryActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        PublicWay.activityList.add(this);
+        AlbumSet.activitys.add(this);
         mContext = this;
         send_bt = (Button) findViewById( R.id.send_button );
         del_bt = (Button) findViewById( R.id.btn_right );
@@ -132,7 +132,7 @@ public class GalleryActivity extends BaseActivity {
             if (listViews.size() == 1) {
                 tempSelectBitmap.clear();
                 send_bt.setText( getString(R.string.finish)  + "("
-                        + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT
+                        + tempSelectBitmap.size() + "/" + AlbumSet.MAX_SELECT_COUNT
                         + ")");
                 Intent intent = new Intent("data.broadcast.action");
                 sendBroadcast(intent);
@@ -144,7 +144,7 @@ public class GalleryActivity extends BaseActivity {
                 listViews.remove(location);
                 adapter.setListViews(listViews);
                 send_bt.setText(  getString(R.string.finish) + "("
-                        + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT
+                        + tempSelectBitmap.size() + "/" + AlbumSet.MAX_SELECT_COUNT
                         + ")");
                 adapter.notifyDataSetChanged();
             }
@@ -159,11 +159,7 @@ public class GalleryActivity extends BaseActivity {
             Intent intent = new Intent();
             setResult(12, intent);
 
-            for (int i = 0; i < PublicWay.activityList.size(); i++) {
-                if (null != PublicWay.activityList.get(i)) {
-                    PublicWay.activityList.get(i).finish();
-                }
-            }
+            AlbumSet.finishAll();
         }
 
     }
@@ -171,7 +167,7 @@ public class GalleryActivity extends BaseActivity {
     public void isShowOkBt() {
         if (tempSelectBitmap.size() > 0) {
             send_bt.setText(  getString(R.string.finish) + "("
-                    + tempSelectBitmap.size() + "/" + PublicWay.MAX_SELECT_COUNT + ")");
+                    + tempSelectBitmap.size() + "/" + AlbumSet.MAX_SELECT_COUNT + ")");
             send_bt.setPressed(true);
             send_bt.setClickable(true);
             send_bt.setTextColor(Color.WHITE);

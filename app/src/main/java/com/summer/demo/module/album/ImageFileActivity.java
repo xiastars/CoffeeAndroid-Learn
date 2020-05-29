@@ -7,7 +7,7 @@ import com.summer.demo.R;
 import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.adapter.FolderAdapter;
 import com.summer.demo.module.album.util.ImageItem;
-import com.summer.demo.module.album.util.PublicWay;
+import com.summer.demo.module.album.util.AlbumSet;
 import com.summer.helper.utils.JumpTo;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class ImageFileActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        PublicWay.activityList.add(this);
+        AlbumSet.activitys.add(this);
         GridView gridView = (GridView) findViewById(R.id.fileGridView);
         ArrayList<ImageItem> tempSelectBitmap = (ArrayList<ImageItem>) JumpTo.getObject(this);
         if (tempSelectBitmap == null) {
