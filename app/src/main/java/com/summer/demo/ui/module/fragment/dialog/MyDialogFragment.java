@@ -4,88 +4,60 @@ import android.app.Dialog;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.summer.demo.R;
 import com.summer.demo.dialog.BaseTipsDialog;
-import com.summer.demo.dialog.DialogWeixin;
 import com.summer.demo.dialog.LoadingDialog;
-import com.summer.demo.module.base.BaseFragment;
+import com.summer.demo.module.base.dialog.BaseCheckDialog;
+import com.summer.demo.module.base.dialog.BaseSureDialog;
+import com.summer.demo.module.base.dialog.TipDialog;
+import com.summer.demo.module.base.listener.DialogAfterClickListener;
+import com.summer.demo.module.base.listener.DialogAfterSureListener;
+import com.summer.demo.ui.BaseTitleListFragment;
 import com.summer.helper.listener.OnSimpleClickListener;
+import com.summer.helper.utils.SThread;
 import com.summer.helper.utils.SUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Dialog的用法
  *
  * @author Administrator
  */
-public class MyDialogFragment extends BaseFragment implements View.OnClickListener {
+public class MyDialogFragment extends BaseTitleListFragment implements View.OnClickListener {
     Dialog dialog;
-    @BindView(R.id.iv_bg)
-    ImageView ivBg;
-    @BindView(R.id.btn_common)
-    Button btnCommon;
-    @BindView(R.id.btn_longer)
-    Button btnLonger;
-    @BindView(R.id.btn_special)
-    Button btnSpecial;
-    @BindView(R.id.btn4)
-    Button btn4;
-    @BindView(R.id.btn5)
-    Button btn5;
-    @BindView(R.id.btn6)
-    Button btn6;
-
 
     @Override
-    public void initView(View view) {
-
-        //监听View的长按事件
-        view.findViewById(R.id.btn5).setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                int[] pos = new int[2];
-                v.getLocationInWindow(pos);
-                showPupDialog(pos[0], pos[1], v);
-                return false;
-            }
-        });
+    protected List<String> setData() {
+        List<String> datas = new ArrayList<>();
+        datas.add("加载用的dialog示例1");
+        datas.add("加载用的dialog示例2");
+        datas.add("自定义一个Dialog,常用于提示");
+        datas.add("自定义选项，从底部出来");
+        datas.add("需要用户决定的选择框");
+        datas.add("仅一个按钮，给用户提示，没有操作");
+        datas.add("纯提示");
+        datas.add("一个空的，全屏对话框展示");
+        datas.add("下载进度对话框");
+        return datas;
     }
 
     @Override
-    public void loadData() {
+    protected void clickChild(int pos) {
+        switch (pos) {
+            case 0:
 
-    }
-
-    @Override
-    protected void dealDatas(int requestType, Object obj) {
-
-    }
-
-    @Override
-    protected int setContentView() {
-        return R.layout.fragment_dialog;
-    }
-
-    @OnClick({R.id.btn_common,R.id.btn_special,R.id.btn_longer,R.id.btn4,R.id.btn5,R.id.btn6})
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_common:
-                Dialog dialog = new Dialog(context, R.style.TagFullScreenDialog);
-                //设置样式，注意布局里indeterminateDrawable这个属性，而且5.0版本及以上与5.0以下写法不一样，注意看SummerHelper里的drawable-v21,对比差别
-                dialog.setContentView(R.layout.dialog_loading);
-                dialog.show();
                 break;
-            case R.id.btn_special:
+            case 1:
+                //通常为了方便，我们把加载的Dialog封装出来
+                LoadingDialog dialog1 = new LoadingDialog(context);
+                dialog1.startLoading();
+                break;
+            case 2:
                 //弹出提示dialog，这是经常使用的功能,这里封装了一个简单的，传入想要提示的内容
                 BaseTipsDialog baseTipsDialog = new BaseTipsDialog(context, "没有网络哦!", new BaseTipsDialog.DialogAfterClickListener() {
                     @Override
@@ -100,29 +72,92 @@ public class MyDialogFragment extends BaseFragment implements View.OnClickListen
                 });
                 baseTipsDialog.show();
                 break;
-            case R.id.btn_longer:
-                //通常为了方便，我们把加载的Dialog封装出来
-                LoadingDialog dialog1 = new LoadingDialog(context);
-                dialog1.startLoading();
-                break;
-            case R.id.btn4:
-                DialogWeixin weixin = new DialogWeixin(context);
-                weixin.show();
-                break;
-            case R.id.btn6:
+            case 3:
                 List<GroupManageInfo> infos = new ArrayList<>();
                 infos.add(new GroupManageInfo());
                 infos.add(new GroupManageInfo());
-                ManageUserDialog  manageUserDialog  = new ManageUserDialog(context, infos, new OnSimpleClickListener() {
+                ManageUserDialog manageUserDialog = new ManageUserDialog(context, infos, new OnSimpleClickListener() {
                     @Override
                     public void onClick(int position) {
 
                     }
                 });
                 manageUserDialog.show();
+                break;
+            case 4:
+                BaseCheckDialog baseCheckDialog = new BaseCheckDialog(context, "这是显示内容", new DialogAfterClickListener() {
+                    @Override
+                    public void onSure() {
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
+                baseCheckDialog.setAutoClose(10);
+                baseCheckDialog.setTitleContent("这是标题");
+                baseCheckDialog.setOkContent("确定啦");
+                baseCheckDialog.setCancelContent("左边啦");
+                baseCheckDialog.show();
 
                 break;
+            case 5:
+                BaseSureDialog baseSureDialog = new BaseSureDialog(context, "这是显示内容", new DialogAfterSureListener() {
+                    @Override
+                    public void onSure() {
+
+                    }
+
+                });
+                baseSureDialog.show();
+                break;
+            case 6:
+                TipDialog tipDialog = new TipDialog(context);
+                tipDialog.setLoadContent("这是加载内容");
+                tipDialog.show();
+                break;
+            case 7:
+                FullWidthDemoDialog fullWidthDemoDialog = new FullWidthDemoDialog(context);
+                fullWidthDemoDialog.show();
+                break;
+            case 8:
+                final DownloadingDialog dialog = new DownloadingDialog(context);
+                dialog.show();
+                SThread.getIntances().submit(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean startDownload = true;
+                        int index = 0;
+                        while(startDownload){
+                            index ++;
+                            try {
+                                Thread.sleep(300);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            final int finalIndex = index;
+                            myHandlder.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dialog.setPercent(finalIndex);
+                                }
+                            });
+                            if(index == 100){
+                                dialog.cancelDialog();
+                                startDownload = false;
+                            }
+                        }
+                    }
+                });
+                break;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /**

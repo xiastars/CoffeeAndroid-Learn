@@ -13,6 +13,13 @@
         <item name="android:background">@color/grey_f3</item>
     </style>
 
+
+    <style name="line_horizontal_c8">
+        <item name="android:layout_height">0.5dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/grey_c8</item>
+    </style>
+
     <style name="grey4a_16">
         <item name="android:textColor">@color/grey_4a</item>
         <item name="android:textSize">16sp</item>

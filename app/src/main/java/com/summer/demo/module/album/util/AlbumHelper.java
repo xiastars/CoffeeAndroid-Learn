@@ -118,6 +118,7 @@ public class AlbumHelper {
                 bucket.count++;
                 ImageItem imageItem = new ImageItem();
                 imageItem.imageId = _id;
+                imageItem.setSize(Integer.parseInt(size));
                 imageItem.imagePath = path;
                 imageItem.thumbnailPath = thumbnailList.get(_id);
                 if (imageItem.thumbnailPath == null) {

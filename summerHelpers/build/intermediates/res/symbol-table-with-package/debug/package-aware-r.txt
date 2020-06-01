@@ -604,6 +604,7 @@ color green_66
 color green_6c
 color green_6f
 color green_78
+color grey_0f
 color grey_1b
 color grey_22
 color grey_31
@@ -625,11 +626,13 @@ color grey_b1
 color grey_ba
 color grey_c5
 color grey_c6
+color grey_c8
 color grey_ca
 color grey_cd
 color grey_d2
 color grey_d6
 color grey_d8
+color grey_da
 color grey_dc
 color grey_e1
 color grey_e5
@@ -1922,6 +1925,7 @@ style grey93_12
 style grey93_14
 style grey99_12
 style line_horizontal
+style line_horizontal_c8
 style line_horizontal_f1
 style line_vertical
 style permission_PermissionActivity

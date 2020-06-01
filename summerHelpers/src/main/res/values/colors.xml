@@ -96,6 +96,7 @@
     <color name="grey_d8">#d8D8D8</color>
     <color name="grey_ca">#cacaca</color>
     <color name="grey_d2">#D2D1D6</color>
+    <color name="grey_c8">#c8c8c8</color>
     <color name="grey_ba">#bab6b5</color>
     <color name="grey_d6">#D6D5DA</color>
     <color name="grey_c5">#C5C4CA</color>
@@ -103,6 +104,7 @@
     <color name="grey_9c">#9C9C9C</color>
     <color name="grey_88">#888888</color>
     <color name="grey_95">#9592A0</color>
+    <color name="grey_da">#dadada</color>
     <color name="grey_93">#93909E</color>
     <color name="grey_99">#999999</color>
     <color name="grey_97">#979795</color>
@@ -116,6 +118,7 @@
     <color name="grey_33">#333333</color>
     <color name="grey_22">#222222</color>
     <color name="grey_1b">#1b1b1b</color>
+    <color name="grey_0f">#0F0F0F</color>
 
 
     <color name="grey_31">#313235</color>

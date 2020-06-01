@@ -12,6 +12,6 @@ public class SizeCalculation extends Calculation {
     @Override
     public int calculateInSampleSize(int srcWidth, int srcHeight) {
 
-        return 10;
+        return 1;
     }
 }

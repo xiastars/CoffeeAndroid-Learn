@@ -78,6 +78,20 @@ public abstract class BaseDialog extends Dialog{
         }
     }
 
+
+    /**
+     * 将中间显示的，设为全屏
+     */
+    protected void setDialogCenterAndWidthFullscreen() {
+        Window window = getWindow();
+        if (window != null) {
+            WindowManager.LayoutParams lp = window.getAttributes();
+            lp.width = SUtils.screenWidth;
+            lp.horizontalMargin = 0;
+            lp.gravity = Gravity.CENTER;
+        }
+    }
+
     /**
      * 返回容器视图资源Id
      */

@@ -18,6 +18,7 @@ public class ImageItem implements Serializable {
     private long id;
     private String img;
     private long userId;
+    private int size;//图片或视频大小
 
     public ImageItem(){
 
@@ -133,5 +134,13 @@ public class ImageItem implements Serializable {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

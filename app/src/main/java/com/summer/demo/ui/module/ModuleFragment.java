@@ -48,8 +48,8 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_navigatior, "Webview网页", ModulePos.POS_WEBVIEW));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_picker, "颜色选择器", ModulePos.POS_COLOR_PICKER));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_chat,"聊天",ModulePos.POS_CHAT));
-		moduleInfos.add(new ModuleInfo(R.drawable.ic_biaoqing,"表情",ModulePos.POS_EMOJI));
-		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"yasuo",ModulePos.POS_COMPRESS_IMG));
+		moduleInfos.add(new ModuleInfo(R.drawable.input_emoji_2,"表情",ModulePos.POS_EMOJI));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"图片压缩",ModulePos.POS_COMPRESS_IMG));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_audio,"音频播放",ModulePos.POS_AUDIO_PLAY));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_socket,"Socket通讯",ModulePos.POS_SOCKET));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));

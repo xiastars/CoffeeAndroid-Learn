@@ -81,6 +81,7 @@
     <color name="green_6c">#66CC00</color>
     <color name="green_6f">#6fc313</color>
     <color name="green_78">#2B785C</color>
+    <color name="grey_0f">#0F0F0F</color>
     <color name="grey_1b">#1b1b1b</color>
     <color name="grey_22">#222222</color>
     <color name="grey_31">#313235</color>
@@ -102,11 +103,13 @@
     <color name="grey_ba">#bab6b5</color>
     <color name="grey_c5">#C5C4CA</color>
     <color name="grey_c6">#C6C4D0</color>
+    <color name="grey_c8">#c8c8c8</color>
     <color name="grey_ca">#cacaca</color>
     <color name="grey_cd">#CDCCD6</color>
     <color name="grey_d2">#D2D1D6</color>
     <color name="grey_d6">#D6D5DA</color>
     <color name="grey_d8">#d8D8D8</color>
+    <color name="grey_da">#dadada</color>
     <color name="grey_dc">#DcDcDc</color>
     <color name="grey_e1">#E1E2E3</color>
     <color name="grey_e5">#e5e5e5</color>
@@ -327,6 +330,11 @@
         <item name="android:layout_height">0.5dip</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/grey_f3</item>
+    </style>
+    <style name="line_horizontal_c8">
+        <item name="android:layout_height">0.5dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/grey_c8</item>
     </style>
     <style name="line_horizontal_f1">
         <item name="android:layout_height">1dp</item>

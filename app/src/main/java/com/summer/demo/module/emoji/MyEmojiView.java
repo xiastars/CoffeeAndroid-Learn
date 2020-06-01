@@ -3,6 +3,7 @@ package com.summer.demo.module.emoji;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.summer.demo.R;
@@ -25,6 +26,7 @@ public class MyEmojiView {
     private Context context;
     private Activity activity;
     private View emojiLayout;
+    private ViewGroup baseView;
     private int type;//如果type==0，为非聊天页面，隐藏下面菜单与其它贴图
     private OnReturnObjectClickListener listener;
     private int clickIndex = 0;
@@ -39,8 +41,22 @@ public class MyEmojiView {
         init();
     }
 
+    public MyEmojiView(Context context,View view ,int type, OnReturnObjectClickListener listener) {
+        this.context = context;
+        this.baseView = (ViewGroup) view;
+        this.activity = (Activity) context;
+        this.listener = listener;
+        this.type = type;
+        init();
+    }
+
     private void init() {
-        emojiLayout = activity.findViewById(R.id.emoji_layout);
+        if(baseView != null){
+            emojiLayout = baseView.findViewById(R.id.emoji_layout);
+        }else{
+            emojiLayout = activity.findViewById(R.id.emoji_layout);
+        }
+
         if(emojiLayout == null){
             return;
         }

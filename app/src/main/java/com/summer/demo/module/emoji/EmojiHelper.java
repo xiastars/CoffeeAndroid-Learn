@@ -84,7 +84,7 @@ public class EmojiHelper {
         SUtils.setPicResource(ivComment,R.drawable.ic_biaoqing);
         rlEmojiLayout = (RelativeLayout) view.findViewById(R.id.emoji_layout);
         // 评论布局
-        new MyEmojiView(activity, 0, new OnReturnObjectClickListener() {
+        new MyEmojiView(activity,view, 0, new OnReturnObjectClickListener() {
             @Override
             public void onClick(Object object) {
                 IconEntity iconEntity = (IconEntity) object;

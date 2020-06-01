@@ -63,9 +63,11 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
                 showFragment(new ChatFragment());
                 break;
             case ModulePos.POS_EMOJI:
+                setTitle("自定义表情");
                 showFragment(new EmojiFragment());
                 break;
             case ModulePos.POS_COMPRESS_IMG:
+                setTitle("图片压缩");
                 showFragment(new CompressImgFragment());
                 break;
             case ModulePos.POS_AUDIO_PLAY:
