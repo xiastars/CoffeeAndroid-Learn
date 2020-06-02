@@ -2,7 +2,6 @@ package com.summer.demo.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
@@ -16,9 +15,7 @@ import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.module.view.CustomViewAbove;
 import com.summer.demo.module.view.CustomViewBehind;
 import com.summer.demo.module.view.SlidingMenu;
-import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.SUtils;
-import com.yanzhenjie.permission.Permission;
 
 import butterknife.BindView;
 
@@ -53,16 +50,6 @@ public class MainActivity extends BaseFragmentActivity {
 
     private long mBackPressedTime;
 
-    /**
-     * 针对一些功能请求权限
-     */
-    private void requestPermission() {
-        PermissionUtils.rationRequestPermission(this, Permission.READ_EXTERNAL_STORAGE,
-                Permission.WRITE_EXTERNAL_STORAGE,
-                Permission.READ_PHONE_STATE);
-
-    }
-
 
     @Override
     protected int setTitleId() {
@@ -82,7 +69,6 @@ public class MainActivity extends BaseFragmentActivity {
     @Override
     protected void initData() {
         removeTitle();
-        requestPermission();
         initMainView();
     }
 
@@ -113,25 +99,15 @@ public class MainActivity extends BaseFragmentActivity {
         sm.showMenu();//显示SlidingMenu
         sm.showContent();//显示内容
         sm.setBackgroundColor(Color.WHITE);
-        sm.setBehindCanvasTransformer(new SlidingMenu.CanvasTransformer() {
+        sm.setBehindCanvasTransformer((canvas, percentOpen) -> viewBg.setBackgroundColor(Color.argb((int) (percentOpen * 255 / 3), 30, 30, 32)));
 
-            @Override
-            public void transformCanvas(Canvas canvas, float percentOpen) {
-                viewBg.setBackgroundColor(Color.argb((int) (percentOpen * 255 / 3), 30, 30, 32));
-            }
-        });
-
-        sm.setOnMenuDragListener(new SlidingMenu.OnMenuDragListener() {
-
-            @Override
-            public void onDrag(int x, int y) {
-                if (x > 0 && !isDrag) {
-                    sm.setBehindWidth(SUtils.screenWidth);
-                    isDrag = true;
-                } else if (x < 0 && isDrag) {
-                    sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-                    isDrag = false;
-                }
+        sm.setOnMenuDragListener((x, y) -> {
+            if (x > 0 && !isDrag) {
+                sm.setBehindWidth(SUtils.screenWidth);
+                isDrag = true;
+            } else if (x < 0 && isDrag) {
+                sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+                isDrag = false;
             }
         });
         toggleMenu();
