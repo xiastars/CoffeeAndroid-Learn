@@ -133,12 +133,13 @@ public class PermissionUtils {
                 .onGranted(new Action() {
                     @Override
                     public void onAction(List<String> permissions) {
-
+                        Logs.i("打开权限"+ permissions);
                     }
                 })
                 .onDenied(new Action() {
                     @Override
                     public void onAction(List<String> permissions) {
+                        Logs.i("打开权限"+ permissions);
                         if (AndPermission.hasAlwaysDeniedPermission(activity, permissions)) {
                             //总是拒绝
                             permissionSetting.showSetting(permissions);

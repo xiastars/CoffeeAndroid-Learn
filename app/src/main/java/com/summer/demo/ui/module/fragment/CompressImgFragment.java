@@ -67,9 +67,8 @@ public class CompressImgFragment extends BaseFragment {
                 SUtils.setPic(ivPre,url);
             }
         });
-        Flora.with()
-                // 配置inSample和quality的算法，内置了一套基于Luban的压缩算法
-                .calculation(new SizeCalculation() {
+        // 配置inSample和quality的算法，内置了一套基于Luban的压缩算法
+        Flora.with().calculation(new SizeCalculation() {
                     @Override
                     public int calculateInSampleSize(int srcWidth, int srcHeight) {
                         return super.calculateInSampleSize(srcWidth, srcHeight);

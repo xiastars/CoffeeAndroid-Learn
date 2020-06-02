@@ -47,6 +47,12 @@ android {
                         'src/main/res/res-emoji'
                 ]
     }
+    android {
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
+        }
+    }
 }
 
 

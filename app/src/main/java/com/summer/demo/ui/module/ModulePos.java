@@ -36,4 +36,6 @@ public class ModulePos {
     public static final int POS_UPLOAD = 13;
 
     public static final int POS_SDK = 14;
+
+    public static final int POS_PERMISSION = 15;
 }

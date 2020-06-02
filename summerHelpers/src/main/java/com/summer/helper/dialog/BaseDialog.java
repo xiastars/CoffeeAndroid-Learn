@@ -3,6 +3,8 @@ package com.summer.helper.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -18,6 +20,8 @@ import android.widget.RelativeLayout;
 import com.malata.summer.helper.R;
 import com.summer.helper.utils.SUtils;
 
+import java.lang.ref.WeakReference;
+
 import butterknife.ButterKnife;
 
 /**
@@ -29,6 +33,7 @@ public abstract class BaseDialog extends Dialog{
     protected Context context;
     FrameLayout flParent;
     RelativeLayout rlParent;
+    protected MyHandler myHandler;
     int parentRes;
 
     protected boolean isShowAnim = true;
@@ -47,6 +52,7 @@ public abstract class BaseDialog extends Dialog{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_base);
+        myHandler = new MyHandler(this);
         rlParent = (RelativeLayout) findViewById(R.id.rl_base_parent);
         rlParent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,4 +205,27 @@ public abstract class BaseDialog extends Dialog{
 
     //显示退场动�?
     protected abstract int showQuitAnim();
+
+    public static class MyHandler extends Handler {
+        private final WeakReference<BaseDialog> mActivity;
+
+        public MyHandler(BaseDialog activity) {
+            mActivity = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            BaseDialog activity = mActivity.get();
+            if (null != activity) {
+                switch (msg.what) {
+                    default:
+                        activity.handleMsg(msg.what, msg.obj);
+                }
+            }
+        }
+    }
+
+    protected void handleMsg(int position, Object object) {
+
+    }
 }

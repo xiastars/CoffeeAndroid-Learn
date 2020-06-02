@@ -24,7 +24,7 @@
     <string name="title_tip">提示</string>
     <string name="btn_setting">设置</string>
     <string name="btn_no">不</string>
-    <string name="tip_permission_rationale">允许以下权限以便程序正常进行：\n\n%1$s</string>
+    <string name="tip_permission_rationale">允许以下权限以便程序正常进行：</string>
 
     <string name="cancel_dialog">Cancel</string>
     <string name="submit">Submit</string>
@@ -40,6 +40,7 @@
     <string name="permission_name_write_storage">Write Storage</string>
     <string name="permission_name_read_storage">Read Storage</string>
     <string name="permission_location_detail">Open Bluetooth need location.</string>
+    <string name="permission_camera_detail">上传图片需要你打开摄影头.</string>
     <string name="permission_storage_detail">We need to store the information locally.</string>
     <string name="open_ble_hint">According to Android 9.0 or above, you must turn on the GPS service to search for Bluetooth services.</string>
     <string name="go_to_setting">Go to Setting</string>

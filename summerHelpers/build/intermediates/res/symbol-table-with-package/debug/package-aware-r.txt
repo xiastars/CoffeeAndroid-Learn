@@ -1233,6 +1233,7 @@ id bottom
 id buttonPanel
 id checkbox
 id chronometer
+id ck_protocal
 id container_layout
 id content
 id contentPanel
@@ -1369,6 +1370,7 @@ id tv_loading
 id tv_name
 id tv_nomore
 id tv_permission
+id tv_protocol
 id tv_reload
 id tv_right
 id tv_text
@@ -1517,6 +1519,7 @@ string label_just
 string label_yesterday
 string network_error
 string open_ble_hint
+string permission_camera_detail
 string permission_location_detail
 string permission_name_accounts
 string permission_name_calendar

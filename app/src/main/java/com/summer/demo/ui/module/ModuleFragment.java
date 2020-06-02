@@ -55,6 +55,8 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_upload,"上传文件",ModulePos.POS_UPLOAD));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_upload,"系统权限",ModulePos.POS_PERMISSION));
+
 		adapter.notifyDataChanged(moduleInfos);
 	}
 

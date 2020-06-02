@@ -13,6 +13,7 @@ import com.summer.demo.ui.module.fragment.CompressImgFragment;
 import com.summer.demo.ui.module.fragment.EmojiFragment;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
 import com.summer.demo.ui.module.fragment.ListenerAlbumListener;
+import com.summer.demo.ui.module.fragment.PermissionFragment;
 import com.summer.demo.ui.module.fragment.UploadFileFragment;
 import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
@@ -90,15 +91,19 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
                 setTitle("上传文件");
                 showFragment(new UploadFileFragment());
                 break;
+            case ModulePos.POS_PERMISSION:
+                setTitle("权限管理");
+                showFragment(new PermissionFragment());
+                break;
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Logs.i("reqest:"+requestCode);
-        if(mFragment != null){
-            mFragment.onActivityResult(requestCode,resultCode,data);
+        Logs.i("reqest:" + requestCode);
+        if (mFragment != null) {
+            mFragment.onActivityResult(requestCode, resultCode, data);
         }
     }
 }

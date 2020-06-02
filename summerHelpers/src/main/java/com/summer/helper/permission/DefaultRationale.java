@@ -18,10 +18,8 @@ package com.summer.helper.permission;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
-import android.text.TextUtils;
 
 import com.malata.summer.helper.R;
-import com.yanzhenjie.permission.Permission;
 import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RequestExecutor;
 
@@ -34,8 +32,7 @@ public final class DefaultRationale implements Rationale {
 
     @Override
     public void showRationale(Context context, List<String> permissions, final RequestExecutor executor) {
-        List<String> permissionNames = Permission.transformText(context, permissions);
-        String message = context.getString(R.string.tip_permission_rationale, TextUtils.join("\n", permissionNames));
+        String message = context.getString(R.string.tip_permission_rationale);
 
         new AlertDialog.Builder(context)
                 .setCancelable(false)

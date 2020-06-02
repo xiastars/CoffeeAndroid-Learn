@@ -21,7 +21,7 @@
     <string name="btn_setting">设置</string>
     <string name="finish">完成</string>
     <string name="btn_no">不</string>
-    <string name="tip_permission_rationale">Balanx需要以下权限才能正常进行：</string>
+    <string name="tip_permission_rationale">需要以下权限才能正常进行：</string>
 
     <string name="tip_empty_content">这里空空如也</string>
     <string name="cancel_dialog">取消</string>
