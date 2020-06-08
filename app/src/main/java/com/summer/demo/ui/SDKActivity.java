@@ -4,6 +4,7 @@ import android.graphics.PixelFormat;
 
 import com.summer.demo.R;
 import com.summer.demo.ui.fragment.sdk.AgoraFragment;
+import com.summer.demo.ui.fragment.sdk.EasyARFragment;
 import com.summer.helper.utils.Logs;
 
 /**
@@ -20,7 +21,7 @@ public class SDKActivity extends BaseGridListActivity {
         setTitle("SDK");
         Logs.i("-------------------");
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        int[] imgs = {R.drawable.alexa,R.drawable.agora};
+        int[] imgs = {R.drawable.alexa,R.drawable.agora,R.drawable.agora};
         setData(context.getResources().getStringArray(R.array.sdks), imgs);
 
     }
@@ -41,6 +42,10 @@ public class SDKActivity extends BaseGridListActivity {
                 setTitle("Agora");
                 //JumpTo.getInstance().commonJump(context, AuraActivity.class);
                 showFragment(new AgoraFragment());
+                break;
+            case 2:
+                setTitle("EasyAR");
+                showFragment(new EasyARFragment());
                 break;
         }
     }

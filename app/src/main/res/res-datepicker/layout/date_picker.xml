@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:clickable="false"
+	android:focusable="false"
+	android:gravity="center_vertical"
+	android:orientation="horizontal">
+
+	<com.summer.demo.ui.module.fragment.dialog.datepicker.NumberPicker
+		android:id="@+id/date_year"
+		android:minHeight="80dp"
+		android:layout_marginLeft="25dp"
+		android:layout_width="wrap_content"
+		style="@style/AiWidget.Light.NumberPicker"
+		android:layout_height="wrap_content"
+		android:layout_weight="1" />
+
+	<com.summer.demo.ui.module.fragment.dialog.datepicker.NumberPicker
+		android:id="@+id/date_month"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="15dp"
+		style="@style/AiWidget.Light.NumberPicker"
+		android:layout_marginRight="15dp"
+		android:layout_weight="1"
+		android:minHeight="80dp" />
+
+	<com.summer.demo.ui.module.fragment.dialog.datepicker.NumberPicker
+		android:id="@+id/date_day"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:minHeight="80dp"
+		android:layout_marginRight="25dp"
+		style="@style/AiWidget.Light.NumberPicker"
+		android:clickable="true"
+		android:focusable="true" />
+
+
+</LinearLayout>

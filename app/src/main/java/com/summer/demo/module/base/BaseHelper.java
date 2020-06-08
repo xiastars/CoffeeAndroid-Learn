@@ -71,6 +71,8 @@ public class BaseHelper {
     //虚拟数据地址
     public static String VITURAL_DATA = "virtualdata.txt";//virtualdata.txt
 
+    String[] mainNode = {"info"};
+
     //当一个页面反复刷新时，只第一次插入
     boolean isFirstInsertDB;
 

@@ -158,7 +158,6 @@ attr fastScrollVerticalThumbDrawable
 attr fastScrollVerticalTrackDrawable
 attr fillColor
 attr firstBaselineToTopHeight
-attr flingable
 attr font
 attr fontFamily
 attr fontProviderAuthority
@@ -289,9 +288,6 @@ attr mutate_background
 attr navigationContentDescription
 attr navigationIcon
 attr navigationMode
-attr numberPickerDownButtonStyle
-attr numberPickerStyle
-attr numberPickerUpButtonStyle
 attr numericModifiers
 attr oval
 attr overlapAnchor
@@ -359,16 +355,12 @@ attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
 attr selectedColor
-attr selectionDivider
-attr selectionDividerHeight
-attr selectionDividersDistance
 attr showAsAction
 attr showDividers
 attr showText
 attr showTitle
 attr singleChoiceItemLayout
 attr snap
-attr solidColor
 attr spanCount
 attr spinBars
 attr spinnerDropDownItemStyle
@@ -1239,14 +1231,8 @@ id content
 id contentPanel
 id custom
 id customPanel
-id datePicker
-id date_day
-id date_month
-id date_year
 id decor_content_parent
-id decrement
 id default_activity_button
-id divider1
 id edit_query
 id end
 id expand_activities_button
@@ -1261,7 +1247,6 @@ id icon
 id icon_group
 id id_num
 id image
-id increment
 id info
 id invisible
 id italic
@@ -1270,7 +1255,6 @@ id iv_loading_icon
 id iv_nav
 id left
 id left_line
-id line
 id line1
 id line3
 id listMode
@@ -1279,7 +1263,6 @@ id ll_back
 id ll_container
 id ll_empty
 id ll_parent
-id ll_picker
 id loading_container
 id message
 id multiply
@@ -1288,7 +1271,6 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
-id numberpicker_input
 id nv_container
 id packed
 id parent
@@ -1374,7 +1356,6 @@ id tv_protocol
 id tv_reload
 id tv_right
 id tv_text
-id tv_time
 id tv_title
 id tv_top_title
 id uniform
@@ -1424,11 +1405,9 @@ layout activity_webview
 layout activity_webview_container
 layout cube_ptr_classic_default_header
 layout cube_ptr_simple_loading
-layout date_picker
 layout dialog_base
 layout dialog_loading
 layout dialog_permission
-layout dialog_timepicker
 layout dialog_tips
 layout item
 layout item_menu
@@ -1443,7 +1422,6 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout number_picker
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1564,13 +1542,6 @@ string to_file
 string update_begin_tip
 string update_copy_tv_success_tip
 string update_unzip_tv_success_tip
-style AiTheme
-style AiWidget
-style AiWidget_EditText
-style AiWidget_EditText_NumberPickerInputText
-style AiWidget_EditText_NumberPickerInputText_Light
-style AiWidget_Light_NumberPicker
-style AiWidget_NumberPicker
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -1979,7 +1950,6 @@ styleable MaterialRefreshLayout isLoadMore overlay progress_arrow_height progres
 styleable MenuGroup android_checkableBehavior android_enabled android_id android_menuCategory android_orderInCategory android_visible
 styleable MenuItem actionLayout actionProviderClass actionViewClass alphabeticModifiers android_alphabeticShortcut android_checkable android_checked android_enabled android_icon android_id android_menuCategory android_numericShortcut android_onClick android_orderInCategory android_title android_titleCondensed android_visible contentDescription iconTint iconTintMode numericModifiers showAsAction tooltipText
 styleable MenuView android_headerBackground android_horizontalDivider android_itemBackground android_itemIconDisabledAlpha android_itemTextAppearance android_verticalDivider android_windowAnimationStyle preserveIconSpacing subMenuArrow
-styleable NumberPicker android_fadingEdgeLength android_maxHeight android_maxWidth android_minHeight android_minWidth android_orientation flingable selectionDivider selectionDividerHeight selectionDividersDistance solidColor
 styleable PagerSlidingTabStrip pstsDividerColor pstsDividerPadding pstsIndicatorColor pstsIndicatorHeight pstsScrollOffset pstsShouldExpand pstsTabBackground pstsTabPaddingLeftRight pstsTextAllCaps pstsUnderlineColor pstsUnderlineHeight
 styleable PopupWindow android_popupAnimationStyle android_popupBackground overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor

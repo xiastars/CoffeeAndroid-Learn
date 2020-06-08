@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageButton android:id="@+id/increment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="?attr/numberPickerUpButtonStyle"
+        android:contentDescription="Increment" />
+
+    <view class="com.summer.demo.ui.module.fragment.dialog.datepicker.NumberPicker$CustomEditText"
+        android:id="@+id/numberpicker_input" android:visibility="invisible"
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"/>
+
+    <ImageButton android:id="@+id/decrement"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="?attr/numberPickerDownButtonStyle"
+        android:contentDescription="Decrement" />
+
+</merge>

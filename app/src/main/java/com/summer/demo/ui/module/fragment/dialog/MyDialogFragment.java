@@ -1,6 +1,9 @@
 package com.summer.demo.ui.module.fragment.dialog;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -14,8 +17,9 @@ import com.summer.demo.module.base.dialog.BaseCheckDialog;
 import com.summer.demo.module.base.dialog.BaseSureDialog;
 import com.summer.demo.module.base.dialog.TipDialog;
 import com.summer.demo.module.base.listener.DialogAfterClickListener;
-import com.summer.demo.module.base.listener.DialogAfterSureListener;
 import com.summer.demo.ui.BaseTitleListFragment;
+import com.summer.demo.ui.module.fragment.dialog.datepicker.SDatePickerDialog;
+import com.summer.helper.listener.OnReturnStringContentListener;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.utils.SThread;
 import com.summer.helper.utils.SUtils;
@@ -33,6 +37,7 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
 
     @Override
     protected List<String> setData() {
+
         List<String> datas = new ArrayList<>();
         datas.add("加载用的dialog示例1");
         datas.add("加载用的dialog示例2");
@@ -40,12 +45,14 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
         datas.add("自定义选项，从底部出来");
         datas.add("需要用户决定的选择框");
         datas.add("仅一个按钮，给用户提示，没有操作");
-        datas.add("纯提示");
+        datas.add("纯提示加载");
         datas.add("一个空的，全屏对话框展示");
         datas.add("下载进度对话框");
+        datas.add("时间选择框");
         return datas;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void clickChild(int pos) {
         switch (pos) {
@@ -85,7 +92,7 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
                 manageUserDialog.show();
                 break;
             case 4:
-                BaseCheckDialog baseCheckDialog = new BaseCheckDialog(context, "这是显示内容", new DialogAfterClickListener() {
+                BaseCheckDialog baseCheckDialog = new BaseCheckDialog(context, "这是显示内容,传入指定时间，可以倒计时，并在倒计时结束后关闭", new DialogAfterClickListener() {
                     @Override
                     public void onSure() {
 
@@ -104,11 +111,7 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
 
                 break;
             case 5:
-                BaseSureDialog baseSureDialog = new BaseSureDialog(context, "这是显示内容", new DialogAfterSureListener() {
-                    @Override
-                    public void onSure() {
-
-                    }
+                BaseSureDialog baseSureDialog = new BaseSureDialog(context, "这是显示内容", () -> {
 
                 });
                 baseSureDialog.show();
@@ -125,13 +128,14 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
             case 8:
                 final DownloadingDialog dialog = new DownloadingDialog(context);
                 dialog.show();
+
                 SThread.getIntances().submit(new Runnable() {
                     @Override
                     public void run() {
                         boolean startDownload = true;
                         int index = 0;
-                        while(startDownload){
-                            index ++;
+                        while (startDownload) {
+                            index++;
                             try {
                                 Thread.sleep(300);
                             } catch (InterruptedException e) {
@@ -144,13 +148,26 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
                                     dialog.setPercent(finalIndex);
                                 }
                             });
-                            if(index == 100){
+                            if (index == 100) {
                                 dialog.cancelDialog();
                                 startDownload = false;
                             }
                         }
                     }
                 });
+                break;
+            case 9:
+                SDatePickerDialog datePickerDialog = new SDatePickerDialog(context, new OnReturnStringContentListener() {
+                    @Override
+                    public void returnContent(String content) {
+
+                    }
+                });
+                datePickerDialog.setDefaultDate("1989-07-12");
+                datePickerDialog.show();
+                //原生的
+                DatePickerDialog datePickerDialog1 = new DatePickerDialog(context);
+                //datePickerDialog1.show();
                 break;
         }
     }

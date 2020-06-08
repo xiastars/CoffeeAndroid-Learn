@@ -14,6 +14,7 @@ import com.summer.demo.ui.module.fragment.EmojiFragment;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
 import com.summer.demo.ui.module.fragment.ListenerAlbumListener;
 import com.summer.demo.ui.module.fragment.PermissionFragment;
+import com.summer.demo.ui.module.fragment.RXJavaFragment;
 import com.summer.demo.ui.module.fragment.UploadFileFragment;
 import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
@@ -94,6 +95,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
             case ModulePos.POS_PERMISSION:
                 setTitle("权限管理");
                 showFragment(new PermissionFragment());
+                break;
+            case ModulePos.POS_RXJAVA:
+                setTitle("RXJava");
+                showFragment(new RXJavaFragment());
                 break;
         }
     }

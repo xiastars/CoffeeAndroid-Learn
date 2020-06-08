@@ -23,7 +23,7 @@ import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 
 /**
- * @Description:
+ * @Description: 多人视频SDK
  * @Author: xiastars@vip.qq.com
  * @CreateDate: 2020/5/6 10:04
  */

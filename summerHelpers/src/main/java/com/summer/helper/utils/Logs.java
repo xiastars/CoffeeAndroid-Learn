@@ -102,7 +102,7 @@ public class Logs {
         String fileInfo = "at " + stackTrace.getFileName() + "("
                 + stackTrace.getLineNumber() + ") "
                 + stackTrace.getMethodName();
-        Log.i("跟踪时间", fileInfo + ": " + (System.currentTimeMillis() - time));
+        Log.i("summer","跟踪时间"+ fileInfo + ": " + (System.currentTimeMillis() - time));
 
     }
 

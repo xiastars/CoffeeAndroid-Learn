@@ -63,7 +63,7 @@ public class STextUtils {
      * @param color
      */
     public static void setSpannableView(String content, TextView tvContent, int start, int end, int color) {
-        setSpannableView(content, tvContent, start, end, color,0, false);
+        setSpannableView(content, tvContent, start, end, color, 0, false);
     }
 
     public static void setSpannableView(String content, TextView tvContent, int start, int end, int color, float large, boolean bold) {

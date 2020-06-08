@@ -80,7 +80,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
-        ActivitysManager.Add(this.getClass().getSimpleName(),this);
+        ActivitysManager.Add(this.getClass().getSimpleName(), this);
         SUtils.initScreenDisplayMetrics(this);
         myHandlder = new MyHandler(this);
         baseHelper = new BaseHelper(context, myHandlder);
@@ -106,30 +106,31 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
     private void checkView() {
         baseHelper.setMIUIStatusBarDarkMode(this);
         if (!SUtils.isNetworkAvailable(context)) {
-          /*  View view = LayoutInflater.from(this).inflate(R.layout.view_network_broken, null);
-            flContainer.addView(view);*/
+            View view = LayoutInflater.from(this).inflate(R.layout.view_network_broken, null);
+            flContainer.addView(view);
         } else {
-
+            initContentView();
+            ButterKnife.bind(this);
+            initPresenter();
+            initData();
         }
-        initContentView();
-        ButterKnife.bind(this);
-        initPresenter();
-        initData();
+
 
     }
 
     /**
      * 自定义错误
+     *
      * @param iconRes
      * @param content
      * @param tryContent
      * @param listener
      */
-    public void showErrorView(int iconRes, String content, String tryContent,View.OnClickListener listener){
+    public void showErrorView(int iconRes, String content, String tryContent, View.OnClickListener listener) {
         flContainer.removeAllViews();
         View view = LayoutInflater.from(this).inflate(R.layout.view_network_broken, null);
         ImageView ivError = view.findViewById(R.id.iv_nav);
-        SUtils.setPicResource(ivError,iconRes);
+        SUtils.setPicResource(ivError, iconRes);
         TextView tvContent = view.findViewById(R.id.tv_hint_content);
         tvContent.setText(content);
         TextView tvTry = view.findViewById(R.id.tv_reload);
@@ -142,7 +143,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
     /**
      * 初始化分享按钮
      */
-    protected void initShareButton(int res,final OnShareListener onShareListener) {
+    protected void initShareButton(int res, final OnShareListener onShareListener) {
         Button btnShare = (Button) findViewById(R.id.btn_share);
         btnShare.setVisibility(View.VISIBLE);
         btnShare.setBackgroundResource(res);
@@ -161,7 +162,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
      * 初始化分享按钮
      */
     protected void initShareButton(final OnShareListener onShareListener) {
-        initShareButton(R.drawable.topic_share_top,onShareListener);
+        initShareButton(R.drawable.topic_share_top, onShareListener);
     }
 
     protected void showRightView(String content, View.OnClickListener listener) {
@@ -277,8 +278,8 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
         rightTv = (TextView) findViewById(R.id.tv_edit);
     }
 
-    public void changeViewBackRes(int res){
-        if(viewBack == null){
+    public void changeViewBackRes(int res) {
+        if (viewBack == null) {
             return;
         }
         viewBack.setBackgroundResource(res);
@@ -323,7 +324,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
         }
     }
 
-    public void addView(View view){
+    public void addView(View view) {
         flContainer.addView(view);
     }
 
@@ -603,7 +604,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
      * @param resp
      */
     protected void showEmptyView(String msg, int resp) {
-        if(context == null){
+        if (context == null) {
             return;
         }
         flContainer.removeAllViews();
@@ -674,13 +675,13 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
         }
     }
 
-    public void showKeyboard(final View view){
+    public void showKeyboard(final View view) {
         myHandlder.postDelayed(new Runnable() {
             @Override
             public void run() {
-                SUtils.showSoftInpuFromWindow(view,context);
+                SUtils.showSoftInpuFromWindow(view, context);
             }
-        },300);
+        }, 300);
     }
 
     /**

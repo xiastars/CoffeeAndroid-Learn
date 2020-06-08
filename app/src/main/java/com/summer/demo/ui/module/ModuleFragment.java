@@ -7,8 +7,6 @@ import com.summer.demo.adapter.CommonGridAdapter;
 import com.summer.demo.bean.ModuleInfo;
 import com.summer.demo.ui.main.BaseMainFragment;
 import com.summer.demo.ui.module.colorpicker.AmbilWarnaDialog;
-import com.summer.demo.ui.module.colorpicker.AmbilWarnaDialog.OnAmbilWarnaListener;
-import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.view.NRecycleView;
 
@@ -32,12 +30,7 @@ public class ModuleFragment extends BaseMainFragment {
 	protected void initView(View view) {
 		svContainer.setGridView(3);
 		svContainer.setDivider();
-		adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
-			@Override
-			public void onClick(int position) {
-				clickChild(position);
-			}
-		});
+		adapter = new CommonGridAdapter(context, position -> clickChild(position));
 		svContainer.setAdapter(adapter);
 		List<ModuleInfo> moduleInfos = new ArrayList<>();
 		moduleInfos.add(new ModuleInfo(R.drawable.open, "SDK", ModulePos.POS_SDK));
@@ -49,13 +42,13 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_picker, "颜色选择器", ModulePos.POS_COLOR_PICKER));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_chat,"聊天",ModulePos.POS_CHAT));
 		moduleInfos.add(new ModuleInfo(R.drawable.input_emoji_2,"表情",ModulePos.POS_EMOJI));
-		moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"图片压缩",ModulePos.POS_COMPRESS_IMG));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_compress,"图片压缩",ModulePos.POS_COMPRESS_IMG));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_audio,"音频播放",ModulePos.POS_AUDIO_PLAY));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_socket,"Socket通讯",ModulePos.POS_SOCKET));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
-		moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"振动",ModulePos.POS_VIBRATE));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_upload,"上传文件",ModulePos.POS_UPLOAD));
-		moduleInfos.add(new ModuleInfo(R.drawable.ic_upload,"系统权限",ModulePos.POS_PERMISSION));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_permission,"系统权限",ModulePos.POS_PERMISSION));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_permission,"RXJava",ModulePos.POS_RXJAVA));
 
 		adapter.notifyDataChanged(moduleInfos);
 	}
@@ -63,11 +56,8 @@ public class ModuleFragment extends BaseMainFragment {
 	private void clickChild(int position) {
 		switch (position) {
 			case ModulePos.POS_COLOR_PICKER:
-				AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(context, getResColor(R.color.red_d3), new OnAmbilWarnaListener() {
-					@Override
-					public void onOk(int color) {
+				AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(context, getResColor(R.color.red_d3), color -> {
 
-					}
 				});
 				ambilWarnaDialog.show();
 				break;

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.malata.summer.helper.R;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
@@ -251,7 +252,7 @@ public abstract class SRecycleMoreAdapter extends RecyclerView.Adapter<RecyclerV
         }
     }
 
-    public void hideBottom(){
+    public void hideBottom() {
         setBottomViewGONE();
         notifyDataSetChanged();
     }

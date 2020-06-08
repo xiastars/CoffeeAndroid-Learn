@@ -16,10 +16,9 @@ import com.summer.demo.ui.SDKActivity;
 import com.summer.demo.ui.fragment.DownloadFragment;
 import com.summer.demo.ui.fragment.DragViewFragment;
 import com.summer.demo.ui.fragment.MediaPlayerFragment;
-import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
 import com.summer.demo.ui.fragment.PictureUseFragment;
-import com.summer.demo.ui.fragment.RXJavaPractice;
 import com.summer.demo.ui.fragment.ToastFragment;
+import com.summer.demo.ui.module.fragment.RXJavaFragment;
 import com.summer.demo.view.DragLayer;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.permission.PermissionUtils;
@@ -165,9 +164,6 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
             case 9:
                 JumpTo.getInstance().commonJump(context, AcViewPager.class);
                 break;
-            case 10:
-                showFragment(new MyDialogFragment());
-                break;
             case 12:
                 showFragment(new DownloadFragment());
                 break;
@@ -179,7 +175,7 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
                 showFragment(new DragViewFragment());
                 break;
             case 15:
-                showFragment(new RXJavaPractice());
+                showFragment(new RXJavaFragment());
                 break;
             case FragmentType.SDK:
                 JumpTo.getInstance().commonJump(context, SDKActivity.class);
