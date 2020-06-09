@@ -19,9 +19,18 @@ public class ImageItem implements Serializable {
     private String img;
     private long userId;
     private int size;//图片或视频大小
+    private String name;//媒体名称
 
     public ImageItem(){
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ImageItem(String img){

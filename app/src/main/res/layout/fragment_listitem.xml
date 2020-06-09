@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.summer.demo.view.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<TextView
+			style="@style/common_33"
+			android:textStyle="bold"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="15dp"
+			android:textColor="@color/red_d3"
+			android:layout_marginTop="5dp"
+			android:layout_marginBottom="5dp"
+			android:text="一般参数说明" />
+
+		<include layout="@layout/iitem_footstep" />
+
+		<TextView
+			style="@style/common_33"
+			android:textStyle="bold"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="15dp"
+			android:textColor="@color/red_d3"
+			android:layout_marginTop="5dp"
+			android:layout_marginBottom="5dp"
+			android:text="多标签话题" />
+
+		<include layout="@layout/iitem_wareface" />
+
+
+		<TextView
+			style="@style/common_33"
+			android:textStyle="bold"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="15dp"
+			android:textColor="@color/red_d3"
+			android:layout_marginTop="5dp"
+			android:layout_marginBottom="5dp"
+			android:text="基本的用户列表" />
+
+		<include layout="@layout/item_usergroup" />
+	</LinearLayout>
+
+</com.summer.demo.view.CustomScrollView>

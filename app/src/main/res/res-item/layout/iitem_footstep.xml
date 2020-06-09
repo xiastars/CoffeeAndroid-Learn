@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="36dp"
+	android:background="@color/white">
+
+
+	<TextView
+		android:id="@+id/tv_name"
+		style="@style/common_33"
+		android:text="连续签到"
+		android:textSize="13sp"
+		app:layout_constraintStart_toStartOf="parent"
+
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+
+		android:layout_marginStart="15dp"
+		app:layout_constrainedHeight="true" />
+
+	<TextView
+		android:id="@+id/tv_content"
+		style="@style/common_33"
+		android:layout_marginEnd="16dp"
+		android:text="5天"
+		android:textSize="13sp"
+		app:layout_constraintBaseline_toBaselineOf="@id/tv_name"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<View
+		android:id="@+id/line"
+		style="@style/line_horizontal"
+		android:layout_alignParentBottom="true"
+		android:layout_marginLeft="15dp"
+		app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

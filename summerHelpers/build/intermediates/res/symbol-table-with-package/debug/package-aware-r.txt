@@ -620,6 +620,7 @@ color grey_c5
 color grey_c6
 color grey_c8
 color grey_ca
+color grey_cc
 color grey_cd
 color grey_d2
 color grey_d6
@@ -666,6 +667,7 @@ color purple_2f
 color purple_3d
 color purple_56
 color purple_7d
+color purple_88
 color purple_8d
 color purple_af
 color purple_db

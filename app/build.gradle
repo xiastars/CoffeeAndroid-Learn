@@ -44,7 +44,8 @@ android {
                         'src/main/res/res-media',
                         'src/main/res/res-base',
                         'src/main/res/res-emoji',
-                        'src/main/res/res-datepicker'
+                        'src/main/res/res-datepicker',
+                        'src/main/res/res-item'
                 ]
     }
     android {
@@ -98,6 +99,7 @@ dependencies {
     implementation 'com.ghnor:flora:1.0.0-alpha1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'io.agora.rtc:full-sdk:3.0.0'
+    implementation files('libs\\tbs_sdk_thirdapp_v4.3.0.jar')
 }
 repositories {
     mavenCentral()

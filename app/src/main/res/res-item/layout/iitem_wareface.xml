@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/rl_parent"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/white"
+	android:orientation="vertical"
+	android:paddingLeft="15dp"
+	android:paddingRight="15dp">
+
+
+	<TextView
+		android:id="@+id/tv_title"
+		android:layout_width="match_parent"
+		android:layout_height="22dp"
+		android:layout_marginTop="12dp"
+		android:ellipsize="end"
+		android:gravity="center_vertical"
+		android:maxLines="1"
+		android:text="周杰伦演唱会"
+		android:textColor="@color/grey_33"
+		android:textSize="16sp"
+		app:layout_constraintTop_toBottomOf="@id/iv_nav" />
+
+	<TextView
+		android:id="@+id/tv_activity"
+		android:layout_width="wrap_content"
+		android:layout_height="14dp"
+
+		android:background="@drawable/so_purple88_3"
+		android:gravity="center"
+		android:paddingLeft="3dp"
+		android:paddingRight="3dp"
+		android:text="活动"
+
+		android:textColor="@color/white"
+		android:textSize="10sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+
+	<TextView
+		android:id="@+id/tv_vote"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_marginStart="5dp"
+		android:background="@drawable/sh_blue66_3"
+		android:gravity="center"
+		android:paddingLeft="3dp"
+		android:paddingRight="3dp"
+		android:text="投票"
+		android:textColor="@color/white"
+		android:textSize="10sp"
+		app:layout_constraintBaseline_toBaselineOf="@id/tv_activity"
+		app:layout_constraintStart_toEndOf="@id/tv_activity" />
+
+	<TextView
+		android:id="@+id/tv_draw"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_marginStart="5dp"
+		android:background="@drawable/so_yellow_ff6_3"
+		android:gravity="center"
+		android:paddingLeft="3dp"
+		android:paddingRight="3dp"
+		android:text="抽奖"
+		android:textColor="@color/white"
+		android:textSize="10sp"
+		app:layout_constraintBaseline_toBaselineOf="@id/tv_vote"
+		app:layout_constraintStart_toEndOf="@id/tv_vote" />
+
+	<TextView
+		android:id="@+id/tv_doing"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_marginStart="5dp"
+		android:background="@drawable/so_yellow_ff6_3"
+		android:gravity="center"
+		android:paddingLeft="3dp"
+		android:paddingRight="3dp"
+		android:text="进行中"
+		android:textColor="@color/white"
+		android:textSize="10sp"
+		app:layout_constraintBaseline_toBaselineOf="@id/tv_draw"
+		app:layout_constraintStart_toEndOf="@id/tv_draw" />
+
+	<TextView
+		android:id="@+id/tv_finish"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_marginStart="5dp"
+		android:background="@drawable/so_greycc_3"
+		android:gravity="center"
+		android:paddingLeft="3dp"
+		android:paddingRight="3dp"
+		android:text="完成"
+		android:textColor="@color/white"
+		android:textSize="10sp"
+		app:layout_constraintBaseline_toBaselineOf="@id/tv_doing"
+		app:layout_constraintStart_toEndOf="@id/tv_doing" />
+
+	<TextView
+		android:id="@+id/tv_time"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="4dp"
+		android:ellipsize="end"
+		android:maxLines="1"
+		android:text="12m"
+		android:textColor="@color/grey_99"
+		android:textSize="12sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+	<View
+		style="@style/line_horizontal"
+		app:layout_constraintTop_toBottomOf="@id/tv_activity"
+		app:layout_constraintStart_toStartOf="parent"
+		android:layout_marginTop="10dp"/>
+
+	<com.summer.helper.view.RoundAngleImageView
+		android:id="@+id/iv_nav"
+		android:layout_width="match_parent"
+		android:layout_height="130dp"
+		android:scaleType="centerCrop"
+		android:layout_marginTop="10dp"
+		app:corner_radius="10dp"
+		app:default_background="@drawable/so_blue4_5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

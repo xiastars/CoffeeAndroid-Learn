@@ -69,6 +69,9 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
     public TextView rightTv;
     protected LinearLayout llBack;
 
+    //是否检查网络
+    protected boolean checkNetwork = false;
+
     public T mPresenter;
     public E mModel;
     public RxManager mRxManager;
@@ -105,7 +108,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
 
     private void checkView() {
         baseHelper.setMIUIStatusBarDarkMode(this);
-        if (!SUtils.isNetworkAvailable(context)) {
+        if (checkNetwork && !SUtils.isNetworkAvailable(context)) {
             View view = LayoutInflater.from(this).inflate(R.layout.view_network_broken, null);
             flContainer.addView(view);
         } else {
@@ -114,8 +117,6 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
             initPresenter();
             initData();
         }
-
-
     }
 
     /**

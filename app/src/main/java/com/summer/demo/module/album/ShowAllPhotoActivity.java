@@ -14,10 +14,11 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.summer.demo.R;
-import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.album.adapter.AlbumGridViewAdapter;
-import com.summer.demo.module.album.util.ImageItem;
+import com.summer.demo.module.album.listener.OnItemClickListener;
 import com.summer.demo.module.album.util.AlbumSet;
+import com.summer.demo.module.album.util.ImageItem;
+import com.summer.demo.module.base.BaseActivity;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.view.NRecycleView;
@@ -130,7 +131,7 @@ public class ShowAllPhotoActivity extends BaseActivity {
     }
 
     private void initListener() {
-        gridImageAdapter.setOnItemClickListener(new AlbumGridViewAdapter.OnItemClickListener() {
+        gridImageAdapter.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(final ToggleButton toggleButton, int position, boolean isChecked, ImageView button) {
 
                 System.out.println("请求============" + mList.size() + "  ,  " + isChecked);

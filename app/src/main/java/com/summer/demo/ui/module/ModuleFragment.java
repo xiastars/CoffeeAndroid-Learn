@@ -49,6 +49,7 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_upload,"上传文件",ModulePos.POS_UPLOAD));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_permission,"系统权限",ModulePos.POS_PERMISSION));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_permission,"RXJava",ModulePos.POS_RXJAVA));
+		moduleInfos.add(new ModuleInfo(R.drawable.ic_office,"文档预览",ModulePos.POS_OFFICE));
 
 		adapter.notifyDataChanged(moduleInfos);
 	}

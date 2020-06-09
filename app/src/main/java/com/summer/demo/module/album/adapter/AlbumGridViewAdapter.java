@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.ToggleButton;
 
 import com.summer.demo.R;
+import com.summer.demo.module.album.listener.OnItemClickListener;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.helper.adapter.SRecycleAdapter;
 import com.summer.helper.utils.SUtils;
@@ -104,10 +105,6 @@ public class AlbumGridViewAdapter extends SRecycleAdapter {
 
     public void setOnItemClickListener(OnItemClickListener l) {
         mOnItemClickListener = l;
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(ToggleButton view, int position, boolean isChecked, ImageView chooseBt);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -13,6 +13,7 @@ import com.summer.demo.ui.module.fragment.CompressImgFragment;
 import com.summer.demo.ui.module.fragment.EmojiFragment;
 import com.summer.demo.ui.module.fragment.FrameAnimFragment;
 import com.summer.demo.ui.module.fragment.ListenerAlbumListener;
+import com.summer.demo.ui.module.fragment.OfficePreviewFragment;
 import com.summer.demo.ui.module.fragment.PermissionFragment;
 import com.summer.demo.ui.module.fragment.RXJavaFragment;
 import com.summer.demo.ui.module.fragment.UploadFileFragment;
@@ -99,6 +100,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
             case ModulePos.POS_RXJAVA:
                 setTitle("RXJava");
                 showFragment(new RXJavaFragment());
+                break;
+            case ModulePos.POS_OFFICE:
+                setTitle("文档预览");
+                showFragment(new OfficePreviewFragment());
                 break;
         }
     }

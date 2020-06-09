@@ -3,10 +3,17 @@ package com.summer.demo.module.album.util;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.provider.MediaStore;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
 
+import com.summer.helper.db.CommonService;
+import com.summer.helper.db.DBType;
+import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.utils.Logs;
+import com.summer.helper.utils.SFileUtils;
+import com.summer.helper.utils.idletask.IdleTaskDispatcher;
+import com.summer.helper.utils.idletask.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -145,5 +152,57 @@ public class AlbumHelper {
         }
         return tmpList;
     }
+
+    /**
+     * 初始化所有的office文件
+     * @param context
+     * @param listener
+     */
+    public void initFiles(final Context context, final OnReturnObjectClickListener listener){
+        Task task = new Task() {
+            @Override
+            public void run() {
+                CommonService commonService = new CommonService(context);
+                ArrayList<ImageItem>  dataList = new ArrayList<>();
+                // 扫描files文件库
+                Cursor c = null;
+                try {
+                    if(context == null){
+                        return;
+                    }
+                    c = context.getContentResolver().query(MediaStore.Files.getContentUri("external"), new String[]{"_id", "_data", "_size"}, null, null, null);
+                    int dataindex = c.getColumnIndex(MediaStore.Files.FileColumns.DATA);
+                    int sizeindex = c.getColumnIndex(MediaStore.Files.FileColumns.SIZE);
+
+                    while (c.moveToNext()) {
+                        String path = c.getString(dataindex);
+
+                        if (path.endsWith("ppt") || path.endsWith("pptx")|| path.endsWith("pdf") || path.endsWith("doc") || path.endsWith("docx")) {
+                            ImageItem imageItem = new ImageItem();
+                            imageItem.setImagePath(path);
+                            imageItem.setDuration(sizeindex);
+                            imageItem.setName(SFileUtils.getFileName(path));
+                            dataList.add(imageItem);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (c != null) {
+                        c.close();
+                    }
+                }
+                commonService.insert(DBType.FILE_DATA, dataList);
+                if(listener != null){
+                    listener.onClick(dataList);
+                }
+            }
+        };
+        new IdleTaskDispatcher()
+                .addTask(task)
+                .start();
+    }
+
+
 
 }

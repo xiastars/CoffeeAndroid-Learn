@@ -14,9 +14,19 @@ public final class SelectOptions {
     private int mSelectCount;
     private List<String> mSelectedImages;
     private boolean isVideoMode;
+    private SelectAlumbType selectAlumbType;
     private SelectOptions() {
 
     }
+
+    public SelectAlumbType getSelectAlumbType() {
+        return selectAlumbType;
+    }
+
+    public void setSelectAlumbType(SelectAlumbType selectAlumbType) {
+        this.selectAlumbType = selectAlumbType;
+    }
+
     public boolean isVideoMode() {
         return isVideoMode;
     }
@@ -56,6 +66,7 @@ public final class SelectOptions {
         private boolean isVideoMode;
         private int selectCount;
         private List<String> selectedImages;
+        private SelectAlumbType selectAlumbType;
 
         public Builder() {
             selectCount = 1;
@@ -81,6 +92,12 @@ public final class SelectOptions {
             this.isVideoMode = isVideo;
             return this;
         }
+
+        public Builder setSlectAlbumType(SelectAlumbType type){
+            this.selectAlumbType = type;
+            return this;
+        }
+
 
         public boolean isVideoMode() {
             return isVideoMode;
@@ -116,6 +133,7 @@ public final class SelectOptions {
             options.hasCam = hasCam;
             options.isCrop = isCrop;
             options.isVideoMode = isVideoMode;
+            options.selectAlumbType = selectAlumbType;
             options.mCropHeight = cropHeight;
             options.mCropWidth = cropWidth;
             options.mCallback = callback;
@@ -124,6 +142,7 @@ public final class SelectOptions {
             return options;
         }
     }
+
 
 
 }

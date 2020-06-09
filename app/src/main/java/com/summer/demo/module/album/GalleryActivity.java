@@ -18,6 +18,7 @@ import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.zoom.PhotoView;
 import com.summer.demo.module.album.zoom.ViewPagerFixed;
 import com.summer.demo.module.base.BaseActivity;
+import com.summer.demo.view.CommonSureView5;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.SUtils;
 
@@ -33,7 +34,7 @@ public class GalleryActivity extends BaseActivity {
     // 发送按钮
     private Button send_bt;
     // 删除按钮
-    private Button del_bt;
+    private CommonSureView5 del_bt;
     // 顶部显示预览图片位置的textview
     private TextView positionTextView;
     // 获取前一个activity传过来的position
@@ -68,7 +69,7 @@ public class GalleryActivity extends BaseActivity {
         AlbumSet.activitys.add(this);
         mContext = this;
         send_bt = (Button) findViewById( R.id.send_button );
-        del_bt = (Button) findViewById( R.id.btn_right );
+        del_bt = (CommonSureView5) findViewById( R.id.btn_right );
         send_bt.setOnClickListener(new GallerySendListener());
         del_bt.setOnClickListener(new DelListener());
         intent = getIntent();
