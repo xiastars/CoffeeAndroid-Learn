@@ -31,8 +31,8 @@ import com.summer.demo.module.album.util.AlbumSet;
 import com.summer.demo.module.album.util.ImageBucket;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.base.BaseActivity;
+import com.summer.demo.module.base.dialog.TipDialog;
 import com.summer.demo.view.CommonSureView5;
-import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
@@ -54,8 +54,6 @@ import butterknife.OnClick;
  */
 public class AlbumActivity extends BaseActivity implements OnClickListener, OnItemClickListener {
 
-    //获取图片的code
-    public static final int REQUEST_CODE = 12;
     @BindView(R.id.myGrid)
     NRecycleView myGrid;
     @BindView(R.id.nv_list)
@@ -70,25 +68,29 @@ public class AlbumActivity extends BaseActivity implements OnClickListener, OnIt
     RelativeLayout rlBottom;
     @BindView(R.id.tv_finish)
     TextView tvFinish;
+
     CommonSureView5 btnSure;
     //显示手机里的所有图片的列表控件
     private NRecycleView gridView;
     //gridView的adapter
     private AlbumGridViewAdapter gridImageAdapter;
-
+    TipDialog tipDialog;
     //Office文件
     DocFileAdapter docFileAdapter;
-    private Intent intent;
-    private ArrayList<ImageItem> dataList;
-    private AlbumHelper helper;
-    public static List<ImageBucket> contentList;
-    ArrayList<ImageItem> tempSelectBitmap;
 
+    private Intent intent;
+    private AlbumHelper helper;
     private static SelectOptions mOption;
+
     //选择文件的类型
     SelectAlumbType selectAlumbType = SelectAlumbType.Image;
-
+    ArrayList<ImageItem> tempSelectBitmap;
+    private ArrayList<ImageItem> dataList;
+    public static List<ImageBucket> contentList;
+    //更新文档
     final int MSG_NOTIFY_FILE = 1;
+    //获取图片的code
+    public static final int REQUEST_CODE = 12;
 
 
     /**
@@ -114,9 +116,10 @@ public class AlbumActivity extends BaseActivity implements OnClickListener, OnIt
         //选择图片数量
         AlbumSet.MAX_SELECT_COUNT = mOption.getSelectCount();
         selectAlumbType = mOption.getSelectAlumbType();
-        if(selectAlumbType == SelectAlumbType.Image){
+        if (selectAlumbType == SelectAlumbType.Image) {
             rlBottom.setVisibility(View.VISIBLE);
-        }else{
+        } else {
+            tipDialog = new TipDialog(context);
             rlBottom.setVisibility(View.GONE);
         }
         init();
@@ -189,13 +192,20 @@ public class AlbumActivity extends BaseActivity implements OnClickListener, OnIt
     @Override
     public void onItemClick(ToggleButton toggleButton, int position, boolean isChecked, ImageView ivSelect) {
         if (tempSelectBitmap.size() >= AlbumSet.MAX_SELECT_COUNT) {
-            toggleButton.setChecked(false);
+            if (toggleButton != null) {
+                toggleButton.setChecked(false);
+            }
             ivSelect.setVisibility(View.GONE);
             if (!removeOneData(dataList.get(position))) {
                 if (AlbumSet.MAX_SELECT_COUNT == 1) {
                     tempSelectBitmap.clear();
-                    gridImageAdapter.notifyDataSetChanged();
-                    toggleButton.setChecked(true);
+                    if (gridImageAdapter != null) {
+                        gridImageAdapter.notifyDataSetChanged();
+                    }
+                    if (toggleButton != null) {
+                        toggleButton.setChecked(true);
+                    }
+
                 } else {
                     Toast.makeText(AlbumActivity.this, getString(R.string.only_choose_num), Toast.LENGTH_SHORT).show();
                     return;
@@ -418,6 +428,9 @@ public class AlbumActivity extends BaseActivity implements OnClickListener, OnIt
     }
 
     private void notifyAdapter() {
+        if(tipDialog != null){
+            tipDialog.cancelDialog();
+        }
         //更新界面
         runOnUiThread(new Runnable() {
             @Override
@@ -517,7 +530,7 @@ public class AlbumActivity extends BaseActivity implements OnClickListener, OnIt
         super.handleMsg(position, object);
         switch (position) {
             case MSG_NOTIFY_FILE:
-                LoadingDialog.cancelDialogForLoading();
+
                 notifyAdapter();
                 break;
         }

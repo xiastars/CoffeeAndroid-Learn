@@ -16,6 +16,7 @@ import com.summer.helper.utils.SThread;
 import com.summer.helper.utils.SUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,9 @@ public class AppContext extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        builder.detectFileUriExposure();
         Logs.isDebug = DEBUGMODE;
 
         initApp();
@@ -47,7 +51,31 @@ public class AppContext extends BaseApplication {
             SERVER_MODE = SUtils.getIntegerData(this, "server_mode");
         }
         setDefault();
+        initTBS();
     }
+
+    private void initTBS() {
+        //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+
+        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
+
+            @Override
+            public void onViewInitFinished(boolean arg0) {
+                // TODO Auto-generated method stub
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                Logs.i("QBS onViewInitFinished is " + arg0);
+            }
+
+            @Override
+            public void onCoreInitFinished() {
+                // TODO Auto-generated method stub
+                Logs.i("QBS onViewInitFinished is ");
+            }
+        };
+        //x5内核初始化接口
+        QbSdk.initX5Environment(getApplicationContext(), cb);
+    }
+
 
     private void setDefault() {
 

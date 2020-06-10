@@ -1,55 +1,38 @@
 package com.summer.demo.ui.module.fragment;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.summer.demo.R;
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.module.album.bean.SelectAlumbType;
 import com.summer.demo.module.album.bean.SelectOptions;
-import com.summer.demo.module.album.listener.AlbumCallback;
-import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.base.BaseFragment;
-import com.summer.demo.ui.module.fragment.office.ReadView;
+import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.helper.permission.PermissionUtils;
-import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
 import com.tencent.smtt.sdk.TbsReaderView;
-
-import java.util.List;
 
 import butterknife.BindView;
 
 /**
  * @Description: 浏览word, ppt, excel
+ * @Caution 此版本abs库不支持arm64, NDK里不要带arm64
  * @Author: xiastars@vip.qq.com
  * @CreateDate: 2020/6/9 13:40
  */
 public class OfficePreviewFragment extends BaseFragment implements TbsReaderView.ReaderCallback {
 
-    ReadView readView;
-    @BindView(R.id.tv_name)
-    TextView tvName;
+    TbsReaderView readView;
     @BindView(R.id.rl_root)
     RelativeLayout rlRoot;
-    @BindView(R.id.btn_sure)
-    Button btnSure;
-    private String mFileName;
 
     @Override
     protected void initView(View view) {
-        readView = new ReadView(context, this);
+        readView = new TbsReaderView(context, this);
         rlRoot.addView(readView, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        //rlRoot.addView(new DragLayer(context), new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-       // String nameContent = "文档名称:" + SFileUtils.getFileName(mFileName);
-
-        //tvName.setText(STextUtils.getSpannableString(nameContent, 5, nameContent.length(), getResColor(R.color.blue_56)));
         openFile();
     }
 
@@ -59,35 +42,21 @@ public class OfficePreviewFragment extends BaseFragment implements TbsReaderView
         }
         SelectOptions.Builder builder = new SelectOptions.Builder();
         builder.setSlectAlbumType(SelectAlumbType.File);
-        builder.setCallback(new AlbumCallback() {
-            @Override
-            public void doSelected(List<ImageItem> images) {
-               openFile(images.get(0).getImagePath());
-            }
-        });
+        builder.setCallback(images -> openFile(images.get(0).getImagePath()));
         AlbumActivity.show(context, builder.build());
     }
 
-    private String parseName(String url) {
-        String fileName = null;
-        try {
-            fileName = url.substring(url.lastIndexOf("/") + 1);
-        } finally {
-            if (TextUtils.isEmpty(fileName)) {
-                fileName = String.valueOf(System.currentTimeMillis());
-            }
-        }
-        return fileName;
-    }
-
+    /**
+     * 打开文件
+     * @param path
+     */
     private void openFile(String path) {
-        Logs.i("path;;;;;;;;;;;;", path);
         Bundle bundle = new Bundle();
         bundle.putString("filePath", path);
-        bundle.putString("tempPath", path);
-        String mFileName = SFileUtils.getFileName(path);
-        Logs.i("fileName:"+mFileName);
-        boolean result = readView.preOpen(mFileName, false);
+        //存储目录
+        bundle.putString("tempPath", SFileUtils.getFileDirectory());
+        ((BaseFragmentActivity) activity).setTitle(SFileUtils.getFileName(path));
+        boolean result = readView.preOpen(parseFormat(path), false);
         if (result) {
             readView.openFile(bundle);
         }
@@ -98,6 +67,13 @@ public class OfficePreviewFragment extends BaseFragment implements TbsReaderView
         return R.layout.fragment_office;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(readView != null){
+            readView.onStop();
+        }
+    }
 
     @Override
     protected void dealDatas(int requestCode, Object obj) {
@@ -108,10 +84,9 @@ public class OfficePreviewFragment extends BaseFragment implements TbsReaderView
         return fileName.substring(fileName.lastIndexOf(".") + 1);
     }
 
+
     @Override
     public void onCallBackAction(Integer integer, Object o, Object o1) {
-        Log.i("-------------", "intent:" + integer + ",," + o + ",,," + o1);
+
     }
-
-
 }
