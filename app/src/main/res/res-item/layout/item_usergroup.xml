@@ -74,11 +74,11 @@
 		android:layout_height="50dp"
 		android:layout_marginStart="10dp"
 		android:layout_marginTop="10dp"
-		app:layout_constraintTop_creator="2"
 		android:scaleType="centerCrop"
 		app:default_background="@drawable/so_redd4_5"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_creator="2"
 		app:layout_constraintTop_toTopOf="parent"
 		app:oval="true" />
 

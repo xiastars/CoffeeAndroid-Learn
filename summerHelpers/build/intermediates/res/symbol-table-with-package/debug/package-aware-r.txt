@@ -590,6 +590,7 @@ color green_1c
 color green_29
 color green_2b
 color green_31
+color green_35
 color green_4b
 color green_53
 color green_66

@@ -42,4 +42,7 @@ public class ModulePos {
     public static final int POS_RXJAVA = 16;
     //office阅读
     public static final int POS_OFFICE = 17;
+
+    //NFC
+    public static final int POS_NFC = 18;
 }

@@ -1,9 +1,9 @@
 package com.summer.demo.module.album.bean;
 
 import com.summer.demo.module.album.listener.AlbumCallback;
+import com.summer.demo.module.album.util.ImageItem;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public final class SelectOptions {
@@ -12,7 +12,7 @@ public final class SelectOptions {
     private AlbumCallback mCallback;
     private boolean hasCam;
     private int mSelectCount;
-    private List<String> mSelectedImages;
+    private List<ImageItem> mSelectedImages;
     private boolean isVideoMode;
     private SelectAlumbType selectAlumbType;
     private SelectOptions() {
@@ -54,7 +54,7 @@ public final class SelectOptions {
         return mSelectCount;
     }
 
-    public List<String> getSelectedImages() {
+    public List<ImageItem> getSelectedImages() {
         return mSelectedImages;
     }
 
@@ -65,7 +65,7 @@ public final class SelectOptions {
         private boolean hasCam;
         private boolean isVideoMode;
         private int selectCount;
-        private List<String> selectedImages;
+        private List<ImageItem> selectedImages;
         private SelectAlumbType selectAlumbType;
 
         public Builder() {
@@ -115,16 +115,9 @@ public final class SelectOptions {
             return this;
         }
 
-        public Builder setSelectedImages(List<String> selectedImages) {
+        public Builder setSelectedImages(List<ImageItem> selectedImages) {
             if (selectedImages == null || selectedImages.size() == 0) return this;
             this.selectedImages.addAll(selectedImages);
-            return this;
-        }
-
-        public Builder setSelectedImages(String[] selectedImages) {
-            if (selectedImages == null || selectedImages.length == 0) return this;
-            if (this.selectedImages == null) this.selectedImages = new ArrayList<>();
-            this.selectedImages.addAll(Arrays.asList(selectedImages));
             return this;
         }
 

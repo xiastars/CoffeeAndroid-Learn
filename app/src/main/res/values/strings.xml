@@ -67,4 +67,8 @@
 
     <string name="toast_no_empty">内容不能为空</string>
 
+    <string name="tip_nfc_notfound">no nfc hardware!</string>
+    <string name="tip_nfc_disabled">nfc disabled</string>
+    <string name="tip_nfc_enabled">nfc enabled</string>
+
 </resources>

@@ -1,21 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-	android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<EditText
-		android:id="@+id/edt_content"
-		style="@style/common_button"
-		android:layout_centerInParent="true"
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="52dp" />
+		android:layout_height="wrap_content"
 
-	<Button
-		android:id="@+id/btn_change_input"
-		android:layout_below="@id/edt_content"
-		android:layout_width="match_parent"
-		android:text="隐藏/显示"
-		android:layout_height="35dp"
-		style="@style/common_button"/>
+		android:orientation="vertical"
+		android:padding="10dp">
 
-</RelativeLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:background="@drawable/so_white"
+			android:paddingBottom="10dp"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:padding="10dp">
+
+			<TextView
+				style="@style/common_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="一键清除内容" />
+
+			<com.summer.demo.view.ClearEditText
+				android:layout_width="match_parent"
+				android:layout_height="100dp" />
+
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/so_white"
+			android:layout_marginTop="10dp"
+			android:paddingBottom="10dp"
+			android:orientation="vertical"
+			android:padding="10dp">
+
+
+			<TextView
+				style="@style/common_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="控制密码的显示与保密" />
+
+			<EditText
+				android:id="@+id/edt_content"
+				android:layout_width="match_parent"
+				android:layout_height="52dp"
+				android:layout_centerInParent="true" />
+
+
+			<Button
+				android:id="@+id/btn_change_input"
+				style="@style/common_button2"
+				android:layout_width="match_parent"
+				android:layout_height="35dp"
+				android:layout_below="@id/edt_content"
+				android:text="显示密码" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/so_white"
+			android:layout_marginTop="10dp"
+			android:paddingBottom="10dp"
+			android:orientation="vertical"
+			android:padding="10dp">
+			<TextView
+				style="@style/common_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="限制长度与显示长度" />
+
+			<com.summer.demo.module.base.view.HintEditTextView
+				android:layout_width="match_parent"
+				app:summer_hint="请输入内容"
+				android:layout_height="100dp" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/so_white"
+			android:layout_marginTop="10dp"
+			android:paddingBottom="10dp"
+			android:orientation="vertical"
+			android:padding="10dp">
+			<TextView
+				style="@style/common_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="验证码输入的一种样式" />
+			<com.summer.demo.view.VerificationCodeEditText
+				android:id="@+id/vc_input"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_marginLeft="48dp"
+				android:layout_marginRight="48dp"
+				android:layout_marginTop="20dp"
+				android:textColor="@color/blue_56"
+				android:textSize="40sp"
+				android:inputType="textFilter"
+				android:maxLines="1"
+				app:bottomFocusColor="@color/green_35"
+				app:bottomLineHeight="2dp"
+				app:bottomLineNormalColor="@color/grey_c5"
+				app:bottomLineSelectedColor="@color/blue_56"
+				app:figures="5"
+				app:selectedBackgroundColor="@color/transparent"
+				app:verCodeMargin="10dp" />
+		</LinearLayout>
+
+
+	</LinearLayout>
+
+
+</ScrollView>

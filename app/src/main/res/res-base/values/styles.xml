@@ -24,4 +24,15 @@
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 
+
+	<declare-styleable name="SummerHintEdit">
+		<attr name="summer_hint_color" format="color" />
+		<attr name="summer_text_color" format="color" />
+		<attr name="summer_hint" format="string" />
+		<attr name="summer_maxLength" format="integer" />
+		<attr name="summer_content" format="string" />
+		<attr name="summer_text_size" format="dimension" />
+		<attr name="summer_position" format="integer" />
+	</declare-styleable>
+
 </resources>

@@ -20,6 +20,7 @@ public class SubjectInfo implements Serializable{
 
     public void setAdd(boolean add) {
         isAdd = add;
+        title = "        ";
     }
 
     public boolean isMoreView() {

@@ -20,6 +20,7 @@ import com.summer.demo.ui.module.fragment.UploadFileFragment;
 import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
+import com.summer.demo.ui.module.fragment.nfc.NFCActivity;
 import com.summer.demo.ui.module.fragment.socket.SocketFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
@@ -104,6 +105,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
             case ModulePos.POS_OFFICE:
                 setTitle("文档预览");
                 showFragment(new OfficePreviewFragment());
+                break;
+            case ModulePos.POS_NFC:
+                setTitle("NFC");
+                JumpTo.getInstance().commonJump(context, NFCActivity.class);
                 break;
         }
     }

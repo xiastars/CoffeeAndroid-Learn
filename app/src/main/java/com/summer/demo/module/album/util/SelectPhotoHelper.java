@@ -105,30 +105,39 @@ public class SelectPhotoHelper {
      * 进入相册，选择多张图片
      * @param count
      */
-    public void enterToAlbumForMore(int count){
+    public void enterToAlbumForMore(int count,List<ImageItem> items){
         if(!PermissionUtils.checkReadPermission(context)){
             return;
         }
         SelectOptions.Builder builder = new SelectOptions.Builder();
         builder.setSelectCount(count);
-        builder.setCallback(new AlbumCallback() {
-            @Override
-            public void doSelected(List<ImageItem> images) {
-                if(!SUtils.isEmptyArrays(images)){
-                    String imgPaath = images.get(0).getImagePath();
-                    if (croped) {
-                        imgFile = new File(imgPaath);
-                        cropImage();
-                        return;
-                    }
+        if(items != null){
+            builder.setSelectedImages(items);
+        }
+        builder.setCallback(images -> {
+            if(!SUtils.isEmptyArrays(images)){
+                String imgPaath = images.get(0).getImagePath();
+                if (croped) {
+                    imgFile = new File(imgPaath);
+                    cropImage();
+                    return;
+                }
 
-                    if (listener != null) {
-                        listener.onClick(images);
-                    }
+                if (listener != null) {
+                    listener.onClick(images);
                 }
             }
         });
         AlbumActivity.show(context, builder.build());
+    }
+
+
+    /**
+     * 进入相册，选择多张图片
+     * @param count
+     */
+    public void enterToAlbumForMore(int count){
+        enterToAlbumForMore(count,null);
     }
 
     /**

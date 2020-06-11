@@ -109,7 +109,7 @@ public class AlbumActivity extends BaseActivity implements OnClickListener, OnIt
         setTitle("最近照片");
         AlbumSet.activitys.add(this);
         //用户可能选择图片后，重新进行选择
-        tempSelectBitmap = (ArrayList<ImageItem>) JumpTo.getObject(this);
+        tempSelectBitmap = (ArrayList<ImageItem>) mOption.getSelectedImages();
         if (tempSelectBitmap == null) {
             tempSelectBitmap = new ArrayList<>();
         }

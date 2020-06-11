@@ -586,7 +586,6 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
                 }
                 historyData.addAll(subjectInfos);
                 SubjectInfo subjectInfo = new SubjectInfo();
-                subjectInfo.setTitle("  +  ");
                 subjectInfo.setMoreView(true);
                 subjectInfo.setAdd(true);
                 subjectInfo.setTextColor(getResColor(R.color.blue_56));
@@ -811,7 +810,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
     private boolean hasMedieas() {
         boolean hasMedieas = false;
         if (!SUtils.isEmptyArrays(images)) {
-            //ShowMediaActivity.show(context, images, false, isAskMode);
+            ShowMediaActivity.show(context, images, false);
             return true;
         }
         return hasMedieas;
@@ -1329,7 +1328,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
                 imageItem.setVideoPath(videoPath);
                 images.add(imageItem);
                // ShowMediaVideoActivity.show(context, images, true, false,isReviseMode);
-                //JumpTo.getInstance().commonJump(context, ShowVideoActivity.class, videoPath);
+                JumpTo.getInstance().commonJump(context, ShowVideoActivity.class, videoPath);
             }
         });
     }

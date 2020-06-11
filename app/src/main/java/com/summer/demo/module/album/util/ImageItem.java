@@ -21,10 +21,28 @@ public class ImageItem implements Serializable {
     private int size;//图片或视频大小
     private String name;//媒体名称
     boolean isFake;//临时使用，用完不要了
+    int imageWidth;//图片宽度
+    int imageHeight;//图片高度
 
 
     public ImageItem(){
 
+    }
+
+    public int getImageWidth() {
+        return imageWidth;
+    }
+
+    public void setImageWidth(int imageWidth) {
+        this.imageWidth = imageWidth;
+    }
+
+    public int getImageHeight() {
+        return imageHeight;
+    }
+
+    public void setImageHeight(int imageHeight) {
+        this.imageHeight = imageHeight;
     }
 
     public boolean isFake() {

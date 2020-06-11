@@ -3,7 +3,6 @@ package com.summer.demo.ui.view.commonfragment;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.text.method.HideReturnsTransformationMethod;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -65,16 +64,20 @@ public class EditTextFragment extends BaseFragment implements View.OnClickListen
         switch (v.getId()){
             case R.id.btn_change_input:
                 Logs.i(".."+(EditorInfo.TYPE_CLASS_TEXT |  InputType.TYPE_TEXT_VARIATION_PASSWORD));
-                if(edtContent.getInputType() == (EditorInfo.TYPE_CLASS_TEXT |  InputType.TYPE_TEXT_VARIATION_PASSWORD)){
+                if(edtContent.getInputType() ==  (EditorInfo.TYPE_CLASS_TEXT |  InputType.TYPE_TEXT_VARIATION_PASSWORD)){
                     //设置密码可见
-                    edtContent.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    //edtContent.setInputType(EditorInfo.TYPE_CLASS_TEXT | EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+                    //edtContent.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    edtContent.setInputType(EditorInfo.TYPE_CLASS_TEXT | EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     //光标置后
                     STextUtils.setSelection(edtContent);
+                    btnChangeInput.setText("隐藏密码");
                     Logs.i((EditorInfo.TYPE_CLASS_TEXT | EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)+"");
                 }else{
                     //设置密码不可见
-                    //edtContent.setInputType(EditorInfo.TYPE_CLASS_TEXT |  InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    //edtContent.setTransformationMethod( PasswordTransformationMethod.getInstance());
+                    edtContent.setInputType(EditorInfo.TYPE_CLASS_TEXT |  InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    btnChangeInput.setText("显示密码");
                     //光标置后
                     STextUtils.setSelection(edtContent);
                 }

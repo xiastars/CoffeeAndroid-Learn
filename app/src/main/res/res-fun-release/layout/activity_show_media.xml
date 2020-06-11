@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_parent"
+    android:background="#88ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_img"
+        android:background="#88ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.summer.demo.module.base.viewpager.ConvenientBottomBanner
+            android:id="@+id/cb_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:clipChildren="false" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:background="@drawable/so_black45_alpha"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@id/cb_container"
+            android:layout_marginTop="15dp"
+            android:text="删除"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:id="@+id/rl_video_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/iv_video_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+
+            <com.summer.demo.ui.mine.release.view.NFVideoPlayer
+                android:id="@+id/vd_play"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_video_play"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/details_post_play_icon" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

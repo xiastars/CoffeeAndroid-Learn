@@ -191,6 +191,8 @@ public class TagGroup extends ViewGroup {
     boolean isAppendTagMark = true;//是否前后加#
     boolean shouldChangeStatus = true;//点击是否更改状态
 
+    int viewHeight,viewWidth;
+
     public TagGroup(Context context) {
         this(context, null);
     }
@@ -281,6 +283,7 @@ public class TagGroup extends ViewGroup {
                 }
                 rowWidth += horizontalSpacing;
             }
+            viewWidth = childWidth;
         }
      /*   if (addMoreRow && getTags() != null && getTags().size() < 5) {
             height += SUtils.getDip(getContext(), 20);
@@ -289,7 +292,7 @@ public class TagGroup extends ViewGroup {
 
         // Account for the padding too.
         height += getPaddingTop() + getPaddingBottom();
-
+        viewHeight = height;
         // If the tags grouped in one row, set the width to wrap the tags.
         if (row == 0) {
             width = rowWidth;
@@ -766,14 +769,20 @@ public class TagGroup extends ViewGroup {
             }
             //ivDelete.setVisibility(tagInfo.isDeletable() ? View.VISIBLE : View.GONE);
             // Interrupted long click event to avoid PAUSE popup.
+            Logs.i("tagInfp:"+tagInfo.isAdd());
+            //设置添加标签的样式
             if (tagInfo.isAdd()) {
                 ImageView ivAdd = new ImageView(context);
                 this.addView(ivAdd);
                 SUtils.setPicResource(ivAdd, R.drawable.home_star_add_icon);
                 RelativeLayout.LayoutParams addparams = (RelativeLayout.LayoutParams) ivAdd.getLayoutParams();
                 addparams.width = SUtils.getDip(context, 12);
-                addparams.leftMargin = SUtils.getDip(context, 21);
-                addparams.topMargin = SUtils.getDip(context, 2);
+                addparams.height = SUtils.getDip(context, 12);
+                this.post(() -> {
+                    addparams.leftMargin = (viewWidth - addparams.width)/2;
+                    addparams.topMargin =  (viewHeight- addparams.height)/2;
+                });
+
             }
 
             setOnLongClickListener(new OnLongClickListener() {

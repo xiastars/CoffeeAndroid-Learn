@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:clipChildren="false"
+	android:orientation="vertical">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clipChildren="false">
+
+		<RelativeLayout
+			android:id="@+id/loPageTurningPoint"
+			android:layout_width="match_parent"
+			android:layout_height="20dp"
+			android:layout_below="@id/cbLoopViewPager"
+			android:layout_marginTop="15dp"
+			android:layout_marginBottom="10dp"
+			android:gravity="bottom"
+			android:visibility="visible" />
+
+		<!-- 翻页指示点的viewgroup -->
+		<com.summer.demo.module.base.viewpager.CBLoopViewPager
+			android:id="@+id/cbLoopViewPager"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/black"
+			android:clipToPadding="false" />
+
+	</RelativeLayout>
+
+</LinearLayout>

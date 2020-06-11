@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<Button
+			android:id="@+id/button_initial"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="校准值设定" />
+
+		<Button
+			android:id="@+id/button_body"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="体温测量" />
+
+		<Button
+			android:id="@+id/button_room"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="室温测量" />
+
+
+		<EditText
+			android:id="@+id/editText1"
+			android:layout_width="match_parent"
+			android:layout_height="347dp"
+			android:layout_weight="2.22"
+			android:ems="10"
+			android:textColor="@color/grey_d2"
+			android:textSize="32sp">
+
+			<requestFocus />
+		</EditText>
+	</LinearLayout>
+</ScrollView>

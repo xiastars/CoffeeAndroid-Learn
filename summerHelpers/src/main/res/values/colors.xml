@@ -42,6 +42,7 @@
     <color name="red_ff4">#FF4D4F</color>
 
     <!-- 青色 -->
+    <color name="green_35">#35F0FE</color>
     <color name="green_53">#53d769</color>
     <color name="green_66">#66CC66</color>
     <color name="green_6f">#6fc313</color>
@@ -120,7 +121,6 @@
     <color name="grey_22">#222222</color>
     <color name="grey_1b">#1b1b1b</color>
     <color name="grey_0f">#0F0F0F</color>
-
 
     <color name="grey_31">#313235</color>
 
