@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_renew_warn" />
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_renew"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/group_content"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="120dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:gravity="center|top|left"
+            android:hint="这一刻，你在想什么？"
+            android:maxLength="10000"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/grey_4a"
+            android:textColorHint="#B3B0BB"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_pic"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/iv_pics"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/picture_add_icon"
+                android:scaleType="centerCrop" />
+
+            <RelativeLayout
+                android:id="@+id/rl_more_pic"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@color/black88"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/picture_more_icon" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_audio_play"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/blue_56">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/so_trans_white_45" />
+
+                <ImageView
+                    android:id="@+id/iv_play"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/voice02_icon" />
+
+                <TextView
+                    android:id="@+id/tv_audio_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_video_mark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black88" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/video2_icon" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_address"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/rl_pic"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/so_white_greyd2_45"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/location_icon" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxWidth="200dp"
+                android:text="添加位置"
+                android:textColor="@color/grey_93"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_watermark"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_alignBottom="@id/ll_address"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_watermark"
+                android:layout_width="28dp"
+                android:background="@drawable/selected_watermark_icon"
+                android:layout_height="28dp" />
+
+            <TextView
+                style="@style/grey93_14"
+                android:layout_marginLeft="10dp"
+                android:text="水印"
+                android:textColor="@color/grey_d2" />
+
+        </LinearLayout>
+
+        <com.summer.demo.ui.mine.release.view.ToggleButton
+            android:id="@+id/tb_anony"
+            style="@style/option_item_toggleButton"
+            android:layout_width="77dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="32dp"
+            android:layout_alignBottom="@id/ll_address"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="添加话题"
+            android:textColor="@color/grey_4a"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="选择合适的话题，能被更多人看见哦"
+            android:textColor="@color/grey_93"
+            android:textSize="12sp" />
+
+        <com.summer.demo.ui.mine.release.view.TagGroup
+            android:id="@+id/tg_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:clipChildren="false" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_relase_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_subject"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="试试发语音？"
+        android:textColor="@color/blue_56"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_relase_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_relase_audio"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="试试发长视频？"
+        android:textColor="@color/blue_56"
+        android:textSize="16sp" />
+
+    <View
+        style="@style/line_horizontal_d8"
+        android:layout_above="@+id/rl_bottom" />
+
+    <RelativeLayout
+        android:id="@+id/rl_audio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue_56">
+
+        <include
+            android:id="@+id/rl_audio_container"
+            layout="@layout/include_audio"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

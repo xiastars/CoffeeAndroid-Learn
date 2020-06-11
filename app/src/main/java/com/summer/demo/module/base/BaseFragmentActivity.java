@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,13 +57,12 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
 
     MaterialRefreshLayout scrollView;
 
+    protected FragmentManager fragmentManager;
     public BaseHelper baseHelper;
     ReceiverUtils receiverUtils;
     Resources resources;
 
     boolean isEmptyViewShowing;
-    boolean isActivityFinished;
-    //OnShareListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
         myHandlder = new MyHandler(this);
         baseHelper = new BaseHelper(context, myHandlder);
         baseHelper.setMIUIStatusBarDarkMode(this);
+        fragmentManager = this.getSupportFragmentManager();
         setContentView(R.layout.activity_base);
         initTitleView();
         checkView();

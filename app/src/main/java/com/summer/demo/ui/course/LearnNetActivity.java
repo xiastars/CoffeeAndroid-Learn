@@ -5,6 +5,7 @@ import android.content.Context;
 import com.summer.demo.R;
 import com.summer.demo.ui.BaseTitleListActivity;
 import com.summer.helper.utils.JumpTo;
+import com.summer.helper.web.WebContainerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public class LearnNetActivity extends BaseTitleListActivity {
             case 3:
                 JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, 15);
                 break;
+
         }
     }
 

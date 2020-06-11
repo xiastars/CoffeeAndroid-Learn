@@ -414,7 +414,7 @@ public class VideoEditActivity extends BaseActivity {
                 @Override
                 public void getResult(Uri uri) {
                     //JumpTo.getInstance().commonJump(context, ShowVideoDialog.class,saveCutPath);
-                    mCompressor = new Compressor(VideoEditActivity.this);
+                    mCompressor = new Compressor();
                     mCompressor.loadBinary(new InitListener() {
                         @Override
                         public void onLoadSuccess() {
@@ -454,7 +454,7 @@ public class VideoEditActivity extends BaseActivity {
         final String cmd = "-i " + inputVideo + " -ss " + startTimeFormat + " -to " + endTimeFormat + " -acodec aac -ar 8000 -ac 2 -b:a 5k " + outPutVideo;
 
         Logs.i("cmd:" + cmd);
-        mCompressor = new Compressor(VideoEditActivity.this);
+        mCompressor = new Compressor();
         mCompressor.loadBinary(new InitListener() {
             @Override
             public void onLoadSuccess() {

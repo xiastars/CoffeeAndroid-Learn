@@ -45,7 +45,8 @@ android {
                         'src/main/res/res-base',
                         'src/main/res/res-emoji',
                         'src/main/res/res-datepicker',
-                        'src/main/res/res-item'
+                        'src/main/res/res-item',
+                        'src/main/res/res-fun-release'
                 ]
     }
     android {

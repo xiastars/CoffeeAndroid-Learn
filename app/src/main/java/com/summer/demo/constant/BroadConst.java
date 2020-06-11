@@ -8,4 +8,27 @@ package com.summer.demo.constant;
 public class BroadConst {
 
     public static final String NOTIFY_ALBUM_DELETE = "data.broadcast.action";
+
+    /**
+     * 删除话题后更新
+     */
+    public static final String NOTIFY_DELETE_SUBJECT = "NOTIFY_DELETE_SUBJECT";
+
+    /**
+     * 发布主题时，图片内容有变化时
+     */
+    public static final String NOTIFY_MEDIA_CHANGED = "NOTIFY_MEDIA_CHANGED";
+
+    /**
+     * 更新星球信息
+     */
+    public static final String NOITFY_REFRESH_GROUP = "NOITFY_REFRESH_GROUP";
+
+    /**
+     * 刷新正在创建的话题列表
+     */
+    public static final String NOTIFY_FAKE_TOPIC = "NOTIFY_FAKE_TOPIC";
+
+
+
 }

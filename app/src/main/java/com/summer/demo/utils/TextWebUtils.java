@@ -535,12 +535,11 @@ public class TextWebUtils {
 
     /**
      * 将话题格式化
-     *
-     * @param info
+
      * @return
      */
-    public static String returnTag(SubjectInfo info) {
-        return "<e type=\"hashtag\" title=\"" + info.getTitle() + "\" hid=\"" + info.getId() + "\" />";
+    public static String returnTag(String title,String id) {
+        return "<e type=\"hashtag\" title=\"" + title + "\" hid=\"" + id + "\" />";
     }
 
 }

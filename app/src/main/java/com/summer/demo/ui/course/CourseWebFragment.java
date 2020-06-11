@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.summer.demo.R;
 import com.summer.demo.module.base.BaseFragment;
-import com.summer.helper.view.RoundAngleImageView;
 import com.summer.helper.web.CustomWebView;
 
 import butterknife.BindView;
@@ -23,10 +21,6 @@ public class CourseWebFragment extends BaseFragment {
 
     @BindView(R.id.webview_container)
     CustomWebView webviewContainer;
-    @BindView(R.id.iv_loading_icon)
-    RoundAngleImageView ivLoadingIcon;
-    @BindView(R.id.loading_container)
-    LinearLayout loadingContainer;
     @BindView(R.id.rl_container_layout)
     RelativeLayout rlContainerLayout;
 

@@ -231,6 +231,7 @@
 
         <TextView
             style="@style/grey4a_16"
+            android:text="发送多媒体文件至服务器的示例"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="45dp"

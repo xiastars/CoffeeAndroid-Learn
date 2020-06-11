@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="252dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View style="@style/line_horizontal_f1" />
+
+    <LinearLayout
+        android:id="@+id/ll_record_unset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击录音"
+            android:textColor="#ff93909e"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_record"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/questions_voice_record_start_icon" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_recording"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_record_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="点击录音"
+            android:textColor="#ff93909e"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_recording"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_below="@id/tv_record_time"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/questions_voice_recording_icon" />
+
+        <ProgressBar
+            android:id="@+id/iv_left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@id/iv_recording"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_toLeftOf="@id/iv_recording"
+            android:indeterminateDrawable="@drawable/audio_left" />
+
+        <ProgressBar
+            android:id="@+id/iv_right"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@id/iv_recording"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/iv_recording"
+            android:indeterminateDrawable="@drawable/audio_right" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_recoded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_autio_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="点击录音"
+            android:textColor="#ff93909e"
+            android:textSize="16sp" />
+
+        <com.summer.demo.ui.mine.release.view.CircleProgressImageView
+            android:id="@+id/iv_audio_play"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_below="@id/tv_autio_time"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_audio_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="#ffafa8d2"
+                android:textSize="16sp" />
+
+            <View
+                style="@style/line_vertical"
+                android:layout_above="@id/ll_audio_bottom" />
+
+            <TextView
+                android:id="@+id/tv_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="保存"
+                android:textColor="@color/blue_56"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_horizontal_f1"
+            android:layout_above="@id/ll_audio_bottom" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -25,6 +25,19 @@ public class WebContainerActivity extends Activity {
 	public WebTopBarManager webTopBarManager;
 	ProgressBar mProgressBar;
 
+	/**
+	 * 直接跳转
+	 * @param context
+	 * @param url
+	 * @param title
+	 */
+	public static void show(Context context,String url,String title){
+		Intent intent = new Intent(context,WebContainerActivity.class);
+		intent.putExtra(JumpTo.TYPE_STRING, title);
+		intent.putExtra(JumpTo.ShortcutJump.TYPE_URL, url);
+		context.startActivity(intent);
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -110,6 +123,8 @@ public class WebContainerActivity extends Activity {
 		}
 		return super.dispatchKeyEvent(event);
 	}
+
+
 	
 	@Override
 	protected void onStop() {

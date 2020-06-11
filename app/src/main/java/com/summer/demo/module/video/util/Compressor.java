@@ -1,12 +1,11 @@
 package com.summer.demo.module.video.util;
 
-import android.app.Activity;
-
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
+import com.summer.demo.AppContext;
 
 
 /**
@@ -14,11 +13,9 @@ import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedExceptio
  */
 public class Compressor {
 
-    public Activity a;
     public FFmpeg ffmpeg;
-    public Compressor(Activity activity){
-        a = activity;
-        ffmpeg = FFmpeg.getInstance(a);
+    public Compressor(){
+        ffmpeg = FFmpeg.getInstance(AppContext.getInstance());
     }
 
     public void loadBinary(final InitListener mListener) {

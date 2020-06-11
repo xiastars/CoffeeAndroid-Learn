@@ -1,7 +1,5 @@
 package com.summer.helper.web;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -19,13 +17,11 @@ import android.view.ViewGroup;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.malata.summer.helper.R;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.JumpTo.ShortcutJump;
 import com.summer.helper.utils.Logs;
-import com.summer.helper.view.RoundAngleImageView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,11 +34,8 @@ public class WebViewActivity extends Activity {
 	protected static final FrameLayout.LayoutParams COVER_SCREEN_PARAMS = new FrameLayout.LayoutParams(
 			ViewGroup.LayoutParams.MATCH_PARENT,
 			ViewGroup.LayoutParams.MATCH_PARENT);
-	
-	RoundAngleImageView ivLoadingIcon;
+
 	CustomWebView mCurrentWebView;
-	LinearLayout loadingContainer;
-	
 	private FullscreenHolder mFullscreenContainer;
 	private View mVideoProgressView = null;
 	private Bitmap mDefaultVideoPoster = null;
@@ -53,8 +46,6 @@ public class WebViewActivity extends Activity {
 	
 	boolean isPreviousEnable = false;
 	private String loadPageUrl;
-	private String navUrl;
-	private String iconUrl;
 	private String title;
 	private Dialog mDialog;
 	private boolean isLoadingEnd = false;
@@ -78,9 +69,7 @@ public class WebViewActivity extends Activity {
 	}
 	
 	private void initView() {
-		loadingContainer = (LinearLayout) findViewById(R.id.loading_container);
 		mCurrentWebView = (CustomWebView) findViewById(R.id.webview_container);
-		ivLoadingIcon = (RoundAngleImageView) findViewById(R.id.iv_loading_icon);
 		activity.webTopBarManager.setCurrentWebView(mCurrentWebView);
 	}
 
@@ -101,9 +90,6 @@ public class WebViewActivity extends Activity {
 		ActivitysManager.Add("WebViewActivity_"+loadPageUrl, WebViewActivity.this);
 		if(!TextUtils.isEmpty(title)){
 			this.getCurrentWebView().setOriginalTitle(title);
-		}
-		if(!TextUtils.isEmpty(iconUrl)){
-			this.getCurrentWebView().setGameIcon(iconUrl);
 		}
 
 	}
@@ -148,12 +134,7 @@ public class WebViewActivity extends Activity {
 		activity.getProgressBar().setVisibility(View.GONE);
 		setLoadingGone();
 	}
-	
-	private void setLoadingVisible() {
-		if(isLoadingEnd)return;
-		loadingContainer.setVisibility(View.VISIBLE);
-		ivLoadingIcon.clearAnimation();
-	}
+
 	
 	private Handler mHandler = new Handler(){
 
@@ -191,39 +172,6 @@ public class WebViewActivity extends Activity {
 	
 	@SuppressLint("NewApi")
 	private void setLoadingGone() {
-//		activity.webTopBarManager.getIconLayout().setVisibility(View.VISIBLE);
-		ivLoadingIcon.clearAnimation();
-//		SUtils.setPic(ivImage, mDefaultIcon, true, new SimpleTarget() {
-//
-//			@Override
-//			public void onResourceReady(Object arg0, GlideAnimation arg1) {
-//				if (arg0 != null && arg0 instanceof GlideBitmapDrawable) {
-//					Bitmap bitmap = ((GlideBitmapDrawable) arg0).getBitmap();
-//					if (!bitmap.isRecycled()) {
-//						ivImage.setImageBitmap(bitmap);
-//						invalidate();
-//						requestLayout();
-//					}
-//				}
-//			}
-//		});
-		ivLoadingIcon.animate().scaleX(2.0f).scaleY(2.0f).setListener(new AnimatorListener() {
-			@Override
-			public void onAnimationStart(Animator animation) {
-			}
-			@Override
-			public void onAnimationRepeat(Animator animation) {
-			}
-			@Override
-			public void onAnimationEnd(Animator animation) {
-				loadingContainer.setVisibility(View.GONE);
-				ivLoadingIcon.clearAnimation();
-			}
-			
-			@Override
-			public void onAnimationCancel(Animator animation) {
-			}
-		}).start();
 		isLoadingEnd = true;
 	}
 	

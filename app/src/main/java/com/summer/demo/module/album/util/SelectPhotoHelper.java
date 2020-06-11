@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import com.summer.demo.dialog.SelectPhotoDialog;
 import com.summer.demo.module.album.AlbumActivity;
+import com.summer.demo.module.album.bean.SelectAlumbType;
 import com.summer.demo.module.album.bean.SelectOptions;
 import com.summer.demo.module.album.listener.AlbumCallback;
 import com.summer.helper.listener.OnReturnObjectClickListener;
@@ -121,6 +122,29 @@ public class SelectPhotoHelper {
                         return;
                     }
 
+                    if (listener != null) {
+                        listener.onClick(images);
+                    }
+                }
+            }
+        });
+        AlbumActivity.show(context, builder.build());
+    }
+
+    /**
+     * 选择视频
+     */
+    public void selectVideo(){
+        if(!PermissionUtils.checkReadPermission(context)){
+            return;
+        }
+        SelectOptions.Builder builder = new SelectOptions.Builder();
+        builder.setSelectCount(1);
+        builder.setSlectAlbumType(SelectAlumbType.Video);
+        builder.setCallback(new AlbumCallback() {
+            @Override
+            public void doSelected(List<ImageItem> images) {
+                if(!SUtils.isEmptyArrays(images)){
                     if (listener != null) {
                         listener.onClick(images);
                     }

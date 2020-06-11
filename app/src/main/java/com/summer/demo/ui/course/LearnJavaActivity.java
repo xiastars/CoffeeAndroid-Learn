@@ -3,6 +3,7 @@ package com.summer.demo.ui.course;
 import android.content.Context;
 
 import com.summer.demo.R;
+import com.summer.demo.module.base.web.WebContainerActivity;
 import com.summer.demo.ui.BaseTitleListActivity;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
@@ -52,6 +53,10 @@ public class LearnJavaActivity extends BaseTitleListActivity {
                     break;
                 case 3:
                     JumpTo.getInstance().commonJump(context, CourseContainerActivity.class, MarkdownPos.BACK_QUEUE3, title);
+                    break;
+                case 4:
+                    String url = "https://segmentfault.com/a/1190000018626163";
+                    WebContainerActivity.show(context,url,"服务端高并发分布式架构演进之路");
                     break;
             }
         } else {

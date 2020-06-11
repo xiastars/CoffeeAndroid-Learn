@@ -66,6 +66,25 @@ public abstract class CommonHelper {
         baseHelper.requestData(requestCode, className, params, url, post);
     }
 
+    public void putData(int requestCode, Class className, SummerParameter params, final String url) {
+        baseHelper.putData(requestCode, className, params, url);
+    }
+
+
+    public void delete(int requestCode, Class className, SummerParameter params, final String url) {
+        baseHelper.deleteData(requestCode, className, params, url);
+    }
+
+    public void postData(int requestCode, Class className, SummerParameter params, final String url) {
+        baseHelper.requestData(requestCode, className, params, url, true);
+    }
+
+
+    public void getData(int requestCode, Class className, SummerParameter params, final String url) {
+        baseHelper.requestData(requestCode, className, params, url, false);
+    }
+
+
     public void setListener(OnReturnDataResultListener listener) {
         this.listener = listener;
     }

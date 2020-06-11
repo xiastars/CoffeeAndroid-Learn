@@ -20,9 +20,19 @@ public class ImageItem implements Serializable {
     private long userId;
     private int size;//图片或视频大小
     private String name;//媒体名称
+    boolean isFake;//临时使用，用完不要了
+
 
     public ImageItem(){
 
+    }
+
+    public boolean isFake() {
+        return isFake;
+    }
+
+    public void setFake(boolean fake) {
+        isFake = fake;
     }
 
     public String getName() {

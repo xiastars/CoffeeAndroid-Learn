@@ -116,7 +116,7 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
                 });
                 baseSureDialog.show();
                 break;
-            case 6:
+            case 6://纯提示加载
                 TipDialog tipDialog = new TipDialog(context);
                 tipDialog.setLoadContent("这是加载内容");
                 tipDialog.show();

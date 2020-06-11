@@ -60,6 +60,8 @@
         <activity android:name=".module.album.ImageFileActivity" />
         <activity android:name=".module.video.VideoEditActivity" />
         <activity android:name=".module.video.ViewVideoActivity" />
+        <activity android:name=".module.base.web.WebContainerActivity" />
+        <activity android:name=".ui.mine.release.ReleaseTopicActivity" />
     </application>
 
 </manifest>

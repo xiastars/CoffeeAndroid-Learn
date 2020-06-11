@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:duration="400">
+        <clip xmlns:android="http://schemas.android.com/apk/res/android"
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/left_1"
+            android:gravity="left" />
+    </item>
+    <item android:duration="400">
+        <clip xmlns:android="http://schemas.android.com/apk/res/android"
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/left_2"
+            android:gravity="left" />
+    </item>
+    <item android:duration="400">
+        <clip xmlns:android="http://schemas.android.com/apk/res/android"
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/left_3"
+            android:gravity="left" />
+    </item>
+
+</animation-list>

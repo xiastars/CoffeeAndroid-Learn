@@ -5,7 +5,7 @@ package com.summer.demo.bean;
  * @Author: xiastars@vip.qq.com
  * @CreateDate: 2019/6/14 17:19
  */
-public class SubjectInfo {
+public class SubjectInfo  {
 
     String id;
     String title;

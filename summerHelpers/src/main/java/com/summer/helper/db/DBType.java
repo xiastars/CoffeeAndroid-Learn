@@ -17,4 +17,7 @@ public class DBType {
 
 	public static final int FILE_DATA = 8004;
 
+	//发送话题的演示
+	public static final int SEND_TOPIC = 0;
+
 }
