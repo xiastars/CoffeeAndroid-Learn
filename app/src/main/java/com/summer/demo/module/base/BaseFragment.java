@@ -19,8 +19,7 @@ import android.widget.LinearLayout;
 
 import com.summer.demo.R;
 import com.summer.demo.bean.BaseResp;
-import com.summer.demo.constant.ApiConstants;
-import com.summer.demo.helper.PlayAudioHelper;
+import com.summer.demo.module.base.helper.audio.PlayAudioHelper;
 import com.summer.demo.utils.CUtils;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.recycle.MaterialRefreshListener;
@@ -339,94 +338,46 @@ public abstract class BaseFragment extends Fragment {
         return baseHelper.getHandleTime();
     }
 
-    public void requestData(Class className, SummerParameter params, final String url, boolean post) {
-        requestData(0, className, params, url, post);
+    public void putData(int requestCode, Class className, SummerParameter params, final String url) {
+        if (baseHelper == null) {
+            return;
+        }
+        baseHelper.setIsRefresh(isRefresh);
+        baseHelper.putData(requestCode, className, params, url);
+    }
+
+
+    public void delete(int requestCode, Class className, SummerParameter params, final String url) {
+        if (baseHelper == null) {
+            return;
+        }
+        baseHelper.setIsRefresh(isRefresh);
+        baseHelper.deleteData(requestCode, className, params, url);
+    }
+
+    public void postData(int requestCode, Class className, SummerParameter params, final String url) {
+        if (baseHelper == null) {
+            return;
+        }
+        baseHelper.setIsRefresh(isRefresh);
+        baseHelper.getData(requestCode, className, params, url);
     }
 
     /**
-     * 1.2接口get数据
-     *
+     * 普通的GET
      * @param requestCode
      * @param className
      * @param params
      * @param url
      */
-    public void getDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
+    public void getData(final int requestCode, final Class className, SummerParameter params, final String url){
         if (baseHelper == null) {
             return;
         }
         baseHelper.setIsRefresh(isRefresh);
-        baseHelper.requestData(requestCode, ApiConstants.getHostVersion2(), 0, className, params, url, 0, false);
+        baseHelper.getData(requestCode, className, params, url);
     }
 
-    /**
-     * 1.2接口put数据
-     *
-     * @param requestCode
-     * @param className
-     * @param params
-     * @param url
-     */
-    public void putDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
-        if (baseHelper == null) {
-            return;
-        }
-        baseHelper.setIsRefresh(isRefresh);
-        baseHelper.putData(requestCode, ApiConstants.getHostVersion2(), className, params, url);
-    }
-
-    /**
-     * 1.2接口delete数据
-     *
-     * @param requestCode
-     * @param className
-     * @param params
-     * @param url
-     */
-    public void deleteDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
-        if (baseHelper == null) {
-            return;
-        }
-        baseHelper.setIsRefresh(isRefresh);
-        baseHelper.deleteData(requestCode, ApiConstants.getHostVersion2(), className, params, url);
-    }
-
-
-    /**
-     * 1.2接口get数据
-     *
-     * @param requestCode
-     * @param className
-     * @param params
-     * @param url
-     */
-    public void postDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
-        if (baseHelper == null) {
-            return;
-        }
-        baseHelper.setIsRefresh(isRefresh);
-        baseHelper.requestData(requestCode, ApiConstants.getHostVersion2(), 0, className, params, url, 1, false);
-    }
-
-    public void requestData(int requestCode, Class className, SummerParameter params, final String url, boolean post) {
-        if (baseHelper == null) {
-            return;
-        }
-        baseHelper.setIsRefresh(isRefresh);
-        baseHelper.requestData(requestCode, className, params, url, post);
-    }
-
-    public void requestData(int requestCode, int limitTime, Class className, SummerParameter params, final String url, boolean post) {
-        requestData(requestCode, className, params, url, post, false);
-    }
-
-    public void requestData(int requestCode, Class className, SummerParameter params, final String url, boolean post, boolean isArray) {
-        if (baseHelper == null) {
-            return;
-        }
-        baseHelper.setIsRefresh(isRefresh);
-        baseHelper.requestData(requestCode, 0, className, params, url, post, isArray);
-    }
 
     @Override
     public void onResume() {

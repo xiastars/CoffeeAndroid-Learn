@@ -20,16 +20,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
+import com.summer.demo.bean.BaseResp;
 import com.summer.demo.module.base.baserx.BaseModel;
 import com.summer.demo.module.base.baserx.BasePresenter;
 import com.summer.demo.module.base.baserx.RxManager;
 import com.summer.demo.module.base.baserx.TUtil;
+import com.summer.demo.module.base.listener.OnShareListener;
 import com.summer.demo.module.base.swipe.SwipeBackActivity;
-import com.summer.demo.bean.BaseResp;
-import com.summer.demo.constant.ApiConstants;
-import com.summer.demo.listener.OnShareListener;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.demo.utils.CUtils;
-import com.summer.demo.view.CommonSureView5;
 import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.BitmapUtils;
@@ -343,85 +342,45 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
         }
     }
 
-    public void requestData(Class className, SummerParameter params, final String url, boolean post) {
+    public void putData(int requestCode, Class className, SummerParameter params, final String url) {
+        if (baseHelper == null) {
+            return;
+        }
         baseHelper.setIsRefresh(isRefresh);
-        baseHelper.requestData(0, className, params, url, post);
+        baseHelper.putData(requestCode, className, params, url);
     }
 
-    public void putData(int requestType, Class className, SummerParameter params, final String url) {
+
+    public void delete(int requestCode, Class className, SummerParameter params, final String url) {
+        if (baseHelper == null) {
+            return;
+        }
         baseHelper.setIsRefresh(isRefresh);
-        baseHelper.putData(requestType, className, params, url);
+        baseHelper.deleteData(requestCode, className, params, url);
     }
 
-    public void requestData(int requestCode, Class className, SummerParameter params, final String url, boolean post) {
-        requestData(requestCode, className, params, url, post, false);
-    }
-
-    public void requestData(int requestCode, Class className, SummerParameter params, final String url, boolean post, boolean isArray) {
+    public void postData(int requestCode, Class className, SummerParameter params, final String url) {
+        if (baseHelper == null) {
+            return;
+        }
         baseHelper.setIsRefresh(isRefresh);
-        baseHelper.requestData(requestCode, 0, className, params, url, post, isArray);
+        baseHelper.getData(requestCode, className, params, url);
     }
 
     /**
-     * 1.2接口put数据
+     * 普通的GET
      *
      * @param requestCode
      * @param className
      * @param params
      * @param url
      */
-    public void getDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
+    public void getData(final int requestCode, final Class className, SummerParameter params, final String url) {
         if (baseHelper == null) {
             return;
         }
-        baseHelper.requestData(requestCode, ApiConstants.getHostVersion2(), 300, className, params, url, 0, false);
-    }
-
-    /**
-     * 1.2接口put数据
-     *
-     * @param requestCode
-     * @param className
-     * @param params
-     * @param url
-     */
-    public void putDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
-        if (baseHelper == null) {
-            return;
-        }
-        baseHelper.putData(requestCode, ApiConstants.getHostVersion2(), className, params, url);
-    }
-
-    /**
-     * 1.2接口delete数据
-     *
-     * @param requestCode
-     * @param className
-     * @param params
-     * @param url
-     */
-    public void deleteDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
-        if (baseHelper == null) {
-            return;
-        }
-
-        baseHelper.deleteData(requestCode, ApiConstants.getHostVersion2(), className, params, url);
-    }
-
-
-    /**
-     * 1.2接口get数据
-     *
-     * @param requestCode
-     * @param className
-     * @param params
-     * @param url
-     */
-    public void postDataTwo(int requestCode, Class className, SummerParameter params, final String url) {
-        if (baseHelper == null) {
-            return;
-        }
-        baseHelper.requestData(requestCode, ApiConstants.getHostVersion2(), 0, className, params, url, 1, false);
+        baseHelper.setIsRefresh(isRefresh);
+        baseHelper.getData(requestCode, className, params, url);
     }
 
 

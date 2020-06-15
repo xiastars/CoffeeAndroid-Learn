@@ -18,7 +18,7 @@ import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.zoom.PhotoView;
 import com.summer.demo.module.album.zoom.ViewPagerFixed;
 import com.summer.demo.module.base.BaseActivity;
-import com.summer.demo.view.CommonSureView5;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.SUtils;
 

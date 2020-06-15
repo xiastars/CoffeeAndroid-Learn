@@ -15,7 +15,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.summer.demo.AppContext;
 import com.summer.demo.R;
 import com.summer.demo.bean.BaseResp;
-import com.summer.demo.constant.ApiConstants;
+import com.summer.demo.module.base.constant.ApiConstants;
 import com.summer.demo.constant.SharePreConst;
 import com.summer.demo.utils.CodeRespondUtils;
 import com.summer.demo.utils.ServerFileUtils;
@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by xiaqiliang on 2017/5/2.
+ * Created by xiastars@vip.qq.com on 2017/5/2.
  */
 
 public class BaseHelper {
@@ -87,19 +87,6 @@ public class BaseHelper {
         this.myHandlder = myHandlder;
     }
 
-    /**
-     * 请求数据
-     *
-     * @param requestCode
-     * @param className
-     * @param params
-     * @param url
-     * @param post
-     */
-    public void requestData(final int requestCode, final Class className, SummerParameter params, final String url, boolean post) {
-        requestData(requestCode, 0, className, params, url, post);
-    }
-
     void setMIUIStatusBarDarkMode(Activity activity) {
         Logs.i("PostData.MANUFACTURER" + PostData.MANUFACTURER);
         if (PostData.MANUFACTURER.equals("Xiaomi")) {
@@ -119,21 +106,55 @@ public class BaseHelper {
     }
 
     /**
-     * 请求数据
-     *
-     * @param limitTime 数据重新请求限定时间
-     * @param className 要注入的类
+     * 普通的GET
+     * @param requestCode
+     * @param className
      * @param params
-     * @param url       链接
-     * @param post      是否是Post
+     * @param url
      */
-    public void requestData(final int requestCode, int limitTime, final Class className, SummerParameter params, final String url, boolean post) {
-        requestData(requestCode, limitTime, className, params, url, post, false);
+    public void getData(final int requestCode, final Class className, SummerParameter params, final String url){
+        requestData(requestCode, null, 0, className, params, url,0, false);
     }
 
-    public void requestData(final int requestCode, int limitTime, final Class className, SummerParameter params, String url, boolean post, final boolean isArray) {
-        requestData(requestCode, null, limitTime, className, params, url, post ? 1 : 0, isArray);
+
+    /**
+     * 普通的GET
+     * @param requestCode
+     * @param limitTime
+     * @param className
+     * @param params
+     * @param url
+     */
+    public void getDataWithLimitTime(final int requestCode, int limitTime,final Class className, SummerParameter params, final String url){
+        requestData(requestCode, null, limitTime, className, params, url,0, false);
     }
+
+
+    /**
+     * 普通的GET
+     * @param requestCode
+     * @param className
+     * @param params
+     * @param url
+     */
+    public void postData(final int requestCode, final Class className, SummerParameter params, final String url){
+        requestData(requestCode, null, 0, className, params, url,1, false);
+    }
+
+
+    /**
+     * 普通的GET
+     * @param requestCode
+     * @param limitTime
+     * @param className
+     * @param params
+     * @param url
+     */
+    public void postDataWithLimitTime(final int requestCode, int limitTime,final Class className, SummerParameter params, final String url){
+        requestData(requestCode, null, limitTime, className, params, url,1, false);
+    }
+
+
 
     public void putData(final int requestCode, final Class className, SummerParameter params, String url) {
         requestData(requestCode, null, 0, className, params, url, 2, false);

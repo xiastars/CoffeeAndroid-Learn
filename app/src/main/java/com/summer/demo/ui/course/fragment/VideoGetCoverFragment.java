@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.summer.demo.R;
 import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.module.video.framepicker.MediaMetadataRetrieverCompat;
-import com.summer.demo.view.CommonSureView5;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.helper.utils.SFileUtils;
 import com.summer.helper.utils.SUtils;
 

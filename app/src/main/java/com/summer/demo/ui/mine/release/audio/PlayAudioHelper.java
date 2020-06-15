@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.summer.demo.listener.OnAudioPlayListener;
+import com.summer.demo.module.base.helper.audio.OnAudioPlayListener;
 import com.summer.demo.ui.mine.release.bean.TopicVoiceInfo;
 import com.summer.helper.utils.Logs;
 

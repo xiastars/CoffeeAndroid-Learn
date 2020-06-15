@@ -62,10 +62,6 @@ public abstract class CommonHelper {
         }
     }
 
-    public void requestData(int requestCode, Class className, SummerParameter params, final String url, boolean post) {
-        baseHelper.requestData(requestCode, className, params, url, post);
-    }
-
     public void putData(int requestCode, Class className, SummerParameter params, final String url) {
         baseHelper.putData(requestCode, className, params, url);
     }
@@ -76,12 +72,12 @@ public abstract class CommonHelper {
     }
 
     public void postData(int requestCode, Class className, SummerParameter params, final String url) {
-        baseHelper.requestData(requestCode, className, params, url, true);
+        baseHelper.getData(requestCode, className, params, url);
     }
 
 
     public void getData(int requestCode, Class className, SummerParameter params, final String url) {
-        baseHelper.requestData(requestCode, className, params, url, false);
+        baseHelper.getData(requestCode, className, params, url);
     }
 
 

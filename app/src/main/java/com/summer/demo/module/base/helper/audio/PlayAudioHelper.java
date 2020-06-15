@@ -1,4 +1,4 @@
-package com.summer.demo.helper;
+package com.summer.demo.module.base.helper.audio;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 import com.summer.demo.AppContext;
-import com.summer.demo.listener.OnAudioPlayListener;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 

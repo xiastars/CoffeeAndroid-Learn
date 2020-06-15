@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.summer.demo.R;
 import com.summer.demo.dialog.BaseTipsDialog;
-import com.summer.demo.listener.OnAudioPlayListener;
+import com.summer.demo.module.base.helper.audio.OnAudioPlayListener;
 import com.summer.demo.ui.mine.release.view.CircleProgressImageView;
 import com.summer.demo.utils.BaseUtils;
 import com.summer.demo.utils.CUtils;

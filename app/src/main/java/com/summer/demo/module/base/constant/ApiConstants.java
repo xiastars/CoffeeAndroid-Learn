@@ -1,4 +1,4 @@
-package com.summer.demo.constant;
+package com.summer.demo.module.base.constant;
 
 import com.summer.demo.AppContext;
 

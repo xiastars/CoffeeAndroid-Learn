@@ -32,7 +32,7 @@ import com.summer.demo.module.album.util.ImageBucket;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.base.dialog.TipDialog;
-import com.summer.demo.view.CommonSureView5;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;

@@ -54,7 +54,7 @@
 					android:textSize="15sp" />
 			</RelativeLayout>
 
-			<com.summer.demo.view.CommonSureView5
+			<com.summer.demo.module.base.view.CommonSureView5
 				android:id="@+id/btn_send"
 				android:layout_width="47dp"
 				android:layout_alignBottom="@id/rl_edit_parent"

@@ -17,7 +17,7 @@ import com.ghnor.flora.callback.Callback;
 import com.summer.demo.AppContext;
 import com.summer.demo.R;
 import com.summer.demo.bean.BaseResp;
-import com.summer.demo.constant.ApiConstants;
+import com.summer.demo.module.base.constant.ApiConstants;
 import com.summer.demo.constant.BroadConst;
 import com.summer.demo.helper.ImgHelper;
 import com.summer.demo.module.album.util.ImageItem;

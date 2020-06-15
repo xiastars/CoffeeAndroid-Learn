@@ -11,7 +11,7 @@ import android.text.TextUtils;
 
 import com.summer.demo.AppContext;
 import com.summer.demo.bean.BaseResp;
-import com.summer.demo.constant.ApiConstants;
+import com.summer.demo.module.base.constant.ApiConstants;
 import com.summer.demo.constant.BroadConst;
 import com.summer.demo.module.video.util.CompressListener;
 import com.summer.demo.module.video.util.Compressor;

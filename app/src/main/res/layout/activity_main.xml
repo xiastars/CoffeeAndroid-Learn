@@ -2,14 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".AcMain" >
+    android:background="#FFFFFF">
     
     <LinearLayout 
        android:id="@+id/title"
 	   android:layout_width="fill_parent"
 	   android:layout_height="46dp"
-	   android:background="@color/action_bar_co"
+	   android:background="@color/blue_4c"
 	   android:orientation="vertical" >
 	   <TextView
 	       android:layout_width="match_parent"

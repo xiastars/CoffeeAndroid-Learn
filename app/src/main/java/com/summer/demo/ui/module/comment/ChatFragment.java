@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import com.summer.demo.R;
 import com.summer.demo.bean.UserInfo;
 import com.summer.demo.module.base.BaseFragment;
-import com.summer.demo.view.CommonSureView5;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.helper.server.PostData;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.Logs;
@@ -137,7 +137,7 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
         parameter.put("message_id", lastId);
         parameter.putLog("聊天");
         parameter.setShowVirtualData();
-        getDataTwo(REQUEST_CHAT, ChatTopInfo.class, parameter, "dynamics/chats/users/" + userId);
+        getData(REQUEST_CHAT, ChatTopInfo.class, parameter, "dynamics/chats/users/" + userId);
     }
 
     @Override
@@ -270,7 +270,7 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
         parameter.put("send_time", System.currentTimeMillis());
         parameter.put("group_id", groupId);
         parameter.putLog("发送聊天");
-        postDataTwo(reqeustCommentCode, ChatTopInfo.class, parameter, "dynamics/chats/users/" + userId);
+        getData(reqeustCommentCode, ChatTopInfo.class, parameter, "dynamics/chats/users/" + userId);
     }
 
     private void scollToBottom(int position) {

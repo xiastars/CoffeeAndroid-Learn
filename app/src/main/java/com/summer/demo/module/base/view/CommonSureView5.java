@@ -1,4 +1,4 @@
-package com.summer.demo.view;
+package com.summer.demo.module.base.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

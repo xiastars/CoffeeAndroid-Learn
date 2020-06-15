@@ -22,7 +22,7 @@ import android.widget.TextView;
 import com.summer.demo.R;
 import com.summer.demo.constant.BroadConst;
 import com.summer.demo.dialog.BaseTipsDialog;
-import com.summer.demo.listener.OnAudioPlayListener;
+import com.summer.demo.module.base.helper.audio.OnAudioPlayListener;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.util.SelectPhotoHelper;
 import com.summer.demo.module.base.BaseActivity;
@@ -39,7 +39,7 @@ import com.summer.demo.ui.mine.release.view.ToggleButton;
 import com.summer.demo.utils.BaseUtils;
 import com.summer.demo.utils.CUtils;
 import com.summer.demo.utils.TextWebUtils;
-import com.summer.demo.view.CommonSureView5;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.server.PostData;
@@ -195,7 +195,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
         return R.layout.activity_topic_ask_publish;
     }
 
-    public static void showVideoOrAudio(Context context, GroupDetInfo detailInfo, String videoPath, String audioPath, String contentText, String topicId, String groupId,String address) {
+    public static void showVideoOrAudio(Context context, GroupDetInfo detailInfo, String videoPath, String audioPath, String contentText, String topicId, String groupId, String address) {
         Intent intent = new Intent(context, ReleaseTopicActivity.class);
         intent.putExtra(JumpTo.TYPE_OBJECT, (Serializable) detailInfo);
         if (detailInfo == null) {
@@ -206,18 +206,18 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
         intent.putExtra("content", contentText);
         intent.putExtra("reviseMode", true);
         intent.putExtra("topicId", topicId);
-        intent.putExtra("address",address);
+        intent.putExtra("address", address);
         context.startActivity(intent);
     }
 
-    public static void show(Context context, GroupDetInfo detailInfo, ArrayList<ImageItem> img, String contentText, String topicId, String groupId,String address) {
+    public static void show(Context context, GroupDetInfo detailInfo, ArrayList<ImageItem> img, String contentText, String topicId, String groupId, String address) {
         Intent intent = new Intent(context, ReleaseTopicActivity.class);
         intent.putExtra(JumpTo.TYPE_OBJECT, (Serializable) detailInfo);
         intent.putExtra("imgs", (Serializable) img);
         if (detailInfo == null) {
             intent.putExtra("group_id", groupId);
         }
-        intent.putExtra("address",address);
+        intent.putExtra("address", address);
         intent.putExtra("content", contentText);
         intent.putExtra("reviseMode", true);
         intent.putExtra("topicId", topicId);
@@ -295,7 +295,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
             showModifyVideoMode(videoPath);
         }
         String address = intent.getStringExtra("address");
-        if(!TextUtils.isEmpty(address)){
+        if (!TextUtils.isEmpty(address)) {
             localAddress = address;
             tvAddress.setText(address);
         }
@@ -410,7 +410,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
         final SummerParameter params = PostData.getPostParameters(context);
         params.put("scope", "all");
         params.putLog("获取星球详情");
-        getDataTwo(REQUEST_GROUP_DETAIL, GroupDetInfo.class, params, "groups/" + groupId);
+        getData(REQUEST_GROUP_DETAIL, GroupDetInfo.class, params, "groups/" + groupId);
     }
 
     @Override
@@ -451,7 +451,6 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
                 } else {
 
                     images = arrayList;
-                    Logs.i("images" + images);
                     if (!SUtils.isEmptyArrays(images)) {
                         if (images.size() > 1) {
                             rlMorePic.setVisibility(View.VISIBLE);
@@ -461,7 +460,6 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
                         btnSend.changeStyle(true);
                         SUtils.setPic(ivPics, images.get(0).getImagePath());
                     } else {
-                        Logs.i("images" + images);
                         resetImgCover();
                     }
                 }
@@ -518,7 +516,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
             spannableStringBuilder.append(spannableString);
             spannableStringBuilder.append(" ");
-            spannableStringBuilder = TextWebUtils.generateOneSpan(context, spannableStringBuilder, TextWebUtils.returnTag(info.getTitle(),info.getId()), mEtGroupDesc.getTextSize(), getResColor(R.color.grey_4a));
+            spannableStringBuilder = TextWebUtils.generateOneSpan(context, spannableStringBuilder, TextWebUtils.returnTag(info.getTitle(), info.getId()), mEtGroupDesc.getTextSize(), getResColor(R.color.grey_4a));
             spannableStringBuilder.append(" ");
             mEtGroupDesc.setText(spannableStringBuilder);
             SUtils.setSelection(mEtGroupDesc);
@@ -531,7 +529,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
         SummerParameter parameter = PostData.getPostParameters(context);
         parameter.putLog("话题列表");
         parameter.setShowVirtualData();
-        requestData(0, SubjectTopInfo.class, parameter, "groups/hash_tags",true);
+        postData(0, SubjectTopInfo.class, parameter, "groups/hash_tags");
     }
 
     private void showModifyAudioMode(String audioPath) {
@@ -777,7 +775,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
                 break;
             case R.id.iv_watermark:
                 CUtils.onClick(context, "discuss_watermark");
-                if(isAnony){
+                if (isAnony) {
                     return;
                 }
                 changeWatermarkState();
@@ -931,7 +929,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
 
             String id = info.getId();
             if (content.contains("\" hid=\"" + id + "\" />")) {
-                if(passedSubject == null){
+                if (passedSubject == null) {
                     passedSubject = info;
                 }
                 if (TextUtils.isEmpty(subjectId)) {
@@ -1067,12 +1065,12 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
     public void selectVideo() {
         CUtils.onClick(context, "discuss_video");
         if (!PermissionUtils.checkReadPermission(context)) {
-            return ;
+            return;
         }
         SelectPhotoHelper selectPhotoHelper = new SelectPhotoHelper(context, new OnReturnObjectClickListener() {
             @Override
             public void onClick(Object object) {
-                ArrayList<ImageItem> arrayList = (ArrayList<ImageItem>)object;
+                ArrayList<ImageItem> arrayList = (ArrayList<ImageItem>) object;
                 if (arrayList != null && arrayList.size() > 0) {
                     images = null;
                     sendType = 1;
@@ -1094,7 +1092,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
             sendTopic();
         }
         if (fromWhere == 1) {
-           //跳转到哪里去
+            //跳转到哪里去
         }
     }
 
@@ -1154,52 +1152,52 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
         long tempKey = System.currentTimeMillis();
         intent.putExtra("key_time", tempKey);
         /**
-        boolean isWaiting = createFakeTopic(tempKey, subjectID);
-        if (!isWaiting) {
-            startService(intent);
-        }
+         boolean isWaiting = createFakeTopic(tempKey, subjectID);
+         if (!isWaiting) {
+         startService(intent);
+         }
          **/
         finishActivity();
     }
 
     /**
-    private boolean createFakeTopic(long time, String subjectIds) {
-        CommonService mService = new CommonService(context);
-        List<TopicDetailInfo> items = (List<TopicDetailInfo>) mService.getListData(DbType.SEND_TOPIC, groupId);
-        if (items == null) {
-            items = new ArrayList<>();
-        }
-        TopicDetailInfo topicDetailInfo = new TopicDetailInfo();
-        topicDetailInfo.setLocalSubjectId(subjectIds);
-        TopicContentInfo topicContentInfo = new TopicContentInfo();
-        topicContentInfo.setText(sendContent);
-        topicDetailInfo.setTopic(topicContentInfo);
-        topicDetailInfo.setSendStatus(SendStatus.SENDING);
-        topicDetailInfo.setGroupId(groupId);
-        GroupUserInfo topicUserInfo = new GroupUserInfo();
-        topicDetailInfo.setUser(topicUserInfo);
-        createVoiceInfo(topicDetailInfo);
-        createVideoInfo(topicDetailInfo);
-        createImgInfo(topicDetailInfo);
-        if (detailInfo != null) {
-            GroupUserInfo specificInfo = detailInfo.getCurrent_user();
-            topicUserInfo.setIdentity(specificInfo.getIdentity());
-            topicUserInfo.setName(specificInfo.getName());
-        }
-        topicUserInfo.setAvatar(MarUser.USER_AVATAR);
-        topicDetailInfo.setTopic_add_time(time);
-        items.add(0, topicDetailInfo);
+     private boolean createFakeTopic(long time, String subjectIds) {
+     CommonService mService = new CommonService(context);
+     List<TopicDetailInfo> items = (List<TopicDetailInfo>) mService.getListData(DbType.SEND_TOPIC, groupId);
+     if (items == null) {
+     items = new ArrayList<>();
+     }
+     TopicDetailInfo topicDetailInfo = new TopicDetailInfo();
+     topicDetailInfo.setLocalSubjectId(subjectIds);
+     TopicContentInfo topicContentInfo = new TopicContentInfo();
+     topicContentInfo.setText(sendContent);
+     topicDetailInfo.setTopic(topicContentInfo);
+     topicDetailInfo.setSendStatus(SendStatus.SENDING);
+     topicDetailInfo.setGroupId(groupId);
+     GroupUserInfo topicUserInfo = new GroupUserInfo();
+     topicDetailInfo.setUser(topicUserInfo);
+     createVoiceInfo(topicDetailInfo);
+     createVideoInfo(topicDetailInfo);
+     createImgInfo(topicDetailInfo);
+     if (detailInfo != null) {
+     GroupUserInfo specificInfo = detailInfo.getCurrent_user();
+     topicUserInfo.setIdentity(specificInfo.getIdentity());
+     topicUserInfo.setName(specificInfo.getName());
+     }
+     topicUserInfo.setAvatar(MarUser.USER_AVATAR);
+     topicDetailInfo.setTopic_add_time(time);
+     items.add(0, topicDetailInfo);
 
 
-        boolean isWaiting = false;
-        if (BaseUtils.isServiceWork(context, SendTopicService.class.getName())) {
-            topicDetailInfo.setSendStatus(SendStatus.WAITING);
-            isWaiting = true;
-        }
-        mService.insert(DbType.SEND_TOPIC, groupId, items);
-        sendBroadcast(BroadConst.NOTIFY_FAKE_TOPIC);
-        return isWaiting;
-    }
+     boolean isWaiting = false;
+     if (BaseUtils.isServiceWork(context, SendTopicService.class.getName())) {
+     topicDetailInfo.setSendStatus(SendStatus.WAITING);
+     isWaiting = true;
+     }
+     mService.insert(DbType.SEND_TOPIC, groupId, items);
+     sendBroadcast(BroadConst.NOTIFY_FAKE_TOPIC);
+     return isWaiting;
+     }
 
      */
 
@@ -1209,27 +1207,26 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
      * @param topicDetailInfo
 
     private void createImgInfo(TopicDetailInfo topicDetailInfo) {
-        if (SUtils.isEmptyArrays(images)) {
-            return;
-        }
-        TopicContentInfo topicInfo = topicDetailInfo.getTopic();
-        topicInfo.setType(TopicType.IMG_TYPE);
-        if (topicInfo == null) {
-            topicInfo = new TopicContentInfo();
-        }
-        List<TopicImgInfo> topicImgInfos = new ArrayList<>();
-        topicInfo.setImages(topicImgInfos);
-        for (ImageItem item : images) {
-            String imgPath = item.getImagePath();
-            TopicImgInfo imgInfo = new TopicImgInfo();
-            imgInfo.setMini(imgPath);
-            imgInfo.setPreview(imgPath);
-            topicImgInfos.add(imgInfo);
-        }
+    if (SUtils.isEmptyArrays(images)) {
+    return;
+    }
+    TopicContentInfo topicInfo = topicDetailInfo.getTopic();
+    topicInfo.setType(TopicType.IMG_TYPE);
+    if (topicInfo == null) {
+    topicInfo = new TopicContentInfo();
+    }
+    List<TopicImgInfo> topicImgInfos = new ArrayList<>();
+    topicInfo.setImages(topicImgInfos);
+    for (ImageItem item : images) {
+    String imgPath = item.getImagePath();
+    TopicImgInfo imgInfo = new TopicImgInfo();
+    imgInfo.setMini(imgPath);
+    imgInfo.setPreview(imgPath);
+    topicImgInfos.add(imgInfo);
+    }
 
     }
      */
-
 
 
     /**
@@ -1238,19 +1235,19 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
      * @param topicDetailInfo
 
     private void createVoiceInfo(TopicDetailInfo topicDetailInfo) {
-        if (TextUtils.isEmpty(audioPath)) {
-            return;
-        }
-        TopicContentInfo topicInfo = topicDetailInfo.getTopic();
-        if (topicInfo == null) {
-            topicInfo = new TopicContentInfo();
-            topicDetailInfo.setTopic(topicInfo);
-        }
-        TopicVoiceInfo topicVoiceInfo = new TopicVoiceInfo();
-        topicVoiceInfo.setUrl(audioPath);
-        topicVoiceInfo.setLength(audioLength);
-        topicInfo.setType(TopicType.AUDIO_TYPE);
-        topicInfo.setVoices(topicVoiceInfo);
+    if (TextUtils.isEmpty(audioPath)) {
+    return;
+    }
+    TopicContentInfo topicInfo = topicDetailInfo.getTopic();
+    if (topicInfo == null) {
+    topicInfo = new TopicContentInfo();
+    topicDetailInfo.setTopic(topicInfo);
+    }
+    TopicVoiceInfo topicVoiceInfo = new TopicVoiceInfo();
+    topicVoiceInfo.setUrl(audioPath);
+    topicVoiceInfo.setLength(audioLength);
+    topicInfo.setType(TopicType.AUDIO_TYPE);
+    topicInfo.setVoices(topicVoiceInfo);
     }
      */
     /**
@@ -1259,56 +1256,55 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
      * @param topicDetailInfo
 
     private void createVideoInfo(TopicDetailInfo topicDetailInfo) {
-        if (TextUtils.isEmpty(selectVideo)) {
-            return;
-        }
-        TopicContentInfo topicInfo = topicDetailInfo.getTopic();
-        if (topicInfo == null) {
-            topicInfo = new TopicContentInfo();
-        }
-        TopicVideoInfo topicVideoInfo = new TopicVideoInfo();
-        topicVideoInfo.setUrl(selectVideo);
-        topicVideoInfo.setLocalImg(videoItem.getVideoPath());
-        topicInfo.setType(TopicType.VIDEO_TYPE);
-        topicInfo.setVideos(topicVideoInfo);
+    if (TextUtils.isEmpty(selectVideo)) {
+    return;
+    }
+    TopicContentInfo topicInfo = topicDetailInfo.getTopic();
+    if (topicInfo == null) {
+    topicInfo = new TopicContentInfo();
+    }
+    TopicVideoInfo topicVideoInfo = new TopicVideoInfo();
+    topicVideoInfo.setUrl(selectVideo);
+    topicVideoInfo.setLocalImg(videoItem.getVideoPath());
+    topicInfo.setType(TopicType.VIDEO_TYPE);
+    topicInfo.setVideos(topicVideoInfo);
     }
      */
     /**
-    public static void retrySend(Context context, TopicDetailInfo info) {
-        TopicContentInfo topicContentInfo = info.getTopic();
-        Logs.i("topicCOntent:" + topicContentInfo);
-        if (topicContentInfo == null) {
-            return;
-        }
-        String sendContent = topicContentInfo.getText();
-        String videoPath = TopicHelper.get().getVideoPath(info);
-        Intent intent = new Intent(context, TextUtils.isEmpty(videoPath) ? SendTopicService.class : SendTopicVideoService.class);
-        intent.putExtra("key_groupid", info.getGroupId());
-        intent.putExtra("subject_ids", info.getLocalSubjectId());
-        intent.putExtra("questionee_id", "");
-        intent.putExtra("issue_type", "");//0 否 1 是
-        intent.putExtra("issue_money", "");//单位为分
-        intent.putExtra("key_anonymous", "");
-        intent.putExtra("videoPath", videoPath);
-        intent.putExtra("key_content", sendContent);//
-        String audioPath = TopicHelper.get().getAudioPath(info);
-        intent.putExtra("key_audio_path", audioPath);
-        intent.putExtra("key_username", NameHelper.get().getNameByOwner(info.getUser()));
-        List<TopicImgInfo> imgInfos = topicContentInfo.getImages();
-        if (imgInfos != null) {
-            ArrayList<ImageItem> items = new ArrayList<>();
-            for (TopicImgInfo img : imgInfos) {
-                ImageItem imageItem = new ImageItem();
-                imageItem.setImagePath(img.getPreview());
-                items.add(imageItem);
-            }
-            intent.putExtra("key_images", items);
-        }
-        intent.putExtra("key_time", info.getTopic_add_time());
-
-        context.startService(intent);
-    }
-
+     * public static void retrySend(Context context, TopicDetailInfo info) {
+     * TopicContentInfo topicContentInfo = info.getTopic();
+     * Logs.i("topicCOntent:" + topicContentInfo);
+     * if (topicContentInfo == null) {
+     * return;
+     * }
+     * String sendContent = topicContentInfo.getText();
+     * String videoPath = TopicHelper.get().getVideoPath(info);
+     * Intent intent = new Intent(context, TextUtils.isEmpty(videoPath) ? SendTopicService.class : SendTopicVideoService.class);
+     * intent.putExtra("key_groupid", info.getGroupId());
+     * intent.putExtra("subject_ids", info.getLocalSubjectId());
+     * intent.putExtra("questionee_id", "");
+     * intent.putExtra("issue_type", "");//0 否 1 是
+     * intent.putExtra("issue_money", "");//单位为分
+     * intent.putExtra("key_anonymous", "");
+     * intent.putExtra("videoPath", videoPath);
+     * intent.putExtra("key_content", sendContent);//
+     * String audioPath = TopicHelper.get().getAudioPath(info);
+     * intent.putExtra("key_audio_path", audioPath);
+     * intent.putExtra("key_username", NameHelper.get().getNameByOwner(info.getUser()));
+     * List<TopicImgInfo> imgInfos = topicContentInfo.getImages();
+     * if (imgInfos != null) {
+     * ArrayList<ImageItem> items = new ArrayList<>();
+     * for (TopicImgInfo img : imgInfos) {
+     * ImageItem imageItem = new ImageItem();
+     * imageItem.setImagePath(img.getPreview());
+     * items.add(imageItem);
+     * }
+     * intent.putExtra("key_images", items);
+     * }
+     * intent.putExtra("key_time", info.getTopic_add_time());
+     * <p>
+     * context.startService(intent);
+     * }
      */
 
     private void sendTopic() {
@@ -1327,7 +1323,7 @@ public class ReleaseTopicActivity extends BaseActivity implements View.OnClickLi
                 imageItem.setImagePath(coverPath);
                 imageItem.setVideoPath(videoPath);
                 images.add(imageItem);
-               // ShowMediaVideoActivity.show(context, images, true, false,isReviseMode);
+                // ShowMediaVideoActivity.show(context, images, true, false,isReviseMode);
                 JumpTo.getInstance().commonJump(context, ShowVideoActivity.class, videoPath);
             }
         });

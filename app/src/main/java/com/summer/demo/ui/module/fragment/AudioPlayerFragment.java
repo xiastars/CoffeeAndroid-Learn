@@ -3,7 +3,7 @@ package com.summer.demo.ui.module.fragment;
 import android.view.View;
 
 import com.summer.demo.R;
-import com.summer.demo.helper.PlayAudioHelper;
+import com.summer.demo.module.base.helper.audio.PlayAudioHelper;
 import com.summer.demo.module.base.BaseFragment;
 
 import butterknife.OnClick;

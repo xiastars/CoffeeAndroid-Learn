@@ -1,9 +1,8 @@
-package com.summer.demo.view;
+package com.summer.demo.module.base.view;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.summer.demo.R;
 import com.summer.helper.utils.SUtils;

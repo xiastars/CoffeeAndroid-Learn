@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/action_bar_co"
+    android:background="@color/blue_4c"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:background="@color/action_bar_co"
+            android:background="@color/blue_4c"
             android:gravity="center"
             android:text="选择"
             android:textColor="@color/white"

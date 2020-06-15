@@ -37,7 +37,7 @@ import com.summer.demo.module.video.util.PictureUtils;
 import com.summer.demo.module.video.util.RangeSeekBar;
 import com.summer.demo.module.video.util.TrimVideoUtils;
 import com.summer.demo.module.video.util.VideoEditInfo;
-import com.summer.demo.view.CommonSureView5;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
