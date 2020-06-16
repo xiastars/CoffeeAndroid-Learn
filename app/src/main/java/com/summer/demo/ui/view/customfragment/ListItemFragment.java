@@ -1,5 +1,7 @@
 package com.summer.demo.ui.view.customfragment;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.summer.demo.R;
@@ -32,4 +34,6 @@ public class ListItemFragment extends BaseFragment {
     protected int setContentView() {
         return R.layout.fragment_listitem;
     }
+
+
 }

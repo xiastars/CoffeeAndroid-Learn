@@ -1,11 +1,14 @@
 package com.summer.demo.ui.fragment;
 
 import android.content.Intent;
+import android.view.View;
 
+import com.summer.demo.R;
 import com.summer.demo.module.album.AlbumActivity;
 import com.summer.demo.module.album.bean.SelectOptions;
 import com.summer.demo.module.album.listener.AlbumCallback;
 import com.summer.demo.module.album.util.ImageItem;
+import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.module.video.VideoEditActivity;
 import com.summer.helper.utils.JumpTo;
 
@@ -16,10 +19,16 @@ import java.util.List;
  * @Author: xiastars@vip.qq.com
  * @CreateDate: 2020/5/21 16:27
  */
-public class VideoCutFragment extends BaseSimpleFragment{
+public class VideoCutFragment extends BaseFragment {
+
     @Override
-    protected void initView() {
-        super.initView();
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    @Override
+    protected void initView(View view) {
         SelectOptions.Builder selectOptions = new SelectOptions.Builder();
         selectOptions.setCallback(new AlbumCallback() {
             @Override
@@ -35,8 +44,12 @@ public class VideoCutFragment extends BaseSimpleFragment{
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void dealDatas(int requestType, Object obj) {
 
+    }
+
+    @Override
+    protected int setContentView() {
+        return R.layout.view_empty;
     }
 }

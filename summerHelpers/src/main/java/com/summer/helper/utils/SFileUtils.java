@@ -2,6 +2,7 @@ package com.summer.helper.utils;
 
 import android.content.Context;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 /**
@@ -642,6 +644,54 @@ public class SFileUtils {
 
         int filePosi = filePath.lastIndexOf(".");
         return (filePosi == -1) ? "" : filePath.substring(filePosi+1, filePath.length());
+    }
+
+    /**
+     * 逐行读取Asset里的文本
+     * @param code
+     * @param filePath
+     * @param context
+     * @return
+     */
+    public static String readFileByLineOnAsset(String code, String filePath, Context context) {
+        if(code == null){
+            return null;
+        }
+        BufferedReader br = null;
+        InputStream reader = null;
+        try {
+            reader = context.getAssets().open(filePath);
+            InputStreamReader isr = new InputStreamReader(reader,"UTF-8");
+            br = new BufferedReader(isr);
+            String str = null;
+
+            while ((str = br.readLine()) != null) {
+                if (str != null && str.contains(",")) {
+                    int index = str.indexOf(",");
+                    String first = (String) str.subSequence(0, index);
+                    if (code.equals(first)) {
+                        return (String) str.subSequence(index + 1, str.length());
+                    }
+                }
+            }
+
+            br.close();
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null && reader != null) {
+                    br.close();
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
 }

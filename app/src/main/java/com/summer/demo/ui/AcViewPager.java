@@ -4,8 +4,8 @@ import android.content.Context;
 import android.view.View;
 
 import com.summer.demo.R;
-import com.summer.demo.ui.fragment.viewpager.CommonVPFragment;
-import com.summer.demo.ui.fragment.viewpager.LeftDotViewPager;
+import com.summer.demo.ui.view.commonfragment.viewpager.CommonVPFragment;
+import com.summer.demo.ui.view.commonfragment.viewpager.LeftDotViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

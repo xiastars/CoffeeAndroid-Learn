@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * Dialog的用法
  *
- * @author Administrator
+ * @author xiastars
  */
 public class MyDialogFragment extends BaseTitleListFragment implements View.OnClickListener {
     Dialog dialog;

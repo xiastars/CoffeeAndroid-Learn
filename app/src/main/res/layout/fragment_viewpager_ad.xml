@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<TextView
+		android:id="@+id/tv_title1"
+		android:text="右下角文字显示页码"
+		android:layout_width="wrap_content"
+
+		android:layout_marginStart="15dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		style="@style/common_title" />
+	<com.summer.demo.module.base.viewpager.ConvenientBanner
+		android:id="@+id/cb_container"
+		android:layout_marginTop="15dp"
+		android:layout_width="match_parent"
+		android:background="@color/red_d3"
+		android:layout_height="230dp"
+		app:canLoop="true"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_title1" />
+
+	<TextView
+		android:id="@+id/tv_title2"
+		android:text="普通页码显示"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		android:layout_marginStart="15dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/cb_container"
+		style="@style/common_title" />
+	<com.summer.demo.module.base.viewpager.ConvenientBanner
+		android:id="@+id/cb_container2"
+		android:layout_marginTop="15dp"
+		android:layout_width="match_parent"
+		android:layout_height="230dp"
+		app:canLoop="true"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_title2" />
+
+
+</android.support.constraint.ConstraintLayout>
+

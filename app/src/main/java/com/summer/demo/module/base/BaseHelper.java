@@ -40,6 +40,7 @@ import java.util.List;
 
 /**
  * Created by xiastars@vip.qq.com on 2017/5/2.
+ * 请求帮助类
  */
 
 public class BaseHelper {
@@ -87,6 +88,10 @@ public class BaseHelper {
         this.myHandlder = myHandlder;
     }
 
+    /**
+     * 设置小米手机状态栏颜色
+     * @param activity
+     */
     void setMIUIStatusBarDarkMode(Activity activity) {
         Logs.i("PostData.MANUFACTURER" + PostData.MANUFACTURER);
         if (PostData.MANUFACTURER.equals("Xiaomi")) {
@@ -107,60 +112,63 @@ public class BaseHelper {
 
     /**
      * 普通的GET
+     *
      * @param requestCode
      * @param className
      * @param params
      * @param url
      */
-    public void getData(final int requestCode, final Class className, SummerParameter params, final String url){
-        requestData(requestCode, null, 0, className, params, url,0, false);
+    public void getData(final int requestCode, final Class className, SummerParameter params, final String url) {
+        requestData(requestCode, null, 0, className, params, url, 0, false);
     }
 
 
     /**
      * 普通的GET
+     *
      * @param requestCode
      * @param limitTime
      * @param className
      * @param params
      * @param url
      */
-    public void getDataWithLimitTime(final int requestCode, int limitTime,final Class className, SummerParameter params, final String url){
-        requestData(requestCode, null, limitTime, className, params, url,0, false);
+    public void getDataWithLimitTime(final int requestCode, int limitTime, final Class className, SummerParameter params, final String url) {
+        requestData(requestCode, null, limitTime, className, params, url, 0, false);
     }
 
 
     /**
      * 普通的GET
+     *
      * @param requestCode
      * @param className
      * @param params
      * @param url
      */
-    public void postData(final int requestCode, final Class className, SummerParameter params, final String url){
-        requestData(requestCode, null, 0, className, params, url,1, false);
+    public void postData(final int requestCode, final Class className, SummerParameter params, final String url) {
+        requestData(requestCode, null, 0, className, params, url, 1, false);
     }
 
 
     /**
      * 普通的GET
+     *
      * @param requestCode
      * @param limitTime
      * @param className
      * @param params
      * @param url
      */
-    public void postDataWithLimitTime(final int requestCode, int limitTime,final Class className, SummerParameter params, final String url){
-        requestData(requestCode, null, limitTime, className, params, url,1, false);
+    public void postDataWithLimitTime(final int requestCode, int limitTime, final Class className, SummerParameter params, final String url) {
+        requestData(requestCode, null, limitTime, className, params, url, 1, false);
     }
-
 
 
     public void putData(final int requestCode, final Class className, SummerParameter params, String url) {
         requestData(requestCode, null, 0, className, params, url, 2, false);
     }
 
-    public void putData(final int requestCode,String version, final Class className, SummerParameter params, String url) {
+    public void putData(final int requestCode, String version, final Class className, SummerParameter params, String url) {
         requestData(requestCode, version, 0, className, params, url, 2, false);
     }
 
@@ -168,7 +176,7 @@ public class BaseHelper {
         requestData(requestCode, null, 0, className, params, url, 3, false);
     }
 
-    public void deleteData(final int requestCode,String version ,final Class className, SummerParameter params, String url) {
+    public void deleteData(final int requestCode, String version, final Class className, SummerParameter params, String url) {
         requestData(requestCode, version, 0, className, params, url, 3, false);
     }
 
@@ -246,7 +254,7 @@ public class BaseHelper {
         if (hasVirturData) {
             return;
         }
-        Logs.i("first:"+firstRequest);
+        Logs.i("first:" + firstRequest);
         //页面启动第一次时从缓存里获取数据
         if (!firstRequest && readCache) {
             firstRequest = true;

@@ -28,7 +28,9 @@ package com.summer.demo.ui.module.fragment;
  */
 
 
-import com.summer.demo.ui.fragment.BaseSimpleFragment;
+import android.view.View;
+
+import com.summer.demo.module.base.BaseFragment;
 import com.summer.helper.utils.Logs;
 
 import java.util.concurrent.TimeUnit;
@@ -44,15 +46,25 @@ import io.reactivex.functions.Function;
 /**
  * RXJava练习,来自：https://github.com/liuyangbajin/android_framework/blob/master/rxjava2/src/main/java/com/bj/rxjava2/MainActivity.java#L20
  */
-public class RXJavaFragment extends BaseSimpleFragment {
+public class RXJavaFragment extends BaseFragment {
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
         //threadOnOrder();
 
         //interval();
         map();
+    }
+
+    @Override
+    protected void dealDatas(int requestType, Object obj) {
+
+    }
+
+    @Override
+    protected int setContentView() {
+        return 0;
     }
 
     private void map() {

@@ -29,9 +29,6 @@ public class HomePagerFragment extends BaseMainFragment implements View.OnClickL
     @BindView(R.id.viewPager)
     CustomerViewPager viewPager;
 
-
-
-
     boolean isFirstEnter;
     int currentPage = -1;
 

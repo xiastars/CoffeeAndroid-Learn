@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.summer.demo.R;
+import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.ui.fragment.views.TextViewFragment;
 import com.summer.demo.ui.view.UiPosition;
@@ -16,6 +17,7 @@ import com.summer.demo.ui.view.commonfragment.ConstraintLayoutFragment;
 import com.summer.demo.ui.view.commonfragment.EditTextFragment;
 import com.summer.demo.ui.view.commonfragment.GridRecyclerFragment;
 import com.summer.demo.ui.view.commonfragment.ListRecyclerFragment;
+import com.summer.demo.ui.view.commonfragment.ViewPagerFragment;
 import com.summer.demo.ui.view.customfragment.ProgressBarFragment;
 import com.summer.helper.utils.JumpTo;
 
@@ -30,7 +32,7 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
     @BindView(R.id.rl_container)
     FrameLayout rlContainer;
 
-    public Fragment mFragment;
+    public BaseFragment mFragment;
     FragmentManager fragmentManager;
 
     @Override
@@ -103,13 +105,26 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
                 setTitle("EditText");
                 showFragment(new EditTextFragment());
                 break;
+            case UiPosition.VIEWPAGER:
+                setTitle("ViewPager");
+                showFragment(new ViewPagerFragment());
+                break;
         }
     }
 
-    public void showFragment(Fragment fragment) {
+    public void showFragment(BaseFragment fragment) {
         //销毁已显示的Fragment
         removeFragment();
         beginTransation(fragment);
+    }
+
+    @Override
+    protected void onBackClick() {
+        if(mFragment != null && mFragment.isHasChildFragment()){
+            mFragment.removeChildFragment();
+        }else{
+            super.onBackClick();
+        }
     }
 
     /**
@@ -117,7 +132,7 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
      *
      * @param fragment
      */
-    private void beginTransation(Fragment fragment) {
+    private void beginTransation(BaseFragment fragment) {
         mFragment = fragment;
         rlContainer.setVisibility(View.VISIBLE);
         fragmentManager.beginTransaction().add(R.id.rl_container, fragment).commit();

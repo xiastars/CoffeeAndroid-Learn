@@ -1,4 +1,4 @@
-package com.summer.demo.ui.fragment.viewpager;
+package com.summer.demo.ui.view.commonfragment.viewpager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;

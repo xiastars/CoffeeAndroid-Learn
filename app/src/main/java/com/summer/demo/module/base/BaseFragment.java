@@ -55,6 +55,7 @@ public abstract class BaseFragment extends Fragment {
     private ReceiverUtils receiverUtils;
     protected View mView;
     protected int DEFAULT_LIMIT = 10;
+    boolean hasChildFragment = false;//就否有子Fragment
 
     Unbinder unbinder;
 
@@ -432,6 +433,18 @@ public abstract class BaseFragment extends Fragment {
 
     protected void loadData(){
 
+    }
+
+    public void removeChildFragment(){
+
+    }
+
+    public boolean isHasChildFragment() {
+        return hasChildFragment;
+    }
+
+    public void setHasChildFragment(boolean hasChildFragment) {
+        this.hasChildFragment = hasChildFragment;
     }
 
     protected abstract void initView(View view);

@@ -10,7 +10,6 @@ import android.view.View;
 import com.summer.demo.adapter.CommonAdapter;
 import com.summer.demo.constant.FragmentType;
 import com.summer.demo.module.base.BaseFragmentActivity;
-import com.summer.demo.ui.AcViewPager;
 import com.summer.demo.ui.AcViews;
 import com.summer.demo.ui.SDKActivity;
 import com.summer.demo.ui.fragment.DownloadFragment;
@@ -160,9 +159,6 @@ public class AcMain extends BaseFragmentActivity implements View.OnClickListener
                 break;
             case 8:
                 JumpTo.getInstance().commonJump(context, WebContainerActivity.class, "https://m.mzmoney.com/topic/recruit/app-recruit.html");
-                break;
-            case 9:
-                JumpTo.getInstance().commonJump(context, AcViewPager.class);
                 break;
             case 12:
                 showFragment(new DownloadFragment());

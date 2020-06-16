@@ -30,5 +30,5 @@ public class UiPosition {
 
     public final static int EDITTEXT = 9;
 
-
+    public final static int VIEWPAGER = 10;
 }
