@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,6 @@ import android.widget.TextView;
 import com.summer.demo.R;
 import com.summer.demo.module.base.helper.audio.PlayAudioHelper;
 import com.summer.demo.module.base.swipe.SwipeBackActivity;
-import com.summer.demo.module.base.constant.ApiConstants;
 import com.summer.helper.recycle.MaterialRefreshLayout;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.BitmapUtils;
@@ -184,6 +184,12 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(color);
         }
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        onBackClick();
+        return false;
     }
 
     /**

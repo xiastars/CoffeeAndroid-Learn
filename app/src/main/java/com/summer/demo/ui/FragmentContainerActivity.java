@@ -11,12 +11,9 @@ import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.ui.fragment.views.TextViewFragment;
 import com.summer.demo.ui.view.UiPosition;
 import com.summer.demo.ui.view.commonfragment.CDrawableFragment;
-import com.summer.demo.ui.view.commonfragment.CommonGridFragment;
-import com.summer.demo.ui.view.commonfragment.CommonListFragment;
 import com.summer.demo.ui.view.commonfragment.ConstraintLayoutFragment;
 import com.summer.demo.ui.view.commonfragment.EditTextFragment;
-import com.summer.demo.ui.view.commonfragment.GridRecyclerFragment;
-import com.summer.demo.ui.view.commonfragment.ListRecyclerFragment;
+import com.summer.demo.ui.view.commonfragment.recyclerview.RecyclerViewFragment;
 import com.summer.demo.ui.view.commonfragment.ViewPagerFragment;
 import com.summer.demo.ui.view.customfragment.ProgressBarFragment;
 import com.summer.helper.utils.JumpTo;
@@ -82,20 +79,8 @@ public class FragmentContainerActivity extends BaseFragmentActivity {
                 showFragment(new ConstraintLayoutFragment());
                 break;
             case UiPosition.POS_LIST_REC:
-                setTitle("ListView");
-                showFragment(new CommonListFragment());
-                break;
-            case UiPosition.POS_GRID_REC:
-                setTitle("GridView");
-                showFragment(new CommonGridFragment());
-                break;
-            case UiPosition.POS_REFRESH_LIST:
-                setTitle("可刷新List");
-                showFragment(new ListRecyclerFragment());
-                break;
-            case UiPosition.POS_REFRESH_GRID:
-                setTitle("可刷新Grid");
-                showFragment(new GridRecyclerFragment());
+                setTitle("RecyclerView");
+                showFragment(new RecyclerViewFragment());
                 break;
             case UiPosition.PROGRESS:
                 setTitle("进度条");

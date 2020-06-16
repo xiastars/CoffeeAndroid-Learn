@@ -1,4 +1,4 @@
-package com.summer.demo.ui.view.commonfragment;
+package com.summer.demo.ui.view.commonfragment.recyclerview;
 
 import android.view.View;
 

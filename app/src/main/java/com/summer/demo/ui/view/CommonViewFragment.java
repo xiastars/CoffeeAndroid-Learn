@@ -37,10 +37,7 @@ public class CommonViewFragment extends BaseMainFragment {
         moduleInfos.add(new ModuleInfo(R.drawable.ic_drawable,"Drawable",UiPosition.POS_DRAWABLE));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_text,"文本",UiPosition.POS_TEXT));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_danmake,"ConstarintLayout",UiPosition.POS_CONSTRAINT));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"ListView",UiPosition.POS_LIST_REC));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_grid,"GridView",UiPosition.POS_GRID_REC));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"可刷新List",UiPosition.POS_REFRESH_LIST));
-        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_grid,"可刷新Grid",UiPosition.POS_REFRESH_GRID));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_view_list,"RecyclerView",UiPosition.POS_LIST_REC));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_progress,"进度条",UiPosition.PROGRESS));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_edittext,"EditText",UiPosition.EDITTEXT));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_viewpager,"ViewPager",UiPosition.VIEWPAGER));
