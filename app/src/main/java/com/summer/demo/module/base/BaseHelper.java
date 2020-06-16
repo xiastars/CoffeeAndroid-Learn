@@ -89,6 +89,7 @@ public class BaseHelper {
 
     /**
      * 设置小米手机状态栏颜色
+     *
      * @param activity
      */
     void setMIUIStatusBarDarkMode(Activity activity) {
@@ -184,6 +185,7 @@ public class BaseHelper {
      * 请求数据
      *
      * @param limitTime 数据重新请求限定时间
+     * @param version   有时API分版本，v1,v2等
      * @param className 要注入的类
      * @param params
      * @param url       链接
@@ -199,61 +201,16 @@ public class BaseHelper {
         url = ApiConstants.getHost(version) + url;
         long time = System.currentTimeMillis();
         //取得每页请求的数量，用来处理底部栏没有更多了
-        Logs.i("contain:" + params.containsKey("count"));
-        if (params.containsKey("count")) {
-            String count = (String) params.get("count");
-            if (count != null) {
-                loadCount = Integer.parseInt(count);
-                Logs.i("loadCount:" + loadCount);
-            }
-        }
-        if (params.containsKey("limit")) {
-            String count = (String) params.get("limit");
-            if (count != null) {
-                loadCount = Integer.parseInt(count);
-                Logs.i("loadCount:" + loadCount);
-            }
-        }
+        extricateListDataCount(params);
         final boolean toastMessage = params.isToastEnable();
         final int pageIndex = Integer.parseInt((String) params.getParamSecurity("page", 0 + ""));
         final boolean readCache = params.isCacheSupport();
         final String saveurl = params.encodeLogoUrl(url);
         //当为开发者模式且SummperParameter设置了虚拟数据时才启用
-        boolean hasVirturData = false;
-        if (AppContext.DEBUGMODE) {
-            if (params.isVirtualData()) {
-                String virtualCode = params.getVirtualCode();
-                //virtualdata.txt
-                String data = ServerFileUtils.readFileByLineOnAsset(virtualCode, VITURAL_DATA, context);
-                try {
-                    data = data.replaceAll(">", "2");
-                    data = data.replaceAll("<", "2");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                Logs.i("data:" + data);
-                if (data != null) {
-                    try {
-                        BaseResp t = JSON.parseObject(data, BaseResp.class);
-                        Logs.i("t:::" + t);
-                        if (t != null) {
-                            myHandlder.sendEmptyMessage(MSG_FINISHLOAD);
-                            handleData(requestCode, t, saveurl, className, pageIndex, readCache, isArray, toastMessage);
-                            isRefresh = false;
-                            hasVirturData = true;
-                            return;
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        if (hasVirturData) {
+        if (hasVirtualData(params, requestCode, saveurl, className, pageIndex, readCache, isArray, toastMessage)) {
             return;
         }
-        Logs.i("first:" + firstRequest);
+        Logs.i("是否是第一次请求:" + firstRequest);
         //页面启动第一次时从缓存里获取数据
         if (!firstRequest && readCache) {
             firstRequest = true;
@@ -261,12 +218,9 @@ public class BaseHelper {
         }
         Logs.i("readCache:" + readCache);
         //频率操作限制
-        if (isFrequentRequest(saveurl, limitTime == 0 ? 1000 : limitTime)) {
-            Logs.i("isFrequentRequest频繁操作");
-            if (readCache(saveurl, requestCode, className, isArray)) {
-                Logs.i("readCache");
-                return;
-            }
+        if (isFrequentRequest(saveurl, limitTime)) {
+            readCache(saveurl, requestCode, className, isArray);
+            return;
         }
         //当第一次请求数据时显示加载框
         if (showLoading && !isRefresh) {
@@ -287,7 +241,7 @@ public class BaseHelper {
 
             @Override
             public void onError(int errorCode, String errorStr) {
-                Logs.e("hxq", "errorStr," + errorStr);
+                Logs.i( "请求失败了:errorStr," + errorStr);
                 myHandlder.obtainMessage(MSG_ERRO, requestCode, errorCode, errorStr).sendToTarget();
             }
         };
@@ -301,6 +255,64 @@ public class BaseHelper {
             EasyHttp.delete(context, token, url, injectClass, params, callBack);
         }
 
+    }
+
+    /**
+     * 是否有虚拟数据
+     * 在asset里创建文件，虚拟数据方便以下：
+     * 1. 在后台未开发完成前，先根据文档实现UI
+     * 2. 需要根据某一参数来改变功能逻辑的地方可以在虚拟数据里直接修改
+     *
+     * @return
+     */
+    private boolean hasVirtualData(SummerParameter parameter, int requestCode, String saveurl, Class className,
+                                   int pageIndex, boolean readCache, boolean isArray, boolean toastMessage) {
+        if (!AppContext.DEBUGMODE) {
+            return false;
+        }
+        if (!parameter.isVirtualData()) {
+            return false;
+        }
+        String virtualCode = parameter.getVirtualCode();
+        String data = ServerFileUtils.readFileByLineOnAsset(virtualCode, VITURAL_DATA, context);
+        if (data == null) {
+            Logs.i(virtualCode + " 获取的虚拟数据为空");
+            return false;
+        }
+        Logs.i(virtualCode + "获取的虚拟数据:" + data);
+        if (data != null) {
+            try {
+                BaseResp t = JSON.parseObject(data, BaseResp.class);
+
+                if (t != null) {
+                    myHandlder.sendEmptyMessage(MSG_FINISHLOAD);
+                    handleData(requestCode, t, saveurl, className, pageIndex, readCache, isArray, toastMessage);
+                    isRefresh = false;
+                    return true;
+                } else {
+                    Logs.i(virtualCode + " 获取的虚拟数据解析失败");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Logs.i(virtualCode + " 获取的虚拟数据解析失败");
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 得到分页数据的单页请求数量
+     * 默认为count，如果后台定义的不一样，请直接修改
+     * 如果不一致，会影响到handleData方法
+     */
+    private void extricateListDataCount(SummerParameter parameter) {
+        if (parameter.containsKey("count")) {
+            String count = (String) parameter.get("count");
+            if (count != null) {
+                loadCount = Integer.parseInt(count);
+                Logs.i("loadCount:" + loadCount);
+            }
+        }
     }
 
 
@@ -338,32 +350,20 @@ public class BaseHelper {
      * @return
      */
     private boolean isFrequentRequest(String saveurl, int reqestTime) {
-      /*  final String saveLong = saveurl + "_long";
-        final String saveInt = saveurl + "_int";
-        long lastTime = SUtils.getLongData(context, saveLong);
-        if (lastTime == 0) {
-            SUtils.saveLongData(context, saveLong, System.currentTimeMillis());
+        if (reqestTime == 0) {
             return false;
         }
-        int requestIndex = SUtils.getIntegerData(context, saveInt);
+        long lastTime = SUtils.getLongData(context, saveurl);
+        if (lastTime == 0) {
+            SUtils.saveLongData(context, saveurl, System.currentTimeMillis());
+            return false;
+        }
         int divideTime = (int) (System.currentTimeMillis() - lastTime);
-        myHandlder.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                SUtils.saveIntegerData(context, saveInt, 0);
-            }
-        }, 1000);
-
-        if (requestIndex > 1) {
-            //SUtils.makeToast(context, "操作频繁，请稍后重试");
-            return true;
-        }
         if (divideTime < reqestTime) {
-            SUtils.saveLongData(context, saveLong, System.currentTimeMillis());
-            SUtils.saveIntegerData(context, saveInt, requestIndex + 1);
+            SUtils.makeToast(context, "操作频繁，请稍后重试");
             return true;
         }
-        SUtils.saveLongData(context, saveLong, System.currentTimeMillis());*/
+        SUtils.saveLongData(context, saveurl, System.currentTimeMillis());
         return false;
     }
 
