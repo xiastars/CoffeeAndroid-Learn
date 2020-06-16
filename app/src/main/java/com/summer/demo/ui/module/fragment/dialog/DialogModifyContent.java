@@ -46,12 +46,12 @@ public class DialogModifyContent extends BaseCenterDialog {
 
     boolean isSureable;
 
-    String titleContent;
-    int maxTextLength = 1;
-    String defaultContent;
-    String defaultHint;
+    String titleContent;//标题文本
+    int maxTextLength = 10;//限制最长输入
+    String defaultContent;//默认内容
+    String defaultHint;//默认HINT
 
-    String okContent;
+    String okContent;//确定文本
 
     int inputType;
 
@@ -92,10 +92,10 @@ public class DialogModifyContent extends BaseCenterDialog {
         if (!TextUtils.isEmpty(defaultHint)) {
             tvContent.setHint(defaultHint);
         }
-        if(!TextUtils.isEmpty(okContent)){
+        if (!TextUtils.isEmpty(okContent)) {
             tvSure.setText(okContent);
         }
-        if(inputType != 0){
+        if (inputType != 0) {
             tvTitle.setInputType(inputType);
         }
 
@@ -130,7 +130,7 @@ public class DialogModifyContent extends BaseCenterDialog {
             public void run() {
                 SUtils.showSoftInpuFromWindow(tvContent);
             }
-        },300);
+        }, 300);
     }
 
     public void setInputType(int inputType) {

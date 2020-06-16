@@ -15,7 +15,9 @@ import com.summer.demo.module.base.BaseFragmentActivity;
 import com.summer.demo.module.view.CustomViewAbove;
 import com.summer.demo.module.view.CustomViewBehind;
 import com.summer.demo.module.view.SlidingMenu;
+import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.SUtils;
+import com.yanzhenjie.permission.Permission;
 
 import butterknife.BindView;
 
@@ -68,6 +70,7 @@ public class MainActivity extends BaseFragmentActivity {
 
     @Override
     protected void initData() {
+        PermissionUtils.showPermissionDialog(this, Permission.ACCESS_COARSE_LOCATION,Permission.CAMERA,Permission.WRITE_EXTERNAL_STORAGE);
         removeTitle();
         initMainView();
     }
