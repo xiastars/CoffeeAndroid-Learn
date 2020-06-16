@@ -8,9 +8,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.dialog.DialogModifyContent;
 import com.summer.demo.listener.OnModifyContentListener;
 import com.summer.demo.module.base.BaseFragment;
+import com.summer.demo.ui.module.fragment.dialog.DialogModifyContent;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 

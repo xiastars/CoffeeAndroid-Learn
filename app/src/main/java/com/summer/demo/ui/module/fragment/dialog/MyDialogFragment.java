@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import com.summer.demo.R;
 import com.summer.demo.dialog.BaseTipsDialog;
-import com.summer.demo.dialog.LoadingDialog;
+import com.summer.demo.listener.OnModifyContentListener;
 import com.summer.demo.module.base.dialog.BaseCheckDialog;
 import com.summer.demo.module.base.dialog.BaseSureDialog;
 import com.summer.demo.module.base.dialog.TipDialog;
@@ -49,6 +49,7 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
         datas.add("一个空的，全屏对话框展示");
         datas.add("下载进度对话框");
         datas.add("时间选择框");
+        datas.add("通用修改内容");
         return datas;
     }
 
@@ -57,12 +58,11 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
     protected void clickChild(int pos) {
         switch (pos) {
             case 0:
-
+                EasyLoading.get(context).showLoadingFull();
                 break;
             case 1:
                 //通常为了方便，我们把加载的Dialog封装出来
-                LoadingDialog dialog1 = new LoadingDialog(context);
-                dialog1.startLoading();
+                EasyLoading.get(context).showNormalLoading();
                 break;
             case 2:
                 //弹出提示dialog，这是经常使用的功能,这里封装了一个简单的，传入想要提示的内容
@@ -168,6 +168,18 @@ public class MyDialogFragment extends BaseTitleListFragment implements View.OnCl
                 //原生的
                 DatePickerDialog datePickerDialog1 = new DatePickerDialog(context);
                 //datePickerDialog1.show();
+                break;
+            case 10:
+                //修改内容，然后返回填写的文字
+                DialogModifyContent dialogModifyContent = new DialogModifyContent(context, new OnModifyContentListener() {
+                    @Override
+                    public void returnContent(String content) {
+
+                    }
+                });
+                dialogModifyContent.setTitleContent("修改名称");
+                dialogModifyContent.setDefaultContent("这是未修改前的内容");
+                dialogModifyContent.show();
                 break;
         }
     }

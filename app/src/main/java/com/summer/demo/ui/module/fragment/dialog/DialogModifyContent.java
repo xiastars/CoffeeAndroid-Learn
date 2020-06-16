@@ -1,4 +1,4 @@
-package com.summer.demo.dialog;
+package com.summer.demo.ui.module.fragment.dialog;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

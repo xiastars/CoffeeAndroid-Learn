@@ -28,8 +28,8 @@ import com.summer.demo.module.base.baserx.TUtil;
 import com.summer.demo.module.base.listener.OnShareListener;
 import com.summer.demo.module.base.swipe.SwipeBackActivity;
 import com.summer.demo.module.base.view.CommonSureView5;
+import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.demo.utils.CUtils;
-import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.BitmapUtils;
 import com.summer.helper.utils.Logs;
@@ -463,8 +463,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
     }
 
     private void startLoading(String content) {
-        LoadingDialog.cancelDialogForLoading();
-        LoadingDialog.showDialogForLoading(this, content, true);
+        EasyLoading.get(context).showLoadingWithContent(content);
     }
 
     public void cancelLoading() {
@@ -554,7 +553,7 @@ public abstract class BaseRequestActivity<T extends BasePresenter, E extends Bas
         if (baseHelper != null) {
             baseHelper.cancelLoading();
         }
-        LoadingDialog.cancelDialogForLoading();
+        EasyLoading.get(context).cancelLoading();
     }
 
     /**

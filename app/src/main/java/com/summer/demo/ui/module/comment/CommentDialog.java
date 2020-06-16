@@ -16,8 +16,8 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.summer.demo.R;
+import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.helper.utils.SUtils;
-import com.summer.helper.view.LoadingDialog;
 
 import java.lang.ref.WeakReference;
 
@@ -34,7 +34,6 @@ public class CommentDialog extends Dialog {
 
     MyHandler myHandler;
     OnCommentedListener listener;
-    LoadingDialog loadingDialog;
 
 
     public CommentDialog(Context context, String topicId, OnCommentedListener listener) {
@@ -115,7 +114,7 @@ public class CommentDialog extends Dialog {
             SUtils.makeToast(context, context.getString(R.string.hint_empty_comment));
             return;
         }
-        loadingDialog = new LoadingDialog(context);
+        EasyLoading.get(context).showNormalLoading();
         //发表评论
  /*       SummerParameter params = Const.getPostParameters();
         params.put("topicId", topicId);
@@ -174,9 +173,7 @@ public class CommentDialog extends Dialog {
 
     private void cancelDialog(){
         this.cancel();
-        if(loadingDialog != null){
-            loadingDialog.cancelLoading();
-        }
+        EasyLoading.get(context).cancelLoading();
     }
 
 }

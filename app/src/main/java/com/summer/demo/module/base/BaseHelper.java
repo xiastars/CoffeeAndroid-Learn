@@ -15,11 +15,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.summer.demo.AppContext;
 import com.summer.demo.R;
 import com.summer.demo.bean.BaseResp;
-import com.summer.demo.module.base.constant.ApiConstants;
 import com.summer.demo.constant.SharePreConst;
+import com.summer.demo.module.base.constant.ApiConstants;
+import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.demo.utils.CodeRespondUtils;
 import com.summer.demo.utils.ServerFileUtils;
-import com.summer.demo.view.LoadingDialog;
 import com.summer.helper.adapter.SRecycleMoreAdapter;
 import com.summer.helper.db.CommonService;
 import com.summer.helper.db.DBType;
@@ -47,7 +47,6 @@ public class BaseHelper {
     Context context;
     boolean firstRequest;
     Handler myHandlder;
-    LoadingDialog loadingDialog;
     boolean isRefresh;
     long handleTime;
     public static final int DEFAULT_LOAD_COUNT = 10;//默认请求数量
@@ -270,15 +269,8 @@ public class BaseHelper {
             }
         }
         //当第一次请求数据时显示加载框
-        if (showLoading) {
-            if (!isRefresh && loadingDialog == null) {
-                LoadingDialog.showDialogForLoading((Activity) context);
-
-            } else {
-                if (loadingDialog != null && isRefresh) {
-                    LoadingDialog.showDialogForLoading((Activity) context);
-                }
-            }
+        if (showLoading && !isRefresh) {
+            EasyLoading.get(context).showNormalLoading();
         }
 
         //默认所有className继承自BaseResp，当为List数据时，为了方便，直接用List里的单个对象
@@ -470,9 +462,7 @@ public class BaseHelper {
     }
 
     public void cancelLoading() {
-        if (loadingDialog != null) {
-            loadingDialog.cancelDialogForLoading();
-        }
+        EasyLoading.get(context).cancelLoading();
     }
 
     /**

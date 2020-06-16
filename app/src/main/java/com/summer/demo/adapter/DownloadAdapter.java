@@ -17,7 +17,6 @@ import com.summer.helper.db.CommonService;
 import com.summer.helper.downloader.DownloadManager;
 import com.summer.helper.utils.SUtils;
 import com.summer.helper.utils.TipDialog;
-import com.summer.helper.view.LoadingDialog;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class DownloadAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context context;
     private List<BookBean> mItems;
     private CommonService mService;
-    LoadingDialog mLoading;
+
     DownloadManager downloadManager;
 
     public DownloadAdapter(Context context) {

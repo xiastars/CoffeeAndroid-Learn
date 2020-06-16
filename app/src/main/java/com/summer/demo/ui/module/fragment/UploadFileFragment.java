@@ -1,6 +1,5 @@
 package com.summer.demo.ui.module.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +11,7 @@ import com.summer.demo.helper.ImgHelper;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.album.util.SelectPhotoHelper;
 import com.summer.demo.module.base.BaseFragment;
-import com.summer.demo.view.LoadingDialog;
+import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.helper.listener.OnResponseListener;
 import com.summer.helper.listener.OnReturnObjectClickListener;
 import com.summer.helper.server.EasyHttp;
@@ -91,7 +90,7 @@ public class UploadFileFragment extends BaseFragment implements View.OnClickList
      * @param filePath
      */
     private void uploadFile(String filePath) {
-        LoadingDialog.showDialogForLoading((Activity) context, "正在上传中", true);
+        EasyLoading.get(context).showLoadingFull("正在上传中",true);
         String userId = "KW7+jmw1MlwuATu5J8+JA4sGn8rT0lsvaOXIxQr7qrl6ZiXuM5cuNH3HawcyM43piDi/Hg68y9uARbQ4TdlmeS0wsLevz5pCCLWK5QzBQTaf+FGlUcYGCMjygpKx47axVALnq9AKd/O2n68adT2yYnu0sZwz34qMvkAjdG5PJFAZjnLGqs3R0jFBiH+3+yAsnFouseRDkbOceM9gIAMSpDwf/VlNn9EaYxTz7S6OhuJD/KK1FhLN8gpKuJmlFt+yN/sKWUF/dSYNP9UUXXfIf+w7/sPdXoGZnhK5Y2LeCZGEaJVomYaz9c9OSVCH00i65WbOto+prC9Fpb3x8jBr7w==";
         SummerParameter parameter = new SummerParameter();
         parameter.put("userId", userId);

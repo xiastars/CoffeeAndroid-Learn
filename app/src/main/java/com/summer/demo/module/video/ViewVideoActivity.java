@@ -9,12 +9,12 @@ import android.widget.RelativeLayout;
 import com.summer.demo.R;
 import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.module.video.util.MyVideoView;
+import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
 import com.summer.helper.utils.SUtils;
-import com.summer.helper.view.LoadingDialog;
 
 import java.io.File;
 
@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
  * Created by xiaqiliang on 2017/4/1.
  */
 public class ViewVideoActivity extends BaseActivity {
-    LoadingDialog loadingDialog;
     String path;
 
     @BindView(R.id.vd_play)
@@ -62,8 +61,7 @@ public class ViewVideoActivity extends BaseActivity {
             path = PostData.OOSHEAD + ":" + path;
         }
         ButterKnife.bind(this);
-        loadingDialog = new LoadingDialog(context);
-        loadingDialog.startLoading();
+        EasyLoading.get(context).showNormalLoading();
         setLayoutFullscreen(true);
         changeHeaderStyleTrans(context.getResources().getColor(R.color.half_grey));
         removeTitle();
@@ -97,7 +95,7 @@ public class ViewVideoActivity extends BaseActivity {
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                loadingDialog.cancelLoading();
+                EasyLoading.get(context).cancelLoading();
                 mVideoView.setLooping(true);
                 mVideoView.start();
                 float widthF = mVideoView.getVideoWidth();

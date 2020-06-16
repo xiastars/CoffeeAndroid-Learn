@@ -38,11 +38,7 @@
         <activity android:name=".ui.AcViewPager"></activity>
         <activity android:name=".ui.course.LearnJavaActivity" />
         <activity android:name=".ui.SDKActivity" />
-        <!--screenOrientation 设置为横屏 -->
-        <activity
-            android:name=".AcCases"
-            android:screenOrientation="landscape" />
-        <activity android:name=".AcWXApp" />
+
         <activity android:name=".ui.AcViews" />
         <activity android:name="com.summer.helper.web.WebViewActivity"></activity>
         <activity android:name="com.summer.helper.web.WebContainerActivity"></activity>

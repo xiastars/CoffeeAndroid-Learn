@@ -9,11 +9,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.summer.demo.R;
-import com.summer.demo.dialog.LoadingDialog;
 import com.summer.demo.module.view.NavigationButton;
 import com.summer.demo.ui.course.CourseFragment;
 import com.summer.demo.ui.mine.MineFragment;
 import com.summer.demo.ui.module.ModuleFragment;
+import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.demo.ui.view.HomePagerFragment;
 import com.summer.demo.utils.CUtils;
 import com.summer.helper.utils.Logs;
@@ -110,13 +110,12 @@ public class MainFragment extends BaseMainFragment implements View.OnClickListen
         Logs.i(firstShowLoading + "vivo firstShowLoading" + context);
         if (!firstShowLoading) {
             firstShowLoading = true;
-            final LoadingDialog loadingDialog = new LoadingDialog(context);
-            loadingDialog.startLoading();
+            EasyLoading.get(context).showNormalLoadingSudoku();
             //给充足的时间让页面渲染
             myHandlder.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    loadingDialog.cancelLoading();
+                    EasyLoading.get(context).cancelLoading();
                 }
             }, 1500);
         }

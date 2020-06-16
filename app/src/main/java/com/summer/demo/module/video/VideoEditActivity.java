@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.summer.demo.R;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.demo.module.base.BaseActivity;
+import com.summer.demo.module.base.view.CommonSureView5;
 import com.summer.demo.module.video.util.CompressListener;
 import com.summer.demo.module.video.util.Compressor;
 import com.summer.demo.module.video.util.EditSpacingItemDecoration;
@@ -37,14 +38,13 @@ import com.summer.demo.module.video.util.PictureUtils;
 import com.summer.demo.module.video.util.RangeSeekBar;
 import com.summer.demo.module.video.util.TrimVideoUtils;
 import com.summer.demo.module.video.util.VideoEditInfo;
-import com.summer.demo.module.base.view.CommonSureView5;
+import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.helper.permission.PermissionUtils;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
 import com.summer.helper.utils.STimeUtils;
 import com.summer.helper.utils.SUtils;
-import com.summer.helper.view.LoadingDialog;
 import com.summer.helper.view.review.RRelativeLayout;
 
 import java.io.File;
@@ -91,7 +91,6 @@ public class VideoEditActivity extends BaseActivity {
     TextView tvVideoTime;
 
     private ExtractVideoInfoUtil mExtractVideoInfoUtil;
-    LoadingDialog loadingDialog;
 
     private RangeSeekBar seekBar;
     private VideoEditAdapter videoEditAdapter;
@@ -401,8 +400,7 @@ public class VideoEditActivity extends BaseActivity {
      * 裁剪和压缩视频
      */
     private void compressVideo() {
-        loadingDialog = new LoadingDialog(context);
-        loadingDialog.startLoading("正在压缩中");
+        EasyLoading.get(context).showLoadingFull("正在压缩中",false);
         final String saveCutPath = SFileUtils.getVideoDirectory() + System.currentTimeMillis() + "_cut" + SFileUtils.FileType.FILE_MP4;
         try {
             TrimVideoUtils.startTrim(new File(path), saveCutPath, leftProgress, rightProgress, new OnTrimVideoListener() {
@@ -488,9 +486,7 @@ public class VideoEditActivity extends BaseActivity {
     }
 
     private void cancelLoading(boolean failure) {
-        if (loadingDialog != null) {
-            loadingDialog.cancelLoading();
-        }
+        EasyLoading.get(context).cancelLoading();
         if (failure) {
             SUtils.makeToast(context, "处理视频失败");
         }
