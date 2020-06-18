@@ -1,4 +1,4 @@
-package com.summer.demo.adapter;
+package com.summer.demo.ui.view.commonfragment.viewpager;
 
 import android.content.Context;
 import android.util.AttributeSet;

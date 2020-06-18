@@ -8,8 +8,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import com.summer.demo.R;
-import com.summer.demo.adapter.PagerAdapter;
-import com.summer.demo.adapter.VerticalViewPager;
 import com.summer.demo.module.base.BaseFragment;
 
 import java.util.Random;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ll_parent"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/white"
+	android:minHeight="50dp"
+	android:gravity="center"
+	android:orientation="vertical">
+
+	<com.summer.helper.view.NRecycleView
+		android:id="@+id/nv_share"
+		android:layout_gravity="center"
+		android:background="@color/white"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+
+	<View style="@style/line_horizontal" />
+
+	<TextView
+		android:id="@+id/tv_right"
+		style="@style/grey93_12"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:textSize="18sp"
+		android:text="@string/cancel"
+		android:layout_height="50dp"/>
+
+
+</LinearLayout>

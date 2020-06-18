@@ -244,6 +244,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:text="联系人列表示例"
             android:layout_marginRight="@dimen/lay_12"
             android:drawablePadding="@dimen/lay_12"
             android:drawableRight="@drawable/ic_right"

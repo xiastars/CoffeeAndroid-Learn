@@ -21,6 +21,7 @@ import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
 import com.summer.demo.ui.module.fragment.nfc.NFCActivity;
+import com.summer.demo.ui.module.fragment.share.ShareFragment;
 import com.summer.demo.ui.module.fragment.socket.SocketFragment;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
@@ -109,6 +110,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
             case ModulePos.POS_NFC:
                 setTitle("NFC");
                 JumpTo.getInstance().commonJump(context, NFCActivity.class);
+                break;
+            case ModulePos.POS_SHARE:
+                setTitle("社交分享");
+                showFragment(new ShareFragment());
                 break;
         }
     }

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import com.summer.demo.constant.SharePreConst;
 import com.summer.demo.helper.FFMepgHelper;
 import com.summer.demo.module.base.BaseApplication;
+import com.summer.demo.ui.module.fragment.share.ShareConfig;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SFileUtils;
@@ -16,6 +17,7 @@ import com.summer.helper.utils.SThread;
 import com.summer.helper.utils.SUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ public class AppContext extends BaseApplication {
     public static int SERVER_MODE = 2;//0.是开发，1是测试，2是正式，3是预发布
     public static final boolean DEBUGMODE = true;
     public static final String DEFAULT_TOKEN = "";//444392d5387d9415a5d8e7370b96645f
-    public static final String WEIXIN_ID = "";//微信KEY
+
     public static final String TEXT_TIME = "2018.11.12 - 15：12";
 
     @Override
@@ -47,6 +49,7 @@ public class AppContext extends BaseApplication {
 
         initApp();
         initUMLib();
+        registToWX(ShareConfig.WEIXIN_ID);
         if (DEBUGMODE) {
             SERVER_MODE = SUtils.getIntegerData(this, "server_mode");
         }
@@ -145,6 +148,13 @@ public class AppContext extends BaseApplication {
         //JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
         //JPushInterface.init(this);
 
+    }
+
+    // 将该app注册到微信
+    private boolean registToWX(String apiID) {
+        //如果微信key申请通过了，就把debug状态改为false
+        mWxApi = WXAPIFactory.createWXAPI(instance, apiID, DEBUGMODE);
+        return mWxApi.registerApp(apiID);
     }
 
     public void initUMLib() {

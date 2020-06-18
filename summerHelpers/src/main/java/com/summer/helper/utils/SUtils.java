@@ -1226,7 +1226,14 @@ public class SUtils {
         }
     }
 
-    public static String getandSaveCurrentImage(Activity context, Bitmap bitmap, String savePath) {
+    /**
+     * 将Bitmap转为图片存到本地
+     * @param context
+     * @param bitmap
+     * @param savePath 要保存的位置
+     * @return
+     */
+    public static String getandSaveCurrentImage(Context context, Bitmap bitmap, String savePath) {
         try {
             if (bitmap != null) {
                 // 文件
@@ -1407,6 +1414,17 @@ public class SUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 仅仅返回图片的bitmap
+     *
+     * @param context
+     * @param img
+     * @param target
+     */
+    public static void getPicBitmap(Context context, String img, SimpleTarget target) {
+        Glide.with(context).load(img).into(target);
     }
 
     /**

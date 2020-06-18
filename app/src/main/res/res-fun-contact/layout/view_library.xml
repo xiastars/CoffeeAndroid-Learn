@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/so_redffec_5"
+    android:minHeight="130dp"
+    android:orientation="vertical">
+
+    <com.summer.helper.view.NRecycleView
+        android:id="@+id/nv_new_library"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="90dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_ask_other"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="26dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/wendatianti_icon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/so_white5"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_ask_ladder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_ask_ladder"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/wenda_icon_wendatianti" />
+
+                <TextView
+                    android:id="@+id/tv_ask_ladder"
+                    style="@style/common_33"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_ask_ladder"
+                    android:gravity="center"
+                    android:text="问答天梯"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/grey99_12"
+                    android:layout_alignLeft="@id/tv_ask_ladder"
+                    android:layout_below="@id/tv_ask_ladder"
+                    android:layout_marginTop="5dp"
+                    android:text="消耗10积分" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="44dp"
+                android:background="#E4EDFF" />
+
+            <RelativeLayout
+                android:id="@+id/rl_invite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_invite"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/wenda_icon_yaoqinghaoyou" />
+
+                <TextView
+                    android:id="@+id/tv_invite"
+                    style="@style/common_33"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_invite"
+                    android:gravity="center"
+                    android:text="邀请好友"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/grey99_12"
+                    android:layout_alignLeft="@id/tv_invite"
+                    android:layout_below="@id/tv_invite"
+                    android:layout_marginTop="5dp"
+                    android:text="获胜赢取好友积分" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

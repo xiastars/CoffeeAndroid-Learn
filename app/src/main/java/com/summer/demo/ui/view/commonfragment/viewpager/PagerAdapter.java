@@ -1,4 +1,4 @@
-package com.summer.demo.adapter;
+package com.summer.demo.ui.view.commonfragment.viewpager;
 /*
  * Copyright (C) 2011 The Android Open Source Project
  *

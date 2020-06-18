@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<Button
+		android:id="@+id/btn_share1"
+		android:layout_width="match_parent"
+		android:layout_height="45dp"
+		android:text="一般使用样式"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		style="@style/common_button" />
+
+	<Button
+		android:id="@+id/btn_share2"
+		android:layout_width="match_parent"
+		android:layout_height="45dp"
+		android:text="去掉某个分享选项"
+		app:layout_constraintTop_toBottomOf="@id/btn_share1"
+		app:layout_constraintLeft_toLeftOf="parent"
+		style="@style/common_button" />
+
+
+	<Button
+		android:id="@+id/btn_share3"
+		android:layout_width="match_parent"
+		android:layout_height="45dp"
+		android:text="将分享给微信好友的内容改为分享小程序"
+		app:layout_constraintTop_toBottomOf="@id/btn_share2"
+		app:layout_constraintLeft_toLeftOf="parent"
+		style="@style/common_button" />
+
+	<Button
+		android:id="@+id/btn_share4"
+		android:layout_width="match_parent"
+		android:layout_height="45dp"
+		android:text="将分享给微信朋友圈的内容改为分享大图"
+		app:layout_constraintTop_toBottomOf="@id/btn_share3"
+		app:layout_constraintLeft_toLeftOf="parent"
+		style="@style/common_button" />
+
+	<Button
+		android:id="@+id/btn_share5"
+		android:layout_width="match_parent"
+		android:layout_height="45dp"
+		android:text="直接通过系统分享"
+		android:visibility="gone"
+		app:layout_constraintTop_toBottomOf="@id/btn_share3"
+		app:layout_constraintLeft_toLeftOf="parent"
+		style="@style/common_button" />
+
+</android.support.constraint.ConstraintLayout>

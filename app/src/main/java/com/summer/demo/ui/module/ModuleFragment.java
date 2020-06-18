@@ -51,6 +51,7 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_permission,"RXJava",ModulePos.POS_RXJAVA));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_office,"文档预览",ModulePos.POS_OFFICE));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_office,"NFC",ModulePos.POS_NFC));
+		moduleInfos.add(new ModuleInfo(R.drawable.icon_module_share,"社交分享",ModulePos.POS_SHARE));
 		adapter.notifyDataChanged(moduleInfos);
 	}
 

@@ -45,4 +45,6 @@ public class ModulePos {
 
     //NFC
     public static final int POS_NFC = 18;
+
+    public static final int POS_SHARE = 19;
 }

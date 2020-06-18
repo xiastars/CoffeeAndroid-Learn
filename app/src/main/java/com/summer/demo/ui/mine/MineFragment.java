@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.summer.demo.R;
 import com.summer.demo.ui.SettingActivity;
 import com.summer.demo.ui.main.BaseMainFragment;
+import com.summer.demo.ui.mine.contact.AllLibrarySelectActivity;
 import com.summer.demo.ui.mine.release.ReleaseTopicActivity;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.view.RoundAngleImageView;
@@ -97,10 +98,13 @@ public class MineFragment extends BaseMainFragment implements View.OnClickListen
         return R.layout.fragment_mine;
     }
 
-    @OnClick({R.id.iv_setting,R.id.rl_collect})
+    @OnClick({R.id.iv_setting,R.id.rl_collect,R.id.tv_mine_collect})
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.tv_mine_collect:
+                JumpTo.getInstance().commonJump(context, AllLibrarySelectActivity.class);
+                break;
             case R.id.rl_collect:
                 JumpTo.getInstance().commonJump(context, ReleaseTopicActivity.class);
                 break;

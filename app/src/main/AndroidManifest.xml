@@ -60,6 +60,7 @@
         <activity android:name=".module.video.ViewVideoActivity" />
         <activity android:name=".module.base.web.WebContainerActivity" />
         <activity android:name=".ui.mine.release.ReleaseTopicActivity" />
+        <activity android:name=".ui.mine.contact.AllLibrarySelectActivity" />
         <activity android:name=".ui.module.fragment.nfc.NFCActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,6 +77,29 @@
         </activity>
         <activity android:name=".ui.mine.release.ShowVideoActivity" />
         <activity android:name=".ui.mine.release.ShowMediaActivity"  android:theme="@style/TransparentActivityFromBottom"  />
+
+
+        <!-- QQ SDK 需要註冊Activity -->
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1106122550" />
+                <!-- 100380359 100381104 222222 -->
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
