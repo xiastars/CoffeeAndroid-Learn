@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.summer.demo.bean.BaseResp;
 import com.summer.demo.module.base.CommonHelper;
-import com.summer.helper.listener.OnReturnObjectClickListener;
-import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.server.PostData;
 import com.summer.helper.server.SummerParameter;
 
@@ -14,27 +12,13 @@ import com.summer.helper.server.SummerParameter;
  */
 public class EasyHttpHelper extends CommonHelper {
 
-    OnSimpleClickListener onEasyReturnListener;
-    OnReturnObjectClickListener onReturnObjectClickListener;
     OnEasyHttpResultListener onEasyHttpResultListener;
 
-    public static int DELETE_COMMENT = 1001;//删除评论
     public static int CREAT_SUBJECT = 1002;//创建话题
-    public static int DELETE_SUBJECT = 1003;//删除话题
-    public static int EDIT_GROUP_INTRO = 1004;//提问里的信息修改
-    public final static int CHANGE_GROUP_SHARE = 1005;//星球管理的分享
-    public final static int CHANGE_GROUP_MEMER_VISIBLE = 1006;//星球管理的成员公开
-    public final static int GROUP_SET_ANONY = 1007;//星球里是否匿名
-    public final static int GROUP_SET_ONE_DAY = 1008;//星球里是否一天才能发表
-    public final static int GROUP_SET_TOPIC_LIMIT = 1009;//星球里发表主题权限
-    public final static int REQUEST_PAY_TOKEN = 1010;//获取支付令牌
-    public final static int REQUEST_PAY_RESULT = 1011;//获取支付结果
-    public final static int REQUEST_UPDATE_PUSH = 1012;//修改PUSH状态
-    public final static int REQUEST_GUEST_ID = 1013;//获取GuestID
-    public final static int REQUEST_COMMENT_REPLYS = 1015;//获取评论里的回复
-    public final static int REQUEST_SWITCH_GROUP = 1016;//切换账号
-    public final static int TOPIC_VIEW_PERMISSION = 1017;//主题查看权限
-    public final static int SEARCH_CONTENT = 1018;//搜索的反馈
+    public static int REQUEST_WECHAT_PAY = 1003;//微信支付
+    public static int REQUEST_ALI_PAY = 1004;//支付宝支付
+    public static int REQUEST_OATH_LOGIN = 1005;//第三方登录
+    public static int REQUEST_OATH_WEIBO = 1006;//微博授权
 
     public EasyHttpHelper(Context context) {
         super(context);
@@ -120,12 +104,6 @@ public class EasyHttpHelper extends CommonHelper {
     @Override
     protected void dealDatas(int requestCode, Object obj) {
         EasyLoadingHelper.cancelLoading();
-        if (onEasyReturnListener != null) {
-            onEasyReturnListener.onClick(requestCode);
-        }
-        if (onReturnObjectClickListener != null) {
-            onReturnObjectClickListener = (OnReturnObjectClickListener) obj;
-        }
         if (onEasyHttpResultListener != null) {
             onEasyHttpResultListener.onResult(requestCode, obj, true);
         }
@@ -135,16 +113,8 @@ public class EasyHttpHelper extends CommonHelper {
     protected void dealErrors(int requstCode, String requestType, String errString, boolean requestCode) {
         EasyLoadingHelper.cancelLoading();
         if (onEasyHttpResultListener != null) {
-            onEasyHttpResultListener.onResult(requstCode, null, false);
+            onEasyHttpResultListener.onResult(requstCode, errString, false);
         }
-    }
-
-    public void setOnEasyReturnListener(OnSimpleClickListener onEasyReturnListener) {
-        this.onEasyReturnListener = onEasyReturnListener;
-    }
-
-    public void setOnReturnObjectClickListener(OnReturnObjectClickListener onReturnObjectClickListener) {
-        this.onReturnObjectClickListener = onReturnObjectClickListener;
     }
 
     public void setOnEasyHttpResultListener(OnEasyHttpResultListener onEasyHttpResultListener) {

@@ -6,8 +6,7 @@ import com.summer.demo.R;
 import com.summer.demo.bean.BookBean;
 import com.summer.demo.module.base.BaseFragment;
 import com.summer.demo.ui.view.adapter.FunQuestionGalleryAdapter;
-import com.summer.demo.view.GalleryView;
-import com.summer.helper.utils.Logs;
+import com.summer.demo.ui.view.commonfragment.recyclerview.GalleryRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +20,15 @@ import butterknife.BindView;
  */
 public class GalleryFragment extends BaseFragment {
     @BindView(R.id.gallery_view)
-    GalleryView galleryView;
+    GalleryRecyclerView galleryView;
 
     @Override
     protected void initView(View view) {
         FunQuestionGalleryAdapter mFunQuestionAdapter = new FunQuestionGalleryAdapter(context);
         galleryView.setAdapter(mFunQuestionAdapter);
-        galleryView.setOnScrollStopListener(new GalleryView.OnScrollStopListener() {
+        galleryView.setOnScrollStopListener(new GalleryRecyclerView.OnScrollStopListener() {
             @Override
             public void onScrollStop(int position) {
-                Logs.d("zxc", "ppppppp  "+position);
           /*      if (starQuestions == null) {
                     return;
                 }
@@ -47,7 +45,7 @@ public class GalleryFragment extends BaseFragment {
         myHandlder.postDelayed(new Runnable() {
             @Override
             public void run() {
-                galleryView.scrollToPosition(2);
+                //galleryView.scrollToPosition(2);
             }
         },300);
     }

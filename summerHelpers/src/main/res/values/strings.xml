@@ -4,7 +4,6 @@
         <item>@color/yellow_fd</item>
         <item>@color/green_05</item>
     </integer-array>
-    <string name="app_name">ZipPaser</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     

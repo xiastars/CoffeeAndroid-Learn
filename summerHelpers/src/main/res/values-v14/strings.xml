@@ -4,7 +4,6 @@
     <integer-array name="material_colors">
         <item>@color/blue_56</item>
     </integer-array>
-    <string name="app_name">nfhelper</string>
     <string name="label_yesterday">昨天</string>
     <string name="label_just">刚刚</string>
     <string name="label_before_minutes">%1$d分钟前</string>

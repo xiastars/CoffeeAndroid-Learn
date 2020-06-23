@@ -439,6 +439,10 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+    public void onActivityDestroy(){
+
+    }
+
     public boolean isHasChildFragment() {
         return hasChildFragment;
     }

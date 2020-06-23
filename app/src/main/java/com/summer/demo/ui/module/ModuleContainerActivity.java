@@ -20,6 +20,7 @@ import com.summer.demo.ui.module.fragment.UploadFileFragment;
 import com.summer.demo.ui.module.fragment.VibratorFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
+import com.summer.demo.ui.module.fragment.login.LoginActivity;
 import com.summer.demo.ui.module.fragment.nfc.NFCActivity;
 import com.summer.demo.ui.module.fragment.share.ShareFragment;
 import com.summer.demo.ui.module.fragment.socket.SocketFragment;
@@ -114,6 +115,10 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
             case ModulePos.POS_SHARE:
                 setTitle("社交分享");
                 showFragment(new ShareFragment());
+                break;
+            case ModulePos.POS_AUTH_LOGIN:
+                setTitle("社交登录");
+                JumpTo.getInstance().commonJump(context, LoginActivity.class);
                 break;
         }
     }

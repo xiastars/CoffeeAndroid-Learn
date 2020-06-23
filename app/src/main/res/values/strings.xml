@@ -15,6 +15,7 @@
 
     <string name="search_edi_hint">搜索样式</string>
     <string name="search">搜索</string>
+    <string name="agora_app_id">4d4e032fe69b4eefb86ba5b0da225e0c</string>
 
     <string name="title1">通过城市名，从中国天气网取出该城市当天的温度与天气</string>
     <string name="title2">输入中文，点击 后朗读出来</string>

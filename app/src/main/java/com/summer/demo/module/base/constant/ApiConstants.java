@@ -22,7 +22,7 @@ public class ApiConstants {
     /**
      * 七牛云的图片拼接前缀
      */
-    public static final String FILE_BASE_PATH = "https://file.fensixingqiu.com/";
+    public static final String FILE_BASE_PATH = "";
 
 
     static {
@@ -31,26 +31,26 @@ public class ApiConstants {
             FSXQ_DEV = "dev";
             HTTPTYPE = "http:";
             WEB_URL = "http://web.";
-            SHARE_URL = "http://web.fensixingqiu.com";
+            SHARE_URL = "";
         } else if (AppContext.SERVER_MODE == 1) {
             FSXQ_DEV = "testa";
             HTTPTYPE = "http:";
             WEB_URL = "http://web.";
-            SHARE_URL = "https://testw.fensixingqiu.com";
+            SHARE_URL = "";
         } else if (AppContext.SERVER_MODE == 2) {
             FSXQ_DEV = "api";
             HTTPTYPE = "https:";
             WEB_URL = "https://w.";
-            SHARE_URL = "https://w.fensixingqiu.com";
+            SHARE_URL = "";
         } else if (AppContext.SERVER_MODE == 3) {
             FSXQ_DEV = "prea";
             HTTPTYPE = "https:";
             WEB_URL = "https://prew2.";
-            SHARE_URL = "https://prew2.fensixingqiu.com";
+            SHARE_URL = "";
         }
-        FSXQ_HOST = HTTPTYPE + "//" + FSXQ_DEV + ".fensixingqiu.com";
-        FSXQ_MOVIE_HOST = "https://" + FSXQ_DEV + ".fensixingqiu.com";
-        FSXQ_IMG_HOST = "https://" + FSXQ_DEV + ".fensixingqiu.com";
+        FSXQ_HOST = HTTPTYPE + "//" + FSXQ_DEV ;
+        FSXQ_MOVIE_HOST = "https://" + FSXQ_DEV + ".";
+        FSXQ_IMG_HOST = "https://" + FSXQ_DEV + ".";
     }
 
     private static final String FSXQ_SHARE_GROUP_PATH = "/dist/star/index";

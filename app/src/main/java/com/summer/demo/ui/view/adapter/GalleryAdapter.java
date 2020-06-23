@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.summer.demo.view.GalleryView;
+import com.summer.demo.ui.view.commonfragment.recyclerview.GalleryRecyclerView;
 
 public abstract class GalleryAdapter extends RecyclerView.Adapter {
 
@@ -17,7 +17,7 @@ public abstract class GalleryAdapter extends RecyclerView.Adapter {
     protected Context mContext;
     private int mGalleryWidth;
     private int mItemRawWidth;
-    private GalleryView galleryView;
+    private GalleryRecyclerView galleryView;
     private boolean mStartCalculate;
 
     public GalleryAdapter(Context context) {
@@ -28,7 +28,7 @@ public abstract class GalleryAdapter extends RecyclerView.Adapter {
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        galleryView = (GalleryView) recyclerView;
+        galleryView = (GalleryRecyclerView) recyclerView;
     }
 
     @Override

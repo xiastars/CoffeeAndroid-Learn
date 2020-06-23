@@ -1,4 +1,4 @@
-package com.summer.demo.view;
+package com.summer.demo.ui.view.commonfragment.recyclerview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -8,7 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class GalleryView extends RecyclerView {
+/**
+ * 中间大，两头小的，模仿Gallery的RecyvlerView
+ */
+public class GalleryRecyclerView extends RecyclerView {
 
     private static final int OFFEST_SPAN_COUNT = 1;
 
@@ -22,11 +25,11 @@ public class GalleryView extends RecyclerView {
     private float mHighlightScale = 1.28f;
     private int mReferenceX;
 
-    public GalleryView(Context context) {
+    public GalleryRecyclerView(Context context) {
         this(context, null);
     }
 
-    public GalleryView(Context context, @Nullable AttributeSet attrs) {
+    public GalleryRecyclerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         init();

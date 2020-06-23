@@ -10,6 +10,15 @@ public class BaseResp implements Serializable {
     long time;
     Object info;
     int fun;
+    int code;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 
     public int getFun() {
         return fun;

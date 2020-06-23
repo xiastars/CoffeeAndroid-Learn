@@ -45,7 +45,7 @@ import butterknife.BindView;
 /**
  * 帖子里的照片打开后的横向浏览页面
  *
- * @编者 夏起亮
+ * @编者 xiastars@vip.qq.com
  */
 public class ViewBigPhotoActivity extends BaseActivity implements OnClickListener {
     @BindView(R.id.count)

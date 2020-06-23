@@ -3,7 +3,6 @@
     <integer-array name="material_colors">
         <item>@color/blue_56</item>
     </integer-array>
-    <string name="app_name">nfhelper</string>
     <string name="btn_no">不</string>
     <string name="btn_resume">继续</string>
     <string name="btn_setting">设置</string>

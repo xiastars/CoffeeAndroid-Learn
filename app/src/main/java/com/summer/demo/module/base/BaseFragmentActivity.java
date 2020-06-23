@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -36,6 +37,7 @@ import com.summer.helper.view.review.RRelativeLayout;
 import com.summer.helper.web.ActivitysManager;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -375,10 +377,21 @@ public abstract class BaseFragmentActivity extends SwipeBackActivity {
 
     @Override
     protected void onDestroy() {
+        List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+        if(!SUtils.isEmptyArrays(fragmentList)){
+            for(Fragment fragment : fragmentList){
+                if(fragment instanceof BaseFragment){
+                    BaseFragment f = (BaseFragment) fragment;
+
+                    f.onActivityDestroy();
+                }
+            }
+        }
         super.onDestroy();
         if (receiverUtils != null) {
             receiverUtils.unRegisterReceiver();
         }
+        Logs.i("-----------------");
         BitmapUtils.getInstance().clearBitmaps(getClass().getSimpleName());
         context = null;
     }

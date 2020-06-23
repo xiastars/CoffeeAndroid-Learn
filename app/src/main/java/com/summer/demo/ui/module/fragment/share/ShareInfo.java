@@ -8,7 +8,7 @@ public class ShareInfo implements Serializable {
     private String topic_id;
     private String url, origin_url;
     private Bitmap shareBitMap;
-    private int shareType; //1星球 2主题,3邀请嘉宾
+    private int shareType;
     String shareTitle;
     String shareContent;
     String shareImg;

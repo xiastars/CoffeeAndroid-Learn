@@ -1,21 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-	android:orientation="vertical"
-	android:padding="10dp"
-	android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="20dp">
 
-	<TextView
-		style="@style/grey93_14"
-		android:text="垂直的进度条"/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<TextView
+			style="@style/common_title"
+			android:text="普通的进度条" />
+
+		<ProgressBar
+			android:id="@+id/load_pb"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="match_parent"
+			android:layout_height="15dp"
+			android:layout_below="@id/tv_title"
+			android:layout_marginBottom="10dp"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="20dp"
+			android:max="100"
+			android:progress="0"
+			android:progressDrawable="@drawable/progress_downloading" />
 
 
-	<com.summer.demo.view.VerticalProgressBar
-		android:id="@+id/pb_right"
-		style="?android:attr/progressBarStyleHorizontal"
-		android:layout_width="10dp"
-		android:layout_height="211dp"
-		android:max="100"
-		android:progress="0"
-		android:progressDrawable="@drawable/progress_ask" />
-</LinearLayout>
+		<TextView
+			style="@style/common_title"
+			android:text="垂直的进度条" />
+
+
+		<com.summer.demo.view.VerticalProgressBar
+			android:id="@+id/pb_right"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="10dp"
+			android:layout_height="211dp"
+			android:max="100"
+			android:progress="0"
+			android:progressDrawable="@drawable/progress_ask" />
+
+		<TextView
+			style="@style/common_title"
+			android:text="数字进度条" />
+
+		<com.summer.demo.view.NumberProgressBar
+			android:id="@+id/pb_number"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+
+			app:progress_current="0"
+			app:progress_max="100"
+
+			app:progress_reached_bar_height="1.5dp"
+			app:progress_reached_color="#3498DB"
+
+			app:progress_text_color="#3498DB"
+			app:progress_text_offset="1dp"
+			app:progress_text_size="10sp"
+			app:progress_text_visibility="visible"
+
+			app:progress_unreached_bar_height="0.75dp"
+			app:progress_unreached_color="#CCCCCC" />
+
+		<com.summer.demo.view.ProgressImageView
+			android:id="@+id/pb_image"
+			android:layout_marginTop="20dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+	</LinearLayout>
+
+
+</ScrollView>

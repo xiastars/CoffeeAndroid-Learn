@@ -47,4 +47,6 @@ public class ModulePos {
     public static final int POS_NFC = 18;
 
     public static final int POS_SHARE = 19;
+
+    public static final int POS_AUTH_LOGIN = 20;
 }

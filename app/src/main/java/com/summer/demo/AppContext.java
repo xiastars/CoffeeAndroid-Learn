@@ -6,9 +6,12 @@ import android.content.pm.PackageManager;
 import android.os.StrictMode;
 import android.text.TextUtils;
 
+import com.sina.weibo.sdk.WbSdk;
+import com.sina.weibo.sdk.auth.AuthInfo;
 import com.summer.demo.constant.SharePreConst;
 import com.summer.demo.helper.FFMepgHelper;
 import com.summer.demo.module.base.BaseApplication;
+import com.summer.demo.ui.module.fragment.login.OathConfig;
 import com.summer.demo.ui.module.fragment.share.ShareConfig;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.Logs;
@@ -35,6 +38,7 @@ public class AppContext extends BaseApplication {
     public static int SERVER_MODE = 2;//0.是开发，1是测试，2是正式，3是预发布
     public static final boolean DEBUGMODE = true;
     public static final String DEFAULT_TOKEN = "";//444392d5387d9415a5d8e7370b96645f
+    public static AuthInfo weiboApi;
 
     public static final String TEXT_TIME = "2018.11.12 - 15：12";
 
@@ -151,7 +155,7 @@ public class AppContext extends BaseApplication {
     }
 
     // 将该app注册到微信
-    private boolean registToWX(String apiID) {
+    public boolean registToWX(String apiID) {
         //如果微信key申请通过了，就把debug状态改为false
         mWxApi = WXAPIFactory.createWXAPI(instance, apiID, DEBUGMODE);
         return mWxApi.registerApp(apiID);
@@ -172,6 +176,12 @@ public class AppContext extends BaseApplication {
 
     public IWXAPI getWxApi() {
         return mWxApi;
+    }
+
+
+    public static void registToWeibo(String appKey, String redirectURL) {
+        weiboApi = new AuthInfo(instance, appKey, redirectURL, OathConfig.WEIBO_SCOPE);
+        WbSdk.install(instance, weiboApi);
     }
 
     /**

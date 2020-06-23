@@ -5,7 +5,9 @@ import android.content.ClipboardManager;
 import android.content.Context;
 
 import com.summer.demo.R;
+import com.summer.demo.WeiboShareActivity;
 import com.summer.helper.listener.OnSimpleClickListener;
+import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 
@@ -94,6 +96,9 @@ public class ShareHelper {
                 break;
             case ShareType.QQZONE:
                 shareRequest.shareToQZone();
+                break;
+            case ShareType.WEIBO:
+                JumpTo.getInstance().commonJump(context, WeiboShareActivity.class, shareInfo);
                 break;
         }
     }

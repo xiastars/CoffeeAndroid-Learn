@@ -29,6 +29,15 @@ public class BroadConst {
      */
     public static final String NOTIFY_FAKE_TOPIC = "NOTIFY_FAKE_TOPIC";
 
+    /**
+     * 调用连连支付后，提示成功
+     */
+    public static final String NOITFY_PAY_RETURN_RESULT = "NOITFY_PAY_RETURN_RESULT";
+
+    /**
+     * 检查是否支付成功
+     */
+    public static final String NOTIFY_NAME_PAY_RESULT = "isPaySuccess";
 
 
 }

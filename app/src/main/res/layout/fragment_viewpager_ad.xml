@@ -42,6 +42,25 @@
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_title2" />
 
+	<TextView
+		android:id="@+id/tv_title3"
+		android:text="普通页码显示"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		android:layout_marginStart="15dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/cb_container2"
+		style="@style/common_title" />
+	<com.summer.demo.module.base.viewpager.ConvenientBanner
+		android:id="@+id/cb_container3"
+		android:layout_marginTop="15dp"
+		android:layout_width="match_parent"
+		android:layout_height="230dp"
+		app:canLoop="true"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_title3" />
+
 
 </android.support.constraint.ConstraintLayout>
 

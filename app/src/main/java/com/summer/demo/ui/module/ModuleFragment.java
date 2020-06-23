@@ -52,6 +52,7 @@ public class ModuleFragment extends BaseMainFragment {
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_office,"文档预览",ModulePos.POS_OFFICE));
 		moduleInfos.add(new ModuleInfo(R.drawable.ic_office,"NFC",ModulePos.POS_NFC));
 		moduleInfos.add(new ModuleInfo(R.drawable.icon_module_share,"社交分享",ModulePos.POS_SHARE));
+		moduleInfos.add(new ModuleInfo(R.drawable.login_weixin,"社交登录",ModulePos.POS_AUTH_LOGIN));
 		adapter.notifyDataChanged(moduleInfos);
 	}
 

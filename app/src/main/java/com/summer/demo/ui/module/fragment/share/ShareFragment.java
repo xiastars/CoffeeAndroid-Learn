@@ -71,19 +71,16 @@ public class ShareFragment extends BaseFragment implements View.OnClickListener 
                 break;
             case R.id.btn_share5:
                 viewBitmapHelper = new ViewBitmapHelper(mView);
-                viewBitmapHelper.share(new OnReturnBitmapListener() {
-                    @Override
-                    public void onBitmap(String path) {
-                        ShareRule shareRule = new ShareRule();
-                        //设置支持一键分享
-                        shareRule.setSupportShareSystem(true);
-                        ShareInfo shareInfo = buildShareInfo();
-                        //设置要分享的图片
-                        shareInfo.setShareImg(path);
-                        ShareHelper shareHelper = new ShareHelper(context,buildShareInfo(),shareRule);
-                        shareHelper.showDialog();
+                viewBitmapHelper.share(path -> {
+                    ShareRule shareRule1 = new ShareRule();
+                    //设置支持一键分享
+                    shareRule1.setSupportShareSystem(true);
+                    ShareInfo shareInfo = buildShareInfo();
+                    //设置要分享的图片
+                    shareInfo.setShareImg(path);
+                    ShareHelper shareHelper1 = new ShareHelper(context,buildShareInfo(), shareRule1);
+                    shareHelper1.showDialog();
 
-                    }
                 });
 
                 break;

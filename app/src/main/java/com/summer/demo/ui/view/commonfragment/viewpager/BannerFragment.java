@@ -11,6 +11,7 @@ import com.summer.demo.module.base.viewpager.ConvenientBanner;
 import com.summer.demo.ui.view.commonfragment.viewpager.bean.BannerInfo;
 import com.summer.demo.ui.view.commonfragment.viewpager.holder.BannerHolderView;
 import com.summer.demo.ui.view.commonfragment.viewpager.holder.HomeBannerHolder;
+import com.summer.demo.ui.view.commonfragment.viewpager.holder.HomeBannerHolder2;
 import com.summer.helper.listener.OnSimpleClickListener;
 import com.summer.helper.utils.SUtils;
 
@@ -29,6 +30,9 @@ public class BannerFragment extends BaseFragment {
     ConvenientBanner cbContainer;
     @BindView(R.id.cb_container2)
     ConvenientBanner cbContainer2;
+    @BindView(R.id.cb_container3)
+    ConvenientBanner cbContainer3;
+
     @Override
     protected void initView(View view) {
         initBannerView();
@@ -53,6 +57,20 @@ public class BannerFragment extends BaseFragment {
             @Override
             public BannerHolderView createHolder() {
                 return new HomeBannerHolder();
+            }
+        }, banners).setPageIndicator(new int[]{R.drawable.so_white_oval, R.drawable.so_red04_oval}).setOnItemClickListener(new OnSimpleClickListener() {
+            @Override
+            public void onClick(int position) {
+                BannerInfo banner = banners.get(position);
+                //onBannerClick(banner, "top_banner");
+            }
+        });
+
+        cbContainer3.setPageTransformer(new FunPagerTransformer(context));
+        cbContainer3.setPages(new CBViewHolderCreator<BannerHolderView>() {
+            @Override
+            public BannerHolderView createHolder() {
+                return new HomeBannerHolder2();
             }
         }, banners).setPageIndicator(new int[]{R.drawable.so_white_oval, R.drawable.so_red04_oval}).setOnItemClickListener(new OnSimpleClickListener() {
             @Override
