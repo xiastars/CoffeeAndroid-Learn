@@ -61,6 +61,7 @@ public class HomePagerFragment extends BaseMainFragment implements View.OnClickL
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(fragments.size());
         viewPager.setCurrentItem(0);
+
         pagerStrip.setViewPager(viewPager);
         //单个Tab的宽度
         pagerStrip.setTabWidth(SUtils.getDip(context, 52));

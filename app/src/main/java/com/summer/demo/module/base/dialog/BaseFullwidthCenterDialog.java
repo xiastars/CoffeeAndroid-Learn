@@ -23,12 +23,6 @@ public abstract class BaseFullwidthCenterDialog extends BaseDialog {
         setCanceledOnTouchOutside(true);
     }
 
-    public BaseFullwidthCenterDialog(@NonNull Context context, int style) {
-        super(context, style);
-        this.context = context;
-        setCanceledOnTouchOutside(true);
-    }
-
     @Override
     protected int showEnterAnim() {
         return R.anim.dialog_center_enter;

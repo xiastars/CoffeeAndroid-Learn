@@ -146,6 +146,42 @@
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 
+
+	<style name="grey33_14">
+		<item name="android:textColor">@color/grey_33</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="grey33_18">
+		<item name="android:textColor">@color/grey_33</item>
+		<item name="android:textSize">18sp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="grey33_20">
+		<item name="android:textColor">@color/grey_33</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="grey_66">
+		<item name="android:textColor">@color/grey_66</item>
+		<item name="android:textSize">15sp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="grey_66_10">
+		<item name="android:textColor">@color/grey_66</item>
+		<item name="android:textSize">10sp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
 	<!--验证码的属性-->
 	<declare-styleable name="VerCodeEditText">
 		<attr name="figures" format="integer" />

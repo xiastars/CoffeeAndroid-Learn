@@ -9,7 +9,7 @@ public class OathConfig {
 
     public static String WEIBO_TOKEN = "";
     public static String WEIBO_UID = "";
-
+    public static String WEIXIN_ID = "";//微信KEY
     /**
      * 当前 DEMO 应用的回调页，第三方应用可以使用自己的回调页。
      * 建议使用默认回调页：https://api.weibo.com/oauth2/default.html

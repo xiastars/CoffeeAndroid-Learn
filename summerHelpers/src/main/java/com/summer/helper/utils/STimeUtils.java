@@ -101,6 +101,20 @@ public class STimeUtils {
     }
 
     /**
+     * 获取下一个月
+     *
+     * @return
+     */
+    public static long getCurYearAndMonthByTime(long time) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        Logs.i("time::"+calendar.getTimeZone());
+        calendar.add(Calendar.MONTH, 1);
+        return calendar.getTimeInMillis();
+    }
+
+
+    /**
      * 转换时间，格式--
      *
      * @return
@@ -128,9 +142,7 @@ public class STimeUtils {
      * @return
      */
     public static String getDayWithFormat(String formatContent, long date) {
-        if(date < 10000000000L){
-            date = date * 1000;
-        }
+
         return getDayWithFormat(formatContent, new Date(date));
     }
 
@@ -305,7 +317,7 @@ public class STimeUtils {
      * @throws ParseException
      */
     public static long parseStringDate(String strTime, String formatType) {
-        SimpleDateFormat formatter = new SimpleDateFormat(formatType);
+        SimpleDateFormat formatter = new SimpleDateFormat(formatType, Locale.CHINA);
         Date date = null;
         try {
             date = formatter.parse(strTime);

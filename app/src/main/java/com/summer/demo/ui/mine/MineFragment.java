@@ -98,7 +98,7 @@ public class MineFragment extends BaseMainFragment implements View.OnClickListen
         return R.layout.fragment_mine;
     }
 
-    @OnClick({R.id.iv_setting,R.id.rl_collect,R.id.tv_mine_collect})
+    @OnClick({R.id.iv_setting,R.id.rl_collect,R.id.tv_mine_collect,R.id.rl_cash})
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -110,6 +110,9 @@ public class MineFragment extends BaseMainFragment implements View.OnClickListen
                 break;
             case R.id.iv_setting:
                 JumpTo.getInstance().commonJump(context, SettingActivity.class);
+                break;
+            case R.id.rl_cash:
+
                 break;
         }
     }

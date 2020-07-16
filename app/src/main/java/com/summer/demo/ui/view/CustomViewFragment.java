@@ -38,6 +38,7 @@ public class CustomViewFragment extends BaseMainFragment {
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_danmake,"简单弹幕",ElementPosition.DANMAKU));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_module_vibrate,"dd",ElementPosition.CAL));
         moduleInfos.add(new ModuleInfo(R.drawable.ic_view_calendar,"日历(当月)",ElementPosition.CALENDAR));
+        moduleInfos.add(new ModuleInfo(R.drawable.ic_progress,"Battle",ElementPosition.BYD));
 
         adapter = new CommonGridAdapter(context, new OnSimpleClickListener() {
             @Override

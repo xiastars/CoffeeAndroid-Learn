@@ -17,5 +17,7 @@ public class ElementPosition {
 
     public final static int CALENDAR = 4;
 
+    public final static int BYD = 5;
+
 
 }

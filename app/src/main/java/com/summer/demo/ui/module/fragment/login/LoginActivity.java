@@ -15,7 +15,6 @@ import com.summer.demo.R;
 import com.summer.demo.helper.EasyHttpHelper;
 import com.summer.demo.module.base.BaseActivity;
 import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
-import com.summer.demo.ui.module.fragment.share.ShareConfig;
 import com.summer.helper.server.SummerParameter;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
@@ -79,12 +78,12 @@ public class LoginActivity extends BaseActivity {
             isBind = true;
             setContentView(R.layout.view_empty);
             AccessTokenKeeper.clear(getApplicationContext());
-            requestOath(OathType.WEIBO);
+            //requestOath(OathType.WEIBO);
         } else if (fromWhere == 2) {
             isBind = true;
             setContentView(R.layout.view_empty);
             AppContext.getInstance().getWxApi().unregisterApp();
-            requestOath(OathType.WEIXIN);
+            //requestOath(OathType.WEIXIN);
         }
     }
 
@@ -94,7 +93,9 @@ public class LoginActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.btn_wechat:
                 AppContext.getInstance().unregisterWxApi();
-                requestOath(OathType.WEIXIN);
+                //直接登录
+                onClickLoginButton();
+                //requestOath(OathType.WEIXIN);
                 break;
             case R.id.btn_weibo:
                 AccessTokenKeeper.clear(getApplicationContext());
@@ -121,7 +122,7 @@ public class LoginActivity extends BaseActivity {
         easyHttpHelper.setOnEasyHttpResultListener(new EasyHttpHelper.OnEasyHttpResultListener() {
             @Override
             public void onResult(int requestCode, Object obj, boolean succeed) {
-                if(!succeed){
+                if (!succeed) {
                     return;
                 }
                 if (requestCode != EasyHttpHelper.REQUEST_OATH_LOGIN) {
@@ -141,7 +142,7 @@ public class LoginActivity extends BaseActivity {
                     mSsoHandler = new SsoHandler(LoginActivity.this);
                     mSsoHandler.authorize(new LoginActivity.SelfWbAuthListener());
                 } else if (fromType.equals(OathType.WEIXIN)) {
-                    ShareConfig.WEIXIN_ID = code;
+                    OathConfig.WEIXIN_ID = code;
                     boolean result = AppContext.getInstance().registToWX(code);
                     if (result) {
                         runOnUiThread(new Runnable() {
@@ -166,10 +167,13 @@ public class LoginActivity extends BaseActivity {
             this.finish();
             return;
         }
+        boolean registResult = AppContext.getInstance().registToWX(OathConfig.WEIXIN_ID);
+        if(!registResult){
+            return;
+        }
         SendAuth.Req req = new SendAuth.Req();
         req.scope = "snsapi_userinfo";
         req.state = "wechat_sdk_demo_test";
-        AppContext.getInstance().getWxApi().unregisterApp();
         boolean result = AppContext.getInstance().getWxApi().sendReq(req);
         if (!result) {
             SUtils.makeToast(context, "授权失败，请稍后重试!");

@@ -184,20 +184,15 @@ public class AppContext extends BaseApplication {
         WbSdk.install(instance, weiboApi);
     }
 
-    /**
-     * 微信是否安装
-     *
-     * @return
-     */
-    public boolean isWxInstall() {
-        if (mWxApi != null) {
-            return mWxApi.isWXAppInstalled();
-        }
-        return false;
-    }
-
     public static AppContext getInstance() {
         return instance;
+    }
+
+    public boolean isWxInstall() {
+        if (mWxApi != null) {
+            return true;
+        }
+        return true;
     }
 
     public List<String> imageIds = new ArrayList<>();

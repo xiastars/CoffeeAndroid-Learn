@@ -118,6 +118,32 @@
 				app:verCodeMargin="10dp" />
 		</LinearLayout>
 
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/so_white"
+			android:layout_marginTop="10dp"
+			android:paddingBottom="10dp"
+			android:orientation="vertical"
+			android:padding="10dp">
+			<TextView
+				style="@style/common_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="限制指定内容输入，比如禁止空格" />
+			<EditText
+
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="@null"
+				android:layout_marginTop="20dp"
+				android:textColor="@color/blue_56"
+				android:textSize="20sp"
+				android:digits="_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+				android:inputType="textFilter"
+				android:maxLines="1"
+			/>
+		</LinearLayout>
 
 	</LinearLayout>
 
