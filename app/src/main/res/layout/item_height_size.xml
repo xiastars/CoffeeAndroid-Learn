@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="20dp"
+	android:layout_height="100dp">
+
+	<View
+		android:id="@+id/view_size"
+		android:layout_width="1dp"
+		android:layout_centerHorizontal="true"
+		android:background="@color/grey_66"
+		android:layout_height="10dp" />
+
+	<TextView
+		android:id="@+id/tv_size"
+		android:layout_centerHorizontal="true"
+		android:layout_alignParentBottom="true"
+		android:textSize="16sp"
+		android:textColor="@color/grey_66"
+		android:layout_marginBottom="3dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+</RelativeLayout>

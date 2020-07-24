@@ -64,6 +64,7 @@ public class GalleryRecyclerView extends RecyclerView {
                 mScrollPositionChangeListener.onScrollChange(getHighlightPosition());
         }
 
+        /*
         int childCount = getChildCount();
         for (int i=0;i<childCount;i++){
             View view = getChildAt(i);
@@ -71,6 +72,8 @@ public class GalleryRecyclerView extends RecyclerView {
             view.setScaleX(scale);
             view.setScaleY(scale);
         }
+
+         */
     }
 
     /**

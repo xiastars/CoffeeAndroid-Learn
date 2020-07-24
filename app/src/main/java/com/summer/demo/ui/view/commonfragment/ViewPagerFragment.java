@@ -9,6 +9,7 @@ import com.summer.demo.ui.FragmentContainerActivity;
 import com.summer.demo.ui.view.commonfragment.viewpager.BannerFragment;
 import com.summer.demo.ui.view.commonfragment.viewpager.CommonVPFragment;
 import com.summer.demo.ui.view.commonfragment.viewpager.LeftDotViewPager;
+import com.summer.demo.ui.view.commonfragment.viewpager.UserHeightFragment;
 import com.summer.demo.ui.view.commonfragment.viewpager.VerticalViewPagerFragment;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class ViewPagerFragment extends BaseTitleListFragment implements View.OnC
     final int POS_LEFTDOT = 1;
     final int POS_VERTICAL = 2;
     final int POS_Banner = 3;
+    final int POS_SIZE = 4;
 
     @Override
     protected List<String> setData() {
@@ -36,6 +38,7 @@ public class ViewPagerFragment extends BaseTitleListFragment implements View.OnC
 
         datas.add("垂直翻页的ViewPager");
         datas.add("广告栏");
+        datas.add("身高尺");
         return datas;
     }
 
@@ -54,6 +57,9 @@ public class ViewPagerFragment extends BaseTitleListFragment implements View.OnC
                 break;
             case POS_Banner:
                 showFragment(new BannerFragment());
+                break;
+            case POS_SIZE:
+                showFragment(new UserHeightFragment());
                 break;
         }
     }
