@@ -66,9 +66,15 @@
 			app:progress_unreached_bar_height="0.75dp"
 			app:progress_unreached_color="#CCCCCC" />
 
+		<com.summer.demo.view.BubbleSeekbar
+			android:layout_width="match_parent"
+			android:background="@color/blue_0a"
+			android:layout_height="150dp" />
+
 		<com.summer.demo.view.ProgressImageView
 			android:id="@+id/pb_image"
 			android:layout_marginTop="20dp"
+			android:visibility="gone"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" />
 	</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:id="@+id/ll_bubble"
+		android:orientation="vertical"
+		android:background="@drawable/so_blue56_45"
+		android:layout_width="60dp"
+		android:layout_height="60dp" >
+
+	</LinearLayout>
+
+
+
+	<View
+		android:layout_below="@id/ll_bubble"
+		android:id="@+id/view_top"
+		android:layout_marginRight="20dp"
+		android:layout_marginLeft="20dp"
+		android:layout_height="17dp"
+		android:background="@drawable/so_gradient_redffe_blued8"
+		android:layout_marginTop="10dp"
+		android:layout_width="match_parent" />
+
+	<View
+		android:layout_below="@id/ll_bubble"
+		android:id="@+id/view_bottom"
+		android:layout_marginRight="20dp"
+		android:layout_marginLeft="20dp"
+		android:layout_alignParentRight="true"
+		android:background="@drawable/so_grey22_45"
+		android:layout_height="17dp"
+		android:layout_marginTop="10dp"
+		android:layout_width="match_parent" />
+
+</RelativeLayout>

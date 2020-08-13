@@ -43,7 +43,6 @@ public class TextViewFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
 
-        /
         ActionMode.Callback2 textSelectionActionModeCallback;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             textSelectionActionModeCallback = new ActionMode.Callback2() {
