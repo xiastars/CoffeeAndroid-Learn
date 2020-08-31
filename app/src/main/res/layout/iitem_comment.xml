@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/ll_parent"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginBottom="10dp"
+	android:background="@color/white"
+	android:descendantFocusability="blocksDescendants"
+	android:orientation="vertical">
+
+	<RelativeLayout
+		android:id="@+id/rl_top"
+		android:layout_width="match_parent"
+		android:layout_height="70dp"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp">
+
+		<com.nufang.nfhelper.view.RoundAngleImageView
+			android:id="@+id/iv_avatar"
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:layout_centerVertical="true"
+			app:oval="true" />
+
+		<LinearLayout
+			android:id="@+id/ll_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="10dp"
+			android:layout_toRightOf="@id/iv_avatar"
+			android:gravity="center_vertical"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/tv_name"
+				style="@style/grey4a_16"
+				android:ellipsize="end"
+				android:maxWidth="200dp"
+				android:singleLine="true" />
+
+			<LinearLayout
+				android:id="@+id/ll_address"
+
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/tv_address"
+					style="@style/grey93_12"
+					android:layout_marginRight="100dp"
+					android:ellipsize="end"
+					android:maxLines="1" />
+
+				<TextView
+					android:id="@+id/tv_friends_num"
+					style="@style/grey93_12"
+					android:layout_marginRight="20dp"
+					android:ellipsize="end"
+					android:maxLines="1" />
+			</LinearLayout>
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/tv_delete"
+			style="@style/grey93_12"
+
+			android:layout_alignTop="@id/ll_name"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="3dp"
+			android:layout_toRightOf="@id/ll_name"
+			android:text="删除"
+			android:textColor="@color/blue_56"
+			android:visibility="gone" />
+
+
+		<LinearLayout
+			android:id="@+id/ll_permission"
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:layout_alignParentRight="true"
+
+			android:layout_centerVertical="true"
+			android:gravity="center|right">
+
+			<ImageView
+				android:id="@+id/iv_permission"
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:background="@drawable/details_post_drop_down_icon" />
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/tv_retry"
+			android:layout_width="68dp"
+			android:layout_height="22dp"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="15dp"
+			android:layout_marginTop="15dp"
+			android:autoLink="web"
+			android:background="@drawable/so_trans_blue56_3"
+			android:gravity="center"
+			android:text="点击重发"
+			android:textAlignment="center"
+			android:textColor="@color/blue_56"
+			android:textSize="12sp"
+			android:visibility="gone" />
+
+		<LinearLayout
+			android:id="@+id/ll_sending"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="15dp"
+			android:layout_marginTop="15dp"
+			android:gravity="center_vertical"
+			android:orientation="vertical"
+			android:visibility="gone">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="内容正在发送"
+				android:textColor="#ff93909e"
+				android:textSize="12sp" />
+
+			<com.nufang.fsxq.widget.progress.SmoothProgressBar
+				android:id="@+id/progressbar"
+				style="@style/GPlusProgressBar"
+				android:layout_width="72dp"
+				android:layout_height="3dp"
+				android:layout_marginTop="3dp"
+				android:background="@color/grey_f1"
+				android:indeterminate="true" />
+
+		</LinearLayout>
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:id="@+id/ll_qa_top"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/rl_top"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<LinearLayout
+			android:id="@+id/ll_qa"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="12dp"
+			android:gravity="center_vertical"
+			android:minHeight="43dp"
+			android:orientation="horizontal">
+
+			<View
+				android:id="@+id/view_left"
+				android:layout_width="3dp"
+				android:layout_height="match_parent"
+				android:background="@drawable/so_purple_b2_45" />
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="5dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:id="@+id/tv_qa"
+					style="@style/grey4a_16"
+					android:autoLink="web"
+					android:ellipsize="end"
+					android:maxLines="2" />
+
+				<ImageView
+					android:id="@+id/iv_qa_img"
+					android:layout_width="match_parent"
+					android:layout_height="345dp"
+					android:layout_marginTop="5dp"
+					android:clickable="true"
+					android:scaleType="centerCrop" />
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/tv_answer_content"
+			style="@style/grey4a_16"
+			android:layout_marginBottom="10dp"
+			android:layout_marginTop="10dp"
+			android:autoLink="web"
+			android:ellipsize="end"
+			android:maxLines="5" />
+
+		<TextView
+			android:id="@+id/tv_more"
+			style="@style/grey4a_16"
+			android:text="@string/topic_seemore"
+			android:textColor="@color/blue_56"
+			android:visibility="gone" />
+
+	</LinearLayout>
+
+	<RelativeLayout
+		android:id="@+id/rl_content_container"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/ll_qa_top">
+
+		<LinearLayout
+			android:id="@+id/ll_content"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<RelativeLayout
+				android:id="@+id/rl_img"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<com.nufang.fsxq.widget.viewpager.ConvenientBanner
+					android:id="@+id/cb_container"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent" />
+
+			</RelativeLayout>
+
+			<RelativeLayout
+				android:id="@+id/rl_video"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp">
+
+				<RelativeLayout
+					android:id="@+id/rl_video_content"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true">
+
+					<ImageView
+						android:id="@+id/iv_video_cover"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:scaleType="centerCrop" />
+
+					<com.nufang.fsxq.module.video.NFVideoPlayer
+						android:id="@+id/vd_play"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_centerInParent="true"
+						android:visibility="gone" />
+
+					<ImageView
+						android:id="@+id/iv_video_play"
+						android:layout_width="60dp"
+						android:layout_height="60dp"
+						android:layout_centerInParent="true"
+						android:background="@drawable/details_post_play_icon" />
+				</RelativeLayout>
+
+			</RelativeLayout>
+
+			<include
+				android:id="@+id/ll_audio"
+				layout="@layout/include_audio_play"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+
+				android:layout_below="@id/rl_img" />
+
+			<RelativeLayout
+				android:id="@+id/rl_content"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/ll_audio"
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:minHeight="30dp">
+
+				<com.nufang.fsxq.widget.CustomEllipsizeTextView
+					android:id="@+id/tv_content"
+					style="@style/grey4a_16"
+					android:layout_width="match_parent"
+					android:layout_centerVertical="true"
+					android:layout_marginRight="15dp"
+					android:autoLink="web"
+					android:ellipsize="end"
+					android:linksClickable="true"
+					android:maxLines="2" />
+
+				<TextView
+					android:id="@+id/tv_open"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:layout_centerVertical="true"
+					android:text="展开"
+					android:textColor="@color/blue_56"
+					android:textSize="16sp"
+					android:visibility="gone" />
+
+			</RelativeLayout>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/ll_renew"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_alignTop="@id/ll_content"
+			android:layout_alignBottom="@id/ll_content"
+			android:background="@color/black88"
+			android:gravity="center"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="续费后查看更多精彩内容"
+				android:textColor="#ffffffff"
+				android:textSize="20sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tv_renew"
+				android:layout_width="110dp"
+				android:layout_height="40dp"
+				android:layout_marginTop="20dp"
+				android:background="@drawable/gradient_redff8_redff4_45"
+				android:gravity="center"
+				android:text="待续费"
+				android:textColor="#ffffffff"
+				android:textSize="20sp" />
+
+
+		</LinearLayout>
+
+	</RelativeLayout>
+
+
+	<include
+		android:id="@+id/ll_subject"
+		layout="@layout/include_subject"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/rl_content_container"
+		android:layout_marginTop="10dp" />
+
+	<include
+		android:id="@+id/rl_bottom"
+		layout="@layout/include_home_bottom"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/ll_subject"
+		android:layout_marginBottom="5dp"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginTop="5dp" />
+
+	<include
+		android:id="@+id/ll_like_comment"
+		layout="@layout/include_like_comment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="15dp"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		android:visibility="gone" />
+
+</LinearLayout>
