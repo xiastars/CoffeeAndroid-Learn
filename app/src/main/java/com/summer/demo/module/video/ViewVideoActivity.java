@@ -13,7 +13,6 @@ import com.summer.demo.ui.module.fragment.dialog.EasyLoading;
 import com.summer.helper.server.PostData;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
-import com.summer.helper.utils.SFileUtils;
 import com.summer.helper.utils.SUtils;
 
 import java.io.File;
@@ -82,9 +81,9 @@ public class ViewVideoActivity extends BaseActivity {
     }
 
     public void setVideoUrl(final String url) {
-        String filepath = SFileUtils.getVideoDirectory();
-        String fileName = SUtils.getUrlHashCode(url) + SFileUtils.FileType.FILE_MP4;
-        File file = new File(filepath + fileName);
+        //String filepath = SFileUtils.getVideoDirectory();
+        //String fileName = SUtils.getUrlHashCode(url) + SFileUtils.FileType.FILE_MP4;
+        File file = new File(url);
         Logs.i("file:"+file.exists()+",,");
         if (file.exists()) {
             mVideoView.setVideoPath(file.getAbsolutePath());

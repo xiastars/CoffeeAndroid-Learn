@@ -18,6 +18,7 @@ import com.summer.demo.ui.module.fragment.PermissionFragment;
 import com.summer.demo.ui.module.fragment.RXJavaFragment;
 import com.summer.demo.ui.module.fragment.UploadFileFragment;
 import com.summer.demo.ui.module.fragment.VibratorFragment;
+import com.summer.demo.ui.module.fragment.VideoPlayerFragment;
 import com.summer.demo.ui.module.fragment.WebLeanFragment;
 import com.summer.demo.ui.module.fragment.dialog.MyDialogFragment;
 import com.summer.demo.ui.module.fragment.login.LoginActivity;
@@ -120,6 +121,9 @@ public class ModuleContainerActivity extends FragmentContainerActivity {
                 setTitle("社交登录");
                 JumpTo.getInstance().commonJump(context, LoginActivity.class);
                 break;
+                case ModulePos.POS_VIDEO_PLAY:
+                    showFragment(new VideoPlayerFragment());
+                    break;
         }
     }
 

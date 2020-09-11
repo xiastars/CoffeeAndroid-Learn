@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView;
 
+import com.summer.helper.utils.Logs;
+
 import java.io.IOException;
 
 /**
@@ -121,7 +123,8 @@ public class MyVideoView extends TextureView implements TextureView.SurfaceTextu
     public void setVideoPath(String path) {
 //		if (StringUtils.isNotEmpty(path) && MediaUtils.isNative(path)) {
         mTargetState = STATE_PREPARED;
-        openVideo(Uri.parse(path));
+        Uri contentUri = Uri.parse(path);
+        openVideo(contentUri);
 //		}
     }
 
@@ -333,10 +336,13 @@ public class MyVideoView extends TextureView implements TextureView.SurfaceTextu
             mCurrentState = STATE_PREPARING;
         } catch (IOException ex) {
             exception = ex;
+            Logs.i("ex:"+ex);
         } catch (IllegalArgumentException ex) {
             exception = ex;
+            Logs.i("ex:"+ex);
         } catch (Exception ex) {
             exception = ex;
+            Logs.i("ex:"+ex);
         }
         if (exception != null) {
             exception.printStackTrace();

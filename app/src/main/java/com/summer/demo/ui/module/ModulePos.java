@@ -49,4 +49,6 @@ public class ModulePos {
     public static final int POS_SHARE = 19;
 
     public static final int POS_AUTH_LOGIN = 20;
+
+    public static final int POS_VIDEO_PLAY = 21;
 }
