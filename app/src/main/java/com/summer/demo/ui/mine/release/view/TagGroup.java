@@ -778,10 +778,8 @@ public class TagGroup extends ViewGroup {
                 RelativeLayout.LayoutParams addparams = (RelativeLayout.LayoutParams) ivAdd.getLayoutParams();
                 addparams.width = SUtils.getDip(context, 12);
                 addparams.height = SUtils.getDip(context, 12);
-                this.post(() -> {
-                    addparams.leftMargin = (viewWidth - addparams.width)/2;
-                    addparams.topMargin =  (viewHeight- addparams.height)/2;
-                });
+                addparams.leftMargin = (int) (horizontalPadding*1.55f);
+                addparams.topMargin = (int) (verticalPadding*1.8);
 
             }
 

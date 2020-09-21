@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.summer.demo.R;
 import com.summer.demo.module.album.AlbumActivity;
+import com.summer.demo.module.album.bean.SelectAlumbType;
 import com.summer.demo.module.album.bean.SelectOptions;
 import com.summer.demo.module.album.listener.AlbumCallback;
 import com.summer.demo.module.album.util.ImageItem;
@@ -37,7 +38,7 @@ public class VideoCutFragment extends BaseFragment {
             }
 
         });
-        selectOptions.setVideoMode(true);
+        selectOptions.setSlectAlbumType(SelectAlumbType.Video);
 
 
         AlbumActivity.show(context, selectOptions.build());

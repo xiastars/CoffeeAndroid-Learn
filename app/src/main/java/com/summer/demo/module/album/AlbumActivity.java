@@ -250,7 +250,7 @@ public class AlbumActivity extends BaseActivity implements OnClickListener, OnIt
         if (selectAlumbType == SelectAlumbType.Video) {
             btnFolder.setVisibility(View.GONE);
             setTitle("最近视频");
-            btnSure.setVisibility(View.GONE);
+            //btnSure.setVisibility(View.GONE);
             SThread.getIntances().submit(new Runnable() {
                 @Override
                 public void run() {

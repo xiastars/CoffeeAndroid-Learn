@@ -50,6 +50,7 @@ public class NFPagerTabView extends TextView {
         mIndicateRadius = SUtils.getDip(context, 4);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setDither(true);
+        mPaint.setStyle(Paint.Style.FILL);
         mPaint.setFakeBoldText(true);
         mPaint.setTextSize(mTextSize);
     }
@@ -67,7 +68,7 @@ public class NFPagerTabView extends TextView {
         int bx = (getWidth()-rect.width())/2;
         if(TextUtils.isEmpty(getText().toString())){
             mPaint.setColor(    getCurrentTextColor());
-            mPaint.setStyle(Paint.Style.STROKE);
+
             canvas.drawText(mText, bx, by, mPaint);
         }
         if (mShowIndicate){

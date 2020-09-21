@@ -63,7 +63,6 @@ public final class SelectOptions {
         private int cropWidth, cropHeight;
         private AlbumCallback callback;
         private boolean hasCam;
-        private boolean isVideoMode;
         private int selectCount;
         private List<ImageItem> selectedImages;
         private SelectAlumbType selectAlumbType;
@@ -88,19 +87,9 @@ public final class SelectOptions {
             return this;
         }
 
-        public Builder setVideoMode(boolean isVideo){
-            this.isVideoMode = isVideo;
-            return this;
-        }
-
         public Builder setSlectAlbumType(SelectAlumbType type){
             this.selectAlumbType = type;
             return this;
-        }
-
-
-        public boolean isVideoMode() {
-            return isVideoMode;
         }
 
         public Builder setHasCam(boolean hasCam) {
@@ -125,7 +114,6 @@ public final class SelectOptions {
             SelectOptions options = new SelectOptions();
             options.hasCam = hasCam;
             options.isCrop = isCrop;
-            options.isVideoMode = isVideoMode;
             options.selectAlumbType = selectAlumbType;
             options.mCropHeight = cropHeight;
             options.mCropWidth = cropWidth;
