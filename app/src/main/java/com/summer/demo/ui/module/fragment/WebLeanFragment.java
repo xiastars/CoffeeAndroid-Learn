@@ -22,11 +22,11 @@ import android.webkit.WebView;
 import com.summer.demo.R;
 import com.summer.demo.module.album.MediaHandleJavascriptInterface;
 import com.summer.demo.module.base.BaseFragment;
+import com.summer.demo.module.base.web.WebContainerActivity;
 import com.summer.demo.ui.module.fragment.web.ReWebChomeClient;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.web.CustomWebView;
-import com.summer.helper.web.WebContainerActivity;
 
 import java.io.File;
 import java.util.Set;
@@ -203,12 +203,12 @@ public class WebLeanFragment extends BaseFragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.tv_url:
                 String testUrl = "https://www.in9ni.com/wap/detail/merRegister";
-                JumpTo.getInstance().commonJump(context, WebContainerActivity.class, testUrl);
+                WebContainerActivity.show(context,testUrl,"网络链接");
                 break;
             case R.id.tv_local:
 
                 String url = "file:///android_asset/home.html";
-                JumpTo.getInstance().commonJump(context, WebContainerActivity.class, url);
+                WebContainerActivity.show(context,url,"asset文件");
                 break;
         }
     }

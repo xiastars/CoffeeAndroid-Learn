@@ -14,6 +14,7 @@ import com.summer.demo.R;
 import com.summer.demo.module.album.listener.OnItemClickListener;
 import com.summer.demo.module.album.util.ImageItem;
 import com.summer.helper.adapter.SRecycleAdapter;
+import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
 
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class AlbumGridViewAdapter extends SRecycleAdapter {
         if (path.contains("camera_default")) {
             viewHolder.imageView.setImageResource(R.drawable.plugin_camera_no_pictures);
         } else {
+            Logs.i(item.thumbnailPath+",,"+item.getImagePath());
             SUtils.setPic(viewHolder.imageView, item.thumbnailPath != null ? item.thumbnailPath : item.getImagePath());
         }
 

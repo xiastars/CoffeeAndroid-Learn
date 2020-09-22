@@ -1,57 +1,57 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
+ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:1-19:12
 	package
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:3:5-39
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:3:5-39
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:5:5-30
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:4:5-28
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
 uses-permission#android.permission.BLUETOOTH
-ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:8:5-68
+ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:8:5-68
 	android:name
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:8:22-65
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:8:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:9:5-74
+ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:9:5-74
 	android:name
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:9:22-71
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:9:22-71
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:11:5-75
+ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:11:5-75
 	android:name
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:11:22-72
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:11:22-72
 application
-ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:13:5-17:19
+ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:13:5-17:19
 	android:label
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:16:9-41
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:16:9-41
 	android:allowBackup
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:14:9-35
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:14:9-35
 	android:theme
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:15:9-37
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml:15:9-37
 uses-sdk
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-		ADDED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
-		INJECTED from D:\balanx\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		ADDED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml
+		INJECTED from D:\CoffeeAndroid\CoffeeAndroid-Learn\summerHelpers\src\main\AndroidManifest.xml

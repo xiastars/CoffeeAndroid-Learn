@@ -25,11 +25,11 @@ import android.widget.TextView;
 import com.summer.demo.R;
 import com.summer.demo.bean.SpannableInfo;
 import com.summer.demo.bean.SubjectInfo;
+import com.summer.demo.module.base.web.WebContainerActivity;
 import com.summer.demo.ui.ViewBigPhotoActivity;
 import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 import com.summer.helper.utils.SUtils;
-import com.summer.helper.web.WebContainerActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -221,10 +221,7 @@ public class TextWebUtils {
                                 if(isSymlink(new File(url))){
                                     SUtils.makeToast(context,"url"+url);
                                 }else{
-                                    Intent intent = new Intent(context, WebContainerActivity.class);
-                                    intent.putExtra(JumpTo.TYPE_STRING, url);
-                                    intent.putExtra("key_title", title);
-                                    context.startActivity(intent);
+                                    WebContainerActivity.show(context,url,title);
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();

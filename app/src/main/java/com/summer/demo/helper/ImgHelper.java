@@ -32,6 +32,9 @@ public class ImgHelper {
      * @param callback
      */
     public static void compressImg(final Context context, boolean needWatermark,String imagePath, final Callback<String> callback) {
+        if(imagePath == null){
+            return;
+        }
         if (imagePath.endsWith(".gif")) {
             callback.callback(imagePath);
         } else {

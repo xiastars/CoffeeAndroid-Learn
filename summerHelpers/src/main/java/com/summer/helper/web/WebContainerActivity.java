@@ -14,10 +14,10 @@ import com.summer.helper.utils.JumpTo;
 import com.summer.helper.utils.Logs;
 
 public class WebContainerActivity extends Activity {
-	
+
 	private WebContainerActivity INSTANCE;
 	FrameLayout llContainerLayout;
-	
+
 	private String loadPageUrl;
 	public String title;
 	public int isFromMain = 0;
@@ -45,10 +45,9 @@ public class WebContainerActivity extends Activity {
 		INSTANCE = WebContainerActivity.this;
 		WebContainerJumpView.initLocalActivityManager(this, savedInstanceState);
 		initView();
-		webTopBarManager = new WebTopBarManager(this);
 		initData();
 	}
-	
+
 	private void initView() {
 		mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
 		llContainerLayout = (FrameLayout) findViewById(R.id.container_layout);
@@ -64,7 +63,7 @@ public class WebContainerActivity extends Activity {
 		Logs.i("xia","ONRESUME");
 		initData();
 	}
-	
+
 	@Override
 	protected void onRestart() {
 		super.onRestart();
@@ -73,7 +72,7 @@ public class WebContainerActivity extends Activity {
 			finish();
 		}
 	}
-	
+
 	private void initData(){
 		loadPageUrl = JumpTo.getString(this);
 		WebContainerJumpView.jumpToView(llContainerLayout, this,loadPageUrl);
@@ -101,8 +100,8 @@ public class WebContainerActivity extends Activity {
 			}
 		}
 	}
-	
-//	
+
+//
 	private void navigatePrevious() {
 		if (webTopBarManager.mCurrentWebView.canGoBack()) {
 			webTopBarManager.mCurrentWebView.goBack();
@@ -125,16 +124,16 @@ public class WebContainerActivity extends Activity {
 	}
 
 
-	
+
 	@Override
 	protected void onStop() {
 		super.onStop();
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 	}
-	
-	
+
+
 }

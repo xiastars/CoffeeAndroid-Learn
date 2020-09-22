@@ -104,16 +104,8 @@ public class TextViewFragment extends BaseFragment {
                 "The timing, and the choice of a coronavirus, proved prescient. Just two months later, China reported a mysterious pneumonia outbreak in the city of Wuhan — the start of the COVID-19 pandemic that has so far killed around 650,000 people.\n" +
                 "\n" +
                 "Morhard was not the only one sounding the alarm. Event 201 was one of dozens of simulations and evaluations over the past two decades that have highlighted the risks of a pandemic and identified gaps in the ability of governments and organizations around the world to respond.\n" +
-                "\n" +
-                "The exercises anticipated several failures that have played out in the management of COVID-19, including leaky travel bans, medical-equipment shortages, massive disorganization, misinformation and a scramble for vaccines. But the scenarios didn’t anticipate some of the problems that have plagued the pandemic response, such as a shortfall of diagnostic tests, and world leaders who reject the advice of public-health specialists.Like all pandemics, it started out small. A novel coronavirus emerged in Brazil, jumping from bats to pigs to farmers before making its way to a big city with an international airport. From there, infected travellers carried it to the United States, Portugal and China. Within 18 months, the coronavirus had spread around the world, 65 million people were dead and the global economy was in free fall.\\n\" +\n" +
-                "                \"\\n\" +\n" +
-                "                \"This fictitious scenario, dubbed Event 201, played out in a New York City conference centre before a panel of academics, government officials and business leaders last October. Those in attendance were shaken — which is what Ryan Morhard wanted. A biosecurity specialist at the World Economic Forum in Geneva, Switzerland, Morhard worried that world leaders weren’t taking the threat of a pandemic seriously enough. He wanted to force them to confront the potentially immense human and economic toll of a global outbreak. “We called it Event 201 because we’re seeing up to 200 epidemic events per year, and we knew that, eventually, one would cause a pandemic,” Morhard says.\\n\" +\n" +
-                "                \"The timing, and the choice of a coronavirus, proved prescient. Just two months later, China reported a mysterious pneumonia outbreak in the city of Wuhan — the start of the COVID-19 pandemic that has so far killed around 650,000 people.\\n\" +\n" +
-                "                \"\\n\" +\n" +
-                "                \"Morhard was not the only one sounding the alarm. Event 201 was one of dozens of simulations and evaluations over the past two decades that have highlighted the risks of a pandemic and identified gaps in the ability of governments and organizations around the world to respond.\\n\" +\n" +
-                "                \"\\n\" +\n" +
-                "                \"The exercises anticipated several failures that have played out in the management of COVID-19, including leaky travel bans, medical-equipment shortages, massive disorganization, misinformation and a scramble for vaccines. But the scenarios didn’t anticipate some of the problems that have plagued the pandemic response, such as a shortfall of diagnostic tests, and world leaders who reject the advice of public-health specialists.";
-        tvJustify.setText(jcontent);
+                "\n" ;
+                tvJustify.setText(jcontent);
 
         SpannableStringBuilder builder = new SpannableStringBuilder();
 
@@ -124,8 +116,8 @@ public class TextViewFragment extends BaseFragment {
         builder.append(STextUtils.getSpannableView("xiastars", 0, 8, getResColor(R.color.red_d3), 1.5f, true));
         tvSpan.setText(builder);
 
-        String content = "TextView配合SpanningString的高级用法，试试点击以下三个标签：将链接转为短链<e type=\"web\" title='=\"图片链接\"" +
-                " href=\"https://movie.douban.com/\">；自定义标签识别<e type=\"hashtag\" hid='=\"ViewPager\" " +
+        String content = "TextView配合SpanningString的高级用法，试试点击以下三个标签：将链接转为短链<e type=\"web\" title=\"刘强东，变身IPO收割机\"" +
+                " href=\"https://news.pedaily.cn/202009/460097.shtml\">；自定义标签识别<e type=\"hashtag\" hid='=\"ViewPager\" " +
                 " title=\"ViewPager\" >; 图片标签<e type=\"web\" title=\"「查看图片」\" href=\"https://img1.doubanio.com/view/photo/l/public/p2324017307.webp\" >；";
 
         TextWebUtils.setHtmlText(tvSuper, content);

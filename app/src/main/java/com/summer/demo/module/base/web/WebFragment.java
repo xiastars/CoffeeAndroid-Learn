@@ -92,7 +92,8 @@ public class WebFragment extends BaseFragment {
             Logs.i("跳转URL有误");
             return;
         }
-        if (url.startsWith("http") || new File(url).exists()) {
+        //file 为asset里的文件
+        if (url.startsWith("http") || url.startsWith("file")|| new File(url).exists()) {
             webviewContainer.loadUrl(url);
         } else {
             webviewContainer.loadDataWithBaseURL(null, url, "text/html", "utf-8", null);

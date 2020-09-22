@@ -87,7 +87,7 @@ public class AlbumHelper {
         Logs.i("xia", "time:" + (System.currentTimeMillis() - startTime));
 
         String columns[] = new String[]{Media._ID, Media.BUCKET_ID, Media.PICASA_ID, Media.DATA, Media.DISPLAY_NAME, Media.TITLE, Media.SIZE, Media.BUCKET_DISPLAY_NAME};
-        Cursor cur = cr.query(Media.EXTERNAL_CONTENT_URI, columns, IS_LARGE_SIZE + BUCKET_GROUP_BY,
+        Cursor cur = cr.query(Media.EXTERNAL_CONTENT_URI, columns, IS_LARGE_SIZE ,
                 new String[]{"0"}, Media._ID + " desc");
         if (cur != null && cur.moveToFirst()) {
             int photoIDIndex = cur.getColumnIndexOrThrow(Media._ID);

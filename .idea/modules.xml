@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CoffeeAndroid-Learn.iml" filepath="$PROJECT_DIR$/.idea/CoffeeAndroid-Learn.iml" />
       <module fileurl="file://$PROJECT_DIR$/CoffeeAndroid-Learn.iml" filepath="$PROJECT_DIR$/CoffeeAndroid-Learn.iml" group="CoffeeAndroid-Learn" />
+      <module fileurl="file://$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" filepath="$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" filepath="$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" group="CoffeeAndroid-Learn/FFmpegAndroid" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="CoffeeAndroid-Learn/app" />
+      <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/mylibrary/mylibrary.iml" group="CoffeeAndroid-Learn/mylibrary" />
+      <module fileurl="file://$PROJECT_DIR$/stripe/stripe.iml" filepath="$PROJECT_DIR$/stripe/stripe.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/stripe/stripe.iml" filepath="$PROJECT_DIR$/.idea/modules/stripe/stripe.iml" group="CoffeeAndroid-Learn/stripe" />
+      <module fileurl="file://$PROJECT_DIR$/summerHelpers/summerHelpers.iml" filepath="$PROJECT_DIR$/summerHelpers/summerHelpers.iml" />
       <module fileurl="file://$PROJECT_DIR$/summerHelpers/summerHelpers.iml" filepath="$PROJECT_DIR$/summerHelpers/summerHelpers.iml" group="CoffeeAndroid-Learn/summerHelpers" />
     </modules>
   </component>
